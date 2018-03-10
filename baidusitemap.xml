@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+
+    
+  <url>
+    <loc>https://jingweiz300.github.io/2017/10/30/test/</loc>
+    <lastmod>2018-03-10T08:09:50.152Z</lastmod>
+    <data>
+        <display>
+        <title>测试文件标题</title>
+        <pubTime>2017-10-30T14:35:37.000Z</pubTime>
+        
+        <tag>读后感</tag>
+         
+         
+           
+             
+              <breadCrumb title="knowledge" url="https://jingweiz300.github.io/categories/knowledge/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+    
+    
+    
+    
+    
+  <url>
+    <loc>https://jingweiz300.github.io/2018/03/10/hello-world/</loc>
+    <lastmod>2018-03-10T03:30:44.966Z</lastmod>
+    <data>
+        <display>
+        <title>Hello World</title>
+        <pubTime>2018-03-10T03:30:44.966Z</pubTime>
+        
+         
+           
+        </display>
+    </data>
+    </url>
+
+</urlset>
