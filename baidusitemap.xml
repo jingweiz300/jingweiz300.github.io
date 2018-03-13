@@ -4,14 +4,56 @@
 
     
   <url>
-    <loc>https://jingweiz300.github.io/2018/03/10/dbfpy/</loc>
-    <lastmod>2018-03-10T13:16:25.118Z</lastmod>
+    <loc>https://jingweiz300.github.io/2018/03/13/%E7%94%9F%E6%88%90zabbix%E5%9B%BE%E7%89%87%E5%B9%B6%E9%80%9A%E8%BF%87%E5%BE%AE%E4%BF%A1%E5%8F%91%E9%80%81/</loc>
+    <lastmod>2018-03-13T15:21:12.615Z</lastmod>
+    <data>
+        <display>
+        <title>生成zabbix图表，通过微信发送群聊</title>
+        <pubTime>2018-03-13T15:35:37.000Z</pubTime>
+        
+        <tag>zabbix</tag>
+         
+        <tag>微信</tag>
+         
+         
+           
+             
+              <breadCrumb title="python" url="https://jingweiz300.github.io/categories/python/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://jingweiz300.github.io/2017/09/10/dbfpy/</loc>
+    <lastmod>2018-03-13T14:50:11.249Z</lastmod>
     <data>
         <display>
         <title>dbfpy模块的使用案例-python2.7</title>
-        <pubTime>2018-03-10T11:35:37.000Z</pubTime>
+        <pubTime>2017-09-10T11:35:37.000Z</pubTime>
         
         <tag>模块使用</tag>
+         
+         
+           
+             
+              <breadCrumb title="python" url="https://jingweiz300.github.io/categories/python/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://jingweiz300.github.io/2017/08/12/zabbix%E5%91%8A%E8%AD%A6%E5%9B%BE%E7%89%87/</loc>
+    <lastmod>2018-03-12T12:36:53.491Z</lastmod>
+    <data>
+        <display>
+        <title>Python脚本通过邮件发送zabbix报警图片</title>
+        <pubTime>2017-08-12T09:35:37.000Z</pubTime>
+        
+        <tag>zabbix</tag>
          
          
            
