@@ -4,15 +4,22 @@
 
     
   <url>
-    <loc>https://jingweiz300.github.io/2018/03/15/Matplotlib%E6%A8%A1%E5%9D%97%E7%9A%84%E5%AD%A6%E4%B9%A0/</loc>
-    <lastmod>2018-03-15T11:52:13.188Z</lastmod>
+    <loc>https://jingweiz300.github.io/2018/01/12/Matplotlib%E6%A8%A1%E5%9D%97%E7%9A%84%E5%AD%A6%E4%B9%A0/</loc>
+    <lastmod>2018-03-15T12:00:19.977Z</lastmod>
     <data>
         <display>
         <title>Matplotlib模块的学习</title>
-        <pubTime>2018-03-15T11:52:13.000Z</pubTime>
+        <pubTime>2018-01-12T11:35:37.000Z</pubTime>
         
+        <tag>Matplotlib</tag>
+         
+        <tag>模块使用</tag>
+         
          
            
+             
+              <breadCrumb title="mlearn" url="https://jingweiz300.github.io/categories/mlearn/"/>
+          
         </display>
     </data>
     </url>
@@ -26,9 +33,9 @@
         <title>Numpy模块的学习(3-5)</title>
         <pubTime>2018-03-15T04:35:37.000Z</pubTime>
         
-        <tag>numpy</tag>
-         
         <tag>模块使用</tag>
+         
+        <tag>numpy</tag>
          
          
            
@@ -48,9 +55,9 @@
         <title>Numpy模块的学习(1-2)</title>
         <pubTime>2018-03-14T11:35:37.000Z</pubTime>
         
-        <tag>numpy</tag>
-         
         <tag>模块使用</tag>
+         
+        <tag>numpy</tag>
          
          
            
