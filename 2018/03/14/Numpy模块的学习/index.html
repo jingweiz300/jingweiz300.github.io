@@ -17,12 +17,12 @@
 <meta property="og:site_name" content="My Story">
 <meta property="og:description" content="Numpy模块的学习：">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://zhoujw.cn/img/Numpy模块学习-1.png">
-<meta property="og:updated_time" content="2018-03-15T01:10:48.017Z">
+<meta property="og:image" content="http://zhoujw.cn/img/20180314-1.png">
+<meta property="og:updated_time" content="2018-03-15T01:26:58.200Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Numpy模块的学习">
 <meta name="twitter:description" content="Numpy模块的学习：">
-<meta name="twitter:image" content="http://zhoujw.cn/img/Numpy模块学习-1.png">
+<meta name="twitter:image" content="http://zhoujw.cn/img/20180314-1.png">
   
     <link rel="alternative" href="/atom.xml" title="My Story" type="application/atom+xml">
   
@@ -337,7 +337,7 @@
 <hr>
 <h3 id="Numpy代码学习（1）"><a href="#Numpy代码学习（1）" class="headerlink" title="Numpy代码学习（1）"></a>Numpy代码学习（1）</h3><p>从txt类型的文件中获取数据源，用genfromtxt方法，不会的就用help方法打印使用方法，因为数据源为分隔符为“，”所以delimiter=”,”</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy</span><br><span class="line">world_alcohol = numpy.genfromtxt(<span class="string">"world_alcohol.txt"</span>, delimiter=<span class="string">","</span>,dtype=str)</span><br><span class="line"><span class="comment">#print(type(world_alcohol))</span></span><br><span class="line"><span class="comment">#print (world_alcohol)</span></span><br><span class="line"><span class="keyword">print</span> (help(numpy.genfromtxt))</span><br></pre></td></tr></table></figure>
-<p><img src="http://zhoujw.cn/img/Numpy模块学习-1.png" alt="图1"></p>
+<p><img src="http://zhoujw.cn/img/20180314-1.png" alt="图1"></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#The numpy.array() function can take a list or list of lists as input. When we input a list, we get a one-dimensional array as a result:</span></span><br><span class="line">vector = numpy.array([<span class="number">5</span>, <span class="number">10</span>, <span class="number">15</span>, <span class="number">20</span>])</span><br><span class="line"><span class="comment">#When we input a list of lists, we get a matrix as a result:</span></span><br><span class="line">matrix = numpy.array([[<span class="number">5</span>, <span class="number">10</span>, <span class="number">15</span>], [<span class="number">20</span>, <span class="number">25</span>, <span class="number">30</span>], [<span class="number">35</span>, <span class="number">40</span>, <span class="number">45</span>]])</span><br><span class="line"><span class="keyword">print</span> (vector)</span><br><span class="line"><span class="keyword">print</span> (matrix)</span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#We can use the ndarray.shape property to figure out how many elements are in the array</span></span><br><span class="line">vector = numpy.array([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>])</span><br><span class="line">print(vector.shape)</span><br><span class="line"><span class="comment">#For matrices, the shape property contains a tuple with 2 elements.</span></span><br><span class="line">matrix = numpy.array([[<span class="number">5</span>, <span class="number">10</span>, <span class="number">15</span>], [<span class="number">20</span>, <span class="number">25</span>, <span class="number">30</span>]])</span><br><span class="line">print(matrix.shape)</span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy</span><br><span class="line"><span class="comment">#Each value in a NumPy array has to have the same data type</span></span><br><span class="line"><span class="comment">#NumPy will automatically figure out an appropriate data type when reading in data or converting lists to arrays. </span></span><br><span class="line"><span class="comment">#You can check the data type of a NumPy array using the dtype property.</span></span><br><span class="line">numbers = numpy.array([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>])</span><br><span class="line"><span class="keyword">print</span> (numbers)</span><br><span class="line">numbers.dtype</span><br></pre></td></tr></table></figure>
@@ -355,7 +355,7 @@
         <p><span>本文标题:</span><a  href="/2018/03/14/Numpy模块的学习/">Numpy模块的学习</a></p>
         <p><span>文章作者:</span><a  href="/" title="访问 JingWei Zhou 的个人博客">JingWei Zhou</a></p>
         <p><span>发布时间:</span>2018年03月14日 - 19时35分</p>
-        <p><span>最后更新:</span>2018年03月15日 - 09时10分</p>
+        <p><span>最后更新:</span>2018年03月15日 - 09时26分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2018/03/14/Numpy模块的学习/" title="Numpy模块的学习">https://jingweiz300.github.io/2018/03/14/Numpy模块的学习/</a>
             <span class="copy-path" data-clipboard-text="原文: https://jingweiz300.github.io/2018/03/14/Numpy模块的学习/　　作者: JingWei Zhou" title=""></span>
