@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="baidu-site-verification" content="L6Lm9d5Crl"/>
+  
+  
+  
+  
+  <title>Pandas模块的学习 | My Story</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Pandas模块的学习：">
+<meta name="keywords" content="模块使用,Matplotlib">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Pandas模块的学习">
+<meta property="og:url" content="https://jingweiz300.github.io/2018/03/16/Pandas模块的学习/index.html">
+<meta property="og:site_name" content="My Story">
+<meta property="og:description" content="Pandas模块的学习：">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-03-16T10:32:19.123Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Pandas模块的学习">
+<meta name="twitter:description" content="Pandas模块的学习：">
+  
+    <link rel="alternative" href="/atom.xml" title="My Story" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.png">
+  
+  
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <!-- 加载特效 -->
+    <script src="/js/pace.js"></script>
+    <link href="/css/pace/pace-theme-flash.css" rel="stylesheet" />
+  <script>
+      var yiliaConfig = {
+          fancybox: true,
+          animate: true,
+          isHome: false,
+          isPost: true,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false
+      }
+  </script>
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="/img/avatar.png" class="js-avatar">
+            
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">JingWei Zhou</a></h1>
+        </hgroup>
+        
+        <p class="header-subtitle">虽不能至，然心向往之~~</p>
+        
+        
+            <form>
+                <input type="text" class="st-default-search-input search" id="local-search-input" placeholder="搜索一下" autocomplete="off">
+            </form>
+            <div id="local-search-result"></div>
+        
+        
+            <script type="text/javascript">
+                (function() {
+                    'use strict';
+                    function getMatchData(keyword, data) {
+                        var matchData = [];
+                        for(var i =0;i<data.length;i++){
+                            if(data[i].title.toLowerCase().indexOf(keyword)>=0) 
+                                matchData.push(data[i])
+                        }
+                        return matchData;
+                    }
+                    var $input = $('#local-search-input');
+                    var $resultContent = $('#local-search-result');
+                    $input.keyup(function(){
+                        $.ajax({
+                            url: '/search.json',
+                            dataType: "json",
+                            success: function( json ) {
+                                var str='<ul class=\"search-result-list\">';                
+                                var keyword = $input.val().trim().toLowerCase();
+                                $resultContent.innerHTML = "";
+                                if ($input.val().trim().length <= 0) {
+                                    $resultContent.empty();
+                                    $('#switch-area').show();
+                                    return;
+                                }
+                                var results = getMatchData(keyword, json);
+                                if(results.length === 0){
+                                    $resultContent.empty();
+                                    $('#switch-area').show();
+                                    return;
+                                } 
+                                for(var i =0; i<results.length; i++){
+                                    str += "<li><a href='"+ results[i].url +"' class='search-result-title'>"+ results[i].title +"</a></li>";
+                                }
+                                str += "</ul>";
+                                $resultContent.empty();
+                                $resultContent.append(str);
+                                $('#switch-area').hide();
+                            }
+                        });
+                    });
+                })();
+            </script>
+        
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a  href="/archives/">ALL</a></li>
+                        
+                            <li><a  href="/categories/stock/">Stock</a></li>
+                        
+                            <li><a  href="/categories/python/">Python</a></li>
+                        
+                            <li><a  href="/categories/Linux/">Linux</a></li>
+                        
+                            <li><a  href="/categories/mlearn/">MLearn</a></li>
+                        
+                            <li><a  href="/categories/feeling/">Feeling</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fl github"  target="_blank" href="/xxxxx" title="github">github</a>
+                            
+                                <a class="fl weibo"  target="_blank" href="https://weibo.com/u/2369842910/home?wvr=5" title="weibo">weibo</a>
+                            
+                                <a class="fl rss"  target="_blank" href="/atom.xml" title="rss">rss</a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="/tags/Matplotlib/" style="font-size: 15px;">Matplotlib</a> <a href="/tags/numpy/" style="font-size: 15px;">numpy</a> <a href="/tags/zabbix/" style="font-size: 10px;">zabbix</a> <a href="/tags/微信/" style="font-size: 10px;">微信</a> <a href="/tags/模块使用/" style="font-size: 20px;">模块使用</a>
+                    </div>
+                </section>
+                
+                
+                
+                
+                <section class="switch-part switch-part3">
+                
+                    <div id="js-aboutme">爱篮球、爱电脑、爱编程</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">JingWei Zhou</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                
+                    <img lazy-src="/img/avatar.png" class="js-avatar">
+                
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">JingWei Zhou</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">虽不能至，然心向往之~~</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/archives/">ALL</a></li>
+                
+                    <li><a href="/categories/stock/">Stock</a></li>
+                
+                    <li><a href="/categories/python/">Python</a></li>
+                
+                    <li><a href="/categories/Linux/">Linux</a></li>
+                
+                    <li><a href="/categories/mlearn/">MLearn</a></li>
+                
+                    <li><a href="/categories/feeling/">Feeling</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a class="github" target="_blank" href="/xxxxx" title="github">github</a>
+                    
+                        <a class="weibo" target="_blank" href="https://weibo.com/u/2369842910/home?wvr=5" title="weibo">weibo</a>
+                    
+                        <a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+                    
+                </div>
+            </nav>
+        </header>                
+    </div>
+</nav>
+      <div class="body-wrap"><article id="post-Pandas模块的学习" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="/2018/03/16/Pandas模块的学习/" class="article-date">
+      <time datetime="2018-03-16T01:35:37.000Z" itemprop="datePublished">2018-03-16</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Pandas模块的学习
+    </h1>
+  
+
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/mlearn/">mlearn</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Matplotlib/">Matplotlib</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/模块使用/">模块使用</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p><strong> Pandas模块的学习：</strong> <excerpt in="" index="" |="" 首页摘要=""><br><a id="more"></a></excerpt></p>
+<the rest="" of="" contents="" |="" 余下全文="">
+
+<h3 id="简言"><a href="#简言" class="headerlink" title="简言"></a>简言</h3><p>pandas 是基于 Numpy 构建的含有更高级数据结构和工具的数据分析包</p>
+<p>类似于 Numpy 的核心是 ndarray，pandas 也是围绕着 Series 和 DataFrame 两个核心数据结构展开的 。Series 和 DataFrame 分别对应于一维的序列和二维的表结构。pandas 约定俗成的导入方法如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pandas <span class="keyword">import</span> Series,DataFrame</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="Pandas代码学习-1"><a href="#Pandas代码学习-1" class="headerlink" title="Pandas代码学习(1)"></a>Pandas代码学习(1)</h3><p>pandas提供了读取文件的方法，pandas.read_csv()</p>
+<p>查看dataframe数据框架中的各个字段的类型，可以调用实例的dypes属性</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas</span><br><span class="line">food_info = pandas.read_csv(<span class="string">"food_info.csv"</span>)</span><br><span class="line">print(type(food_info))</span><br><span class="line"><span class="keyword">print</span> (food_info.dtypes)</span><br><span class="line"><span class="comment">#print (help(pandas.read_csv))</span></span><br></pre></td></tr></table></figure>
+<p><class 'pandas.core.frame.dataframe'=""><br>NDB_No               int64<br>Shrt_Desc           object<br>Water_(g)          float64<br>Energ_Kcal           int64<br>Protein_(g)        float64<br>Lipid_Tot_(g)      float64<br>Ash_(g)            float64<br>Carbohydrt_(g)     float64<br>Fiber_TD_(g)       float64<br>Sugar_Tot_(g)      float64<br>Calcium_(mg)       float64<br>Iron_(mg)          float64<br>Magnesium_(mg)     float64<br>Phosphorus_(mg)    float64<br>Potassium_(mg)     float64<br>Sodium_(mg)        float64<br>Zinc_(mg)          float64<br>Copper_(mg)        float64<br>Manganese_(mg)     float64<br>Selenium_(mcg)     float64<br>Vit_C_(mg)         float64<br>Thiamin_(mg)       float64<br>Riboflavin_(mg)    float64<br>Niacin_(mg)        float64<br>Vit_B6_(mg)        float64<br>Vit_B12_(mcg)      float64<br>Vit_A_IU           float64<br>Vit_A_RAE          float64<br>Vit_E_(mg)         float64<br>Vit_D_mcg          float64<br>Vit_D_IU           float64<br>Vit_K_(mcg)        float64<br>FA_Sat_(g)         float64<br>FA_Mono_(g)        float64<br>FA_Poly_(g)        float64<br>Cholestrl_(mg)     float64<br>dtype: object</class></p>
+<p>同ndarray的属性，dataframe查看前、后数据的方法为head()，tail()方法；</p>
+<p>查看列名的话可以调用实例的columns属性</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">print</span> (food_info.head(<span class="number">3</span>))</span><br><span class="line">first_rows = food_info.head()</span><br><span class="line">first_rows</span><br><span class="line"><span class="comment">#food_info.tail(4)</span></span><br><span class="line"><span class="comment">#print(food_info.tail(3))</span></span><br><span class="line"><span class="keyword">print</span> (food_info.columns)</span><br><span class="line"><span class="comment">#print (food_info.shape)</span></span><br></pre></td></tr></table></figure>
+<p>NDB_No                 Shrt_Desc  Water_(g)  Energ_Kcal  Protein_(g)  \<br>0    1001          BUTTER WITH SALT      15.87         717         0.85<br>1    1002  BUTTER WHIPPED WITH SALT      15.87         717         0.85<br>2    1003      BUTTER OIL ANHYDROUS       0.24         876         0.28   </p>
+<p>   Lipid_Tot_(g)  Ash_(g)  Carbohydrt_(g)  Fiber_TD_(g)  Sugar_Tot_(g)  \<br>0          81.11     2.11            0.06           0.0           0.06<br>1          81.11     2.11            0.06           0.0           0.06<br>2          99.48     0.00            0.00           0.0           0.00   </p>
+<p>​        …        Vit_A_IU  Vit_A_RAE  Vit_E_(mg)  Vit_D_mcg  Vit_D_IU  \<br>0       …          2499.0      684.0        2.32        1.5      60.0<br>1       …          2499.0      684.0        2.32        1.5      60.0<br>2       …          3069.0      840.0        2.80        1.8      73.0   </p>
+<p>   Vit_K_(mcg)  FA_Sat_(g)  FA_Mono_(g)  FA_Poly_(g)  Cholestrl_(mg)<br>0          7.0      51.368       21.021        3.043           215.0<br>1          7.0      50.489       23.426        3.012           219.0<br>2          8.6      61.924       28.732        3.694           256.0  </p>
+<p>[3 rows x 36 columns]<br>Index([‘NDB_No’, ‘Shrt_Desc’, ‘Water_(g)’, ‘Energ_Kcal’, ‘Protein_(g)’,<br>​       ‘Lipid_Tot_(g)’, ‘Ash_(g)’, ‘Carbohydrt_(g)’, ‘Fiber_TD_(g)’,<br>​       ‘Sugar_Tot_(g)’, ‘Calcium_(mg)’, ‘Iron_(mg)’, ‘Magnesium_(mg)’,<br>​       ‘Phosphorus_(mg)’, ‘Potassium_(mg)’, ‘Sodium_(mg)’, ‘Zinc_(mg)’,<br>​       ‘Copper_(mg)’, ‘Manganese_(mg)’, ‘Selenium_(mcg)’, ‘Vit_C_(mg)’,<br>​       ‘Thiamin_(mg)’, ‘Riboflavin_(mg)’, ‘Niacin_(mg)’, ‘Vit_B6_(mg)’,<br>​       ‘Vit_B12_(mcg)’, ‘Vit_A_IU’, ‘Vit_A_RAE’, ‘Vit_E_(mg)’, ‘Vit_D_mcg’,<br>​       ‘Vit_D_IU’, ‘Vit_K_(mcg)’, ‘FA_Sat_(g)’, ‘FA_Mono_(g)’, ‘FA_Poly_(g)’,<br>​       ‘Cholestrl_(mg)’],<br>​      dtype=’object’)</p>
+<p>想要调用指定位置的行数据，调用实例的loc方法，并指定索引区间；df使用的从零开始的索引顺序</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#pandas uses zero-indexing</span></span><br><span class="line"><span class="comment">#Series object representing the row at index 0.</span></span><br><span class="line"><span class="comment">#print (food_info.loc[0:1])</span></span><br><span class="line">food_info.loc[<span class="number">0</span>:<span class="number">1</span>]</span><br><span class="line"><span class="comment"># Series object representing the seventh row.</span></span><br><span class="line"><span class="comment">#food_info.loc[6]</span></span><br><span class="line"><span class="comment"># Will throw an error: "KeyError: 'the label [8620] is not in the [index]'"</span></span><br><span class="line"><span class="comment">#food_info.loc[8620]</span></span><br><span class="line"><span class="comment">#The object dtype is equivalent to a string in Python</span></span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>NDB_No</th>
+<th>Shrt_Desc</th>
+<th>Water_(g)</th>
+<th>Energ_Kcal</th>
+<th>Protein_(g)</th>
+<th>Lipid_Tot_(g)</th>
+<th>Ash_(g)</th>
+<th>Carbohydrt_(g)</th>
+<th>Fiber_TD_(g)</th>
+<th>Sugar_Tot_(g)</th>
+<th>…</th>
+<th>Vit_A_IU</th>
+<th>Vit_A_RAE</th>
+<th>Vit_E_(mg)</th>
+<th>Vit_D_mcg</th>
+<th>Vit_D_IU</th>
+<th>Vit_K_(mcg)</th>
+<th>FA_Sat_(g)</th>
+<th>FA_Mono_(g)</th>
+<th>FA_Poly_(g)</th>
+<th>Cholestrl_(mg)</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>1001</td>
+<td>BUTTER WITH SALT</td>
+<td>15.87</td>
+<td>717</td>
+<td>0.85</td>
+<td>81.11</td>
+<td>2.11</td>
+<td>0.06</td>
+<td>0.0</td>
+<td>0.06</td>
+<td>…</td>
+<td>2499.0</td>
+<td>684.0</td>
+<td>2.32</td>
+<td>1.5</td>
+<td>60.0</td>
+<td>7.0</td>
+<td>51.368</td>
+<td>21.021</td>
+<td>3.043</td>
+<td>215.0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1002</td>
+<td>BUTTER WHIPPED WITH SALT</td>
+<td>15.87</td>
+<td>717</td>
+<td>0.85</td>
+<td>81.11</td>
+<td>2.11</td>
+<td>0.06</td>
+<td>0.0</td>
+<td>0.06</td>
+<td>…</td>
+<td>2499.0</td>
+<td>684.0</td>
+<td>2.32</td>
+<td>1.5</td>
+<td>60.0</td>
+<td>7.0</td>
+<td>50.489</td>
+<td>23.426</td>
+<td>3.012</td>
+<td>219.0</td>
+</tr>
+</tbody>
+</table>
+<p>2 rows × 36 columns</p>
+<p>调用dtypes查看出来的类型分类如下</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#object - For string values</span></span><br><span class="line"><span class="comment">#int - For integer values</span></span><br><span class="line"><span class="comment">#float - For float values</span></span><br><span class="line"><span class="comment">#datetime - For time values</span></span><br><span class="line"><span class="comment">#bool - For Boolean values</span></span><br><span class="line">food_info.dtypes</span><br></pre></td></tr></table></figure>
+<p>loc的参数为行数的列表或者列表区间，food_info.loc[[2,5,10]]查看2、5、10行的数据，注意loc的参数是一个列表</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Returns a DataFrame containing the rows at indexes 3, 4, 5, and 6.</span></span><br><span class="line">food_info.loc[<span class="number">3</span>:<span class="number">6</span>]</span><br><span class="line"><span class="comment"># Returns a DataFrame containing the rows at indexes 2, 5, and 10. Either of the following approaches will work.</span></span><br><span class="line"><span class="comment"># Method 1</span></span><br><span class="line"><span class="comment">#two_five_ten = [2,5,10] </span></span><br><span class="line"><span class="comment">#food_info.loc[two_five_ten]</span></span><br><span class="line"><span class="comment"># Method 2</span></span><br><span class="line"><span class="comment">#food_info.loc[[2,5,10]]</span></span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>NDB_No</th>
+<th>Shrt_Desc</th>
+<th>Water_(g)</th>
+<th>Energ_Kcal</th>
+<th>Protein_(g)</th>
+<th>Lipid_Tot_(g)</th>
+<th>Ash_(g)</th>
+<th>Carbohydrt_(g)</th>
+<th>Fiber_TD_(g)</th>
+<th>Sugar_Tot_(g)</th>
+<th>…</th>
+<th>Vit_A_IU</th>
+<th>Vit_A_RAE</th>
+<th>Vit_E_(mg)</th>
+<th>Vit_D_mcg</th>
+<th>Vit_D_IU</th>
+<th>Vit_K_(mcg)</th>
+<th>FA_Sat_(g)</th>
+<th>FA_Mono_(g)</th>
+<th>FA_Poly_(g)</th>
+<th>Cholestrl_(mg)</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>3</td>
+<td>1004</td>
+<td>CHEESE BLUE</td>
+<td>42.41</td>
+<td>353</td>
+<td>21.40</td>
+<td>28.74</td>
+<td>5.11</td>
+<td>2.34</td>
+<td>0.0</td>
+<td>0.50</td>
+<td>…</td>
+<td>721.0</td>
+<td>198.0</td>
+<td>0.25</td>
+<td>0.5</td>
+<td>21.0</td>
+<td>2.4</td>
+<td>18.669</td>
+<td>7.778</td>
+<td>0.800</td>
+<td>75.0</td>
+</tr>
+<tr>
+<td>4</td>
+<td>1005</td>
+<td>CHEESE BRICK</td>
+<td>41.11</td>
+<td>371</td>
+<td>23.24</td>
+<td>29.68</td>
+<td>3.18</td>
+<td>2.79</td>
+<td>0.0</td>
+<td>0.51</td>
+<td>…</td>
+<td>1080.0</td>
+<td>292.0</td>
+<td>0.26</td>
+<td>0.5</td>
+<td>22.0</td>
+<td>2.5</td>
+<td>18.764</td>
+<td>8.598</td>
+<td>0.784</td>
+<td>94.0</td>
+</tr>
+<tr>
+<td>5</td>
+<td>1006</td>
+<td>CHEESE BRIE</td>
+<td>48.42</td>
+<td>334</td>
+<td>20.75</td>
+<td>27.68</td>
+<td>2.70</td>
+<td>0.45</td>
+<td>0.0</td>
+<td>0.45</td>
+<td>…</td>
+<td>592.0</td>
+<td>174.0</td>
+<td>0.24</td>
+<td>0.5</td>
+<td>20.0</td>
+<td>2.3</td>
+<td>17.410</td>
+<td>8.013</td>
+<td>0.826</td>
+<td>100.0</td>
+</tr>
+<tr>
+<td>6</td>
+<td>1007</td>
+<td>CHEESE CAMEMBERT</td>
+<td>51.80</td>
+<td>300</td>
+<td>19.80</td>
+<td>24.26</td>
+<td>3.68</td>
+<td>0.46</td>
+<td>0.0</td>
+<td>0.46</td>
+<td>…</td>
+<td>820.0</td>
+<td>241.0</td>
+<td>0.21</td>
+<td>0.4</td>
+<td>18.0</td>
+<td>2.0</td>
+<td>15.259</td>
+<td>7.023</td>
+<td>0.724</td>
+<td>72.0</td>
+</tr>
+</tbody>
+</table>
+<p>4 rows × 36 columns</p>
+<p>dataframe支持直接输入列名字符串来作为获取列值数据，或者是输入包含列名的字符串变量；</p>
+<p>计算数据长度的话可以使用先取出某一列的数据列表，然后使用列表的len方法计算数据行数,查看所有列的行数的话使用df的count方法</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Series object representing the "NDB_No" column.</span></span><br><span class="line">ndb_col = food_info[<span class="string">"NDB_No"</span>]</span><br><span class="line"><span class="comment">#print (ndb_col)</span></span><br><span class="line"><span class="keyword">print</span> (len(ndb_col))</span><br><span class="line"><span class="keyword">print</span> (food_info.count())</span><br><span class="line"><span class="comment"># Alternatively, you can access a column by passing in a string variable.</span></span><br><span class="line"><span class="comment">#col_name = "NDB_No"</span></span><br><span class="line"><span class="comment">#ndb_col = food_info[col_name]</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">8618</span></span><br><span class="line"><span class="string">NDB_No             8618</span></span><br><span class="line"><span class="string">Shrt_Desc          8618</span></span><br><span class="line"><span class="string">Water_(g)          8612</span></span><br><span class="line"><span class="string">Energ_Kcal         8618</span></span><br><span class="line"><span class="string">Protein_(g)        8618</span></span><br><span class="line"><span class="string">Lipid_Tot_(g)      8618</span></span><br><span class="line"><span class="string">Ash_(g)            8286</span></span><br><span class="line"><span class="string">Carbohydrt_(g)     8618</span></span><br><span class="line"><span class="string">Fiber_TD_(g)       7962</span></span><br><span class="line"><span class="string">Sugar_Tot_(g)      6679</span></span><br><span class="line"><span class="string">Calcium_(mg)       8264</span></span><br><span class="line"><span class="string">Iron_(mg)          8471</span></span><br><span class="line"><span class="string">Magnesium_(mg)     7936</span></span><br><span class="line"><span class="string">Phosphorus_(mg)    8046</span></span><br><span class="line"><span class="string">Potassium_(mg)     8208</span></span><br><span class="line"><span class="string">Sodium_(mg)        8535</span></span><br><span class="line"><span class="string">Zinc_(mg)          7917</span></span><br><span class="line"><span class="string">Copper_(mg)        7363</span></span><br><span class="line"><span class="string">Manganese_(mg)     6478</span></span><br><span class="line"><span class="string">Selenium_(mcg)     6868</span></span><br><span class="line"><span class="string">Vit_C_(mg)         7826</span></span><br><span class="line"><span class="string">Thiamin_(mg)       7939</span></span><br><span class="line"><span class="string">Riboflavin_(mg)    7961</span></span><br><span class="line"><span class="string">Niacin_(mg)        7937</span></span><br><span class="line"><span class="string">Vit_B6_(mg)        7677</span></span><br><span class="line"><span class="string">Vit_B12_(mcg)      7427</span></span><br><span class="line"><span class="string">Vit_A_IU           7932</span></span><br><span class="line"><span class="string">Vit_A_RAE          7089</span></span><br><span class="line"><span class="string">Vit_E_(mg)         5613</span></span><br><span class="line"><span class="string">Vit_D_mcg          5319</span></span><br><span class="line"><span class="string">Vit_D_IU           5320</span></span><br><span class="line"><span class="string">Vit_K_(mcg)        4969</span></span><br><span class="line"><span class="string">FA_Sat_(g)         8274</span></span><br><span class="line"><span class="string">FA_Mono_(g)        7947</span></span><br><span class="line"><span class="string">FA_Poly_(g)        7954</span></span><br><span class="line"><span class="string">Cholestrl_(mg)     8250</span></span><br><span class="line"><span class="string">dtype: int64</span></span><br><span class="line"><span class="string">'''</span></span><br></pre></td></tr></table></figure>
+<p>取某几列的一般方法就是做一个列名列表，并作为df的入参DF.[列名列表]</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">columns = [<span class="string">"Zinc_(mg)"</span>, <span class="string">"Copper_(mg)"</span>,<span class="string">"Energ_Kcal"</span>]</span><br><span class="line"><span class="keyword">print</span> (type(food_info.columns))</span><br><span class="line">zinc_copper = food_info[columns]</span><br><span class="line"><span class="keyword">print</span> (zinc_copper)</span><br><span class="line"><span class="comment">#print zinc_copper</span></span><br><span class="line"><span class="comment"># Skipping the assignment.</span></span><br><span class="line"><span class="comment">#zinc_copper = food_info[["Zinc_(mg)", "Copper_(mg)"]]</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">&lt;class 'pandas.core.indexes.base.Index'&gt;</span></span><br><span class="line"><span class="string">      Zinc_(mg)  Copper_(mg)  Energ_Kcal</span></span><br><span class="line"><span class="string">0          0.09        0.000         717</span></span><br><span class="line"><span class="string">1          0.05        0.016         717</span></span><br><span class="line"><span class="string">2          0.01        0.001         876</span></span><br><span class="line"><span class="string">3          2.66        0.040         353</span></span><br><span class="line"><span class="string">4          2.60        0.024         371</span></span><br><span class="line"><span class="string">5          2.38        0.019         334</span></span><br><span class="line"><span class="string">6          2.38        0.021         300</span></span><br><span class="line"><span class="string">7          2.94        0.024         376</span></span><br><span class="line"><span class="string">8          3.43        0.056         406</span></span><br><span class="line"><span class="string">9          2.79        0.042         387</span></span><br><span class="line"><span class="string">10         3.07        0.042         394</span></span><br><span class="line"><span class="string">11         0.40        0.029          98</span></span><br><span class="line"><span class="string">12         0.33        0.040          97</span></span><br><span class="line"><span class="string">13         0.47        0.030          72</span></span><br><span class="line"><span class="string">14         0.51        0.033          81</span></span><br><span class="line"><span class="string">15         0.38        0.028          72</span></span><br><span class="line"><span class="string">16         0.51        0.019         342</span></span><br><span class="line"><span class="string">17         3.75        0.036         357</span></span><br><span class="line"><span class="string">18         2.88        0.032         264</span></span><br><span class="line"><span class="string">19         3.50        0.025         389</span></span><br><span class="line"><span class="string">20         1.14        0.080         466</span></span><br><span class="line"><span class="string">21         3.90        0.036         356</span></span><br><span class="line"><span class="string">22         3.90        0.032         413</span></span><br><span class="line"><span class="string">23         2.10        0.021         327</span></span><br><span class="line"><span class="string">24         3.00        0.032         373</span></span><br><span class="line"><span class="string">25         2.92        0.011         300</span></span><br><span class="line"><span class="string">26         2.46        0.022         318</span></span><br><span class="line"><span class="string">27         2.76        0.025         254</span></span><br><span class="line"><span class="string">28         3.61        0.034         301</span></span><br><span class="line"><span class="string">29         2.81        0.031         368</span></span><br><span class="line"><span class="string"><span class="meta">... </span>        ...          ...         ...</span></span><br><span class="line"><span class="string">8588       3.30        0.377         389</span></span><br><span class="line"><span class="string">8589       0.05        0.040          91</span></span><br><span class="line"><span class="string">8590       0.05        0.030          68</span></span><br><span class="line"><span class="string">8591       1.15        0.116         465</span></span><br><span class="line"><span class="string">8592       5.03        0.200         401</span></span><br><span class="line"><span class="string">8593       3.83        0.545         429</span></span><br><span class="line"><span class="string">8594       0.08        0.035          73</span></span><br><span class="line"><span class="string">8595       3.90        0.027         179</span></span><br><span class="line"><span class="string">8596       4.10        0.100         377</span></span><br><span class="line"><span class="string">8597       3.13        0.027         280</span></span><br><span class="line"><span class="string">8598       0.13        0.000         688</span></span><br><span class="line"><span class="string">8599       0.02        0.000         884</span></span><br><span class="line"><span class="string">8600       0.09        0.037         279</span></span><br><span class="line"><span class="string">8601       0.21        0.026         257</span></span><br><span class="line"><span class="string">8602       2.77        0.571         319</span></span><br><span class="line"><span class="string">8603       0.41        0.838         356</span></span><br><span class="line"><span class="string">8604       0.05        0.028          62</span></span><br><span class="line"><span class="string">8605       0.03        0.023         179</span></span><br><span class="line"><span class="string">8606       0.10        0.112         181</span></span><br><span class="line"><span class="string">8607       0.02        0.020         287</span></span><br><span class="line"><span class="string">8608       1.49        0.854         365</span></span><br><span class="line"><span class="string">8609       0.19        0.040         351</span></span><br><span class="line"><span class="string">8610       0.10        0.038         350</span></span><br><span class="line"><span class="string">8611       0.85        0.182         370</span></span><br><span class="line"><span class="string">8612       1.00        0.250          73</span></span><br><span class="line"><span class="string">8613       1.10        0.100         305</span></span><br><span class="line"><span class="string">8614       1.55        0.033         111</span></span><br><span class="line"><span class="string">8615       0.19        0.020         269</span></span><br><span class="line"><span class="string">8616       1.00        0.400          90</span></span><br><span class="line"><span class="string">8617       1.00        0.250          89</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">[8618 rows x 3 columns]</span></span><br><span class="line"><span class="string">'''</span></span><br></pre></td></tr></table></figure>
+<p>DF的列名类型为<class 'pandas.core.indexes.base.index'=""></class></p>
+<p>如果要方便的操作列名，columns集成了tolist()方法直接变成列表形式</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#print(food_info.columns)</span></span><br><span class="line"><span class="comment">#print(food_info.head(2))</span></span><br><span class="line">col_names = food_info.columns.tolist()</span><br><span class="line"><span class="keyword">print</span> (col_names)</span><br><span class="line">gram_columns = []</span><br><span class="line"><span class="comment">#如果有的字段为(g)结尾，取出作为我们想要的数据</span></span><br><span class="line"><span class="keyword">for</span> c <span class="keyword">in</span> col_names:</span><br><span class="line">    <span class="keyword">if</span> c.endswith(<span class="string">"(g)"</span>):</span><br><span class="line">        gram_columns.append(c)</span><br><span class="line">gram_df = food_info[gram_columns]</span><br><span class="line">print(gram_df.head(<span class="number">3</span>))</span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">['NDB_No', 'Shrt_Desc', 'Water_(g)', 'Energ_Kcal', 'Protein_(g)', 'Lipid_Tot_(g)', 'Ash_(g)', 'Carbohydrt_(g)', 'Fiber_TD_(g)', 'Sugar_Tot_(g)', 'Calcium_(mg)', 'Iron_(mg)', 'Magnesium_(mg)', 'Phosphorus_(mg)', 'Potassium_(mg)', 'Sodium_(mg)', 'Zinc_(mg)', 'Copper_(mg)', 'Manganese_(mg)', 'Selenium_(mcg)', 'Vit_C_(mg)', 'Thiamin_(mg)', 'Riboflavin_(mg)', 'Niacin_(mg)', 'Vit_B6_(mg)', 'Vit_B12_(mcg)', 'Vit_A_IU', 'Vit_A_RAE', 'Vit_E_(mg)', 'Vit_D_mcg', 'Vit_D_IU', 'Vit_K_(mcg)', 'FA_Sat_(g)', 'FA_Mono_(g)', 'FA_Poly_(g)', 'Cholestrl_(mg)']</span></span><br><span class="line"><span class="string">   Water_(g)  Protein_(g)  Lipid_Tot_(g)  Ash_(g)  Carbohydrt_(g)  \</span></span><br><span class="line"><span class="string">0      15.87         0.85          81.11     2.11            0.06   </span></span><br><span class="line"><span class="string">1      15.87         0.85          81.11     2.11            0.06   </span></span><br><span class="line"><span class="string">2       0.24         0.28          99.48     0.00            0.00   </span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">   Fiber_TD_(g)  Sugar_Tot_(g)  FA_Sat_(g)  FA_Mono_(g)  FA_Poly_(g)  </span></span><br><span class="line"><span class="string">0           0.0           0.06      51.368       21.021        3.043  </span></span><br><span class="line"><span class="string">1           0.0           0.06      50.489       23.426        3.012  </span></span><br><span class="line"><span class="string">2           0.0           0.00      61.924       28.732        3.694  </span></span><br><span class="line"><span class="string">'''</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="Pandas代码学习-2"><a href="#Pandas代码学习-2" class="headerlink" title="Pandas代码学习(2)"></a>Pandas代码学习(2)</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas</span><br><span class="line">food_info = pandas.read_csv(<span class="string">"food_info.csv"</span>)</span><br><span class="line">col_names = food_info.columns.tolist()</span><br><span class="line">print(col_names)</span><br><span class="line">print(food_info.head(<span class="number">3</span>))</span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">import pandas</span></span><br><span class="line"><span class="string">food_info = pandas.read_csv("food_info.csv")</span></span><br><span class="line"><span class="string">col_names = food_info.columns.tolist()</span></span><br><span class="line"><span class="string">print(col_names)</span></span><br><span class="line"><span class="string">print(food_info.head(3))</span></span><br><span class="line"><span class="string">import pandas</span></span><br><span class="line"><span class="string">food_info = pandas.read_csv("food_info.csv")</span></span><br><span class="line"><span class="string">col_names = food_info.columns.tolist()</span></span><br><span class="line"><span class="string">print(col_names)</span></span><br><span class="line"><span class="string">print(food_info.head(3))</span></span><br><span class="line"><span class="string">['NDB_No', 'Shrt_Desc', 'Water_(g)', 'Energ_Kcal', 'Protein_(g)', 'Lipid_Tot_(g)', 'Ash_(g)', 'Carbohydrt_(g)', 'Fiber_TD_(g)', 'Sugar_Tot_(g)', 'Calcium_(mg)', 'Iron_(mg)', 'Magnesium_(mg)', 'Phosphorus_(mg)', 'Potassium_(mg)', 'Sodium_(mg)', 'Zinc_(mg)', 'Copper_(mg)', 'Manganese_(mg)', 'Selenium_(mcg)', 'Vit_C_(mg)', 'Thiamin_(mg)', 'Riboflavin_(mg)', 'Niacin_(mg)', 'Vit_B6_(mg)', 'Vit_B12_(mcg)', 'Vit_A_IU', 'Vit_A_RAE', 'Vit_E_(mg)', 'Vit_D_mcg', 'Vit_D_IU', 'Vit_K_(mcg)', 'FA_Sat_(g)', 'FA_Mono_(g)', 'FA_Poly_(g)', 'Cholestrl_(mg)']</span></span><br><span class="line"><span class="string">   NDB_No                 Shrt_Desc  Water_(g)  Energ_Kcal  Protein_(g)  \</span></span><br><span class="line"><span class="string">0    1001          BUTTER WITH SALT      15.87         717         0.85   </span></span><br><span class="line"><span class="string">1    1002  BUTTER WHIPPED WITH SALT      15.87         717         0.85   </span></span><br><span class="line"><span class="string">2    1003      BUTTER OIL ANHYDROUS       0.24         876         0.28   </span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">   Lipid_Tot_(g)  Ash_(g)  Carbohydrt_(g)  Fiber_TD_(g)  Sugar_Tot_(g)  \</span></span><br><span class="line"><span class="string">0          81.11     2.11            0.06           0.0           0.06   </span></span><br><span class="line"><span class="string">1          81.11     2.11            0.06           0.0           0.06   </span></span><br><span class="line"><span class="string">2          99.48     0.00            0.00           0.0           0.00   </span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">        ...        Vit_A_IU  Vit_A_RAE  Vit_E_(mg)  Vit_D_mcg  Vit_D_IU  \</span></span><br><span class="line"><span class="string">0       ...          2499.0      684.0        2.32        1.5      60.0   </span></span><br><span class="line"><span class="string">1       ...          2499.0      684.0        2.32        1.5      60.0   </span></span><br><span class="line"><span class="string">2       ...          3069.0      840.0        2.80        1.8      73.0   </span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">   Vit_K_(mcg)  FA_Sat_(g)  FA_Mono_(g)  FA_Poly_(g)  Cholestrl_(mg)  </span></span><br><span class="line"><span class="string">0          7.0      51.368       21.021        3.043           215.0  </span></span><br><span class="line"><span class="string">1          7.0      50.489       23.426        3.012           219.0  </span></span><br><span class="line"><span class="string">2          8.6      61.924       28.732        3.694           256.0  </span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">[3 rows x 36 columns]</span></span><br><span class="line"><span class="string">'''</span></span><br></pre></td></tr></table></figure>
+<p>做加减乘除法运算的情况下，每一个value都要进行相应的运算</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">print</span> (food_info[<span class="string">"Iron_(mg)"</span>][<span class="number">0</span>:<span class="number">10</span>])</span><br><span class="line">div_1000 = food_info[<span class="string">"Iron_(mg)"</span>] [<span class="number">100</span>:<span class="number">110</span>]/ <span class="number">1000</span></span><br><span class="line"><span class="keyword">print</span> (div_1000)</span><br><span class="line"><span class="comment"># Adds 100 to each value in the column and returns a Series object.</span></span><br><span class="line"><span class="comment">#add_100 = food_info["Iron_(mg)"] + 100</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Subtracts 100 from each value in the column and returns a Series object.</span></span><br><span class="line"><span class="comment">#sub_100 = food_info["Iron_(mg)"] - 100</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Multiplies each value in the column by 2 and returns a Series object.</span></span><br><span class="line"><span class="comment">#mult_2 = food_info["Iron_(mg)"]*2</span></span><br><span class="line"></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">276      0.33</span></span><br><span class="line"><span class="string">5814     0.00</span></span><br><span class="line"><span class="string">6192     7.07</span></span><br><span class="line"><span class="string">1242     1.00</span></span><br><span class="line"><span class="string">1245     1.87</span></span><br><span class="line"><span class="string">1243     2.23</span></span><br><span class="line"><span class="string">1244     1.03</span></span><br><span class="line"><span class="string">292      0.00</span></span><br><span class="line"><span class="string">1254     9.30</span></span><br><span class="line"><span class="string">5811    11.02</span></span><br><span class="line"><span class="string">Name: Iron_(mg), dtype: float64</span></span><br><span class="line"><span class="string">1653    0.00156</span></span><br><span class="line"><span class="string">1574    0.00393</span></span><br><span class="line"><span class="string">6356    0.00167</span></span><br><span class="line"><span class="string">163     0.00016</span></span><br><span class="line"><span class="string">132     0.00087</span></span><br><span class="line"><span class="string">2729    0.00095</span></span><br><span class="line"><span class="string">5912    0.00381</span></span><br><span class="line"><span class="string">8501    0.00077</span></span><br><span class="line"><span class="string">212     0.00063</span></span><br><span class="line"><span class="string">41      0.00063</span></span><br><span class="line"><span class="string">Name: Iron_(mg), dtype: float64</span></span><br><span class="line"><span class="string">'''</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#It applies the arithmetic operator to the first value in both columns, the second value in both columns, and so on</span></span><br><span class="line"><span class="keyword">print</span> (food_info[<span class="string">"Water_(g)"</span>].count(),food_info[<span class="string">"Energ_Kcal"</span>].count())</span><br><span class="line">water_energy = food_info[<span class="string">"Water_(g)"</span>] * food_info[<span class="string">"Energ_Kcal"</span>]</span><br><span class="line">water_energy = food_info[<span class="string">"Water_(g)"</span>] * food_info[<span class="string">"Energ_Kcal"</span>]</span><br><span class="line"><span class="keyword">print</span> (water_energy.size,water_energy[:].size)</span><br><span class="line">iron_grams = food_info[<span class="string">"Iron_(mg)"</span>][<span class="number">1</span>:<span class="number">15</span>] / <span class="number">1000</span>  </span><br><span class="line"><span class="keyword">print</span> (iron_grams)</span><br><span class="line"><span class="keyword">print</span> (food_info.shape)</span><br><span class="line">food_info[<span class="string">"Iron_(g)"</span>] = iron_grams</span><br><span class="line"><span class="keyword">print</span> (food_info.shape)</span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">8612 8618</span></span><br><span class="line"><span class="string">8618 8618</span></span><br><span class="line"><span class="string">5814    0.00000</span></span><br><span class="line"><span class="string">6192    0.00707</span></span><br><span class="line"><span class="string">1242    0.00100</span></span><br><span class="line"><span class="string">1245    0.00187</span></span><br><span class="line"><span class="string">1243    0.00223</span></span><br><span class="line"><span class="string">1244    0.00103</span></span><br><span class="line"><span class="string">292     0.00000</span></span><br><span class="line"><span class="string">1254    0.00930</span></span><br><span class="line"><span class="string">5811    0.01102</span></span><br><span class="line"><span class="string">8575    0.00227</span></span><br><span class="line"><span class="string">291     0.00675</span></span><br><span class="line"><span class="string">1249    0.00125</span></span><br><span class="line"><span class="string">5812    0.01127</span></span><br><span class="line"><span class="string">1292    0.00078</span></span><br><span class="line"><span class="string">Name: Iron_(mg), dtype: float64</span></span><br><span class="line"><span class="string">(8618, 39)</span></span><br><span class="line"><span class="string">(8618, 39)</span></span><br><span class="line"><span class="string">'''</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#Score=2×(Protein_(g))−0.75×(Lipid_Tot_(g))</span></span><br><span class="line">weighted_protein = food_info[<span class="string">"Protein_(g)"</span>] * <span class="number">2</span></span><br><span class="line">weighted_fat = <span class="number">-0.75</span> * food_info[<span class="string">"Lipid_Tot_(g)"</span>]</span><br><span class="line">initial_rating = weighted_protein + weighted_fat</span><br><span class="line"><span class="keyword">print</span> (initial_rating[<span class="number">1</span>:<span class="number">15</span>])</span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">5814     0.0000</span></span><br><span class="line"><span class="string">6192     1.9250</span></span><br><span class="line"><span class="string">1242    25.2725</span></span><br><span class="line"><span class="string">1245    25.6750</span></span><br><span class="line"><span class="string">1243    31.6000</span></span><br><span class="line"><span class="string">1244    22.9100</span></span><br><span class="line"><span class="string">292      0.0000</span></span><br><span class="line"><span class="string">1254    11.1775</span></span><br><span class="line"><span class="string">5811     0.0000</span></span><br><span class="line"><span class="string">8575     9.9500</span></span><br><span class="line"><span class="string">291      0.0000</span></span><br><span class="line"><span class="string">1249    14.7050</span></span><br><span class="line"><span class="string">5812     0.2000</span></span><br><span class="line"><span class="string">1292    10.1125</span></span><br><span class="line"><span class="string">dtype: float64</span></span><br><span class="line"><span class="string">'''</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># the "Vit_A_IU" column ranges from 0 to 100000, while the "Fiber_TD_(g)" column ranges from 0 to 79</span></span><br><span class="line"><span class="comment">#For certain calculations, columns like "Vit_A_IU" can have a greater effect on the result, </span></span><br><span class="line"><span class="comment">#due to the scale of the values</span></span><br><span class="line"><span class="comment"># The largest value in the "Energ_Kcal" column.</span></span><br><span class="line">max_calories = food_info[<span class="string">"Energ_Kcal"</span>].max()</span><br><span class="line"><span class="comment"># Divide the values in "Energ_Kcal" by the largest value.</span></span><br><span class="line">normalized_calories = food_info[<span class="string">"Energ_Kcal"</span>] / max_calories</span><br><span class="line">normalized_protein = food_info[<span class="string">"Protein_(g)"</span>] / food_info[<span class="string">"Protein_(g)"</span>].max()</span><br><span class="line">normalized_fat = food_info[<span class="string">"Lipid_Tot_(g)"</span>] / food_info[<span class="string">"Lipid_Tot_(g)"</span>].max()</span><br><span class="line">food_info[<span class="string">"Normalized_Protein"</span>] = normalized_protein</span><br><span class="line">food_info[<span class="string">"Normalized_Fat"</span>] = normalized_fat</span><br><span class="line"><span class="keyword">print</span> (food_info[<span class="string">"Normalized_Protein"</span>][<span class="number">1</span>:<span class="number">10</span>])</span><br><span class="line"><span class="keyword">print</span> (food_info[<span class="string">"Normalized_Fat"</span>][<span class="number">1</span>:<span class="number">10</span>])</span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">5814    0.000000</span></span><br><span class="line"><span class="string">6192    0.011322</span></span><br><span class="line"><span class="string">1242    0.180820</span></span><br><span class="line"><span class="string">1245    0.165308</span></span><br><span class="line"><span class="string">1243    0.195879</span></span><br><span class="line"><span class="string">1244    0.188632</span></span><br><span class="line"><span class="string">292     0.000000</span></span><br><span class="line"><span class="string">1254    0.104167</span></span><br><span class="line"><span class="string">5811    0.000000</span></span><br><span class="line"><span class="string">Name: Normalized_Protein, dtype: float64</span></span><br><span class="line"><span class="string">5814    0.0000</span></span><br><span class="line"><span class="string">6192    0.0010</span></span><br><span class="line"><span class="string">1242    0.0889</span></span><br><span class="line"><span class="string">1245    0.0470</span></span><br><span class="line"><span class="string">1243    0.0400</span></span><br><span class="line"><span class="string">1244    0.1388</span></span><br><span class="line"><span class="string">292     0.0000</span></span><br><span class="line"><span class="string">1254    0.0963</span></span><br><span class="line"><span class="string">5811    0.0000</span></span><br><span class="line"><span class="string">Name: Normalized_Fat, dtype: float64</span></span><br><span class="line"><span class="string">'''</span></span><br></pre></td></tr></table></figure>
+<p>排序的方式使用df的sort_values()的方法，指明需要的列和是否要返回新的dataframe    </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#By default, pandas will sort the data by the column we specify in ascending order and return a new DataFrame</span></span><br><span class="line"><span class="comment"># Sorts the DataFrame in-place, rather than=true returning a new DataFrame.</span></span><br><span class="line"><span class="comment">#print food_info["Sodium_(mg)"]</span></span><br><span class="line">food_info.sort_values(<span class="string">"Sodium_(mg)"</span>, inplace=<span class="keyword">True</span>)</span><br><span class="line"><span class="keyword">print</span> (food_info[<span class="string">"Sodium_(mg)"</span>][<span class="number">1</span>:<span class="number">10</span>])</span><br><span class="line"><span class="comment">#Sorts by descending order, rather than ascending.</span></span><br><span class="line">food_info.sort_values(<span class="string">"Sodium_(mg)"</span>, inplace=<span class="keyword">True</span>, ascending=<span class="keyword">False</span>)</span><br><span class="line"><span class="keyword">print</span> (food_info[<span class="string">"Sodium_(mg)"</span>][<span class="number">1</span>:<span class="number">10</span>])</span><br><span class="line"><span class="keyword">print</span> (food_info.columns.size)</span><br><span class="line"><span class="keyword">print</span> (food_info.iloc[<span class="number">1</span>:<span class="number">3</span>,<span class="number">0</span>].size)</span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">383     0.0</span></span><br><span class="line"><span class="string">405     0.0</span></span><br><span class="line"><span class="string">745     0.0</span></span><br><span class="line"><span class="string">2397    0.0</span></span><br><span class="line"><span class="string">763     0.0</span></span><br><span class="line"><span class="string">407     0.0</span></span><br><span class="line"><span class="string">6574    0.0</span></span><br><span class="line"><span class="string">4397    0.0</span></span><br><span class="line"><span class="string">396     0.0</span></span><br><span class="line"><span class="string">Name: Sodium_(mg), dtype: float64</span></span><br><span class="line"><span class="string">5814    27360.0</span></span><br><span class="line"><span class="string">6192    26050.0</span></span><br><span class="line"><span class="string">1242    26000.0</span></span><br><span class="line"><span class="string">1245    24000.0</span></span><br><span class="line"><span class="string">1243    24000.0</span></span><br><span class="line"><span class="string">1244    23875.0</span></span><br><span class="line"><span class="string">292     17000.0</span></span><br><span class="line"><span class="string">1254    11588.0</span></span><br><span class="line"><span class="string">5811    10600.0</span></span><br><span class="line"><span class="string">Name: Sodium_(mg), dtype: float64</span></span><br><span class="line"><span class="string">39</span></span><br><span class="line"><span class="string">2</span></span><br><span class="line"><span class="string">'''</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="Pandas代码学习-3"><a href="#Pandas代码学习-3" class="headerlink" title="Pandas代码学习(3)"></a>Pandas代码学习(3)</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">titanic_survival = pd.read_csv(<span class="string">"titanic_train.csv"</span>)</span><br><span class="line">titanic_survival.head()</span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">   PassengerId  Survived  Pclass  \</span></span><br><span class="line"><span class="string">0            1         0       3   </span></span><br><span class="line"><span class="string">1            2         1       1   </span></span><br><span class="line"><span class="string">2            3         1       3   </span></span><br><span class="line"><span class="string">3            4         1       1   </span></span><br><span class="line"><span class="string">4            5         0       3   </span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">                                                Name     Sex   Age  SibSp  \</span></span><br><span class="line"><span class="string">0                            Braund, Mr. Owen Harris    male  22.0      1   </span></span><br><span class="line"><span class="string">1  Cumings, Mrs. John Bradley (Florence Briggs Th...  female  38.0      1   </span></span><br><span class="line"><span class="string">2                             Heikkinen, Miss. Laina  female  26.0      0   </span></span><br><span class="line"><span class="string">3       Futrelle, Mrs. Jacques Heath (Lily May Peel)  female  35.0      1   </span></span><br><span class="line"><span class="string">4                           Allen, Mr. William Henry    male  35.0      0   </span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">   Parch            Ticket     Fare Cabin Embarked  </span></span><br><span class="line"><span class="string">0      0         A/5 21171   7.2500   NaN        S  </span></span><br><span class="line"><span class="string">1      0          PC 17599  71.2833   C85        C  </span></span><br><span class="line"><span class="string">2      0  STON/O2. 3101282   7.9250   NaN        S  </span></span><br><span class="line"><span class="string">3      0            113803  53.1000  C123        S  </span></span><br><span class="line"><span class="string">4      0            373450   8.0500   NaN        S  </span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="comment">#The Pandas library uses NaN, which stands for "not a number", to indicate a missing value.</span></span><br><span class="line"><span class="comment">#we can use the pandas.isnull() function which takes a pandas series and returns a series of True and False values</span></span><br><span class="line">age = titanic_survival[<span class="string">"Age"</span>]</span><br><span class="line"><span class="comment">#print(age.loc[0:10])</span></span><br><span class="line">age_is_null = pd.isnull(age)</span><br><span class="line"><span class="keyword">print</span> (age_is_null)</span><br><span class="line">age_null_true = age[age_is_null]</span><br><span class="line"><span class="comment">#print (age_null_true)</span></span><br><span class="line">age_null_count = len(age_null_true)</span><br><span class="line">print(age_null_count)</span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">0     False</span></span><br><span class="line"><span class="string">1     False</span></span><br><span class="line"><span class="string">2     False</span></span><br><span class="line"><span class="string">3     False</span></span><br><span class="line"><span class="string">4     False</span></span><br><span class="line"><span class="string">5      True</span></span><br><span class="line"><span class="string">6     False</span></span><br><span class="line"><span class="string">7     False</span></span><br><span class="line"><span class="string">8     False</span></span><br><span class="line"><span class="string">9     False</span></span><br><span class="line"><span class="string">10    False</span></span><br><span class="line"><span class="string">11    False</span></span><br><span class="line"><span class="string">12    False</span></span><br><span class="line"><span class="string">13    False</span></span><br><span class="line"><span class="string">14    False</span></span><br><span class="line"><span class="string">Name: Age, dtype: bool</span></span><br><span class="line"><span class="string">177</span></span><br><span class="line"><span class="string">'''</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="Pandas代码学习-4"><a href="#Pandas代码学习-4" class="headerlink" title="Pandas代码学习(4)"></a>Pandas代码学习(4)</h3><hr>
+<h3 id="Pandas代码学习-5"><a href="#Pandas代码学习-5" class="headerlink" title="Pandas代码学习(5)"></a>Pandas代码学习(5)</h3></the>
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a  href="/2018/03/16/Pandas模块的学习/">Pandas模块的学习</a></p>
+        <p><span>文章作者:</span><a  href="/" title="访问 JingWei Zhou 的个人博客">JingWei Zhou</a></p>
+        <p><span>发布时间:</span>2018年03月16日 - 09时35分</p>
+        <p><span>最后更新:</span>2018年03月16日 - 18时32分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2018/03/16/Pandas模块的学习/" title="Pandas模块的学习">https://jingweiz300.github.io/2018/03/16/Pandas模块的学习/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://jingweiz300.github.io/2018/03/16/Pandas模块的学习/　　作者: JingWei Zhou" title=""></span>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+<nav id="article-nav">
+  
+  
+    <a  href="/2018/03/15/Numpy模块的学习(3-5)/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Numpy模块的学习(3-5)</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#简言"><span class="toc-number">1.</span> <span class="toc-text">简言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Pandas代码学习-1"><span class="toc-number">2.</span> <span class="toc-text">Pandas代码学习(1)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Pandas代码学习-2"><span class="toc-number">3.</span> <span class="toc-text">Pandas代码学习(2)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Pandas代码学习-3"><span class="toc-number">4.</span> <span class="toc-text">Pandas代码学习(3)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Pandas代码学习-4"><span class="toc-number">5.</span> <span class="toc-text">Pandas代码学习(4)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Pandas代码学习-5"><span class="toc-number">6.</span> <span class="toc-text">Pandas代码学习(5)</span></a></li></ol>
+</div>
+<style>
+    .left-col .switch-btn {
+        display: none;
+    }
+    .left-col .switch-area {
+        display: none;
+    }
+</style>
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+            $(".switch-btn, .switch-area").fadeOut(300);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+            $(".switch-btn, .switch-area").fadeIn(500);
+        }
+    })
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+        $(".switch-btn, .switch-area").show();
+    }
+</script>
+
+
+
+
+<div class="bdsharebuttonbox">
+	<a href="#" class="fx fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="fx fa-weixin bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+	<a href="#" class="fx fa-qq bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+	<a href="#" class="fx fa-facebook-official bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+	<a href="#" class="fx fa-twitter bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+	<a href="#" class="fx fa-linkedin bds_linkedin" data-cmd="linkedin" title="分享到linkedin"></a>
+	<a href="#" class="fx fa-files-o bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+</div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+
+
+
+     
+      <!-- ������City�氲װ���� -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC8zNDgyOS8xMTM2Ng==">
+	<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+	</script>
+<noscript> Ϊ����ʹ�����������۹����뼤��JavaScript</noscript>
+</div>
+<!-- City�氲װ��������� -->
+
+
+      
+    
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a  href="/" title="回到主页"><i class="fa fa-home"></i></a>
+        
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        
+            <a  href="/2018/03/15/Numpy模块的学习(3-5)/" title="下一篇: Numpy模块的学习(3-5)">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/03/16/Pandas模块的学习/">Pandas模块的学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/15/Numpy模块的学习(3-5)/">Numpy模块的学习(3-5)</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/14/Numpy模块的学习(1-2)/">Numpy模块的学习(1-2)</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/13/生成zabbix图片并通过微信发送/">生成zabbix图表，通过微信发送群聊</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/12/Matplotlib模块的学习/">Matplotlib模块的学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/10/dbfpy/">dbfpy模块的使用案例-python2.7</a></li></ul>
+    <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        // $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#toc, .switch-btn, .switch-area").toggle();
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+                $(".switch-btn, .switch-area").fadeToggle(300);
+            }
+        })
+    </script>
+
+
+
+
+    <script>
+        
+    </script>
+
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2018 JingWei Zhou
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank">Hexo &nbsp;&nbsp;</a><a href="https://github.com/maochunguang" target="_blank">Blog</a> by tommy
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" >极客到访数: 
+                            <span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>, </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit">本页阅读量: 
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+
+    </div>
+    <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var backgroundnum = 1;
+            var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+            $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+            $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+        })
+    </script>
+
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+  <script language="javascript">
+    $(function() {
+        $("a[title]").each(function() {
+            var a = $(this);
+            var title = a.attr('title');
+            if (title == undefined || title == "") return;
+            a.data('title', title).removeAttr('title').hover(
+            function() {
+                var offset = a.offset();
+                $("<div id=\"anchortitlecontainer\"></div>").appendTo($("body")).html(title).css({
+                    top: offset.top - a.outerHeight() - 15,
+                    left: offset.left + a.outerWidth()/2 + 1
+                }).fadeIn(function() {
+                    var pop = $(this);
+                    setTimeout(function() {
+                        pop.remove();
+                    }, pop.text().length * 800);
+                });
+            }, function() {
+                $("#anchortitlecontainer").remove();
+            });
+        });
+    });
+</script>
+
+
+  </div>
+</body>
+</html>
