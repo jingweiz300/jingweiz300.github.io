@@ -20,7 +20,7 @@
 <meta property="og:image" content="https://jingweiz300.github.io/2018/04/25/pandas操作excel/1.PNG">
 <meta property="og:image" content="https://jingweiz300.github.io/2018/04/25/pandas操作excel/2.PNG">
 <meta property="og:image" content="https://jingweiz300.github.io/2018/04/25/pandas操作excel/3.png">
-<meta property="og:updated_time" content="2018-04-25T14:51:11.623Z">
+<meta property="og:updated_time" content="2018-04-25T14:53:34.561Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="pandas操作excel">
 <meta name="twitter:description" content="pandas操作excel：  无聊帮同事解决一个小需求">
@@ -313,9 +313,10 @@
 <a id="more"></a>
 <the rest="" of="" contents="" |="" 余下全文="">
 
-<p>前言：</p>
-<p>当天收到同事一个小需求，将一份excel文件里边的数据，批量生成数据库的插入语句，原始数据为第一行为列名，第一行之后的行数据为values值，即要插入的数据，要生成的表明为excel表单名称，内容和表标签(sheet)如图</p>
+<h3 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h3><p>当天收到同事一个小需求，将一份excel文件里边的数据，批量生成数据库的插入语句，原始数据为第一行为列名，第一行之后的行数据为values值，即要插入的数据，要生成的表明为excel表单名称；</p>
+<p>table-name2的内容如图一</p>
 <p><img src="/2018/04/25/pandas操作excel/1.PNG" alt="图一"></p>
+<p>标签名称如图二</p>
 <p><img src="/2018/04/25/pandas操作excel/2.PNG" alt="图二"></p>
 <p>要将上边的数据生成insert into table-name (columns-1,columns-2,columns-3,columns-4)  values(‘values-1’,’values-2’,’values-3’,’values-4’)的文本文件</p>
 <p>掐指一算，可以利用pandas来实现，因为在学习ai，就不用xlwt模块了，下面贴上代码</p>
@@ -333,7 +334,7 @@
         <p><span>本文标题:</span><a  href="/2018/04/25/pandas操作excel/">pandas操作excel</a></p>
         <p><span>文章作者:</span><a  href="/" title="访问 JingWei Zhou 的个人博客">JingWei Zhou</a></p>
         <p><span>发布时间:</span>2018年04月25日 - 22时24分</p>
-        <p><span>最后更新:</span>2018年04月25日 - 22时51分</p>
+        <p><span>最后更新:</span>2018年04月25日 - 22时53分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2018/04/25/pandas操作excel/" title="pandas操作excel">https://jingweiz300.github.io/2018/04/25/pandas操作excel/</a>
             <span class="copy-path" data-clipboard-text="原文: https://jingweiz300.github.io/2018/04/25/pandas操作excel/　　作者: JingWei Zhou" title=""></span>
@@ -361,7 +362,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#前言："><span class="toc-number">1.</span> <span class="toc-text">前言：</span></a></li></ol>
 </div>
 <style>
     .left-col .switch-btn {
