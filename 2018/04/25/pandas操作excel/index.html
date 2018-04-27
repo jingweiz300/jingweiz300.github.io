@@ -17,18 +17,18 @@
 <meta property="og:site_name" content="My Story">
 <meta property="og:description" content="pandas操作excel：  无聊帮同事解决一个小需求">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://jingweiz300.github.io/2018/04/25/pandas操作excel/1.PNG">
-<meta property="og:image" content="https://jingweiz300.github.io/2018/04/25/pandas操作excel/2.PNG">
+<meta property="og:image" content="https://jingweiz300.github.io/2018/04/25/pandas操作excel/1.png">
+<meta property="og:image" content="https://jingweiz300.github.io/2018/04/25/pandas操作excel/2.png">
 <meta property="og:image" content="https://jingweiz300.github.io/2018/04/25/pandas操作excel/3.png">
 <meta property="og:image" content="https://jingweiz300.github.io/2018/04/25/pandas操作excel/2-1.png">
-<meta property="og:image" content="https://jingweiz300.github.io/2018/04/25/pandas操作excel/2-2.PNG">
-<meta property="og:image" content="https://jingweiz300.github.io/2018/04/25/pandas操作excel/2-3.PNG">
-<meta property="og:image" content="https://jingweiz300.github.io/2018/04/25/pandas操作excel/2-4.PNG">
-<meta property="og:updated_time" content="2018-04-27T14:11:27.771Z">
+<meta property="og:image" content="https://jingweiz300.github.io/2018/04/25/pandas操作excel/2-2.png">
+<meta property="og:image" content="https://jingweiz300.github.io/2018/04/25/pandas操作excel/2-3.png">
+<meta property="og:image" content="https://jingweiz300.github.io/2018/04/25/pandas操作excel/2-4.png">
+<meta property="og:updated_time" content="2018-04-27T15:04:48.151Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="pandas操作excel">
 <meta name="twitter:description" content="pandas操作excel：  无聊帮同事解决一个小需求">
-<meta name="twitter:image" content="https://jingweiz300.github.io/2018/04/25/pandas操作excel/1.PNG">
+<meta name="twitter:image" content="https://jingweiz300.github.io/2018/04/25/pandas操作excel/1.png">
   
     <link rel="alternative" href="/atom.xml" title="My Story" type="application/atom+xml">
   
@@ -319,21 +319,24 @@
 
 <h3 id="记录一："><a href="#记录一：" class="headerlink" title="记录一："></a>记录一：</h3><p>当天收到同事一个小需求，将一份excel文件里边的数据，批量生成数据库的插入语句，原始数据为第一行为列名，第一行之后的行数据为values值，即要插入的数据，要生成的表明为excel表单名称；</p>
 <p>table-name2的内容如图一</p>
-<p><img src="/2018/04/25/pandas操作excel/1.PNG" alt="图一"></p>
+<p><img src="/2018/04/25/pandas操作excel/1.png" alt="图一"></p>
 <p>标签名称如图二</p>
-<p><img src="/2018/04/25/pandas操作excel/2.PNG" alt="图二"></p>
+<p><img src="/2018/04/25/pandas操作excel/2.png" alt="图二"></p>
 <p>要将上边的数据生成insert into table-name (columns-1,columns-2,columns-3,columns-4)  values(‘values-1’,’values-2’,’values-3’,’values-4’)的文本文件</p>
 <p>掐指一算，可以利用pandas来实现，因为在学习ai，就不用xlwt模块了，下面贴上代码</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="comment">#自行修改要读取的文件路径</span></span><br><span class="line">k=pd.ExcelFile(<span class="string">'C:\\Users\\jingw\\Desktop\\123.xlsx'</span>)</span><br><span class="line">sheet_names=k.sheet_names</span><br><span class="line"><span class="keyword">print</span> (sheet_names)</span><br><span class="line"><span class="keyword">for</span> sheet_num <span class="keyword">in</span> range(len(sheet_names)):</span><br><span class="line">    <span class="keyword">with</span> open(<span class="string">'d:\\insert_sql.txt'</span>,<span class="string">'ab'</span>) <span class="keyword">as</span> f:</span><br><span class="line">        f.write((<span class="string">'--%s'</span> % sheet_names[sheet_num] + <span class="string">'\n'</span>).encode(<span class="string">'utf-8'</span>))</span><br><span class="line">    f=pd.read_excel(<span class="string">'C:\\Users\\jingw\\Desktop\\123.xlsx'</span>,sheetname=sheet_num)</span><br><span class="line">    my_columns = []</span><br><span class="line">    columns_len=len(f.columns)</span><br><span class="line">    j=<span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> f.columns:</span><br><span class="line">        my_columns.append(i)</span><br><span class="line">    <span class="comment">#print (my_columns)</span></span><br><span class="line">    my_columns_tuple = tuple(my_columns)</span><br><span class="line"></span><br><span class="line">    insert_str = <span class="string">''</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> my_columns:</span><br><span class="line">        <span class="keyword">if</span> insert_str==<span class="string">''</span>:</span><br><span class="line">            insert_str = insert_str + i</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            insert_str = insert_str + <span class="string">','</span> + i</span><br><span class="line">    <span class="keyword">print</span> (insert_str)</span><br><span class="line">    my_insert_columns = <span class="string">'insert into %s (%s)'</span> % (sheet_names[sheet_num],insert_str) + <span class="string">' '</span>+ <span class="string">'values'</span></span><br><span class="line">    <span class="keyword">print</span> (my_insert_columns)</span><br><span class="line">    <span class="keyword">for</span> index,raws <span class="keyword">in</span> f.iterrows():</span><br><span class="line">        <span class="keyword">print</span> (raws)</span><br><span class="line">        insert_values = <span class="string">''</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(columns_len):</span><br><span class="line">            insert_values = insert_values +<span class="string">'"'</span>+ str(raws[i])+ <span class="string">'"'</span>+<span class="string">','</span></span><br><span class="line">        <span class="comment">#print (insert_values)</span></span><br><span class="line">        <span class="comment">#自行修改生成的文件路径</span></span><br><span class="line">        <span class="keyword">with</span> open(<span class="string">'d:\\insert_sql.txt'</span>,<span class="string">'ab'</span>) <span class="keyword">as</span> f:</span><br><span class="line">            insert_sql=<span class="string">''</span></span><br><span class="line">            insert_sql=my_insert_columns+<span class="string">'(%s)'</span> % insert_values[:<span class="number">-1</span>] + <span class="string">'\n'</span></span><br><span class="line">            <span class="keyword">print</span> (insert_sql)</span><br><span class="line">            f.write(insert_sql.encode(<span class="string">'utf-8'</span>))</span><br></pre></td></tr></table></figure>
 <p>最后实现结果，完美解决：</p>
 <p><img src="/2018/04/25/pandas操作excel/3.png" alt="图三"></p>
 <h3 id="记录二"><a href="#记录二" class="headerlink" title="记录二"></a>记录二</h3><p>之后同事又提出了需求，将一张sheet下的每一行分别写入其他多张sheet内（除去第一行），如下图</p>
-<p><img src="/2018/04/25/pandas操作excel/2-1.png" alt=""></p>
-<p>实现后的结果如下图<img src="/2018/04/25/pandas操作excel/2-2.PNG" alt=""></p>
-<p><img src="/2018/04/25/pandas操作excel/2-3.PNG" alt=""></p>
-<p><img src="/2018/04/25/pandas操作excel/2-4.PNG" alt=""></p>
+<p><img src="/2018/04/25/pandas操作excel/2-1.png" alt="图2-1"></p>
+<p>实现后的结果如下图</p>
+<p><img src="/2018/04/25/pandas操作excel/2-2.png" alt="图2-2"></p>
+<p><img src="/2018/04/25/pandas操作excel/2-3.png" alt="图2-3"></p>
+<p><img src="/2018/04/25/pandas操作excel/2-4.png" alt="图2-4"></p>
 <p>贴上代码，方便查阅</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">data=pd.read_excel(<span class="string">'C:\\Users\\jingw\\Desktop\\123.xlsx'</span>,sheetname=<span class="number">0</span>)</span><br><span class="line"><span class="comment">#print (data.head(),data.shape[0])</span></span><br><span class="line">my_raws=data.shape[<span class="number">0</span>]</span><br><span class="line">my_max_columns=data.shape[<span class="number">1</span>]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(my_raws):</span><br><span class="line">    <span class="comment">#print (data.loc[i][1:])</span></span><br><span class="line">    table_columns_length=data.loc[i][<span class="number">1</span>:]</span><br><span class="line">    data_dict = &#123;&#125;</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> range(len(table_columns_length)):</span><br><span class="line">        data_dict[j]=data.loc[i][j+<span class="number">1</span>]</span><br><span class="line">    df=pd.DataFrame(data=data_dict,index=[<span class="number">0</span>])</span><br><span class="line">    <span class="keyword">print</span> (df)</span><br><span class="line">    df.to_excel(excel_writer=<span class="string">'C:\\Users\\jingw\\Desktop\\%s.xlsx'</span> % data.loc[i][<span class="number">0</span>],sheet_name=data.loc[i][<span class="number">0</span>],)</span><br></pre></td></tr></table></figure>
+<h3 id="记录三"><a href="#记录三" class="headerlink" title="记录三"></a>记录三</h3><p>后来这货又提出一个需求，把sheet1的数据插入到sheet0中，当然是按照每张sheet的第一行，也就是列值进行筛选，如果同时存在就将数据插入，如果不存在sheet0中的列，就不要，如果在sheet0中的列，又不在sheet1中的列，则生成结果置空</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">data0=pd.read_excel(<span class="string">'C:\\Users\\jingw\\Desktop\\123-3.xlsx'</span>,sheetname=<span class="number">0</span>)</span><br><span class="line">sheet0_columns=set(data0.head(<span class="number">1</span>))</span><br><span class="line">data1=pd.read_excel(<span class="string">'C:\\Users\\jingw\\Desktop\\123-3.xlsx'</span>,sheetname=<span class="number">1</span>)</span><br><span class="line">sheet1_columns=set(data1.head(<span class="number">1</span>))</span><br><span class="line">columns_union=sheet0_columns &amp; sheet1_columns</span><br><span class="line">columns_subtraction=sheet0_columns - sheet1_columns</span><br><span class="line"><span class="keyword">print</span> (columns_union)</span><br><span class="line"><span class="keyword">if</span> columns_union:</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> columns_union:</span><br><span class="line">        data0[i]=data1[i]</span><br><span class="line"><span class="keyword">if</span> columns_subtraction:</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> columns_subtraction:</span><br><span class="line">        data0[i]=<span class="keyword">None</span></span><br><span class="line"><span class="keyword">print</span> (data0.head())</span><br><span class="line">data0.to_excel(<span class="string">'C:\\Users\\jingw\\Desktop\\reulst.xlsx'</span>)</span><br></pre></td></tr></table></figure>
 </the>
       
     </div>
@@ -345,7 +348,7 @@
         <p><span>本文标题:</span><a  href="/2018/04/25/pandas操作excel/">pandas操作excel</a></p>
         <p><span>文章作者:</span><a  href="/" title="访问 JingWei Zhou 的个人博客">JingWei Zhou</a></p>
         <p><span>发布时间:</span>2018年04月25日 - 22时24分</p>
-        <p><span>最后更新:</span>2018年04月27日 - 22时11分</p>
+        <p><span>最后更新:</span>2018年04月27日 - 23时04分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2018/04/25/pandas操作excel/" title="pandas操作excel">https://jingweiz300.github.io/2018/04/25/pandas操作excel/</a>
             <span class="copy-path" data-clipboard-text="原文: https://jingweiz300.github.io/2018/04/25/pandas操作excel/　　作者: JingWei Zhou" title=""></span>
@@ -373,7 +376,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#记录一："><span class="toc-number">1.</span> <span class="toc-text">记录一：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#记录二"><span class="toc-number">2.</span> <span class="toc-text">记录二</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#记录一："><span class="toc-number">1.</span> <span class="toc-text">记录一：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#记录二"><span class="toc-number">2.</span> <span class="toc-text">记录二</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#记录三"><span class="toc-number">3.</span> <span class="toc-text">记录三</span></a></li></ol>
 </div>
 <style>
     .left-col .switch-btn {
