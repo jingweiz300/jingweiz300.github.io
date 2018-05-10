@@ -7,16 +7,20 @@
   
   
   
-  <title>D:/Program Files/Git/categories/digital | My Story</title>
+  <title>多线程的一点思考 | My Story</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="D:&#x2F;Program Files&#x2F;Git&#x2F;categories&#x2F;digital">
-<meta property="og:url" content="https://jingweiz300.github.io/D-Program-Files-Git-categories-digital/index.html">
+  <meta name="description" content="多线程的一点思考：">
+<meta name="keywords" content="模块使用,threading">
+<meta property="og:type" content="article">
+<meta property="og:title" content="多线程的一点思考">
+<meta property="og:url" content="https://jingweiz300.github.io/2018/05/10/多线程的一点思考/index.html">
 <meta property="og:site_name" content="My Story">
+<meta property="og:description" content="多线程的一点思考：">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-10T05:36:07.905Z">
+<meta property="og:updated_time" content="2018-05-10T13:22:03.807Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="D:&#x2F;Program Files&#x2F;Git&#x2F;categories&#x2F;digital">
+<meta name="twitter:title" content="多线程的一点思考">
+<meta name="twitter:description" content="多线程的一点思考：">
   
     <link rel="alternative" href="/atom.xml" title="My Story" type="application/atom+xml">
   
@@ -41,7 +45,7 @@
           fancybox: true,
           animate: true,
           isHome: false,
-          isPost: false,
+          isPost: true,
           isArchive: false,
           isTag: false,
           isCategory: false,
@@ -256,11 +260,11 @@
         </header>                
     </div>
 </nav>
-      <div class="body-wrap"><article id="page-" class="article article-type-page" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-多线程的一点思考" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a  href="/D-Program-Files-Git-categories-digital/index.html" class="article-date">
-      <time datetime="2018-03-10T05:36:07.000Z" itemprop="datePublished">2018-03-10</time>
+      <a  href="/2018/05/10/多线程的一点思考/" class="article-date">
+      <time datetime="2018-05-10T12:58:28.000Z" itemprop="datePublished">2018-05-10</time>
 </a>
 
     </div>
@@ -274,7 +278,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      D:/Program Files/Git/categories/digital
+      多线程的一点思考
     </h1>
   
 
@@ -283,8 +287,16 @@
       
       <div class="article-info article-info-post">
         
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/python/">python</a>
+    </div>
+
 
         
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/threading/">threading</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/模块使用/">模块使用</a></li></ul>
+    </div>
+
         <div class="clearfix"></div>
       </div>
       
@@ -292,53 +304,86 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-              <style>
-    .article-meta {
-        display: none;
-    }
-    #container .article .article-title {
-        padding-right: 0;
-    }
-    .article-header {
-        padding: 0;
-        padding-top: 26px;
-        border-left: none;
-        text-align: center;
-    }
-    .article-header:hover {
-        border-left: none;
-    }
-    .article-title {
-        font-size: 1.6em
-    }
-    .article-meta {
-        display: none;
-    }
-    .article-entry hr {
-        margin: 0;
-    }
-    #container .article-info-post.article-info {
-      display: none;
-      }
-    #container .article .article-title {
-    padding: 0;
-    }
-</style>
+        <p><strong> 多线程的一点思考：</strong> <excerpt in="" index="" |="" 首页摘要=""><br><a id="more"></a></excerpt></p>
+<the rest="" of="" contents="" |="" 余下全文="">
 
-
-          
-        
+<h3 id="简言"><a href="#简言" class="headerlink" title="简言"></a>简言</h3><p>threading的run内容必须加lock，不然对于同样的操作，比如打印print a,self.name；在同一个时间点上，多个线程会打印出很长一句莫名其妙的拼接；可自行测试</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> threading</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> datetime</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">myThread</span><span class="params">(threading.Thread)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self,id,name)</span>:</span></span><br><span class="line">        threading.Thread.__init__(self)</span><br><span class="line">        self.id=id</span><br><span class="line">        self.name=name</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">run</span><span class="params">(self)</span>:</span></span><br><span class="line">        a=[]</span><br><span class="line">        <span class="comment">#a.append('data')</span></span><br><span class="line">        <span class="comment">#print a,self.name</span></span><br><span class="line">        lock.acquire()</span><br><span class="line">        <span class="keyword">print</span> <span class="string">'-----------'</span></span><br><span class="line">        <span class="keyword">print</span> <span class="string">'bedig time:'</span>,datetime.datetime.now()</span><br><span class="line">        b = []</span><br><span class="line">        <span class="comment">#print b,id(b),self.name</span></span><br><span class="line">        b.append(<span class="string">'data'</span>)</span><br><span class="line">        <span class="keyword">print</span> b,self.name,id(b)</span><br><span class="line">        <span class="keyword">print</span> <span class="string">'end time:'</span>,datetime.datetime.now()</span><br><span class="line">        <span class="keyword">print</span> <span class="string">'-----------'</span></span><br><span class="line">        lock.release()</span><br><span class="line"></span><br><span class="line">        <span class="comment">#print a,id(a)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></span><br><span class="line"></span><br><span class="line">    thread_list=[]</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">500</span>):</span><br><span class="line">        id=i</span><br><span class="line">        name=<span class="string">'Thread_%s'</span> % i</span><br><span class="line">        Thread=myThread(id,name)</span><br><span class="line">        thread_list.append(Thread)</span><br><span class="line">    time.sleep(<span class="number">3</span>)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> thread_list:</span><br><span class="line">        i.start()</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> thread_list:</span><br><span class="line">        i.join()</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main_2</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">500</span>):</span><br><span class="line">        <span class="keyword">print</span> <span class="string">'-----------'</span></span><br><span class="line">        <span class="keyword">print</span> <span class="string">'bedig time:'</span>, datetime.datetime.now()</span><br><span class="line">        b = []</span><br><span class="line">        <span class="comment"># print b,id(b),self.name</span></span><br><span class="line">        b.append(<span class="string">'data'</span>)</span><br><span class="line">        <span class="keyword">print</span> b, id(b)</span><br><span class="line">        <span class="keyword">print</span> <span class="string">'end time:'</span>, datetime.datetime.now()</span><br><span class="line">        <span class="keyword">print</span> <span class="string">'-----------'</span></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    lock=threading.Lock()</span><br><span class="line">    begin_time=datetime.datetime.now()</span><br><span class="line">    main()</span><br><span class="line">    end_time=datetime.datetime.now()</span><br><span class="line">    used_time=end_time - begin_time</span><br><span class="line">    <span class="keyword">print</span> used_time</span><br></pre></td></tr></table></figure>
+</the>
       
     </div>
     
   </div>
   
     
+    <div class="copyright">
+        <p><span>本文标题:</span><a  href="/2018/05/10/多线程的一点思考/">多线程的一点思考</a></p>
+        <p><span>文章作者:</span><a  href="/" title="访问 JingWei Zhou 的个人博客">JingWei Zhou</a></p>
+        <p><span>发布时间:</span>2018年05月10日 - 20时58分</p>
+        <p><span>最后更新:</span>2018年05月10日 - 21时22分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2018/05/10/多线程的一点思考/" title="多线程的一点思考">https://jingweiz300.github.io/2018/05/10/多线程的一点思考/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://jingweiz300.github.io/2018/05/10/多线程的一点思考/　　作者: JingWei Zhou" title=""></span>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
 
+
+
+<nav id="article-nav">
+  
+  
+    <a  href="/2018/04/25/pandas操作excel/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">pandas操作excel</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
 
 
   
 </article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#简言"><span class="toc-number">1.</span> <span class="toc-text">简言</span></a></li></ol>
+</div>
+<style>
+    .left-col .switch-btn {
+        display: none;
+    }
+    .left-col .switch-area {
+        display: none;
+    }
+</style>
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+            $(".switch-btn, .switch-area").fadeOut(300);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+            $(".switch-btn, .switch-area").fadeIn(500);
+        }
+    })
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+        $(".switch-btn, .switch-area").show();
+    }
+</script>
+
 
 
 
@@ -381,6 +426,39 @@
     
 
 
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a  href="/" title="回到主页"><i class="fa fa-home"></i></a>
+        
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        
+            <a  href="/2018/04/25/pandas操作excel/" title="下一篇: pandas操作excel">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/05/10/多线程的一点思考/">多线程的一点思考</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/25/pandas操作excel/">pandas操作excel</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/16/Pandas模块的学习/">Pandas模块的学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/15/Numpy模块的学习(3-5)/">Numpy模块的学习(3-5)</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/14/Numpy模块的学习(1-2)/">Numpy模块的学习(1-2)</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/13/生成zabbix图片并通过微信发送/">生成zabbix图表，通过微信发送群聊</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/12/Matplotlib模块的学习/">Matplotlib模块的学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/10/dbfpy/">dbfpy模块的使用案例-python2.7</a></li></ul>
+    <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        // $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#toc, .switch-btn, .switch-area").toggle();
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+                $(".switch-btn, .switch-area").fadeToggle(300);
+            }
+        })
+    </script>
 
 
 
