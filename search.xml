@@ -9,7 +9,7 @@
       
       <categories>
           
-          <category> Linux </category>
+          <category> operation </category>
           
       </categories>
       
@@ -29,7 +29,7 @@
       
       <categories>
           
-          <category> Linux </category>
+          <category> operation </category>
           
       </categories>
       
@@ -142,9 +142,9 @@
       
         <tags>
             
-            <tag> 模块使用 </tag>
-            
             <tag> numpy </tag>
+            
+            <tag> 模块使用 </tag>
             
         </tags>
       
@@ -164,9 +164,9 @@
       
         <tags>
             
-            <tag> 模块使用 </tag>
-            
             <tag> numpy </tag>
+            
+            <tag> 模块使用 </tag>
             
         </tags>
       
@@ -208,9 +208,9 @@
       
         <tags>
             
-            <tag> Matplotlib </tag>
-            
             <tag> 模块使用 </tag>
+            
+            <tag> Matplotlib </tag>
             
         </tags>
       
@@ -223,7 +223,7 @@
       
       <categories>
           
-          <category> Linux </category>
+          <category> operation </category>
           
       </categories>
       
@@ -243,7 +243,7 @@
       
       <categories>
           
-          <category> Linux </category>
+          <category> operation </category>
           
       </categories>
       
