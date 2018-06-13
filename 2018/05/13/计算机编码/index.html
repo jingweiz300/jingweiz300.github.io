@@ -9,21 +9,21 @@
   
   <title>计算机编码 | My Story</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="本文转载：http://python.jobbole.com/87145/ 在人机交互之字符编码 一文中对字符编码进行了详细的讨论，并通过一些简单的小程序验证了我们对于字符编码的认识。但仅了解这篇文章的内容，并不能帮我们在日常编程中躲过一些字符编码相关的坑，Stackoverflow 上就有大量编码相关的问题，比如 1，2，3。  本文首先尝试对编码、解码进行一个宏观、直观的解读，然后详细来解释">
+  <meta name="description" content="计算机编码：">
 <meta name="keywords" content="python">
 <meta property="og:type" content="article">
 <meta property="og:title" content="计算机编码">
 <meta property="og:url" content="https://jingweiz300.github.io/2018/05/13/计算机编码/index.html">
 <meta property="og:site_name" content="My Story">
-<meta property="og:description" content="本文转载：http://python.jobbole.com/87145/ 在人机交互之字符编码 一文中对字符编码进行了详细的讨论，并通过一些简单的小程序验证了我们对于字符编码的认识。但仅了解这篇文章的内容，并不能帮我们在日常编程中躲过一些字符编码相关的坑，Stackoverflow 上就有大量编码相关的问题，比如 1，2，3。  本文首先尝试对编码、解码进行一个宏观、直观的解读，然后详细来解释">
+<meta property="og:description" content="计算机编码：">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://xuelangzf-github.qiniudn.com/20161228_encode_decode_1.png">
 <meta property="og:image" content="http://xuelangzf-github.qiniudn.com/20161228_encode_decode_2.png">
 <meta property="og:image" content="http://xuelangzf-github.qiniudn.com/20161228_encode_decode_3.png">
-<meta property="og:updated_time" content="2018-05-13T13:33:40.401Z">
+<meta property="og:updated_time" content="2018-06-13T14:19:32.019Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="计算机编码">
-<meta name="twitter:description" content="本文转载：http://python.jobbole.com/87145/ 在人机交互之字符编码 一文中对字符编码进行了详细的讨论，并通过一些简单的小程序验证了我们对于字符编码的认识。但仅了解这篇文章的内容，并不能帮我们在日常编程中躲过一些字符编码相关的坑，Stackoverflow 上就有大量编码相关的问题，比如 1，2，3。  本文首先尝试对编码、解码进行一个宏观、直观的解读，然后详细来解释">
+<meta name="twitter:description" content="计算机编码：">
 <meta name="twitter:image" content="http://xuelangzf-github.qiniudn.com/20161228_encode_decode_1.png">
   
     <link rel="alternative" href="/atom.xml" title="My Story" type="application/atom+xml">
@@ -308,7 +308,13 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>本文转载：<a href="http://python.jobbole.com/87145/" target="_blank" rel="noopener">http://python.jobbole.com/87145/</a></p>
+        <p><strong> 计算机编码：</strong> <excerpt in="" index="" |="" 首页摘要=""></excerpt></p>
+<a id="more"></a>
+<the rest="" of="" contents="" |="" 余下全文="">
+
+
+
+<p>本文转载：<a href="http://python.jobbole.com/87145/" target="_blank" rel="noopener">http://python.jobbole.com/87145/</a></p>
 <p>在人机交互之字符编码 一文中对字符编码进行了详细的讨论，并通过一些简单的小程序验证了我们对于字符编码的认识。但仅了解这篇文章的内容，并不能帮我们在日常编程中躲过一些字符编码相关的坑，Stackoverflow 上就有大量编码相关的问题，比如 <a href="http://stackoverflow.com/questions/9942594/unicodeencodeerror-ascii-codec-cant-encode-character-u-xa0-in-position-20" target="_blank" rel="noopener">1</a>，<a href="http://python.jobbole.com/87145/Convert%20Unicode%20to%20ASCII%20without%20errors" target="_blank" rel="noopener">2</a>，<a href="http://stackoverflow.com/questions/2688020/how-to-print-chinese-word-in-my-code-using-python" target="_blank" rel="noopener">3</a>。</p>
 <p><img src="http://xuelangzf-github.qiniudn.com/20161228_encode_decode_1.png" alt="图1. 错误的编解码"></p>
 <p>本文首先尝试对编码、解码进行一个<strong>宏观、直观</strong>的解读，然后详细来解释 python2 中的str和unicode，并对常见的UnicodeEncodeError 和 UnicodeDecodeError 异常进行剖析。</p>
@@ -344,7 +350,18 @@
 <p>下面分别来看看这两个类型。</p>
 <p>​</p>
 <h2 id="unicode-类型"><a href="#unicode-类型" class="headerlink" title="unicode 类型"></a>unicode 类型</h2><p><strong>unicode 是真正意义上的字符串</strong>，为了理解这句话，先看下面的一段代码：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>unicode_str = <span class="string">u'Welcome to 广州'</span> <span class="comment"># ''前面的 u 表示这是一个 unicode 字符串</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>unicode_str, type(unicode_str) <span class="comment"># repr(unicode_str)</span></span><br><span class="line">(<span class="string">u'Welcome to \u5e7f\u5dde'</span>, &lt;type <span class="string">'unicode'</span>&gt;)</span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="number">3</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>unicode_str = <span class="string">u'Welcome to 广州'</span> <span class="comment"># ''前面的 u 表示这是一个 unicode 字符串</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>unicode_str, type(unicode_str) <span class="comment"># repr(unicode_str)</span></span><br><span class="line">(<span class="string">u'Welcome to \u5e7f\u5dde'</span>, &lt;type <span class="string">'unicode'</span>&gt;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>unicode_str = u’Welcome to 广州’ # ‘’前面的 u 表示这是一个 unicode 字符串</p>
+<blockquote>
+<p>unicode_str, type(unicode_str) # repr(unicode_str)<br>   Welcome to \u5e7f\u5dde’, <type 'unicode'="">)<br>1<br>2<br>3<br>unicode_str = u’Welcome to 广州’ # ‘’前面的 u 表示这是一个 unicode 字符串<br>unicode_str, type(unicode_str) # repr(unicode_str)<br>   Welcome to \u5e7f\u5dde’, <type 'unicode'="">)</type></type></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
 <p>repr 返回的 <code>Welcome to \u5e7f\u5dde</code> 说明了unicode_str存储的内容，其中两个<code>\u</code>后面的数字分别对应了<code>广、州</code>在unicode中的code point：</p>
 </li>
 <li><p><code>5e7f</code> 对应<code>广</code>字；</p>
@@ -408,7 +425,7 @@
 <li>网络数据操作</li>
 <li>源文件编码格式的指定</li>
 </ul>
-
+</the>
       
     </div>
     
@@ -419,7 +436,7 @@
         <p><span>本文标题:</span><a  href="/2018/05/13/计算机编码/">计算机编码</a></p>
         <p><span>文章作者:</span><a  href="/" title="访问 JingWei Zhou 的个人博客">JingWei Zhou</a></p>
         <p><span>发布时间:</span>2018年05月13日 - 20时48分</p>
-        <p><span>最后更新:</span>2018年05月13日 - 21时33分</p>
+        <p><span>最后更新:</span>2018年06月13日 - 22时19分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2018/05/13/计算机编码/" title="计算机编码">https://jingweiz300.github.io/2018/05/13/计算机编码/</a>
             <span class="copy-path" data-clipboard-text="原文: https://jingweiz300.github.io/2018/05/13/计算机编码/　　作者: JingWei Zhou" title=""></span>
