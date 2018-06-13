@@ -3,6 +3,26 @@
   
     
     <entry>
+      <title>zabbix用户密码修改</title>
+      <link href="/2018/06/13/zabbix%E7%94%A8%E6%88%B7%E5%AF%86%E7%A0%81%E4%BF%AE%E6%94%B9/"/>
+      <content type="html"><![CDATA[<p><strong> zabbix用户密码修改：</strong> <excerpt in="" index="" |="" 首页摘要=""></excerpt></p><a id="more"></a><the rest="" of="" contents="" |="" 余下全文=""><p>zabbix监控中当一般用户的密码忘记了也不要紧，可以通过管理员用户admin很容易的创建一个用户，然而。当管理员的密码忘记了，这时只能在数据库里进行修改。</p><p>zabbix前端用户的操作都保存在zabbix数据库的users表里</p><p>1.查看users表</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">1mysql&gt; desc users;</span><br><span class="line">2+----------------+---------------------+------+-----+---------+-------+</span><br><span class="line">3| Field          | Type                | Null | Key | Default | Extra |</span><br><span class="line">4+----------------+---------------------+------+-----+---------+-------+</span><br><span class="line">5| userid         | bigint(20) unsigned | NO   | PRI | NULL    |       |</span><br><span class="line">6| alias          | varchar(100)        | NO   | MUL |         |       |</span><br><span class="line">7| name           | varchar(100)        | NO   |     |         |       |</span><br><span class="line">8| surname        | varchar(100)        | NO   |     |         |       |</span><br><span class="line">9| passwd         | char(32)            | NO   |     |         |       |</span><br><span class="line">10| url            | varchar(255)        | NO   |     |         |       |</span><br><span class="line">11| autologin      | int(11)             | NO   |     | 0       |       |</span><br><span class="line">12| autologout     | int(11)             | NO   |     | 900     |       |</span><br><span class="line">13| lang           | varchar(5)          | NO   |     | en_GB   |       |</span><br><span class="line">14| refresh        | int(11)             | NO   |     | 30      |       |</span><br><span class="line">15| type           | int(11)             | NO   |     | 0       |       |</span><br><span class="line">16| theme          | varchar(128)        | NO   |     | default |       |</span><br><span class="line">17| attempt_failed | int(11)             | NO   |     | 0       |       |</span><br><span class="line">18| attempt_ip     | varchar(39)         | NO   |     |         |       |</span><br><span class="line">19| attempt_clock  | int(11)             | NO   |     | 0       |       |</span><br><span class="line">20| rows_per_page  | int(11)             | NO   |     | 50      |       |</span><br><span class="line">21+----------------+---------------------+------+-----+---------+-------+</span><br><span class="line">2216 rows in set (0.00 sec)</span><br><span class="line">23mysql&gt; select userid,name,passwd from users;</span><br><span class="line">24+--------+----------+----------------------------------+</span><br><span class="line">25| userid | name     | passwd                           |</span><br><span class="line">26+--------+----------+----------------------------------+</span><br><span class="line">27|      1 | Zabbix   | 5fce1b3e34b520afeffb37ce08c7cd66 |</span><br><span class="line">28|      2 | Default  | d41d8cd98f00b204e9800998ecf8427e |</span><br><span class="line">29|      3 | jiangtao | e10adc3949ba59abbe56e057f20f883e |</span><br><span class="line">30+--------+----------+----------------------------------+</span><br><span class="line">313 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure><p>2.修改admin用户的密码</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">1mysql&gt; select userid,alias,passwd from users;   #查看</span><br><span class="line">2+--------+-------------+----------------------------------+</span><br><span class="line">3| userid | alias       | passwd                           |</span><br><span class="line">4+--------+-------------+----------------------------------+</span><br><span class="line">5|      1 | Admin       | 5fce1b3e34b520afeffb37ce08c7cd66 |</span><br><span class="line">6|      2 | guest       | d41d8cd98f00b204e9800998ecf8427e |</span><br><span class="line">7|      3 | zhujiangtao | e10adc3949ba59abbe56e057f20f883e |</span><br><span class="line">8+--------+-------------+----------------------------------+</span><br><span class="line">93 rows in set (0.00 sec)</span><br><span class="line">10mysql&gt; update users set passwd=MD5(&apos;zhuzhu&apos;) where userid=1; #修改</span><br><span class="line">11Query OK, 1 row affected (0.01 sec)</span><br><span class="line">12Rows matched: 1  Changed: 1  Warnings: 0</span><br><span class="line">13mysql&gt; select userid,alias,passwd from users;</span><br><span class="line">14+--------+-------------+----------------------------------+</span><br><span class="line">15| userid | alias       | passwd                           |</span><br><span class="line">16+--------+-------------+----------------------------------+</span><br><span class="line">17|      1 | Admin       | 8f1fa88773e0518f7446972f1ed74ab5 |</span><br><span class="line">18|      2 | guest       | d41d8cd98f00b204e9800998ecf8427e |</span><br><span class="line">19|      3 | zhujiangtao | e10adc3949ba59abbe56e057f20f883e |</span><br><span class="line">20+--------+-------------+----------------------------------+</span><br><span class="line">213 rows in set (0.00 sec)</span><br><span class="line">22mysql&gt; flush privileges;  #刷新权限</span><br><span class="line">23Query OK, 0 rows affected (0.01 sec)</span><br></pre></td></tr></table></figure><p>3.登陆测试</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">也可用下面这种方法更新密码</span><br><span class="line">1[root@zhu2 ~]# echo -n &quot;zabbix&quot; | md5sum</span><br><span class="line">25fce1b3e34b520afeffb37ce08c7cd66  -</span><br><span class="line">3mysql&gt; update users set passwd=&apos;5fce1b3e34b520afeffb37ce08c7cd66&apos;  where userid=1;</span><br><span class="line">4Query OK, 1 row affected (0.01 sec)</span><br><span class="line">5Rows matched: 1  Changed: 1  Warnings: 0</span><br><span class="line">6#和第一种方法大同小异，</span><br></pre></td></tr></table></figure></the>]]></content>
+      
+      <categories>
+          
+          <category> Linux </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> zabbix </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>zabbix监控MSSQL</title>
       <link href="/2018/06/13/zabbix%E7%9B%91%E6%8E%A7MSSQL/"/>
       <content type="html"><![CDATA[<p><strong> zabbix监控MSSQL：</strong> <excerpt in="" index="" |="" 首页摘要=""></excerpt></p><a id="more"></a><the rest="" of="" contents="" |="" 余下全文=""><p>1.思路整理</p><p>1、在zabbix server上安装Freetds、unixODBC、unixODBC-devel使其能够访问SQL Server数据库。</p><p>2、配置ODBC访问Sql Server数据库。</p><p>3、定制SQL语句</p><p>4、在zabbix管理界面添加监控数据库的item。</p><p>2.操作过程</p><p>1、在zabbix server上安装Freetds、unixODBC、unixODBC-devel</p><p>#yuminstall unixODBC unixODBC-devel</p><p>​    注：freetds通常yum源里面没有，需要下载编译安装</p><p> #wget <a href="http://ibiblio.org/pub/Linux/ALPHA/freetds/stable/freetds-stable.tgz" target="_blank" rel="noopener">http://ibiblio.org/pub/Linux/ALPHA/freetds/stable/freetds-stable.tgz</a></p><p> tar -zxvf freetds-stable.tgz </p><p>  #cdfreetds-0.91/</p><p> #./configure –prefix=/usr/local/freetds –with-tdsver=8.0 –enable-msdblib</p><p>   #make</p><p>   #makeinstall</p><p>2、配置ODBC访问Sql Server数据库</p><p>a.查找libtdsodbc.so.0驱动的位置</p><p>#locate libtdsodbc.so.0</p><p>如果没有locate命令，安装mlocate执行</p><p>#yuminstall mlocate &amp;&amp; updatedb</p><p>找到libtdsodbc.so.0文件后复制其路径做个软连接</p><p>#ln -s/usr/local/freetds/lib/libtdsodbc.so.0 /usr/lib64/libtdsodbc.so.0</p><p>b.修改/etc/odbcinst.ini添加一行</p><p>#vim/etc/odbcinst.ini</p><p>[FreeTDS]</p><p>Driver =/usr/lib64/libtdsodbc.so.0</p><p>c.配置odbc连接信息</p><p>#vim/etc/odbc.ini #写入以下配置文件</p><p>[DBNAME]             #定义一个标识</p><p>Driver = FreeTDS</p><p>Server = [SQL Server IP]</p><p>PORT = 1433</p><p>TDS_Version = 8.0</p><p>#isql-v DBNAME（odbc.ini中定义的） 数据库账号数据库密码</p><p>d.连接数据库测试</p><p>连接到数据库并执行SQL测试</p><p><img src="file:///C:\Users\jingw\AppData\Local\Temp\msohtmlclip1\01\clip_image001.png" alt="image.png"></p><p>3、定制SQL语句因需求而异。</p><p>4、在zabbix管理界面添加监控数据库的item。</p><p>找到被监控的SQL Server主句，添加item  </p><p><img src="file:///C:\Users\jingw\AppData\Local\Temp\msohtmlclip1\01\clip_image001.png" alt="image.png"></p><p>zabbix采集到的数据。与上面SQL查询到的一致。</p><p>方法二 </p><ol><li>到官方下载模版</li></ol><p>下载地址：<a href="https://share.zabbix.com/databases/microsoft-sql-server/template-ms-sql-2012" target="_blank" rel="noopener">https://share.zabbix.com/databases/microsoft-sql-server/template-ms-sql-2012</a></p><ol><li>修改agentd.conf</li></ol><p>修改zabbix_agent.conf文件</p><p>添加下边这行到配置文件最后</p><p>UserParameter=sqldatabasename.discovery,powershell-NoProfile -ExecutionPolicy Bypass -FileC:\zabbix\scripts\SQLBaseName_To_Zabbix.ps1</p><p>将powershell脚本放在目录下</p><p>将SQLBaseName_To_Zabbix.ps1脚本放在C:\zabbix\scripts\目录下</p><ol><li><p>.重启agentd</p></li><li><p>导入模板文件</p></li></ol><p>导入模板MS SQL 2012.xml</p><p><img src="file:///C:\Users\jingw\AppData\Local\Temp\msohtmlclip1\01\clip_image002.png" alt="image.png"></p><p><img src="file:///C:\Users\jingw\AppData\Local\Temp\msohtmlclip1\01\clip_image002.png" alt="image.png"></p><p>5.主机应用模版</p></the>]]></content>
@@ -122,9 +142,9 @@
       
         <tags>
             
-            <tag> numpy </tag>
-            
             <tag> 模块使用 </tag>
+            
+            <tag> numpy </tag>
             
         </tags>
       
@@ -144,9 +164,9 @@
       
         <tags>
             
-            <tag> numpy </tag>
-            
             <tag> 模块使用 </tag>
+            
+            <tag> numpy </tag>
             
         </tags>
       
@@ -188,9 +208,9 @@
       
         <tags>
             
-            <tag> 模块使用 </tag>
-            
             <tag> Matplotlib </tag>
+            
+            <tag> 模块使用 </tag>
             
         </tags>
       

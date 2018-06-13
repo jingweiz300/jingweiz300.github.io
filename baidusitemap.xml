@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>https://jingweiz300.github.io/2018/06/13/zabbix%E7%94%A8%E6%88%B7%E5%AF%86%E7%A0%81%E4%BF%AE%E6%94%B9/</loc>
+    <lastmod>2018-06-13T14:51:09.322Z</lastmod>
+    <data>
+        <display>
+        <title>zabbix用户密码修改</title>
+        <pubTime>2018-06-13T14:47:28.000Z</pubTime>
+        
+        <tag>zabbix</tag>
+         
+         
+           
+             
+              <breadCrumb title="Linux" url="https://jingweiz300.github.io/categories/Linux/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://jingweiz300.github.io/2018/02/10/zabbix%E8%87%AA%E5%8A%A8%E5%8F%91%E7%8E%B0%E6%97%A0%E6%B3%95%E8%8E%B7%E5%8F%96%E4%B8%BB%E6%9C%BA/</loc>
     <lastmod>2018-06-13T14:42:04.150Z</lastmod>
     <data>
@@ -177,9 +197,9 @@
         <title>Matplotlib模块的学习</title>
         <pubTime>2018-03-12T01:35:37.000Z</pubTime>
         
-        <tag>模块使用</tag>
-         
         <tag>Matplotlib</tag>
+         
+        <tag>模块使用</tag>
          
          
            
@@ -199,9 +219,9 @@
         <title>Numpy模块的学习(3-5)</title>
         <pubTime>2018-03-15T04:35:37.000Z</pubTime>
         
-        <tag>numpy</tag>
-         
         <tag>模块使用</tag>
+         
+        <tag>numpy</tag>
          
          
            
@@ -221,9 +241,9 @@
         <title>Numpy模块的学习(1-2)</title>
         <pubTime>2018-03-14T11:35:37.000Z</pubTime>
         
-        <tag>numpy</tag>
-         
         <tag>模块使用</tag>
+         
+        <tag>numpy</tag>
          
          
            
