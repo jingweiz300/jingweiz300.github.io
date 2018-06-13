@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://jingweiz300.github.io/"/>
-  <updated>2018-06-13T14:14:28.107Z</updated>
+  <updated>2018-06-13T14:21:17.958Z</updated>
   <id>https://jingweiz300.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://jingweiz300.github.io/2018/06/13/zabbix%E7%9B%91%E6%8E%A7MSSQL/"/>
     <id>https://jingweiz300.github.io/2018/06/13/zabbix监控MSSQL/</id>
     <published>2018-06-13T14:09:45.000Z</published>
-    <updated>2018-06-13T14:14:28.107Z</updated>
+    <updated>2018-06-13T14:21:17.958Z</updated>
     
     <content type="html"><![CDATA[<p><strong> zabbix监控MSSQL：</strong> <excerpt in="" index="" |="" 首页摘要=""></excerpt></p><a id="more"></a><the rest="" of="" contents="" |="" 余下全文=""><p>1.思路整理</p><p>1、在zabbix server上安装Freetds、unixODBC、unixODBC-devel使其能够访问SQL Server数据库。</p><p>2、配置ODBC访问Sql Server数据库。</p><p>3、定制SQL语句</p><p>4、在zabbix管理界面添加监控数据库的item。</p><p>2.操作过程</p><p>1、在zabbix server上安装Freetds、unixODBC、unixODBC-devel</p><p>#yuminstall unixODBC unixODBC-devel</p><p>​    注：freetds通常yum源里面没有，需要下载编译安装</p><p> #wget <a href="http://ibiblio.org/pub/Linux/ALPHA/freetds/stable/freetds-stable.tgz" target="_blank" rel="noopener">http://ibiblio.org/pub/Linux/ALPHA/freetds/stable/freetds-stable.tgz</a></p><p> tar -zxvf freetds-stable.tgz </p><p>  #cdfreetds-0.91/</p><p> #./configure –prefix=/usr/local/freetds –with-tdsver=8.0 –enable-msdblib</p><p>   #make</p><p>   #makeinstall</p><p>2、配置ODBC访问Sql Server数据库</p><p>a.查找libtdsodbc.so.0驱动的位置</p><p>#locate libtdsodbc.so.0</p><p>如果没有locate命令，安装mlocate执行</p><p>#yuminstall mlocate &amp;&amp; updatedb</p><p>找到libtdsodbc.so.0文件后复制其路径做个软连接</p><p>#ln -s/usr/local/freetds/lib/libtdsodbc.so.0 /usr/lib64/libtdsodbc.so.0</p><p>b.修改/etc/odbcinst.ini添加一行</p><p>#vim/etc/odbcinst.ini</p><p>[FreeTDS]</p><p>Driver =/usr/lib64/libtdsodbc.so.0</p><p>c.配置odbc连接信息</p><p>#vim/etc/odbc.ini #写入以下配置文件</p><p>[DBNAME]             #定义一个标识</p><p>Driver = FreeTDS</p><p>Server = [SQL Server IP]</p><p>PORT = 1433</p><p>TDS_Version = 8.0</p><p>#isql-v DBNAME（odbc.ini中定义的） 数据库账号数据库密码</p><p>d.连接数据库测试</p><p>连接到数据库并执行SQL测试</p><p><img src="file:///C:\Users\jingw\AppData\Local\Temp\msohtmlclip1\01\clip_image001.png" alt="image.png"></p><p>3、定制SQL语句因需求而异。</p><p>4、在zabbix管理界面添加监控数据库的item。</p><p>找到被监控的SQL Server主句，添加item  </p><p><img src="file:///C:\Users\jingw\AppData\Local\Temp\msohtmlclip1\01\clip_image001.png" alt="image.png"></p><p>zabbix采集到的数据。与上面SQL查询到的一致。</p><p>方法二 </p><ol><li>到官方下载模版</li></ol><p>下载地址：<a href="https://share.zabbix.com/databases/microsoft-sql-server/template-ms-sql-2012" target="_blank" rel="noopener">https://share.zabbix.com/databases/microsoft-sql-server/template-ms-sql-2012</a></p><ol><li>修改agentd.conf</li></ol><p>修改zabbix_agent.conf文件</p><p>添加下边这行到配置文件最后</p><p>UserParameter=sqldatabasename.discovery,powershell-NoProfile -ExecutionPolicy Bypass -FileC:\zabbix\scripts\SQLBaseName_To_Zabbix.ps1</p><p>将powershell脚本放在目录下</p><p>将SQLBaseName_To_Zabbix.ps1脚本放在C:\zabbix\scripts\目录下</p><ol><li><p>.重启agentd</p></li><li><p>导入模板文件</p></li></ol><p>导入模板MS SQL 2012.xml</p><p><img src="file:///C:\Users\jingw\AppData\Local\Temp\msohtmlclip1\01\clip_image002.png" alt="image.png"></p><p><img src="file:///C:\Users\jingw\AppData\Local\Temp\msohtmlclip1\01\clip_image002.png" alt="image.png"></p><p>5.主机应用模版</p></the>]]></content>
     
@@ -31,7 +31,7 @@
     
     </summary>
     
-      <category term="linux" scheme="https://jingweiz300.github.io/categories/linux/"/>
+      <category term="Linux" scheme="https://jingweiz300.github.io/categories/Linux/"/>
     
     
       <category term="zabbix" scheme="https://jingweiz300.github.io/tags/zabbix/"/>
@@ -151,9 +151,9 @@
       <category term="mlearn" scheme="https://jingweiz300.github.io/categories/mlearn/"/>
     
     
-      <category term="模块使用" scheme="https://jingweiz300.github.io/tags/%E6%A8%A1%E5%9D%97%E4%BD%BF%E7%94%A8/"/>
-    
       <category term="numpy" scheme="https://jingweiz300.github.io/tags/numpy/"/>
+    
+      <category term="模块使用" scheme="https://jingweiz300.github.io/tags/%E6%A8%A1%E5%9D%97%E4%BD%BF%E7%94%A8/"/>
     
   </entry>
   
@@ -175,9 +175,9 @@
       <category term="mlearn" scheme="https://jingweiz300.github.io/categories/mlearn/"/>
     
     
-      <category term="模块使用" scheme="https://jingweiz300.github.io/tags/%E6%A8%A1%E5%9D%97%E4%BD%BF%E7%94%A8/"/>
-    
       <category term="numpy" scheme="https://jingweiz300.github.io/tags/numpy/"/>
+    
+      <category term="模块使用" scheme="https://jingweiz300.github.io/tags/%E6%A8%A1%E5%9D%97%E4%BD%BF%E7%94%A8/"/>
     
   </entry>
   
@@ -223,9 +223,53 @@
       <category term="mlearn" scheme="https://jingweiz300.github.io/categories/mlearn/"/>
     
     
+      <category term="模块使用" scheme="https://jingweiz300.github.io/tags/%E6%A8%A1%E5%9D%97%E4%BD%BF%E7%94%A8/"/>
+    
       <category term="Matplotlib" scheme="https://jingweiz300.github.io/tags/Matplotlib/"/>
     
-      <category term="模块使用" scheme="https://jingweiz300.github.io/tags/%E6%A8%A1%E5%9D%97%E4%BD%BF%E7%94%A8/"/>
+  </entry>
+  
+  <entry>
+    <title>zabbix自动发现无法获取主机</title>
+    <link href="https://jingweiz300.github.io/2018/02/10/zabbix%E8%87%AA%E5%8A%A8%E5%8F%91%E7%8E%B0%E6%97%A0%E6%B3%95%E8%8E%B7%E5%8F%96%E4%B8%BB%E6%9C%BA/"/>
+    <id>https://jingweiz300.github.io/2018/02/10/zabbix自动发现无法获取主机/</id>
+    <published>2018-02-10T14:28:44.000Z</published>
+    <updated>2018-06-13T14:42:04.150Z</updated>
+    
+    <content type="html"><![CDATA[<p><strong> zabbix自动发现无法获取主机：</strong> <excerpt in="" index="" |="" 首页摘要=""></excerpt></p><a id="more"></a><the rest="" of="" contents="" |="" 余下全文=""><p><img src="/2018/02/10/zabbix自动发现无法获取主机/1.png" alt=""></p><p><img src="/2018/02/10/zabbix自动发现无法获取主机/2.png" alt=""></p><p><img src="/2018/02/10/zabbix自动发现无法获取主机/3.png" alt=""></p></the>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;strong&gt; zabbix自动发现无法获取主机：&lt;/strong&gt; &lt;excerpt in=&quot;&quot; index=&quot;&quot; |=&quot;&quot; 首页摘要=&quot;&quot;&gt;&lt;/excerpt&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Linux" scheme="https://jingweiz300.github.io/categories/Linux/"/>
+    
+    
+      <category term="zabbix" scheme="https://jingweiz300.github.io/tags/zabbix/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>zabbix-proxy安装</title>
+    <link href="https://jingweiz300.github.io/2018/01/13/zabbix-proxy%E5%AE%89%E8%A3%85/"/>
+    <id>https://jingweiz300.github.io/2018/01/13/zabbix-proxy安装/</id>
+    <published>2018-01-13T14:25:15.000Z</published>
+    <updated>2018-06-13T14:27:08.010Z</updated>
+    
+    <content type="html"><![CDATA[<p><strong> zabbix-proxy安装：</strong> <excerpt in="" index="" |="" 首页摘要=""></excerpt></p><a id="more"></a><the rest="" of="" contents="" |="" 余下全文=""><p>rpm离线安装</p><p>1、首先安装mysql使用的包有，下载下来，mysql官网下载<a href="https://downloads.mysql.com/archives/community/" target="_blank" rel="noopener">https://downloads.mysql.com/archives/community/</a></p><p>Mysql-server-5.6.21</p><p>Mysql-client-5.6.21</p><p>Mysql-shared-compat-5.6.21</p><p>Mysql-shared-5.6.21</p><p>Mysql-devel-5.6.21</p><p>Mysql-5.6.21</p><p>2、利用本地镜像安装一些辅助类libxmllibxml2 libcurl libcurl-devel net-snmp-devel</p><p>3、下载zabbix的rpm包，此处我们只用了proxy，和agent，所以下载了这两个</p><p>因为server端是3.0.9，所以proxy端和agent也用同样的版本</p><p>Zabbix-proxy-mysql-3.0.9</p><p>Zabbix-agent-3.0.9</p><p>同时还下载了java网关</p><p>Zabbix-java-gateway-3.0.9</p><p>发送工具</p><p>Zabbix-sender-3.0.9</p><p>接受工具</p><p>Zabbix-get-3.0.9</p><p>下载地址：<a href="https://repo.zabbix.com/zabbix/3.0/rhel/6/x86_64/" target="_blank" rel="noopener">https://repo.zabbix.com/zabbix/3.0/rhel/6/x86_64/</a></p><p>当然地址根据操作系统和zabbix的使用版本不同，下载位置不一样</p><p>4、跟所有的zabbix安装一样，要建一个zabbix用户、初始化数据库(proxy只用初始化表，无初始化表数据)等</p><p>这里记录一下proxy的rpm安装之后查找初始化数据库的sql脚本位置</p><p>先使用rpm -ql|grep zabbix-proxy查找到zabbix安装了哪些文件</p><p>然后找到/usr/share/doc/zabbix/***.sql.gz，脚本名字忘记了，但是应该是一个压缩文件</p><p>然后执行zcat /usr/share/doc/zabbix/***.sql.gz|xargs mysql -u zabbix -p zabbix_proxy</p><p>前提是已经为mysql创建好了zabbix用户，并且已经建好了一个zabbix_proxy的空的utf-8的数据库</p></the>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;strong&gt; zabbix-proxy安装：&lt;/strong&gt; &lt;excerpt in=&quot;&quot; index=&quot;&quot; |=&quot;&quot; 首页摘要=&quot;&quot;&gt;&lt;/excerpt&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Linux" scheme="https://jingweiz300.github.io/categories/Linux/"/>
+    
+    
+      <category term="zabbix" scheme="https://jingweiz300.github.io/tags/zabbix/"/>
     
   </entry>
   
