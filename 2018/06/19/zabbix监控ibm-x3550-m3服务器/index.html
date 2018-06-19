@@ -32,7 +32,7 @@
 <meta property="og:image" content="https://jingweiz300.github.io/2018/06/19/zabbix监控ibm-x3550-m3服务器/11.png">
 <meta property="og:image" content="https://jingweiz300.github.io/2018/06/19/zabbix监控ibm-x3550-m3服务器/12-1.png">
 <meta property="og:image" content="https://jingweiz300.github.io/2018/06/19/zabbix监控ibm-x3550-m3服务器/12-2.png">
-<meta property="og:updated_time" content="2018-06-19T11:44:45.288Z">
+<meta property="og:updated_time" content="2018-06-19T11:56:44.749Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="zabbix监控ibm-x3550-m3服务器">
 <meta name="twitter:description" content="zabbix监控ibm-x3550-m3服务器：">
@@ -323,12 +323,11 @@
         <p><strong> zabbix监控ibm-x3550-m3服务器：</strong> <excerpt in="" index="" |="" 首页摘要=""><br><a id="more"></a></excerpt></p>
 <the rest="" of="" contents="" |="" 余下全文="">
 
-<p>环境准备：</p>
-<p>1、zabbix服务器 </p>
+<h3 id="环境准备："><a href="#环境准备：" class="headerlink" title="环境准备："></a>环境准备：</h3><p>1、zabbix服务器 </p>
 <p>ip：192.168.1.61</p>
 <p>2、一台ibm x3550 m3服务器</p>
 <p>ip：192.168.1.230</p>
-<p>1、通过默认的带外管理ip、用户、密码能够登录到服务器的IMM管理界面，网页直接搭上IP即可,即可显示如下界面</p>
+<h3 id="开始步骤"><a href="#开始步骤" class="headerlink" title="开始步骤"></a>开始步骤</h3><h4 id="1、登录带外管理"><a href="#1、登录带外管理" class="headerlink" title="1、登录带外管理"></a>1、登录带外管理</h4><p>通过默认的带外管理ip、用户、密码能够登录到服务器的IMM管理界面，网页直接搭上IP即可,即可显示如下界面</p>
 <p>ps：</p>
 <p>IBM默认带外ip：192.168.70.200</p>
 <p>默认用户：USERID</p>
@@ -336,30 +335,28 @@
 <p>注意密码中不是字母O而是数字0</p>
 <p>登录即可</p>
 <p><img src="/2018/06/19/zabbix监控ibm-x3550-m3服务器/1.png" alt=""></p>
-<p>2、登录之后首先修改带外管理IP地址，如图</p>
-<p><img src="/2018/06/19/zabbix监控ibm-x3550-m3服务器/2.png" alt=""></p>
-<p>3、设置网络协议（snmp），设置之前系统提示需要设置联系人和地址，随便填写一下即可，如图</p>
+<h4 id="2、修改带外管理IP地址"><a href="#2、修改带外管理IP地址" class="headerlink" title="2、修改带外管理IP地址"></a>2、修改带外管理IP地址</h4><p><img src="/2018/06/19/zabbix监控ibm-x3550-m3服务器/2.png" alt=""></p>
+<h4 id="3、设置网络协议（snmp）"><a href="#3、设置网络协议（snmp）" class="headerlink" title="3、设置网络协议（snmp）"></a>3、设置网络协议（snmp）</h4><p>设置之前系统提示需要设置联系人和地址，随便填写一下即可，如图</p>
 <p><img src="/2018/06/19/zabbix监控ibm-x3550-m3服务器/3.png" alt=""></p>
-<p>4、设置告警，即设置需要发送哪种类型的告警，此处全选，如图</p>
+<h4 id="4、设置告警"><a href="#4、设置告警" class="headerlink" title="4、设置告警"></a>4、设置告警</h4><p>即设置需要发送哪种类型的告警，此处全选，如图</p>
 <p><img src="/2018/06/19/zabbix监控ibm-x3550-m3服务器/4.png" alt=""></p>
-<p>5、设置snmp协议，此处三个协议全部enabled，community名称写public，类型选trap，主机名称或者ip地址选择zabbix服务端地址，如图</p>
+<h4 id="5、设置snmp协议"><a href="#5、设置snmp协议" class="headerlink" title="5、设置snmp协议"></a>5、设置snmp协议</h4><p>此处三个协议全部enabled，community名称写public，类型选trap，主机名称或者ip地址选择zabbix服务端地址，如图</p>
 <p><img src="/2018/06/19/zabbix监控ibm-x3550-m3服务器/5.png" alt=""></p>
-<p>6、重启iMM，如图</p>
-<p><img src="/2018/06/19/zabbix监控ibm-x3550-m3服务器/6.png" alt=""></p>
-<p>7、使用新的带外ip地址登录，为了测试告警trap是否能够发送，单机Alerts菜单，点击上方1～12的随便一个链接来创建，我这里点击了第一个</p>
+<h4 id="6、重启iMM"><a href="#6、重启iMM" class="headerlink" title="6、重启iMM"></a>6、重启iMM</h4><p><img src="/2018/06/19/zabbix监控ibm-x3550-m3服务器/6.png" alt=""></p>
+<h4 id="7、设置测试告警"><a href="#7、设置测试告警" class="headerlink" title="7、设置测试告警"></a>7、设置测试告警</h4><p>使用新的带外ip地址登录，为了测试告警trap是否能够发送，单机Alerts菜单，点击上方1～12的随便一个链接来创建，我这里点击了第一个</p>
 <p><img src="/2018/06/19/zabbix监控ibm-x3550-m3服务器/7-1.png" alt=""></p>
 <p><img src="/2018/06/19/zabbix监控ibm-x3550-m3服务器/7-2.png" alt=""></p>
 <p><img src="/2018/06/19/zabbix监控ibm-x3550-m3服务器/7-3.png" alt=""></p>
-<p>8、登录zabbix的服务端，查看snmp的日志，查看是否有刚才的测试告警发送过来</p>
+<h4 id="8、检查测试告警"><a href="#8、检查测试告警" class="headerlink" title="8、检查测试告警"></a>8、检查测试告警</h4><p>登录zabbix的服务端，查看snmp的日志，查看是否有刚才的测试告警发送过来</p>
 <p>tail -f/var/log/snmptt/snmptt.log</p>
 <p><img src="/2018/06/19/zabbix监控ibm-x3550-m3服务器/8.png" alt=""></p>
-<p>9、在zabbix的web页面添加监控的主机，ip地址为刚才修改后的带外管理口ip，前提是要求zabbix服务端服务器带外口要ping通，图中snmp接口在监控服务器的告警信息时没有作用，因为告警信息相当于是被主动推送至zabbix服务端</p>
+<h4 id="9、添加zabbix主机"><a href="#9、添加zabbix主机" class="headerlink" title="9、添加zabbix主机"></a>9、添加zabbix主机</h4><p>在zabbix的web页面添加监控的主机，ip地址为刚才修改后的带外管理口ip，前提是要求zabbix服务端服务器带外口要ping通，图中snmp接口在监控服务器的告警信息时没有作用，因为告警信息相当于是被主动推送至zabbix服务端</p>
 <p><img src="/2018/06/19/zabbix监控ibm-x3550-m3服务器/9.png" alt=""></p>
-<p>10、添加192.168.1.230这台主机的监控item，类型选择SNMP trap，键值为snmptrap[“Critical”]，注意使用双引号，该监控项为提取trap告警信息中包含有Critical字符串的告警信息条目，可更换字符串，信息类型为日志或者文本都可以</p>
+<h4 id="10、添加主机item"><a href="#10、添加主机item" class="headerlink" title="10、添加主机item"></a>10、添加主机item</h4><p>添加192.168.1.230这台主机的监控item，类型选择SNMP trap，键值为snmptrap[“Critical”]，注意使用双引号，该监控项为提取trap告警信息中包含有Critical字符串的告警信息条目，可更换字符串，信息类型为日志或者文本都可以</p>
 <p><img src="/2018/06/19/zabbix监控ibm-x3550-m3服务器/10.png" alt=""></p>
-<p>11、添加主机的监控项，类型依然选择SNMP trap ，键值为snmptrap.fallback，该监控项为获取未匹配到的所有日志信息，信息类型选择文本</p>
+<h4 id="11、添加主机item（fallback）"><a href="#11、添加主机item（fallback）" class="headerlink" title="11、添加主机item（fallback）"></a>11、添加主机item（fallback）</h4><p>添加主机的监控项，类型依然选择SNMP trap ，键值为snmptrap.fallback，该监控项为获取未匹配到的所有日志信息，信息类型选择文本</p>
 <p><img src="/2018/06/19/zabbix监控ibm-x3550-m3服务器/11.png" alt=""></p>
-<p>12、配置完成之后，前往监控web的最新数据中，查看刚才配置的监控项是否有新的数据</p>
+<h4 id="12、查看告警"><a href="#12、查看告警" class="headerlink" title="12、查看告警"></a>12、查看告警</h4><p>配置完成之后，前往监控web的最新数据中，查看刚才配置的监控项是否有新的数据</p>
 <p>，我的测试中是拔插的服务器电源，所以过来的是严重电源告警</p>
 <p><img src="/2018/06/19/zabbix监控ibm-x3550-m3服务器/12-1.png" alt=""></p>
 <p>如果是带外管理页面步骤7中的测试发送，则会出现在fallback的监控项中</p>
@@ -375,7 +372,7 @@
         <p><span>本文标题:</span><a  href="/2018/06/19/zabbix监控ibm-x3550-m3服务器/">zabbix监控ibm-x3550-m3服务器</a></p>
         <p><span>文章作者:</span><a  href="/" title="访问 JingWei Zhou 的个人博客">JingWei Zhou</a></p>
         <p><span>发布时间:</span>2018年06月19日 - 19时33分</p>
-        <p><span>最后更新:</span>2018年06月19日 - 19时44分</p>
+        <p><span>最后更新:</span>2018年06月19日 - 19时56分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2018/06/19/zabbix监控ibm-x3550-m3服务器/" title="zabbix监控ibm-x3550-m3服务器">https://jingweiz300.github.io/2018/06/19/zabbix监控ibm-x3550-m3服务器/</a>
             <span class="copy-path" data-clipboard-text="原文: https://jingweiz300.github.io/2018/06/19/zabbix监控ibm-x3550-m3服务器/　　作者: JingWei Zhou" title=""></span>
@@ -403,7 +400,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#环境准备："><span class="toc-number">1.</span> <span class="toc-text">环境准备：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#开始步骤"><span class="toc-number">2.</span> <span class="toc-text">开始步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1、登录带外管理"><span class="toc-number">2.1.</span> <span class="toc-text">1、登录带外管理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2、修改带外管理IP地址"><span class="toc-number">2.2.</span> <span class="toc-text">2、修改带外管理IP地址</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3、设置网络协议（snmp）"><span class="toc-number">2.3.</span> <span class="toc-text">3、设置网络协议（snmp）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4、设置告警"><span class="toc-number">2.4.</span> <span class="toc-text">4、设置告警</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5、设置snmp协议"><span class="toc-number">2.5.</span> <span class="toc-text">5、设置snmp协议</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6、重启iMM"><span class="toc-number">2.6.</span> <span class="toc-text">6、重启iMM</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7、设置测试告警"><span class="toc-number">2.7.</span> <span class="toc-text">7、设置测试告警</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8、检查测试告警"><span class="toc-number">2.8.</span> <span class="toc-text">8、检查测试告警</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#9、添加zabbix主机"><span class="toc-number">2.9.</span> <span class="toc-text">9、添加zabbix主机</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#10、添加主机item"><span class="toc-number">2.10.</span> <span class="toc-text">10、添加主机item</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#11、添加主机item（fallback）"><span class="toc-number">2.11.</span> <span class="toc-text">11、添加主机item（fallback）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#12、查看告警"><span class="toc-number">2.12.</span> <span class="toc-text">12、查看告警</span></a></li></ol></li></ol>
 </div>
 <style>
     .left-col .switch-btn {
