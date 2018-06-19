@@ -3,6 +3,26 @@
   
     
     <entry>
+      <title>zabbix监控ibm-x3550-m3服务器</title>
+      <link href="/2018/06/19/zabbix%E7%9B%91%E6%8E%A7ibm-x3550-m3%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+      <content type="html"><![CDATA[<p><strong> zabbix监控ibm-x3550-m3服务器：</strong> <excerpt in="" index="" |="" 首页摘要=""><br><a id="more"></a></excerpt></p><the rest="" of="" contents="" |="" 余下全文=""><p>环境准备：</p><p>1、zabbix服务器 </p><p>ip：192.168.1.61</p><p>2、一台ibm x3550 m3服务器</p><p>ip：192.168.1.230</p><p>1、通过默认的带外管理ip、用户、密码能够登录到服务器的IMM管理界面，网页直接搭上IP即可,即可显示如下界面</p><p>ps：</p><p>IBM默认带外ip：192.168.70.200</p><p>默认用户：USERID</p><p>默认密码：PASSW0RD</p><p>注意密码中不是字母O而是数字0</p><p>登录即可</p><p><img src="/2018/06/19/zabbix监控ibm-x3550-m3服务器/1.png" alt=""></p><p>2、登录之后首先修改带外管理IP地址，如图</p><p><img src="/2018/06/19/zabbix监控ibm-x3550-m3服务器/2.png" alt=""></p><p>3、设置网络协议（snmp），设置之前系统提示需要设置联系人和地址，随便填写一下即可，如图</p><p><img src="/2018/06/19/zabbix监控ibm-x3550-m3服务器/3.png" alt=""></p><p>4、设置告警，即设置需要发送哪种类型的告警，此处全选，如图</p><p><img src="/2018/06/19/zabbix监控ibm-x3550-m3服务器/4.png" alt=""></p><p>5、设置snmp协议，此处三个协议全部enabled，community名称写public，类型选trap，主机名称或者ip地址选择zabbix服务端地址，如图</p><p><img src="/2018/06/19/zabbix监控ibm-x3550-m3服务器/5.png" alt=""></p><p>6、重启iMM，如图</p><p><img src="/2018/06/19/zabbix监控ibm-x3550-m3服务器/6.png" alt=""></p><p>7、使用新的带外ip地址登录，为了测试告警trap是否能够发送，单机Alerts菜单，点击上方1～12的随便一个链接来创建，我这里点击了第一个</p><p><img src="/2018/06/19/zabbix监控ibm-x3550-m3服务器/7-1.png" alt=""></p><p><img src="/2018/06/19/zabbix监控ibm-x3550-m3服务器/7-2.png" alt=""></p><p><img src="/2018/06/19/zabbix监控ibm-x3550-m3服务器/7-3.png" alt=""></p><p>8、登录zabbix的服务端，查看snmp的日志，查看是否有刚才的测试告警发送过来</p><p>tail -f/var/log/snmptt/snmptt.log</p><p><img src="/2018/06/19/zabbix监控ibm-x3550-m3服务器/8.png" alt=""></p><p>9、在zabbix的web页面添加监控的主机，ip地址为刚才修改后的带外管理口ip，前提是要求zabbix服务端服务器带外口要ping通，图中snmp接口在监控服务器的告警信息时没有作用，因为告警信息相当于是被主动推送至zabbix服务端</p><p><img src="/2018/06/19/zabbix监控ibm-x3550-m3服务器/9.png" alt=""></p><p>10、添加192.168.1.230这台主机的监控item，类型选择SNMP trap，键值为snmptrap[“Critical”]，注意使用双引号，该监控项为提取trap告警信息中包含有Critical字符串的告警信息条目，可更换字符串，信息类型为日志或者文本都可以</p><p><img src="/2018/06/19/zabbix监控ibm-x3550-m3服务器/10.png" alt=""></p><p>11、添加主机的监控项，类型依然选择SNMP trap ，键值为snmptrap.fallback，该监控项为获取未匹配到的所有日志信息，信息类型选择文本</p><p><img src="/2018/06/19/zabbix监控ibm-x3550-m3服务器/11.png" alt=""></p><p>12、配置完成之后，前往监控web的最新数据中，查看刚才配置的监控项是否有新的数据</p><p>，我的测试中是拔插的服务器电源，所以过来的是严重电源告警</p><p><img src="/2018/06/19/zabbix监控ibm-x3550-m3服务器/12-1.png" alt=""></p><p>如果是带外管理页面步骤7中的测试发送，则会出现在fallback的监控项中</p><p><img src="/2018/06/19/zabbix监控ibm-x3550-m3服务器/12-2.png" alt=""></p></the>]]></content>
+      
+      <categories>
+          
+          <category> operation </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> zabbix </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>zabbix用户密码修改</title>
       <link href="/2018/06/13/zabbix%E7%94%A8%E6%88%B7%E5%AF%86%E7%A0%81%E4%BF%AE%E6%94%B9/"/>
       <content type="html"><![CDATA[<p><strong> zabbix用户密码修改：</strong> <excerpt in="" index="" |="" 首页摘要=""></excerpt></p><a id="more"></a><the rest="" of="" contents="" |="" 余下全文=""><p>zabbix监控中当一般用户的密码忘记了也不要紧，可以通过管理员用户admin很容易的创建一个用户，然而。当管理员的密码忘记了，这时只能在数据库里进行修改。</p><p>zabbix前端用户的操作都保存在zabbix数据库的users表里</p><p>1.查看users表</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">1mysql&gt; desc users;</span><br><span class="line">2+----------------+---------------------+------+-----+---------+-------+</span><br><span class="line">3| Field          | Type                | Null | Key | Default | Extra |</span><br><span class="line">4+----------------+---------------------+------+-----+---------+-------+</span><br><span class="line">5| userid         | bigint(20) unsigned | NO   | PRI | NULL    |       |</span><br><span class="line">6| alias          | varchar(100)        | NO   | MUL |         |       |</span><br><span class="line">7| name           | varchar(100)        | NO   |     |         |       |</span><br><span class="line">8| surname        | varchar(100)        | NO   |     |         |       |</span><br><span class="line">9| passwd         | char(32)            | NO   |     |         |       |</span><br><span class="line">10| url            | varchar(255)        | NO   |     |         |       |</span><br><span class="line">11| autologin      | int(11)             | NO   |     | 0       |       |</span><br><span class="line">12| autologout     | int(11)             | NO   |     | 900     |       |</span><br><span class="line">13| lang           | varchar(5)          | NO   |     | en_GB   |       |</span><br><span class="line">14| refresh        | int(11)             | NO   |     | 30      |       |</span><br><span class="line">15| type           | int(11)             | NO   |     | 0       |       |</span><br><span class="line">16| theme          | varchar(128)        | NO   |     | default |       |</span><br><span class="line">17| attempt_failed | int(11)             | NO   |     | 0       |       |</span><br><span class="line">18| attempt_ip     | varchar(39)         | NO   |     |         |       |</span><br><span class="line">19| attempt_clock  | int(11)             | NO   |     | 0       |       |</span><br><span class="line">20| rows_per_page  | int(11)             | NO   |     | 50      |       |</span><br><span class="line">21+----------------+---------------------+------+-----+---------+-------+</span><br><span class="line">2216 rows in set (0.00 sec)</span><br><span class="line">23mysql&gt; select userid,name,passwd from users;</span><br><span class="line">24+--------+----------+----------------------------------+</span><br><span class="line">25| userid | name     | passwd                           |</span><br><span class="line">26+--------+----------+----------------------------------+</span><br><span class="line">27|      1 | Zabbix   | 5fce1b3e34b520afeffb37ce08c7cd66 |</span><br><span class="line">28|      2 | Default  | d41d8cd98f00b204e9800998ecf8427e |</span><br><span class="line">29|      3 | jiangtao | e10adc3949ba59abbe56e057f20f883e |</span><br><span class="line">30+--------+----------+----------------------------------+</span><br><span class="line">313 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure><p>2.修改admin用户的密码</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">1mysql&gt; select userid,alias,passwd from users;   #查看</span><br><span class="line">2+--------+-------------+----------------------------------+</span><br><span class="line">3| userid | alias       | passwd                           |</span><br><span class="line">4+--------+-------------+----------------------------------+</span><br><span class="line">5|      1 | Admin       | 5fce1b3e34b520afeffb37ce08c7cd66 |</span><br><span class="line">6|      2 | guest       | d41d8cd98f00b204e9800998ecf8427e |</span><br><span class="line">7|      3 | zhujiangtao | e10adc3949ba59abbe56e057f20f883e |</span><br><span class="line">8+--------+-------------+----------------------------------+</span><br><span class="line">93 rows in set (0.00 sec)</span><br><span class="line">10mysql&gt; update users set passwd=MD5(&apos;zhuzhu&apos;) where userid=1; #修改</span><br><span class="line">11Query OK, 1 row affected (0.01 sec)</span><br><span class="line">12Rows matched: 1  Changed: 1  Warnings: 0</span><br><span class="line">13mysql&gt; select userid,alias,passwd from users;</span><br><span class="line">14+--------+-------------+----------------------------------+</span><br><span class="line">15| userid | alias       | passwd                           |</span><br><span class="line">16+--------+-------------+----------------------------------+</span><br><span class="line">17|      1 | Admin       | 8f1fa88773e0518f7446972f1ed74ab5 |</span><br><span class="line">18|      2 | guest       | d41d8cd98f00b204e9800998ecf8427e |</span><br><span class="line">19|      3 | zhujiangtao | e10adc3949ba59abbe56e057f20f883e |</span><br><span class="line">20+--------+-------------+----------------------------------+</span><br><span class="line">213 rows in set (0.00 sec)</span><br><span class="line">22mysql&gt; flush privileges;  #刷新权限</span><br><span class="line">23Query OK, 0 rows affected (0.01 sec)</span><br></pre></td></tr></table></figure><p>3.登陆测试</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">也可用下面这种方法更新密码</span><br><span class="line">1[root@zhu2 ~]# echo -n &quot;zabbix&quot; | md5sum</span><br><span class="line">25fce1b3e34b520afeffb37ce08c7cd66  -</span><br><span class="line">3mysql&gt; update users set passwd=&apos;5fce1b3e34b520afeffb37ce08c7cd66&apos;  where userid=1;</span><br><span class="line">4Query OK, 1 row affected (0.01 sec)</span><br><span class="line">5Rows matched: 1  Changed: 1  Warnings: 0</span><br><span class="line">6#和第一种方法大同小异，</span><br></pre></td></tr></table></figure></the>]]></content>
@@ -142,9 +162,9 @@
       
         <tags>
             
-            <tag> numpy </tag>
-            
             <tag> 模块使用 </tag>
+            
+            <tag> numpy </tag>
             
         </tags>
       
@@ -164,9 +184,9 @@
       
         <tags>
             
-            <tag> numpy </tag>
-            
             <tag> 模块使用 </tag>
+            
+            <tag> numpy </tag>
             
         </tags>
       
@@ -208,9 +228,9 @@
       
         <tags>
             
-            <tag> 模块使用 </tag>
-            
             <tag> Matplotlib </tag>
+            
+            <tag> 模块使用 </tag>
             
         </tags>
       

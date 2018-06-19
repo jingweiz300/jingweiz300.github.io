@@ -4,8 +4,28 @@
 
     
   <url>
+    <loc>https://jingweiz300.github.io/2018/06/19/zabbix%E7%9B%91%E6%8E%A7ibm-x3550-m3%E6%9C%8D%E5%8A%A1%E5%99%A8/</loc>
+    <lastmod>2018-06-19T11:44:45.288Z</lastmod>
+    <data>
+        <display>
+        <title>zabbix监控ibm-x3550-m3服务器</title>
+        <pubTime>2018-06-19T11:33:52.000Z</pubTime>
+        
+        <tag>zabbix</tag>
+         
+         
+           
+             
+              <breadCrumb title="operation" url="https://jingweiz300.github.io/categories/operation/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://jingweiz300.github.io/2018/03/13/%E7%94%9F%E6%88%90zabbix%E5%9B%BE%E7%89%87%E5%B9%B6%E9%80%9A%E8%BF%87%E5%BE%AE%E4%BF%A1%E5%8F%91%E9%80%81/</loc>
-    <lastmod>2018-06-13T15:16:20.891Z</lastmod>
+    <lastmod>2018-06-13T15:17:22.093Z</lastmod>
     <data>
         <display>
         <title>生成zabbix图表，通过微信发送群聊</title>
@@ -219,9 +239,9 @@
         <title>Matplotlib模块的学习</title>
         <pubTime>2018-03-12T01:35:37.000Z</pubTime>
         
-        <tag>模块使用</tag>
-         
         <tag>Matplotlib</tag>
+         
+        <tag>模块使用</tag>
          
          
            
@@ -241,9 +261,9 @@
         <title>Numpy模块的学习(3-5)</title>
         <pubTime>2018-03-15T04:35:37.000Z</pubTime>
         
-        <tag>numpy</tag>
-         
         <tag>模块使用</tag>
+         
+        <tag>numpy</tag>
          
          
            
@@ -263,9 +283,9 @@
         <title>Numpy模块的学习(1-2)</title>
         <pubTime>2018-03-14T11:35:37.000Z</pubTime>
         
-        <tag>numpy</tag>
-         
         <tag>模块使用</tag>
+         
+        <tag>numpy</tag>
          
          
            
