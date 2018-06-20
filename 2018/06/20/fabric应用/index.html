@@ -7,20 +7,20 @@
   
   
   
-  <title>多线程的一点思考 | My Story</title>
+  <title>fabric应用 | My Story</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="多线程的一点思考：">
-<meta name="keywords" content="模块使用,threading">
+  <meta name="description" content="fabric应用： 收到一份python需求，兴高采烈的写完了，现在分享一下">
+<meta name="keywords" content="fabric">
 <meta property="og:type" content="article">
-<meta property="og:title" content="多线程的一点思考">
-<meta property="og:url" content="https://jingweiz300.github.io/2018/05/10/多线程的一点思考/index.html">
+<meta property="og:title" content="fabric应用">
+<meta property="og:url" content="https://jingweiz300.github.io/2018/06/20/fabric应用/index.html">
 <meta property="og:site_name" content="My Story">
-<meta property="og:description" content="多线程的一点思考：">
+<meta property="og:description" content="fabric应用： 收到一份python需求，兴高采烈的写完了，现在分享一下">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-10T13:22:03.807Z">
+<meta property="og:updated_time" content="2018-06-20T13:03:31.743Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="多线程的一点思考">
-<meta name="twitter:description" content="多线程的一点思考：">
+<meta name="twitter:title" content="fabric应用">
+<meta name="twitter:description" content="fabric应用： 收到一份python需求，兴高采烈的写完了，现在分享一下">
   
     <link rel="alternative" href="/atom.xml" title="My Story" type="application/atom+xml">
   
@@ -260,11 +260,11 @@
         </header>                
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-多线程的一点思考" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-fabric应用" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a  href="/2018/05/10/多线程的一点思考/" class="article-date">
-      <time datetime="2018-05-10T12:58:28.000Z" itemprop="datePublished">2018-05-10</time>
+      <a  href="/2018/06/20/fabric应用/" class="article-date">
+      <time datetime="2018-06-20T12:49:32.000Z" itemprop="datePublished">2018-06-20</time>
 </a>
 
     </div>
@@ -278,7 +278,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      多线程的一点思考
+      fabric应用
     </h1>
   
 
@@ -294,7 +294,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/threading/">threading</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/模块使用/">模块使用</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/fabric/">fabric</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -304,11 +304,23 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p><strong> 多线程的一点思考：</strong> <excerpt in="" index="" |="" 首页摘要=""><br><a id="more"></a></excerpt></p>
+        <p><strong> fabric应用：</strong> <excerpt in="" index="" |="" 首页摘要=""><br>收到一份python需求，兴高采烈的写完了，现在分享一下<br><a id="more"></a></excerpt></p>
 <the rest="" of="" contents="" |="" 余下全文="">
 
-<h3 id="简言"><a href="#简言" class="headerlink" title="简言"></a>简言</h3><p>threading的run内容必须加lock，不然对于同样的操作，比如打印print a,self.name；在同一个时间点上，多个线程会打印出很长一句莫名其妙的拼接；可自行测试</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> threading</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> datetime</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">myThread</span><span class="params">(threading.Thread)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self,id,name)</span>:</span></span><br><span class="line">        threading.Thread.__init__(self)</span><br><span class="line">        self.id=id</span><br><span class="line">        self.name=name</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">run</span><span class="params">(self)</span>:</span></span><br><span class="line">        a=[]</span><br><span class="line">        <span class="comment">#a.append('data')</span></span><br><span class="line">        <span class="comment">#print a,self.name</span></span><br><span class="line">        lock.acquire()</span><br><span class="line">        <span class="keyword">print</span> <span class="string">'-----------'</span></span><br><span class="line">        <span class="keyword">print</span> <span class="string">'bedig time:'</span>,datetime.datetime.now()</span><br><span class="line">        b = []</span><br><span class="line">        <span class="comment">#print b,id(b),self.name</span></span><br><span class="line">        b.append(<span class="string">'data'</span>)</span><br><span class="line">        <span class="keyword">print</span> b,self.name,id(b)</span><br><span class="line">        <span class="keyword">print</span> <span class="string">'end time:'</span>,datetime.datetime.now()</span><br><span class="line">        <span class="keyword">print</span> <span class="string">'-----------'</span></span><br><span class="line">        lock.release()</span><br><span class="line"></span><br><span class="line">        <span class="comment">#print a,id(a)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></span><br><span class="line"></span><br><span class="line">    thread_list=[]</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">500</span>):</span><br><span class="line">        id=i</span><br><span class="line">        name=<span class="string">'Thread_%s'</span> % i</span><br><span class="line">        Thread=myThread(id,name)</span><br><span class="line">        thread_list.append(Thread)</span><br><span class="line">    time.sleep(<span class="number">3</span>)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> thread_list:</span><br><span class="line">        i.start()</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> thread_list:</span><br><span class="line">        i.join()</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main_2</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">500</span>):</span><br><span class="line">        <span class="keyword">print</span> <span class="string">'-----------'</span></span><br><span class="line">        <span class="keyword">print</span> <span class="string">'bedig time:'</span>, datetime.datetime.now()</span><br><span class="line">        b = []</span><br><span class="line">        <span class="comment"># print b,id(b),self.name</span></span><br><span class="line">        b.append(<span class="string">'data'</span>)</span><br><span class="line">        <span class="keyword">print</span> b, id(b)</span><br><span class="line">        <span class="keyword">print</span> <span class="string">'end time:'</span>, datetime.datetime.now()</span><br><span class="line">        <span class="keyword">print</span> <span class="string">'-----------'</span></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    lock=threading.Lock()</span><br><span class="line">    begin_time=datetime.datetime.now()</span><br><span class="line">    main()</span><br><span class="line">    end_time=datetime.datetime.now()</span><br><span class="line">    used_time=end_time - begin_time</span><br><span class="line">    <span class="keyword">print</span> used_time</span><br></pre></td></tr></table></figure>
+<h3 id="业务需求："><a href="#业务需求：" class="headerlink" title="业务需求："></a>业务需求：</h3><p>使用fabric库，进入自己的实验Linux机器（10.10.10.234）的系统日志目录/var/log，找到boot.log-<strong>*</strong>,把这些文件打包成一个压缩包，下载到自己的笔记本电脑，使用shutil解压，然后删除掉服务器上的压缩包。用户名密码root/123456</p>
+<h3 id="程序要求："><a href="#程序要求：" class="headerlink" title="程序要求："></a>程序要求：</h3><p>- 既要可以通过python xxx.py的方式来运行脚本程序来完成以上任务。</p>
+<p>- 也要实现使用fab命令行的方式来实现以上任务。</p>
+<p>- 要实现日志增量下载，即要预先知道本地已下载过的最新日志有哪些，不要重复下载。</p>
+<h3 id="环境要求："><a href="#环境要求：" class="headerlink" title="环境要求："></a>环境要求：</h3><p>1、linux本地服务器一台192.168.1.2</p>
+<p>2、linux远端服务器一台192.168.1.1</p>
+<p>3、本地服务器使用自带python27，yum安装fabric，fabric版本为1.14.0</p>
+<h3 id="代码实现："><a href="#代码实现：" class="headerlink" title="代码实现："></a>代码实现：</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="comment"># -*- coding:utf-8 -*-</span></span><br><span class="line"><span class="keyword">from</span> fabric.api <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="comment">#主机</span></span><br><span class="line">env.hosts = [<span class="string">'192.168.1.1'</span>]</span><br><span class="line"><span class="comment">#主机用户名</span></span><br><span class="line">env.user = <span class="string">'root'</span></span><br><span class="line"><span class="comment">#主机密码</span></span><br><span class="line">env.password = <span class="string">'123456'</span></span><br><span class="line"><span class="comment">#目标即将要打包的文件</span></span><br><span class="line">tar_files=[<span class="string">'boot.log-*'</span>]</span><br><span class="line"><span class="comment">#以python fabric.py执行时需要用到的初始化单台主机,保留</span></span><br><span class="line">env.host_string = <span class="string">'192.168.1.1'</span></span><br><span class="line"><span class="comment">#远端服务器上的日志获取路径</span></span><br><span class="line">des_locate=<span class="string">'/var/log/'</span></span><br><span class="line"><span class="comment">#本地服务器上的日志下载路径</span></span><br><span class="line">src_locate=<span class="string">'/opt/'</span></span><br><span class="line"><span class="comment">#打包函数</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">pack</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">with</span> cd(des_locate):<span class="comment">#远程到目录/var/log/下</span></span><br><span class="line">        <span class="keyword">with</span> lcd(src_locate):<span class="comment">#本地目录切换到本地的/opt/</span></span><br><span class="line">            os.chdir(src_locate)<span class="comment">#本地目录切换到/opt</span></span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(<span class="string">'file_list.txt'</span>):<span class="comment">#判断本地文件是否存在，如果不存在新建一个空文件</span></span><br><span class="line">                os.system(<span class="string">'echo " "&gt; file_list.txt'</span>)</span><br><span class="line">            put(<span class="string">'file_list.txt'</span>,<span class="string">'file_list.txt'</span>)<span class="comment">#把本地opt下的file_list.txt文件上传到远程主机的/var/log下</span></span><br><span class="line">            run(<span class="string">'tar -zcvf my_pack.tar.gz %s --exclude-from=file_list.txt'</span> % (<span class="string">' '</span>.join(tar_files))) <span class="comment">#打包远端主机上满足boot.log-*的文件，并去除掉file_list.txt中的内容</span></span><br><span class="line"><span class="comment">#下载函数</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">download</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">with</span> cd (des_locate):<span class="comment">#远程到目录/var/log下</span></span><br><span class="line">        <span class="keyword">with</span> lcd(src_locate):<span class="comment">#本地目录切换到本地的/opt/</span></span><br><span class="line">            get(<span class="string">'my_pack.tar.gz'</span>,<span class="string">'my_pack.tar.gz'</span>)<span class="comment">#将远程目录下的文件下载到本地</span></span><br><span class="line"></span><br><span class="line">    os.chdir(src_locate)<span class="comment">#切换本地目录</span></span><br><span class="line">    <span class="keyword">with</span> open(<span class="string">'file_list.txt'</span>,<span class="string">'a'</span>) <span class="keyword">as</span> f:<span class="comment">#创建文件</span></span><br><span class="line">        data=os.popen(<span class="string">'tar -tf my_pack.tar.gz'</span>)<span class="comment">#查看下载下来的压缩包内的内容并写到本地的file_list.txt文件中</span></span><br><span class="line">        file_list=data.readlines()<span class="comment">#格式列表</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> file_list:<span class="comment">#循环写</span></span><br><span class="line">            f.write(i.decode(<span class="string">'utf-8'</span>))</span><br><span class="line"><span class="comment">#解压函数</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">unpack</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">with</span> lcd(src_locate):<span class="comment">#切换目录</span></span><br><span class="line">        local(<span class="string">'tar -zxvf my_pack.tar.gz -C /opt/'</span>)<span class="comment">#本地执行解压</span></span><br><span class="line"><span class="comment">#删除函数</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">delete</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">with</span> cd(des_locate):<span class="comment">#切换目录</span></span><br><span class="line">        run(<span class="string">'rm -rf my_pack.tar.gz'</span>)<span class="comment">#远端执行删除操作</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">print</span> <span class="string">"1:打包"</span></span><br><span class="line">    <span class="keyword">print</span> <span class="string">'2:下载'</span></span><br><span class="line">    <span class="keyword">print</span> <span class="string">'3:解压'</span></span><br><span class="line">    <span class="keyword">print</span> <span class="string">'4:删除'</span></span><br><span class="line">    <span class="keyword">print</span> <span class="string">'5:退出'</span></span><br><span class="line">    <span class="keyword">while</span> <span class="number">1</span>:</span><br><span class="line">        choice_num=raw_input(<span class="string">'输入序号来执行命令：'</span>)</span><br><span class="line">        <span class="keyword">if</span> choice_num==<span class="string">'1'</span>:</span><br><span class="line">            pack()</span><br><span class="line">        <span class="keyword">elif</span> choice_num==<span class="string">'2'</span>:</span><br><span class="line">            download()</span><br><span class="line">        <span class="keyword">elif</span> choice_num==<span class="string">'3'</span>:</span><br><span class="line">            unpack()</span><br><span class="line">        <span class="keyword">elif</span> choice_num==<span class="string">'4'</span>:</span><br><span class="line">            delete()</span><br><span class="line">        <span class="keyword">elif</span> choice_num==<span class="string">'5'</span>:</span><br><span class="line">            exit()</span><br><span class="line"><span class="keyword">if</span> __name__==<span class="string">'__main__'</span>:</span><br><span class="line"></span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+<h3 id="执行方法："><a href="#执行方法：" class="headerlink" title="执行方法："></a>执行方法：</h3><p>1、方法一</p>
+<p>将代码保存在192.168.1.2上的任意目录下fabric.py文件，我是放在/opt/auto-get-log/目录下,依次执行pack、download、unpack、delete命令</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cd /opt/auto-get-log/</span><br><span class="line">fab pack</span><br><span class="line">fab download</span><br><span class="line">fab unpack</span><br><span class="line">fab delete</span><br></pre></td></tr></table></figure>
+<p>2、方法二</p>
+<p>使用python即可</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /opt/auto-get-log/</span><br><span class="line">python fabric.py</span><br></pre></td></tr></table></figure>
 </the>
       
     </div>
@@ -317,13 +329,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a  href="/2018/05/10/多线程的一点思考/">多线程的一点思考</a></p>
+        <p><span>本文标题:</span><a  href="/2018/06/20/fabric应用/">fabric应用</a></p>
         <p><span>文章作者:</span><a  href="/" title="访问 JingWei Zhou 的个人博客">JingWei Zhou</a></p>
-        <p><span>发布时间:</span>2018年05月10日 - 20时58分</p>
-        <p><span>最后更新:</span>2018年05月10日 - 21时22分</p>
+        <p><span>发布时间:</span>2018年06月20日 - 20时49分</p>
+        <p><span>最后更新:</span>2018年06月20日 - 21时03分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2018/05/10/多线程的一点思考/" title="多线程的一点思考">https://jingweiz300.github.io/2018/05/10/多线程的一点思考/</a>
-            <span class="copy-path" data-clipboard-text="原文: https://jingweiz300.github.io/2018/05/10/多线程的一点思考/　　作者: JingWei Zhou" title=""></span>
+            <span>原始链接:</span><a class="post-url" href="/2018/06/20/fabric应用/" title="fabric应用">https://jingweiz300.github.io/2018/06/20/fabric应用/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://jingweiz300.github.io/2018/06/20/fabric应用/　　作者: JingWei Zhou" title=""></span>
         </p>
         <p>
             <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
@@ -334,18 +346,9 @@
 
 <nav id="article-nav">
   
-    <a  href="/2018/05/13/计算机编码/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          计算机编码
-        
-      </div>
-    </a>
   
-  
-    <a  href="/2018/04/25/pandas操作excel/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">pandas操作excel</div>
+    <a  href="/2018/06/19/zabbix监控ibm-x3550-m3服务器/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">zabbix监控ibm-x3550-m3服务器</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -357,7 +360,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#简言"><span class="toc-number">1.</span> <span class="toc-text">简言</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#业务需求："><span class="toc-number">1.</span> <span class="toc-text">业务需求：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#程序要求："><span class="toc-number">2.</span> <span class="toc-text">程序要求：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#环境要求："><span class="toc-number">3.</span> <span class="toc-text">环境要求：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#代码实现："><span class="toc-number">4.</span> <span class="toc-text">代码实现：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#执行方法："><span class="toc-number">5.</span> <span class="toc-text">执行方法：</span></a></li></ol>
 </div>
 <style>
     .left-col .switch-btn {
@@ -438,13 +441,11 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a  href="/2018/05/13/计算机编码/" title="上一篇: 计算机编码">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a  href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a  href="/2018/04/25/pandas操作excel/" title="下一篇: pandas操作excel">
+            <a  href="/2018/06/19/zabbix监控ibm-x3550-m3服务器/" title="下一篇: zabbix监控ibm-x3550-m3服务器">
                 <i class="fa fa-angle-right"></i>
             </a>
         
