@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>https://jingweiz300.github.io/2018/06/21/fabric%E4%BD%BF%E7%94%A82-1-3%E7%89%88%E6%9C%AC/</loc>
+    <lastmod>2018-06-21T12:03:25.278Z</lastmod>
+    <data>
+        <display>
+        <title>fabric使用2.1.3版本</title>
+        <pubTime>2018-06-21T11:57:11.000Z</pubTime>
+        
+        <tag>fabric</tag>
+         
+         
+           
+             
+              <breadCrumb title="python" url="https://jingweiz300.github.io/categories/python/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://jingweiz300.github.io/2018/06/20/fabric%E5%BA%94%E7%94%A8/</loc>
     <lastmod>2018-06-20T13:03:31.743Z</lastmod>
     <data>
@@ -259,9 +279,9 @@
         <title>Matplotlib模块的学习</title>
         <pubTime>2018-03-12T01:35:37.000Z</pubTime>
         
-        <tag>Matplotlib</tag>
-         
         <tag>模块使用</tag>
+         
+        <tag>Matplotlib</tag>
          
          
            
@@ -281,9 +301,9 @@
         <title>Numpy模块的学习(3-5)</title>
         <pubTime>2018-03-15T04:35:37.000Z</pubTime>
         
-        <tag>模块使用</tag>
-         
         <tag>numpy</tag>
+         
+        <tag>模块使用</tag>
          
          
            
@@ -303,9 +323,9 @@
         <title>Numpy模块的学习(1-2)</title>
         <pubTime>2018-03-14T11:35:37.000Z</pubTime>
         
-        <tag>模块使用</tag>
-         
         <tag>numpy</tag>
+         
+        <tag>模块使用</tag>
          
          
            

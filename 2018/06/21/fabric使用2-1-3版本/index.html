@@ -7,25 +7,20 @@
   
   
   
-  <title>zabbix监控MSSQL | My Story</title>
+  <title>fabric使用2.1.3版本 | My Story</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="zabbix监控MSSQL：">
-<meta name="keywords" content="zabbix">
+  <meta name="description" content="fabric使用2.1.3版本： 因为需求变更为使用高版本的fabric，因为高版本的fabric的使用较低版本的使用方法有差距，参照官方文档之后，将代码重写">
+<meta name="keywords" content="fabric">
 <meta property="og:type" content="article">
-<meta property="og:title" content="zabbix监控MSSQL">
-<meta property="og:url" content="https://jingweiz300.github.io/2018/06/13/zabbix监控MSSQL/index.html">
+<meta property="og:title" content="fabric使用2.1.3版本">
+<meta property="og:url" content="https://jingweiz300.github.io/2018/06/21/fabric使用2-1-3版本/index.html">
 <meta property="og:site_name" content="My Story">
-<meta property="og:description" content="zabbix监控MSSQL：">
+<meta property="og:description" content="fabric使用2.1.3版本： 因为需求变更为使用高版本的fabric，因为高版本的fabric的使用较低版本的使用方法有差距，参照官方文档之后，将代码重写">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="file:///C:/Users/jingw/AppData/Local/Temp/msohtmlclip1/01/clip_image001.png">
-<meta property="og:image" content="file:///C:/Users/jingw/AppData/Local/Temp/msohtmlclip1/01/clip_image001.png">
-<meta property="og:image" content="file:///C:/Users/jingw/AppData/Local/Temp/msohtmlclip1/01/clip_image002.png">
-<meta property="og:image" content="file:///C:/Users/jingw/AppData/Local/Temp/msohtmlclip1/01/clip_image002.png">
-<meta property="og:updated_time" content="2018-06-13T15:16:01.685Z">
+<meta property="og:updated_time" content="2018-06-21T12:03:25.278Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="zabbix监控MSSQL">
-<meta name="twitter:description" content="zabbix监控MSSQL：">
-<meta name="twitter:image" content="file:///C:/Users/jingw/AppData/Local/Temp/msohtmlclip1/01/clip_image001.png">
+<meta name="twitter:title" content="fabric使用2.1.3版本">
+<meta name="twitter:description" content="fabric使用2.1.3版本： 因为需求变更为使用高版本的fabric，因为高版本的fabric的使用较低版本的使用方法有差距，参照官方文档之后，将代码重写">
   
     <link rel="alternative" href="/atom.xml" title="My Story" type="application/atom+xml">
   
@@ -265,11 +260,11 @@
         </header>                
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-zabbix监控MSSQL" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-fabric使用2-1-3版本" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a  href="/2018/06/13/zabbix监控MSSQL/" class="article-date">
-      <time datetime="2018-06-13T14:09:45.000Z" itemprop="datePublished">2018-06-13</time>
+      <a  href="/2018/06/21/fabric使用2-1-3版本/" class="article-date">
+      <time datetime="2018-06-21T11:57:11.000Z" itemprop="datePublished">2018-06-21</time>
 </a>
 
     </div>
@@ -283,7 +278,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      zabbix监控MSSQL
+      fabric使用2.1.3版本
     </h1>
   
 
@@ -293,13 +288,13 @@
       <div class="article-info article-info-post">
         
     <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/operation/">operation</a>
+    <a class="article-category-link" href="/categories/python/">python</a>
     </div>
 
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/zabbix/">zabbix</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/fabric/">fabric</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -309,75 +304,18 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p><strong> zabbix监控MSSQL：</strong> <excerpt in="" index="" |="" 首页摘要=""></excerpt></p>
-<a id="more"></a>
+        <p><strong> fabric使用2.1.3版本：</strong> <excerpt in="" index="" |="" 首页摘要=""><br>因为需求变更为使用高版本的fabric，因为高版本的fabric的使用较低版本的使用方法有差距，参照官方文档之后，将代码重写<br><a id="more"></a></excerpt></p>
 <the rest="" of="" contents="" |="" 余下全文="">
 
-<p>1.思路整理</p>
-<p>1、在zabbix server上安装Freetds、unixODBC、unixODBC-devel使其能够访问SQL Server数据库。</p>
-<p>2、配置ODBC访问Sql Server数据库。</p>
-<p>3、定制SQL语句</p>
-<p>4、在zabbix管理界面添加监控数据库的item。</p>
-<p>2.操作过程</p>
-<p>1、在zabbix server上安装Freetds、unixODBC、unixODBC-devel</p>
-<p>#yuminstall unixODBC unixODBC-devel</p>
-<p>​    注：freetds通常yum源里面没有，需要下载编译安装</p>
-<p> #wget <a href="http://ibiblio.org/pub/Linux/ALPHA/freetds/stable/freetds-stable.tgz" target="_blank" rel="noopener">http://ibiblio.org/pub/Linux/ALPHA/freetds/stable/freetds-stable.tgz</a></p>
-<p> tar -zxvf freetds-stable.tgz </p>
-<p>  #cdfreetds-0.91/</p>
-<p> #./configure –prefix=/usr/local/freetds –with-tdsver=8.0 –enable-msdblib</p>
-<p>   #make</p>
-<p>   #makeinstall</p>
-<p>2、配置ODBC访问Sql Server数据库</p>
-<p>a.查找libtdsodbc.so.0驱动的位置</p>
-<p>#locate libtdsodbc.so.0</p>
-<p>如果没有locate命令，安装mlocate执行</p>
-<p>#yuminstall mlocate &amp;&amp; updatedb</p>
-<p>找到libtdsodbc.so.0文件后复制其路径做个软连接</p>
-<p>#ln -s/usr/local/freetds/lib/libtdsodbc.so.0 /usr/lib64/libtdsodbc.so.0</p>
-<p>b.修改/etc/odbcinst.ini添加一行</p>
-<p>#vim/etc/odbcinst.ini</p>
-<p>[FreeTDS]</p>
-<p>Driver =/usr/lib64/libtdsodbc.so.0</p>
-<p>c.配置odbc连接信息</p>
-<p>#vim/etc/odbc.ini #写入以下配置文件</p>
-<p>[DBNAME]             #定义一个标识</p>
-<p>Driver = FreeTDS</p>
-<p>Server = [SQL Server IP]</p>
-<p>PORT = 1433</p>
-<p>TDS_Version = 8.0</p>
-<p>#isql-v DBNAME（odbc.ini中定义的） 数据库账号数据库密码</p>
-<p>d.连接数据库测试</p>
-<p>连接到数据库并执行SQL测试</p>
-<p><img src="file:///C:\Users\jingw\AppData\Local\Temp\msohtmlclip1\01\clip_image001.png" alt="image.png"></p>
-<p>3、定制SQL语句因需求而异。</p>
-<p>4、在zabbix管理界面添加监控数据库的item。</p>
-<p>找到被监控的SQL Server主句，添加item  </p>
-<p><img src="file:///C:\Users\jingw\AppData\Local\Temp\msohtmlclip1\01\clip_image001.png" alt="image.png"></p>
-<p>zabbix采集到的数据。与上面SQL查询到的一致。</p>
-<p>方法二 </p>
-<ol>
-<li>到官方下载模版</li>
-</ol>
-<p>下载地址：<a href="https://share.zabbix.com/databases/microsoft-sql-server/template-ms-sql-2012" target="_blank" rel="noopener">https://share.zabbix.com/databases/microsoft-sql-server/template-ms-sql-2012</a></p>
-<ol>
-<li>修改agentd.conf</li>
-</ol>
-<p>修改zabbix_agent.conf文件</p>
-<p>添加下边这行到配置文件最后</p>
-<p>UserParameter=sqldatabasename.discovery,powershell-NoProfile -ExecutionPolicy Bypass -FileC:\zabbix\scripts\SQLBaseName_To_Zabbix.ps1</p>
-<p>将powershell脚本放在目录下</p>
-<p>将SQLBaseName_To_Zabbix.ps1脚本放在C:\zabbix\scripts\目录下</p>
-<ol>
-<li><p>.重启agentd</p>
-</li>
-<li><p>导入模板文件</p>
-</li>
-</ol>
-<p>导入模板MS SQL 2012.xml</p>
-<p><img src="file:///C:\Users\jingw\AppData\Local\Temp\msohtmlclip1\01\clip_image002.png" alt="image.png"></p>
-<p><img src="file:///C:\Users\jingw\AppData\Local\Temp\msohtmlclip1\01\clip_image002.png" alt="image.png"></p>
-<p>5.主机应用模版</p>
+<h3 id="业务需求："><a href="#业务需求：" class="headerlink" title="业务需求："></a>业务需求：</h3><p>使用fabric库，进入自己的实验Linux机器（10.10.10.234）的系统日志目录/var/log，找到boot.log-<strong>*</strong>,把这些文件打包成一个压缩包，下载到自己的笔记本电脑，使用shutil解压，然后删除掉服务器上的压缩包。用户名密码root/123456</p>
+<h3 id="程序要求："><a href="#程序要求：" class="headerlink" title="程序要求："></a>程序要求：</h3><p>- 既要可以通过python xxx.py的方式来运行脚本程序来完成以上任务。</p>
+<p>- 也要实现使用fab命令行的方式来实现以上任务。</p>
+<p>- 要实现日志增量下载，即要预先知道本地已下载过的最新日志有哪些，不要重复下载。</p>
+<h3 id="环境要求："><a href="#环境要求：" class="headerlink" title="环境要求："></a>环境要求：</h3><p>1、linux本地服务器一台192.168.1.2</p>
+<p>2、linux远端服务器一台192.168.1.1</p>
+<p>3、本地服务器使用python36，github下载fabric，fabric版本为2.1.3</p>
+<p>下载地址：<a href="https://github.com/fabric/fabric" target="_blank" rel="noopener">https://github.com/fabric/fabric</a></p>
+<h3 id="代码实现："><a href="#代码实现：" class="headerlink" title="代码实现："></a>代码实现：</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#环境：python36 fabric2.1.3</span></span><br><span class="line"><span class="keyword">from</span> fabric  <span class="keyword">import</span> Connection</span><br><span class="line"><span class="keyword">from</span> invoke <span class="keyword">import</span> task, Exit</span><br><span class="line"><span class="keyword">import</span> shutil</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line">fab_con=Connection(host=<span class="string">'192.168.1.1'</span>,user=<span class="string">'root'</span>,port=<span class="string">'22'</span>,connect_kwargs=&#123;<span class="string">'password'</span>:<span class="string">'123456'</span>&#125;)</span><br><span class="line"><span class="comment">#远端服务器上的日志获取路径</span></span><br><span class="line">des_locate=<span class="string">'/var/log/'</span></span><br><span class="line"><span class="comment">#本地服务器上的日志下载路径</span></span><br><span class="line">src_locate=<span class="string">'/Users/zhoujingwei/Downloads/'</span></span><br><span class="line"><span class="comment">#目标即将要打包的文件</span></span><br><span class="line">tar_files=[<span class="string">'boot.log-*'</span>]</span><br><span class="line"><span class="comment">#打包函数</span></span><br><span class="line"><span class="meta">@task</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">pack</span><span class="params">(c)</span>:</span></span><br><span class="line">    <span class="keyword">with</span> fab_con.cd(des_locate):<span class="comment">#远程到目录/var/log/下</span></span><br><span class="line">        os.chdir(src_locate)<span class="comment">#本地目录切换到/opt</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(<span class="string">'file_list.txt'</span>):<span class="comment">#判断本地文件是否存在，如果不存在新建一个空文件</span></span><br><span class="line">            os.system(<span class="string">'echo " "&gt; file_list.txt'</span>)</span><br><span class="line">        fab_con.put(<span class="string">'file_list.txt'</span>,<span class="string">'%s/file_list.txt'</span>% des_locate)<span class="comment">#把本地opt下的file_list.txt文件上传到远程主机的/var/log下</span></span><br><span class="line">        fab_con.run(<span class="string">'tar -zcvf my_pack.tar.gz %s --exclude-from=file_list.txt'</span> % (<span class="string">' '</span>.join(tar_files))) <span class="comment">#打包远端主机上满足boot.log-*的文件，并去除掉file_list.txt中的内容</span></span><br><span class="line"><span class="comment">#下载函数</span></span><br><span class="line"><span class="meta">@task</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">download</span><span class="params">(c)</span>:</span></span><br><span class="line">    <span class="keyword">with</span> fab_con.cd(des_locate):<span class="comment">#远程到目录/var/log下</span></span><br><span class="line">        os.chdir(src_locate)  <span class="comment"># 本地目录切换到/opt</span></span><br><span class="line">        fab_con.get(<span class="string">'%s/my_pack.tar.gz'</span> % des_locate,<span class="string">'my_pack.tar.gz'</span>)<span class="comment">#将远程目录下的文件下载到本地</span></span><br><span class="line"></span><br><span class="line">    os.chdir(src_locate)<span class="comment">#切换本地目录</span></span><br><span class="line">    <span class="keyword">with</span> open(<span class="string">'file_list.txt'</span>,<span class="string">'a'</span>) <span class="keyword">as</span> f:<span class="comment">#创建文件</span></span><br><span class="line">        data=os.popen(<span class="string">'tar -tf my_pack.tar.gz'</span>)<span class="comment">#查看下载下来的压缩包内的内容并写到本地的file_list.txt文件中</span></span><br><span class="line">        file_list=data.read()<span class="comment">#格式列表</span></span><br><span class="line">        <span class="keyword">print</span> (file_list)</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> file_list:<span class="comment">#循环写</span></span><br><span class="line">            f.write(i)</span><br><span class="line"><span class="comment">#解压函数</span></span><br><span class="line"><span class="meta">@task</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">unpack</span><span class="params">(c)</span>:</span></span><br><span class="line">    os.chdir(src_locate)  <span class="comment"># 本地目录切换到/opt</span></span><br><span class="line">    <span class="comment">#os.system('tar -zxvf my_pack.tar.gz -C %s' % src_locate)#本地执行解压</span></span><br><span class="line">    shutil.unpack_archive(<span class="string">'my_pack.tar.gz'</span>,src_locate,<span class="string">'gztar'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#删除函数</span></span><br><span class="line"><span class="meta">@task</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">delete</span><span class="params">(c)</span>:</span></span><br><span class="line">    os.chdir(src_locate)  <span class="comment"># 本地目录切换到/opt</span></span><br><span class="line">    fab_con.run(<span class="string">'rm -rf %s/my_pack.tar.gz'</span> % des_locate)<span class="comment">#远端执行删除操作</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#打包函数</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">pack_py</span><span class="params">(c)</span>:</span></span><br><span class="line">    <span class="keyword">with</span> c.cd(des_locate):<span class="comment">#远程到目录/var/log/下</span></span><br><span class="line">        os.chdir(src_locate)<span class="comment">#本地目录切换到/opt</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(<span class="string">'file_list.txt'</span>):<span class="comment">#判断本地文件是否存在，如果不存在新建一个空文件</span></span><br><span class="line">            os.system(<span class="string">'echo " "&gt; file_list.txt'</span>)</span><br><span class="line">        c.put(<span class="string">'file_list.txt'</span>,<span class="string">'%s/file_list.txt'</span>% des_locate)<span class="comment">#把本地opt下的file_list.txt文件上传到远程主机的/var/log下</span></span><br><span class="line">        c.run(<span class="string">'tar -zcvf my_pack.tar.gz %s --exclude-from=file_list.txt'</span> % (<span class="string">' '</span>.join(tar_files))) <span class="comment">#打包远端主机上满足boot.log-*的文件，并去除掉file_list.txt中的内容</span></span><br><span class="line"><span class="comment">#下载函数</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">download_py</span><span class="params">(c)</span>:</span></span><br><span class="line">    <span class="keyword">with</span> c.cd(des_locate):<span class="comment">#远程到目录/var/log下</span></span><br><span class="line">        os.chdir(src_locate)  <span class="comment"># 本地目录切换到/opt</span></span><br><span class="line">        c.get(<span class="string">'%s/my_pack.tar.gz'</span> % des_locate,<span class="string">'my_pack.tar.gz'</span>)<span class="comment">#将远程目录下的文件下载到本地</span></span><br><span class="line"></span><br><span class="line">    os.chdir(src_locate)<span class="comment">#切换本地目录</span></span><br><span class="line">    <span class="keyword">with</span> open(<span class="string">'file_list.txt'</span>,<span class="string">'a'</span>) <span class="keyword">as</span> f:<span class="comment">#创建文件</span></span><br><span class="line">        data=os.popen(<span class="string">'tar -tf my_pack.tar.gz'</span>)<span class="comment">#查看下载下来的压缩包内的内容并写到本地的file_list.txt文件中</span></span><br><span class="line">        file_list=data.read()<span class="comment">#格式列表</span></span><br><span class="line">        <span class="keyword">print</span> (file_list)</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> file_list:<span class="comment">#循环写</span></span><br><span class="line">            f.write(i)</span><br><span class="line"><span class="comment">#解压函数</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">unpack_py</span><span class="params">(c)</span>:</span></span><br><span class="line">    os.chdir(src_locate)  <span class="comment"># 本地目录切换到/opt</span></span><br><span class="line">    <span class="comment">#os.system('tar -zxvf my_pack.tar.gz -C %s' % src_locate)#本地执行解压</span></span><br><span class="line">    shutil.unpack_archive(<span class="string">'my_pack.tar.gz'</span>,src_locate,<span class="string">'gztar'</span>)</span><br><span class="line"><span class="comment">#删除函数</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">delete_py</span><span class="params">(c)</span>:</span></span><br><span class="line">    os.chdir(src_locate)  <span class="comment"># 本地目录切换到/opt</span></span><br><span class="line">    c.run(<span class="string">'rm -rf %s/my_pack.tar.gz'</span> % des_locate)<span class="comment">#远端执行删除操作</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">while</span> <span class="number">1</span>:</span><br><span class="line">        print(<span class="string">"1:打包"</span>)</span><br><span class="line">        print(<span class="string">'2:下载'</span>)</span><br><span class="line">        print(<span class="string">'3:解压'</span>)</span><br><span class="line">        print(<span class="string">'4:删除'</span>)</span><br><span class="line">        print(<span class="string">'5:退出'</span>)</span><br><span class="line">        choice_num=input(<span class="string">'输入序号来执行命令：'</span>)</span><br><span class="line">        <span class="keyword">if</span> choice_num==<span class="string">'1'</span>:</span><br><span class="line">            pack_py(c=fab_con)</span><br><span class="line">            <span class="keyword">print</span> (<span class="string">'打包已完成'</span>)</span><br><span class="line">        <span class="keyword">elif</span> choice_num==<span class="string">'2'</span>:</span><br><span class="line">            download_py(c=fab_con)</span><br><span class="line">            print(<span class="string">'下载已完成'</span>)</span><br><span class="line">        <span class="keyword">elif</span> choice_num==<span class="string">'3'</span>:</span><br><span class="line">            unpack_py(c=fab_con)</span><br><span class="line">            print(<span class="string">'解压已完成'</span>)</span><br><span class="line">        <span class="keyword">elif</span> choice_num==<span class="string">'4'</span>:</span><br><span class="line">            delete_py(c=fab_con)</span><br><span class="line">            print(<span class="string">'删除已完成'</span>)</span><br><span class="line">        <span class="keyword">elif</span> choice_num==<span class="string">'5'</span>:</span><br><span class="line">            exit()</span><br><span class="line"><span class="keyword">if</span> __name__==<span class="string">'__main__'</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
 </the>
       
     </div>
@@ -386,13 +324,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a  href="/2018/06/13/zabbix监控MSSQL/">zabbix监控MSSQL</a></p>
+        <p><span>本文标题:</span><a  href="/2018/06/21/fabric使用2-1-3版本/">fabric使用2.1.3版本</a></p>
         <p><span>文章作者:</span><a  href="/" title="访问 JingWei Zhou 的个人博客">JingWei Zhou</a></p>
-        <p><span>发布时间:</span>2018年06月13日 - 22时09分</p>
-        <p><span>最后更新:</span>2018年06月13日 - 23时16分</p>
+        <p><span>发布时间:</span>2018年06月21日 - 19时57分</p>
+        <p><span>最后更新:</span>2018年06月21日 - 20时03分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2018/06/13/zabbix监控MSSQL/" title="zabbix监控MSSQL">https://jingweiz300.github.io/2018/06/13/zabbix监控MSSQL/</a>
-            <span class="copy-path" data-clipboard-text="原文: https://jingweiz300.github.io/2018/06/13/zabbix监控MSSQL/　　作者: JingWei Zhou" title=""></span>
+            <span>原始链接:</span><a class="post-url" href="/2018/06/21/fabric使用2-1-3版本/" title="fabric使用2.1.3版本">https://jingweiz300.github.io/2018/06/21/fabric使用2-1-3版本/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://jingweiz300.github.io/2018/06/21/fabric使用2-1-3版本/　　作者: JingWei Zhou" title=""></span>
         </p>
         <p>
             <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
@@ -403,18 +341,9 @@
 
 <nav id="article-nav">
   
-    <a  href="/2018/06/13/zabbix用户密码修改/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          zabbix用户密码修改
-        
-      </div>
-    </a>
   
-  
-    <a  href="/2018/05/13/计算机编码/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">计算机编码</div>
+    <a  href="/2018/06/20/fabric应用/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">fabric应用</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -426,7 +355,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#业务需求："><span class="toc-number">1.</span> <span class="toc-text">业务需求：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#程序要求："><span class="toc-number">2.</span> <span class="toc-text">程序要求：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#环境要求："><span class="toc-number">3.</span> <span class="toc-text">环境要求：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#代码实现："><span class="toc-number">4.</span> <span class="toc-text">代码实现：</span></a></li></ol>
 </div>
 <style>
     .left-col .switch-btn {
@@ -507,13 +436,11 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a  href="/2018/06/13/zabbix用户密码修改/" title="上一篇: zabbix用户密码修改">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a  href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a  href="/2018/05/13/计算机编码/" title="下一篇: 计算机编码">
+            <a  href="/2018/06/20/fabric应用/" title="下一篇: fabric应用">
                 <i class="fa fa-angle-right"></i>
             </a>
         
