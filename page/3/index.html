@@ -569,15 +569,8 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>有时候网络不给力,很多依赖包通过pip下载太慢了,可以通过已有的环境导出再导入新环境.</p>
-<p>现有环境导出</p>
-<p>pip freeze &gt; requestments.txt    # 编辑此文件对需要的包进行删减<br>pip install -d pgk/ -r requestments.txt<br>导出需要的包</p>
-<p>导入新环境</p>
-<p>首先将刚才导出的包传到新环境,然后执行</p>
-<p>pip install *</p>
-<p>总结</p>
-<p>关键是pip install -d 当然网络良好可以通过pip install -r requestments.txt</p>
-
+              <p><strong> python环境迁移：</strong> <excerpt in="" index="" |="" 首页摘要=""><br></excerpt></p>
+          
       
     </div>
     
@@ -594,6 +587,10 @@
         <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/常用命令/">常用命令</a></li></ul>
     </div>
 
+      
+        <p class="article-more-link">
+          <a   href="/2017/02/10/python环境迁移/#more">查看更多 >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
@@ -642,153 +639,8 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <ol>
-<li><p>使用conda<br>首先我们将要确认你已经安装好了conda</p>
-</li>
-<li><p>配置环境<br>下一步我们将通过创建几个环境来展示conda的环境管理功能。使你更加轻松的了解关于环境的一切。我们将学习如何确认你在哪个环境中，以及如何做复制一个环境作为备份。</p>
-</li>
-<li><p>测试python<br>然后我们将检查哪一个版本的python可以被安装，以及安装另一个版本的python，还有在两个版本的python之间的切换。</p>
-</li>
-<li><p>检查包<br>1)我们将罗列出安装在我们电脑上的包</p>
-<p>2)浏览可用的包</p>
-<p>3)使用conda install命令来来安装以及移除一些包</p>
-<p>4)对于一些不能使用conda安装的包，我们将在Anaconda.org网站上搜索</p>
-<p>5)对于那些在其它位置的包，我们将使用pip命令来实现安装。我们还会安装一个可以免费试用30天的商业包IOPro</p>
-</li>
-<li><p>移除包、环境以及conda</p>
-</li>
-</ol>
-<h1 id="管理conda："><a href="#管理conda：" class="headerlink" title="管理conda："></a>管理conda：</h1><h2 id="检查conda版本"><a href="#检查conda版本" class="headerlink" title="检查conda版本:"></a>检查conda版本:</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda --version</span><br></pre></td></tr></table></figure>
-<h2 id="升级当前版本的conda"><a href="#升级当前版本的conda" class="headerlink" title="升级当前版本的conda"></a>升级当前版本的conda</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda update conda</span><br></pre></td></tr></table></figure>
-<h1 id="管理环境"><a href="#管理环境" class="headerlink" title="管理环境"></a>管理环境</h1><h2 id="创建并激活一个环境"><a href="#创建并激活一个环境" class="headerlink" title="创建并激活一个环境"></a>创建并激活一个环境</h2><p>使用”conda create”命令，后边跟上你希望用来称呼它的任何名字：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda create --name snowflake biopython</span><br></pre></td></tr></table></figure>
-<h2 id="激活这个新环境"><a href="#激活这个新环境" class="headerlink" title="激活这个新环境"></a>激活这个新环境</h2><ul>
-<li><p>Linux，OS X:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source activate snowflakes</span><br></pre></td></tr></table></figure>
-<p>​</p>
-</li>
-<li><p>Windows：</p>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">activate snowflake</span><br></pre></td></tr></table></figure>
-<h3 id="小技巧："><a href="#小技巧：" class="headerlink" title="小技巧："></a>小技巧：</h3><p>新的开发环境会被默认安装在你conda目录下的envs文件目录下。你可以指定一个其他的路径；去通过<br><code>conda create -h</code>了解更多信息吧。</p>
-<h2 id="列出所有的环境"><a href="#列出所有的环境" class="headerlink" title="列出所有的环境"></a>列出所有的环境</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda info -envis或者(-e)</span><br></pre></td></tr></table></figure>
-<p><strong> 注意：conda有时也会在目前活动的环境前边加上*号。</strong></p>
-<h2 id="切换到另一个环境-activate-deactivate"><a href="#切换到另一个环境-activate-deactivate" class="headerlink" title="切换到另一个环境(activate/deactivate)"></a>切换到另一个环境(activate/deactivate)</h2><p>为了切换到另一个环境，键入下列命令以及所需环境的名字。</p>
-<ul>
-<li><p>Linux，OS X:</p>
-<p>​</p>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source activate snowflakes</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>Windows：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">activate snowflakes</span><br></pre></td></tr></table></figure>
-<p>如果要从你当前工作环境的路径切换到系统根目录时，键入： </p>
-<ul>
-<li><p>Linux，OS X:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source deactivate</span><br></pre></td></tr></table></figure>
-<ul>
-<li>Windows:</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">deactivate</span><br></pre></td></tr></table></figure>
-<h2 id="复制一个环境"><a href="#复制一个环境" class="headerlink" title="复制一个环境"></a>复制一个环境</h2><p>通过克隆来复制一个环境。这儿将通过克隆snowfllakes来创建一个称为flowers的副本。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda create -n flowers --clone snowflakes</span><br></pre></td></tr></table></figure>
-<p>通过</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda info –-envs1</span><br></pre></td></tr></table></figure>
-<p>来检查环境</p>
-<hr>
-<h2 id="删除一个环境"><a href="#删除一个环境" class="headerlink" title="删除一个环境"></a>删除一个环境</h2><p>如果你不想要这个名为flowers的环境，就按照如下方法移除该环境：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda remove -n flowers</span><br></pre></td></tr></table></figure>
-<h1 id="管理Python"><a href="#管理Python" class="headerlink" title="管理Python"></a>管理Python</h1><h2 id="安装一个不同版本的python"><a href="#安装一个不同版本的python" class="headerlink" title="安装一个不同版本的python"></a>安装一个不同版本的python</h2><p>现在我们假设你需要python3来编译程序，但是你不想覆盖掉你的python2.7来升级，你可以创建并激活一个名为snakes的环境，并通过下面的命令来安装最新版本的python3：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda create -n snakes python=31</span><br></pre></td></tr></table></figure>
-<hr>
-<h2 id="检查新的环境中的python版本"><a href="#检查新的环境中的python版本" class="headerlink" title="检查新的环境中的python版本"></a>检查新的环境中的python版本</h2><p>确保snakes环境中运行的是python3：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python --version1</span><br></pre></td></tr></table></figure>
-<hr>
-<h2 id="使用不同版本的python"><a href="#使用不同版本的python" class="headerlink" title="使用不同版本的python"></a>使用不同版本的python</h2><p>为了使用不同版本的python，你可以切换环境，通过简单的激活它就可以，让我们看看如何返回默认版本</p>
-<ul>
-<li>Linux，OS X:</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source activate - snowflakes1</span><br></pre></td></tr></table></figure>
-<ul>
-<li>Windows：</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">activate snowflakes1</span><br></pre></td></tr></table></figure>
-<hr>
-<h2 id="注销该环境"><a href="#注销该环境" class="headerlink" title="注销该环境"></a>注销该环境</h2><p>当你完成了在snowflakes环境中的工作室，注销掉该环境并转换你的路径到先前的状态：</p>
-<ul>
-<li>Linux，OS X：</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source deactivate1</span><br></pre></td></tr></table></figure>
-<ul>
-<li>Windows：</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">deactivate1</span><br></pre></td></tr></table></figure>
-<hr>
-<h1 id="管理包"><a href="#管理包" class="headerlink" title="管理包"></a>管理包</h1><ul>
-<li>conda安装和管理python包非常方便，可以在指定的python环境中安装包，且自动安装所需要的依赖包，避免了很多拓展包冲突兼容问题。</li>
-<li>不建议使用easy_install安装包。大部分包都可以使用conda安装，无法使用conda和anaconda.org安装的包可以通过pip命令安装</li>
-<li>使用合适的源可以提升安装的速度</li>
-</ul>
-<hr>
-<h2 id="查看已安装包"><a href="#查看已安装包" class="headerlink" title="查看已安装包"></a>查看已安装包</h2><p>使用这条命令来查看哪个版本的python或其他程序安装在了该环境中，或者确保某些包已经被安装了或被删除了。在你的终端窗口中输入：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda list1</span><br></pre></td></tr></table></figure>
-<hr>
-<h2 id="向指定环境中安装包"><a href="#向指定环境中安装包" class="headerlink" title="向指定环境中安装包"></a>向指定环境中安装包</h2><h3 id="使用Conda命令安装包"><a href="#使用Conda命令安装包" class="headerlink" title="使用Conda命令安装包"></a>使用Conda命令安装包</h3><p>我们将在指定环境中安装这个Beautiful Soup包，有两种方式:<br>- 直接指定-n 指定安装环境的名字</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda install --name bunnies beautifulsoup41</span><br></pre></td></tr></table></figure>
-<p><strong> 提示：你必须告诉conda你要安装环境的名字（-n bunies）否则它将会被安装到当前环境中。\</strong></p>
-<ul>
-<li>激活bunnies环境，再使用conda install命令。</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">activate bunnies</span><br><span class="line">conda install beautifulsoup412</span><br></pre></td></tr></table></figure>
-<h3 id="2-从Anaconda-org安装一个包"><a href="#2-从Anaconda-org安装一个包" class="headerlink" title="2.从Anaconda.org安装一个包"></a>2.从Anaconda.org安装一个包</h3><p>如果一个包不能使用conda安装，我们接下来将在Anaconda.org网站查找。</p>
-<p>在浏览器中，去 <a href="http://anaconda.org/" target="_blank" rel="noopener">Anaconda资源官网</a> 。我们查找一个叫“bottleneck”的包，所以在左上角的叫“Search Anaconda Cloud”搜索框中输入“bottleneck”并点击search按钮。</p>
-<p>Anaconda.org上会有超过一打的bottleneck包的版本可用，但是我们想要那个被下载最频繁的版本。所以你可以通过下载量来排序，通过点击Download栏。<br>点击包的名字来选择最常被下载的包。它会链接到Anaconda.org详情页显示下载的具体命令：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda install--channel https：//conda .anaconda.ort/pandas bottleneck1</span><br></pre></td></tr></table></figure>
-<h3 id="3-通过pip命令来安装包"><a href="#3-通过pip命令来安装包" class="headerlink" title="3. 通过pip命令来安装包"></a>3. 通过pip命令来安装包</h3><p>对于那些无法通过conda安装或者从Anaconda.org获得的包，我们通常可以用pip命令来安装包。</p>
-<p>可以上pypi网<br>站查询要安装的包，查好以后输入pip install命令就可以安装这个包了。</p>
-<p>我们激活想要放置程序的python环境，然后通过pip安装一个叫“See”的程序。</p>
-<ul>
-<li>Linux，OS X：</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source activate bunnies1</span><br></pre></td></tr></table></figure>
-<ul>
-<li>Windows：</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">activate bunnies1</span><br></pre></td></tr></table></figure>
-<p>所有平台：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install see1</span><br></pre></td></tr></table></figure>
-<h3 id="提示：pip只是一个包管理器，所以它不能为你管理环境。pip甚至不能升级python，因为它不像conda一样把python当做包来处理。但是它可以安装一些conda安装不了的包。"><a href="#提示：pip只是一个包管理器，所以它不能为你管理环境。pip甚至不能升级python，因为它不像conda一样把python当做包来处理。但是它可以安装一些conda安装不了的包。" class="headerlink" title="提示：pip只是一个包管理器，所以它不能为你管理环境。pip甚至不能升级python，因为它不像conda一样把python当做包来处理。但是它可以安装一些conda安装不了的包。"></a>提示：pip只是一个包管理器，所以它不能为你管理环境。pip甚至不能升级python，因为它不像conda一样把python当做包来处理。但是它可以安装一些conda安装不了的包。</h3><h3 id="4-文件安装"><a href="#4-文件安装" class="headerlink" title="4. 文件安装"></a>4. 文件安装</h3><p>如果真的遇到走投无路的境地，也就是上面这些方法通通不管用！！！那就只能下载源码安装了，比如exe文件（双击安装）或者whl文件（pip安装）等等。还有在github上找到源码，使用<code>python setup.py install</code>命令安装</p>
-<p>Tips:不建议使用setuptools 的easy_install，非常不方便管理，也不好卸载<br>有些时候，Anaconda和pip下载的速度慢，访问不稳定怎么办？换个源呗，<a href="https://mirrors.tuna.tsinghua.edu.cn/" target="_blank" rel="noopener">清华大学的源</a>就很不错，当然啦，你可以自己google一些好用的源</p>
-<p>对于包管理工具，了解这么多就够了，比较喜欢追根究底的童鞋可以移步<a href="http://zengrong.net/post/2169.htm" target="_blank" rel="noopener">包管理工具解惑</a><br><strong>提示：<br>在任何时候你可以通过在命令后边跟上-help来获得该命令的完整文档。 
-</strong></p>
-<p>eg:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda update --help1</span><br></pre></td></tr></table></figure>
-<p><strong> 小技巧：\</strong><br>很多跟在–后边常用的命令选项，可以被略写为一个短线加命令首字母。所以–name选项和-n的作用是一样的。通过<code>conda -h</code>或<code>conda –-help</code>来看大量的缩写。</p>
-<h1 id="移除包、环境、或者conda"><a href="#移除包、环境、或者conda" class="headerlink" title="移除包、环境、或者conda"></a>移除包、环境、或者conda</h1><p>如果你愿意的话。让我们通过移除一个或多个试验包、环境以及conda来结束这次测试指导。</p>
-<h2 id="移除包"><a href="#移除包" class="headerlink" title="移除包"></a>移除包</h2><p>假设你决定不再使用商业包IOPro。你可以在bunnies环境中移除它。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda remove -n bunnies iopro1</span><br></pre></td></tr></table></figure>
-<h2 id="移除环境"><a href="#移除环境" class="headerlink" title="移除环境"></a>移除环境</h2><p>我们不再需要snakes环境了，所以输入以下命令：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda remove -n snakes --all1</span><br></pre></td></tr></table></figure>
-<h2 id="删除conda"><a href="#删除conda" class="headerlink" title="删除conda"></a>删除conda</h2><ul>
-<li>Linux，OS X：</li>
-</ul>
-<p>移除Anaconda 或 Miniconda 安装文件夹</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm -rf ~/miniconda 1</span><br></pre></td></tr></table></figure>
-<p>OR</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm -rf ~/anaconda1</span><br></pre></td></tr></table></figure>
-<ul>
-<li>Windows：</li>
-</ul>
-<p>去控制面板，点击“添加或删除程序”，选择“Python2.7（Anaconda）”或“Python2.7（Miniconda）”并点击删除程序。</p>
-<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference:"></a>Reference:</h1><p><a href="http://conda.pydata.org/docs/test-drive.html" target="_blank" rel="noopener">30分钟Anaconda快速入门英文版</a></p>
-<p><a href="https://mirrors.tuna.tsinghua.edu.cn/help/anaconda/" target="_blank" rel="noopener">Anaconda清华大学镜像源</a></p>
-
+              <p><strong> 常用anaconda命令大全：</strong> <excerpt in="" index="" |="" 首页摘要=""><br></excerpt></p>
+          
       
     </div>
     
@@ -805,6 +657,10 @@
         <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/anaconda/">anaconda</a></li></ul>
     </div>
 
+      
+        <p class="article-more-link">
+          <a   href="/2017/02/06/常用anaconda命令大全/#more">查看更多 >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
@@ -853,34 +709,8 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>因为经常会分析日志,每次都百度很麻烦总结出来大家.</p>
-<p>分析日志常用工具大家可以百度找一下.</p>
-<p>常见的Linux操作系统登录文件有如下几个：</p>
-<p>1）/var/log/secure：记录登录系统存取数据的文件;</p>
-<p>例如pop3，ssh，telnet，ftp等都会记录在此.</p>
-<p>2）/ar/log/wtmp：记录登录这的信息记录，被编码过，所以必须以last解析;</p>
-<p>3）/var/log/message:jihu所有的开机系统发生的错误都会在此记录;</p>
-<p>4）/var/log.boot.log：记录一些开机或者关机启动的一些服务显示的启动或者关闭的信息;</p>
-<p>5）/var/log/maillog：记录邮件的存取和往来;</p>
-<p>6）/var/log/cron：用来记录crontab这个服务的内容;</p>
-<p>7）/var/log/httpd，/var/log/mysqld.log等等文件，记录几个不同的网络服务的记录文件;</p>
-<p>8)/var/log/acpid ,   ACPI - Advanced Configuration andPower Interface，表示高级配置和电源管理接口。 </p>
-<p>后面的 d 表示 deamon 。 acpid 也就是 the ACPI event daemon 。 也就是 acpi的消息进程。用来控制、获取、管理 acpi 的状态的服务程序。</p>
-<p>9)/var/run/utmp 记录着现在登录的用户;</p>
-<p>10)/var/log/lastlog 记录每个用户最后的登录信息;</p>
-<p>11)/var/log/btmp 记录错误的登录尝试;</p>
-<p>12)/var/log/dmesg内核日志;</p>
-<p>13)/var/log/cpus CPU的处理信息；</p>
-<p>14）/var/log/syslog 事件记录监控程序日志；</p>
-<p>15）/var/log/auth.log 用户认证日志；</p>
-<p>16）/var/log/daemon.log 系统进程日志；</p>
-<p>17）/var/log/mail.err 邮件错误信息；</p>
-<p>18）/var/log/mail.info 邮件信息；</p>
-<p>19）/var/log/mail.warn 邮件警告信息；</p>
-<p>20)/var/log/daemon.log 系统监控程序产生的信息;</p>
-<p>21)/var/log/kern 内核产生的信息;</p>
-<p>22)/var/log/lpr   行打印机假脱机系统产生的信息;</p>
-
+              <p><strong> Centos操作系统常用log日志：</strong> <excerpt in="" index="" |="" 首页摘要=""><br></excerpt></p>
+          
       
     </div>
     
@@ -897,6 +727,10 @@
         <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/系统日志/">系统日志</a></li></ul>
     </div>
 
+      
+        <p class="article-more-link">
+          <a   href="/2017/02/04/Centos操作系统常用log日志/#more">查看更多 >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
@@ -945,48 +779,8 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>不带参数的ps命令显示和当前终端有关的进程状况</p>
-<p>$$变量存储当前进程的PID</p>
-<p>ps第四列是进程所使用的命令，如果是Shell，那么显示shell名，比如sh/ksh等</p>
-<p>awk ‘{print $4}’就是只显示第四列的值</p>
-<p>PS：用echo $SHELL可以查看系统默认的shell</p>
-<p>查看当前发行版可以使用的shell</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /etc/shell</span><br></pre></td></tr></table></figure>
-<p>/bin/sh</p>
-<p>/bin/bash</p>
-<p>/sbin/nologin</p>
-<p>查看当前使用的shell</p>
-<p>一、最常用的查看shell的命令，但不能实时反映当前shell</p>
-<p>[jack@localhost~]$ echo $SHELL</p>
-<p>/bin/bash</p>
-<p>二、下面这个用法并不是所有shell都支持</p>
-<p>[jack@localhost~]$ echo $0</p>
-<p>bash</p>
-<p>三、环境变量中shell的匹配查找</p>
-<p>[jack@localhost~]$ env | grep SHELL</p>
-<p>SHELL=/bin/bash</p>
-<p>四、口令文件中shell的匹配查找</p>
-<p>[jack@localhost~]$ cat /etc/passwd | grep jack</p>
-<p>jack:x:500:500:mengfei:/home/jack:/bin/bash</p>
-<p>五、查看当前进程</p>
-<p>[jack@localhost~]$ ps</p>
-<p>PIDTTY          TIME CMD</p>
-<p>3052pts/0    00:00:00 bash</p>
-<p>3254pts/0    00:00:00 ps</p>
-<p>六、先查看当前shell的pid，再定位到此shell进程</p>
-<p>[jack@localhost~]$ echo $$</p>
-<p>3052</p>
-<p>[jack@localhost~]$ ps -ef | grep 3052</p>
-<p>jack       3052 3047 0 11:33 pts/0    00:00:00 bash</p>
-<p>jack       3420 3052 0 11:57 pts/0    00:00:00 ps -ef</p>
-<p>jack       3421 3052 0 11:57 pts/0    00:00:00 grep 3052</p>
-<p>附：一条命令即可实现：</p>
-<p>[jack@localhost~]$ ps -ef | grep <code>echo $$</code> | grep -v grep | grep -v ps</p>
-<p>jack       3052 3047 0 11:33 pts/0    00:00:00 bash</p>
-<p>七、输入一条不存的命令，查看出错的shell提示</p>
-<p>[jack@localhost~]$ tom</p>
-<p>bash: tom:command not found</p>
-
+              <p><strong> 查看shell：</strong> <excerpt in="" index="" |="" 首页摘要=""><br></excerpt></p>
+          
       
     </div>
     
@@ -1003,6 +797,10 @@
         <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/shell/">shell</a></li></ul>
     </div>
 
+      
+        <p class="article-more-link">
+          <a   href="/2017/02/04/查看shell/#more">查看更多 >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
@@ -1051,25 +849,8 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>/bin,/sbin,/usr/sbin,/usr/bin 目录</p>
-<p>​    这些目录都是存放命令的，首先区别下/sbin和/bin：</p>
-<p>​    从命令功能来看，/sbin 下的命令属于基本的系统命令，如shutdown，reboot，用于启动系统，修复系统，/bin下存放一些普通的基本命令，如ls,chmod等，这些命令在Linux系统里的配置文件脚本里经常用到。</p>
-<p>​    从用户权限的角度看，/sbin目录下的命令通常只有管理员才可以运行，/bin下的命令管理员和一般的用户都可以使用。</p>
-<p>​    从可运行时间角度看，/sbin,/bin能够在挂载其他文件系统前就可以使用。</p>
-<p>   而/usr/bin,/usr/sbin与/sbin /bin目录的区别在于：</p>
-<p>   /bin,/sbin目录是在系统启动后挂载到根文件系统中的，所以/sbin,/bin目录必须和根文件系统在同一分区；</p>
-<p>   /usr/bin,usr/sbin可以和根文件系统不在一个分区。</p>
-<p>   /usr/sbin存放的一些非必须的系统命令；/usr/bin存放一些用户命令，如led(控制LED灯的)。</p>
-<p>​    转下一位网友的解读，个人认为诠释得很到位：</p>
-<p>   /bin是系统的一些指令。bin为binary的简写主要放置一些系统的必备执行档例如:cat、cp、chmod df、dmesg、gzip、kill、ls、mkdir、more、mount、rm、su、tar等。</p>
-<p>   /sbin一般是指超级用户指令。主要放置一些系统管理的必备程式例如:cfdisk、dhcpcd、dump、e2fsck、fdisk、halt、ifconfig、ifup、 ifdown、init、insmod、lilo、lsmod、mke2fs、modprobe、quotacheck、reboot、rmmod、runlevel、shutdown等。</p>
-<p>   /usr/bin是你在后期安装的一些软件的运行脚本。主要放置一些应用软体工具的必备执行档例如c++、g++、gcc、chdrv、diff、dig、du、eject、elm、free、gnome<em>、 gzip、htpasswd、kfm、ktop、last、less、locale、m4、make、man、mcopy、ncftp、 newaliases、nslookup passwd、quota、smb</em>、wget等。</p>
-<p>   /usr/sbin   放置一些用户安装的系统管理的必备程式例如:dhcpd、httpd、imap、in.*d、inetd、lpd、named、netconfig、nmbd、samba、sendmail、squid、swap、tcpd、tcpdump等。</p>
-<p>​    如果新装的系统，运行一些很正常的诸如：shutdown，fdisk的命令时，悍然提示：bash:command not found。那么</p>
-<p>​    首先就要考虑root的$PATH里是否已经包含了这些环境变量。</p>
-<p>​    可以查看PATH，如果是：PATH=$PATH:$HOME/bin则需要添加成如下：</p>
-<p>   PATH=$PATH:$HOME/bin:/sbin:/usr/bin:/usr/sbin</p>
-
+              <p><strong> 各种bin目录的区别：</strong> <excerpt in="" index="" |="" 首页摘要=""><br></excerpt></p>
+          
       
     </div>
     
@@ -1086,6 +867,10 @@
         <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/bin目录/">bin目录</a></li></ul>
     </div>
 
+      
+        <p class="article-more-link">
+          <a   href="/2017/02/02/各种bin目录的区别/#more">查看更多 >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
@@ -1134,17 +919,8 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h3 id="Centos7"><a href="#Centos7" class="headerlink" title="Centos7"></a>Centos7</h3><p>CentOS7下修改主机名</p>
-<p>第一种：hostname 主机名</p>
-<p>01.hostname主机名称 </p>
-<p>这种方式，只能修改临时的主机名，当重启机器后，主机名称又变回来了。</p>
-<p>第二种：hostnamectlset-hostname <hostname></hostname></p>
-<p>命令行中输入</p>
-<p>01.hostnamectlset-hostname &lt;主机名&gt; </p>
-<p>使用这种方式修改，可以永久性的修改主机名称！</p>
-<p>来自 &lt;<a href="http://www.cnblogs.com/kluan/p/4458277.html" target="_blank" rel="noopener">http://www.cnblogs.com/kluan/p/4458277.html</a>&gt; </p>
-<h3 id="Centos6-5"><a href="#Centos6-5" class="headerlink" title="Centos6.5"></a>Centos6.5</h3><p>vi /etc/sysconfig/network HOSTNAME=master #修改localhost.localdomain为master</p>
-
+              <p><strong> 修改linux主机名：</strong> <excerpt in="" index="" |="" 首页摘要=""><br></excerpt></p>
+          
       
     </div>
     
@@ -1161,6 +937,10 @@
         <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/修改主机名/">修改主机名</a></li></ul>
     </div>
 
+      
+        <p class="article-more-link">
+          <a   href="/2017/01/30/修改linux主机名/#more">查看更多 >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>

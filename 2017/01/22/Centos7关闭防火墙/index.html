@@ -9,18 +9,18 @@
   
   <title>Centos7关闭防火墙 | My Story</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="操作系统环境：CentOS Linux release 7.0.1406(Core) 64位 CentOS 7.0默认使用的是firewall作为防火墙，这里改为iptables防火墙步骤。 1、关闭firewall： systemctl stop firewalld.service #停止firewall systemctl disable firewalld.service #禁止firewa">
+  <meta name="description" content="Centos7关闭防火墙：">
 <meta name="keywords" content="常用命令">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Centos7关闭防火墙">
 <meta property="og:url" content="https://jingweiz300.github.io/2017/01/22/Centos7关闭防火墙/index.html">
 <meta property="og:site_name" content="My Story">
-<meta property="og:description" content="操作系统环境：CentOS Linux release 7.0.1406(Core) 64位 CentOS 7.0默认使用的是firewall作为防火墙，这里改为iptables防火墙步骤。 1、关闭firewall： systemctl stop firewalld.service #停止firewall systemctl disable firewalld.service #禁止firewa">
+<meta property="og:description" content="Centos7关闭防火墙：">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-24T06:16:45.812Z">
+<meta property="og:updated_time" content="2018-06-24T08:41:49.693Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Centos7关闭防火墙">
-<meta name="twitter:description" content="操作系统环境：CentOS Linux release 7.0.1406(Core) 64位 CentOS 7.0默认使用的是firewall作为防火墙，这里改为iptables防火墙步骤。 1、关闭firewall： systemctl stop firewalld.service #停止firewall systemctl disable firewalld.service #禁止firewa">
+<meta name="twitter:description" content="Centos7关闭防火墙：">
   
     <link rel="alternative" href="/atom.xml" title="My Story" type="application/atom+xml">
   
@@ -304,7 +304,10 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>操作系统环境：<a href="http://www.linuxidc.com/topicnews.aspx?tid=14" target="_blank" rel="noopener">CentOS</a> Linux release 7.0.1406(Core) 64位</p>
+        <p><strong> Centos7关闭防火墙：</strong> <excerpt in="" index="" |="" 首页摘要=""><br><a id="more"></a></excerpt></p>
+<the rest="" of="" contents="" |="" 余下全文="">
+
+<p>操作系统环境：<a href="http://www.linuxidc.com/topicnews.aspx?tid=14" target="_blank" rel="noopener">CentOS</a> Linux release 7.0.1406(Core) 64位</p>
 <p>CentOS 7.0默认使用的是firewall作为防火墙，这里改为iptables防火墙步骤。</p>
 <p>1、关闭firewall：</p>
 <p>systemctl stop firewalld.service #停止firewall</p>
@@ -332,7 +335,7 @@
 <p>备注：这里使用80和8080端口为例。***部分一般添加到“-A INPUT -p tcp -m state –state NEW -m tcp–dport 22 -jACCEPT”行的上面或者下面，切记不要添加到最后一行，否则防火墙重启后不生效。</p>
 <p>systemctlrestart iptables.service #最后重启防火墙使配置生效</p>
 <p>systemctlenable iptables.service #设置防火墙开机启动</p>
-
+</the>
       
     </div>
     
@@ -343,7 +346,7 @@
         <p><span>本文标题:</span><a  href="/2017/01/22/Centos7关闭防火墙/">Centos7关闭防火墙</a></p>
         <p><span>文章作者:</span><a  href="/" title="访问 JingWei Zhou 的个人博客">JingWei Zhou</a></p>
         <p><span>发布时间:</span>2017年01月22日 - 14时11分</p>
-        <p><span>最后更新:</span>2018年06月24日 - 14时16分</p>
+        <p><span>最后更新:</span>2018年06月24日 - 16时41分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2017/01/22/Centos7关闭防火墙/" title="Centos7关闭防火墙">https://jingweiz300.github.io/2017/01/22/Centos7关闭防火墙/</a>
             <span class="copy-path" data-clipboard-text="原文: https://jingweiz300.github.io/2017/01/22/Centos7关闭防火墙/　　作者: JingWei Zhou" title=""></span>

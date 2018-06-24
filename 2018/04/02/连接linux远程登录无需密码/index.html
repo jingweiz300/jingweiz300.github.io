@@ -9,19 +9,19 @@
   
   <title>连接linux远程登录无需密码 | My Story</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="方法一： 1、生成本地主机的秘要公要；使用命令ssh-keygen命令，回车两次即可，生成的路径假设在path（mac本地机器生成在了user/zhoujingwei /.ssh/路径下）  2、将文件上传到目的主机，使用命令即可 ssh-copy-id -i ~/.ssh/id_rsa.pub root@119.29.167.201 方法二： 直接使用scp把公钥拷贝到remotehost，然后">
+  <meta name="description" content="连接linux远程登录无需密码：">
 <meta name="keywords" content="免密登录">
 <meta property="og:type" content="article">
 <meta property="og:title" content="连接linux远程登录无需密码">
 <meta property="og:url" content="https://jingweiz300.github.io/2018/04/02/连接linux远程登录无需密码/index.html">
 <meta property="og:site_name" content="My Story">
-<meta property="og:description" content="方法一： 1、生成本地主机的秘要公要；使用命令ssh-keygen命令，回车两次即可，生成的路径假设在path（mac本地机器生成在了user/zhoujingwei /.ssh/路径下）  2、将文件上传到目的主机，使用命令即可 ssh-copy-id -i ~/.ssh/id_rsa.pub root@119.29.167.201 方法二： 直接使用scp把公钥拷贝到remotehost，然后">
+<meta property="og:description" content="连接linux远程登录无需密码：">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://jingweiz300.github.io/2018/04/02/连接linux远程登录无需密码/1.png">
-<meta property="og:updated_time" content="2018-06-24T05:47:15.455Z">
+<meta property="og:updated_time" content="2018-06-24T08:43:13.943Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="连接linux远程登录无需密码">
-<meta name="twitter:description" content="方法一： 1、生成本地主机的秘要公要；使用命令ssh-keygen命令，回车两次即可，生成的路径假设在path（mac本地机器生成在了user/zhoujingwei /.ssh/路径下）  2、将文件上传到目的主机，使用命令即可 ssh-copy-id -i ~/.ssh/id_rsa.pub root@119.29.167.201 方法二： 直接使用scp把公钥拷贝到remotehost，然后">
+<meta name="twitter:description" content="连接linux远程登录无需密码：">
 <meta name="twitter:image" content="https://jingweiz300.github.io/2018/04/02/连接linux远程登录无需密码/1.png">
   
     <link rel="alternative" href="/atom.xml" title="My Story" type="application/atom+xml">
@@ -306,7 +306,10 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>方法一：</p>
+        <p><strong> 连接linux远程登录无需密码：</strong> <excerpt in="" index="" |="" 首页摘要=""><br><a id="more"></a></excerpt></p>
+<the rest="" of="" contents="" |="" 余下全文="">
+
+<p>方法一：</p>
 <p>1、生成本地主机的秘要公要；使用命令ssh-keygen命令，回车两次即可，生成的路径假设在path（mac本地机器生成在了user/zhoujingwei /.ssh/路径下）</p>
 <p><img src="/2018/04/02/连接linux远程登录无需密码/1.png" alt=""></p>
 <p>2、将文件上传到目的主机，使用命令即可</p>
@@ -315,7 +318,7 @@
 <p>直接使用scp把公钥拷贝到remotehost，然后登陆的remotehost上创建文件~/.ssh/authorized_keys,<br>并把公钥的内容追加到这个文件中。</p>
 <p>jsmith@local-host$ scp ~/.ssh/id_rsa.pub  usrname@remotehost:~/.ssh/</p>
 <p>jsmith@local-host$  cat id_rsa.pub&gt;&gt;~/.ssh/authorized_keys</p>
-
+</the>
       
     </div>
     
@@ -326,7 +329,7 @@
         <p><span>本文标题:</span><a  href="/2018/04/02/连接linux远程登录无需密码/">连接linux远程登录无需密码</a></p>
         <p><span>文章作者:</span><a  href="/" title="访问 JingWei Zhou 的个人博客">JingWei Zhou</a></p>
         <p><span>发布时间:</span>2018年04月02日 - 10时58分</p>
-        <p><span>最后更新:</span>2018年06月24日 - 13时47分</p>
+        <p><span>最后更新:</span>2018年06月24日 - 16时43分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2018/04/02/连接linux远程登录无需密码/" title="连接linux远程登录无需密码">https://jingweiz300.github.io/2018/04/02/连接linux远程登录无需密码/</a>
             <span class="copy-path" data-clipboard-text="原文: https://jingweiz300.github.io/2018/04/02/连接linux远程登录无需密码/　　作者: JingWei Zhou" title=""></span>

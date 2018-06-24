@@ -640,16 +640,8 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>方法一：</p>
-<p>1、生成本地主机的秘要公要；使用命令ssh-keygen命令，回车两次即可，生成的路径假设在path（mac本地机器生成在了user/zhoujingwei /.ssh/路径下）</p>
-<p><img src="/2018/04/02/连接linux远程登录无需密码/1.png" alt=""></p>
-<p>2、将文件上传到目的主机，使用命令即可</p>
-<p>ssh-copy-id -i ~/.ssh/id_rsa.pub <a href="mailto:root@119.29.167.201" target="_blank" rel="noopener">root@119.29.167.201</a></p>
-<p>方法二：</p>
-<p>直接使用scp把公钥拷贝到remotehost，然后登陆的remotehost上创建文件~/.ssh/authorized_keys,<br>并把公钥的内容追加到这个文件中。</p>
-<p>jsmith@local-host$ scp ~/.ssh/id_rsa.pub  usrname@remotehost:~/.ssh/</p>
-<p>jsmith@local-host$  cat id_rsa.pub&gt;&gt;~/.ssh/authorized_keys</p>
-
+              <p><strong> 连接linux远程登录无需密码：</strong> <excerpt in="" index="" |="" 首页摘要=""><br></excerpt></p>
+          
       
     </div>
     
@@ -666,6 +658,10 @@
         <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/免密登录/">免密登录</a></li></ul>
     </div>
 
+      
+        <p class="article-more-link">
+          <a   href="/2018/04/02/连接linux远程登录无需密码/#more">查看更多 >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
