@@ -1,0 +1,1065 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="baidu-site-verification" content="L6Lm9d5Crl"/>
+  
+  
+  
+  
+  <title>Centos7常用命令大全 | My Story</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="一：使用CentOS常用命令查看cpu  more/proc/cpuinfo | grep “model name”  grep”model name” /proc/cpuinfo  [root@localhost/]# grep “CPU” /proc/cpuinfo  modelname : Intel(R) Pentium(R) Dual CPU E2180 @ 2.00GHz  model">
+<meta name="keywords" content="常用命令">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Centos7常用命令大全">
+<meta property="og:url" content="https://jingweiz300.github.io/2018/06/24/Centos7常用命令大全/index.html">
+<meta property="og:site_name" content="My Story">
+<meta property="og:description" content="一：使用CentOS常用命令查看cpu  more/proc/cpuinfo | grep “model name”  grep”model name” /proc/cpuinfo  [root@localhost/]# grep “CPU” /proc/cpuinfo  modelname : Intel(R) Pentium(R) Dual CPU E2180 @ 2.00GHz  model">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-06-24T06:06:58.546Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Centos7常用命令大全">
+<meta name="twitter:description" content="一：使用CentOS常用命令查看cpu  more/proc/cpuinfo | grep “model name”  grep”model name” /proc/cpuinfo  [root@localhost/]# grep “CPU” /proc/cpuinfo  modelname : Intel(R) Pentium(R) Dual CPU E2180 @ 2.00GHz  model">
+  
+    <link rel="alternative" href="/atom.xml" title="My Story" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.png">
+  
+  
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <!-- 加载特效 -->
+    <script src="/js/pace.js"></script>
+    <link href="/css/pace/pace-theme-flash.css" rel="stylesheet" />
+  <script>
+      var yiliaConfig = {
+          fancybox: true,
+          animate: true,
+          isHome: false,
+          isPost: true,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false
+      }
+  </script>
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="/img/avatar.png" class="js-avatar">
+            
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">JingWei Zhou</a></h1>
+        </hgroup>
+        
+        <p class="header-subtitle">虽不能至，然心向往之~~</p>
+        
+        
+            <form>
+                <input type="text" class="st-default-search-input search" id="local-search-input" placeholder="搜索一下" autocomplete="off">
+            </form>
+            <div id="local-search-result"></div>
+        
+        
+            <script type="text/javascript">
+                (function() {
+                    'use strict';
+                    function getMatchData(keyword, data) {
+                        var matchData = [];
+                        for(var i =0;i<data.length;i++){
+                            if(data[i].title.toLowerCase().indexOf(keyword)>=0) 
+                                matchData.push(data[i])
+                        }
+                        return matchData;
+                    }
+                    var $input = $('#local-search-input');
+                    var $resultContent = $('#local-search-result');
+                    $input.keyup(function(){
+                        $.ajax({
+                            url: '/search.json',
+                            dataType: "json",
+                            success: function( json ) {
+                                var str='<ul class=\"search-result-list\">';                
+                                var keyword = $input.val().trim().toLowerCase();
+                                $resultContent.innerHTML = "";
+                                if ($input.val().trim().length <= 0) {
+                                    $resultContent.empty();
+                                    $('#switch-area').show();
+                                    return;
+                                }
+                                var results = getMatchData(keyword, json);
+                                if(results.length === 0){
+                                    $resultContent.empty();
+                                    $('#switch-area').show();
+                                    return;
+                                } 
+                                for(var i =0; i<results.length; i++){
+                                    str += "<li><a href='"+ results[i].url +"' class='search-result-title'>"+ results[i].title +"</a></li>";
+                                }
+                                str += "</ul>";
+                                $resultContent.empty();
+                                $resultContent.append(str);
+                                $('#switch-area').hide();
+                            }
+                        });
+                    });
+                })();
+            </script>
+        
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a  href="/archives/">ALL</a></li>
+                        
+                            <li><a  href="/categories/operation/">Operation</a></li>
+                        
+                            <li><a  href="/categories/python/">Python</a></li>
+                        
+                            <li><a  href="/categories/linux/">Linux</a></li>
+                        
+                            <li><a  href="/categories/mlearn/">MLearn</a></li>
+                        
+                            <li><a  href="/categories/feeling/">Feeling</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fl github"  target="_blank" href="/xxxxx" title="github">github</a>
+                            
+                                <a class="fl weibo"  target="_blank" href="https://weibo.com/u/2369842910/home?wvr=5" title="weibo">weibo</a>
+                            
+                                <a class="fl rss"  target="_blank" href="/atom.xml" title="rss">rss</a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="/tags/Matplotlib/" style="font-size: 10px;">Matplotlib</a> <a href="/tags/bin目录/" style="font-size: 10px;">bin目录</a> <a href="/tags/centos7/" style="font-size: 10px;">centos7</a> <a href="/tags/fabric/" style="font-size: 13.33px;">fabric</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/numpy/" style="font-size: 13.33px;">numpy</a> <a href="/tags/pandas/" style="font-size: 13.33px;">pandas</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/shell/" style="font-size: 10px;">shell</a> <a href="/tags/threading/" style="font-size: 10px;">threading</a> <a href="/tags/vim/" style="font-size: 10px;">vim</a> <a href="/tags/zabbix/" style="font-size: 16.67px;">zabbix</a> <a href="/tags/修改主机名/" style="font-size: 10px;">修改主机名</a> <a href="/tags/免密登录/" style="font-size: 10px;">免密登录</a> <a href="/tags/常用命令/" style="font-size: 13.33px;">常用命令</a> <a href="/tags/微信/" style="font-size: 10px;">微信</a> <a href="/tags/时间同步/" style="font-size: 10px;">时间同步</a> <a href="/tags/查找命令/" style="font-size: 10px;">查找命令</a> <a href="/tags/模块使用/" style="font-size: 20px;">模块使用</a> <a href="/tags/系统日志/" style="font-size: 10px;">系统日志</a> <a href="/tags/网络/" style="font-size: 13.33px;">网络</a> <a href="/tags/虚拟机/" style="font-size: 13.33px;">虚拟机</a> <a href="/tags/运维/" style="font-size: 10px;">运维</a>
+                    </div>
+                </section>
+                
+                
+                
+                
+                <section class="switch-part switch-part3">
+                
+                    <div id="js-aboutme">爱篮球、爱电脑、爱编程</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">JingWei Zhou</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                
+                    <img lazy-src="/img/avatar.png" class="js-avatar">
+                
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">JingWei Zhou</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">虽不能至，然心向往之~~</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/archives/">ALL</a></li>
+                
+                    <li><a href="/categories/operation/">Operation</a></li>
+                
+                    <li><a href="/categories/python/">Python</a></li>
+                
+                    <li><a href="/categories/linux/">Linux</a></li>
+                
+                    <li><a href="/categories/mlearn/">MLearn</a></li>
+                
+                    <li><a href="/categories/feeling/">Feeling</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a class="github" target="_blank" href="/xxxxx" title="github">github</a>
+                    
+                        <a class="weibo" target="_blank" href="https://weibo.com/u/2369842910/home?wvr=5" title="weibo">weibo</a>
+                    
+                        <a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+                    
+                </div>
+            </nav>
+        </header>                
+    </div>
+</nav>
+      <div class="body-wrap"><article id="post-Centos7常用命令大全" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="/2018/06/24/Centos7常用命令大全/" class="article-date">
+      <time datetime="2018-06-24T06:05:53.000Z" itemprop="datePublished">2018-06-24</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Centos7常用命令大全
+    </h1>
+  
+
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/linux/">linux</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/常用命令/">常用命令</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>一：使用CentOS常用命令查看cpu </p>
+<p>more/proc/cpuinfo | grep “model name” </p>
+<p>grep”model name” /proc/cpuinfo </p>
+<p>[root@localhost/]# grep “CPU” /proc/cpuinfo </p>
+<p>modelname : Intel(R) Pentium(R) Dual CPU E2180 @ 2.00GHz </p>
+<p>modelname : Intel(R) Pentium(R) Dual CPU E2180 @ 2.00GHz </p>
+<p>如果觉得需要看的更加舒服 </p>
+<p>grep”model name” /proc/cpuinfo | cut -f2 -d: </p>
+<p>二：使用CentOS常用命令查看内存 </p>
+<p>grepMemTotal /proc/meminfo grep MemTotal /proc/meminfo | cut -f2 -d: free -m |grep”Mem” | awk ‘{print $2}’ </p>
+<p>三：使用CentOS常用命令查看cpu是32位还是64位 </p>
+<p>查看CPU位数(32or 64) </p>
+<p>getconfLONG_BIT </p>
+<p>四：使用CentOS常用命令查看当前linux的版本 </p>
+<p>more/etc/redhat-release </p>
+<p>cat/etc/redhat-release </p>
+<p>五：使用CentOS常用命令查看内核版本 </p>
+<p>uname-r </p>
+<p>uname-a </p>
+<p>六：使用CentOS常用命令查看当前时间 </p>
+<p>date上面已经介绍如何同步时间了 </p>
+<p>七：使用CentOS常用命令查看硬盘和分区 </p>
+<p>df-h </p>
+<p>fdisk-l </p>
+<p>也可以查看分区 </p>
+<p>du-sh </p>
+<p>可以看到全部占用的空间 </p>
+<p>du/etc -sh </p>
+<p>可以看到这个目录的大小 </p>
+<p>八：使用CentOS常用命令查看安装的软件包 </p>
+<p>查看系统安装的时候装的软件包 </p>
+<p>cat-n /root/install.log </p>
+<p>more/root/install.log | wc -l </p>
+<p>查看现在已经安装了那些软件包 </p>
+<p>rpm-qa </p>
+<p>rpm-qa | wc -l </p>
+<p>yumlist installed | wc -l </p>
+<p>不过很奇怪，我通过rpm，和yum这两种方式查询的安装软件包，数量并不一样。没有找到原因。 </p>
+<p>九：使用CentOS常用命令查看键盘布局 </p>
+<p>cat/etc/sysconfig/keyboard </p>
+<p>cat/etc/sysconfig/keyboard | grep KEYTABLE | cut -f2 -d= </p>
+<p>十：使用CentOS常用命令查看selinux情况 </p>
+<p>sestatus </p>
+<p>sestatus| cut -f2 -d: </p>
+<p>cat/etc/sysconfig/selinux </p>
+<p>十一：使用CentOS常用命令查看ip，mac地址 </p>
+<p>在ifcfg-eth0文件里你可以看到mac，网关等信息。 ifconfig cat /etc/sysconfig/network-scripts/ifcfg-eth0 |grep IPADDR cat /etc/sysconfig/network-scripts/ifcfg-eth0 | grep IPADDR | cut-f2 -d= ifconfig eth0 |grep “inet addr:” |awk ‘{print $2}’|cut -c 6-ifconfig | grep ‘inet addr:’| grep -v ‘127.0.0.1’ | cut -d: -f2 | awk ‘{ print$1}’ 查看网关 cat /etc/sysconfig/network 查看dns cat /etc/resolv.conf十二：使用CentOS常用命令查看默认语言 </p>
+<p>echo$LANG $LANGUAGE </p>
+<p>cat/etc/sysconfig/i18n </p>
+<p>十二：使用CentOS常用命令查看所属时区和是否使用UTC时间 </p>
+<p>cat/etc/sysconfig/clock </p>
+<p>十三：使用CentOS常用命令查看主机名 </p>
+<p>hostname </p>
+<p>cat/etc/sysconfig/network </p>
+<p>修改主机名就是修改这个文件，同时最好也把host文件也修改。 </p>
+<p>十四：使用CentOS常用命令查看开机运行时间 </p>
+<p>uptime </p>
+<p>09:44:45up 67 days, 23:32, … </p>
+<p>看来刚才确实是网段的问题，我的机器还是67天前开机的。 </p>
+<p>#系统资源使用情况 </p>
+<p>vmstat1 -S m procs ———–memory———- —swap– —–io—- –system——-cpu—— r b swpd free buff cache si so bi bo in cs us sy id wa st 0 0 0233 199 778 0 0 4 25 1 1 3 0 96 0 0 0 0 0 233 199 778 0 0 0 0 1029 856 13 1 860 0 </p>
+<p>十五：使用CentOS常用命令查看开机运行时间 </p>
+<p>uptime </p>
+<p>09:44:45up 67 days, 23:32, … </p>
+<p>看来刚才确实是网段的问题，我的机器还是67天前开机的。 </p>
+<p>#系统资源使用情况 </p>
+<p>1.vmstat 1 -S m </p>
+<p>2.procs ———–memory———- —swap– —–io—- –system——-cpu—— </p>
+<p>\3. rb swpd free buff cache si so bi bo in cs us sy id wa st </p>
+<p>\4. 00 0 233 199 778 0 0 4 25 1 1 3 0 96 0 0 </p>
+<p>\5. 00 0 233 199 778 0 0 0 0 1029 856 13 1 86 0 0 </p>
+<ol>
+<li><p>对大家推荐很好使用的LinuxCentOS系统，像让大家对Linux CentOS系统有所了解，然后对Linux CentOS系统全面讲解介绍，希望对大家有用LinuxCentOS常用的命令. </p>
+</li>
+</ol>
+<p>wget$wget -r -np -nd <a href="http://example.com/packages/" target="_blank" rel="noopener">http://example.com/packages/</a> 这条命令可以下载 <a href="http://example.com" target="_blank" rel="noopener">http://example.com</a> 网站上 packages 目录中的所有文件。Linux CentOS其中，-np 的作用是不遍历父目录，-nd表示不在本机重新创建目录结构。 </p>
+<p>$wget -r -np -nd –accept=iso <a href="http://example.com/centos-5/i386/" target="_blank" rel="noopener">http://example.com/centos-5/i386/</a>与上一条命令相似，Linux CentOS但多加了一个 –accept=iso 选项，这指示 wget 仅下载 i386 目录中所有扩展名为 iso的文件。你也可以指定多个扩展名，Linux CentOS只需用逗号分隔即可。 </p>
+<p>$wget -i filename.txt 此命令常用于批量下载的情形，Linux CentOS把所有需要下载文件的地址放到 filename.txt 中，然后wget 就会自动为你下载所有文件了。 Linux CentOS$ wget -c <a href="http://example.com/really-big-file.iso" target="_blank" rel="noopener">http://example.com/really-big-file.iso</a> 这里所指定的 -c 选项的作用为断点续传。 </p>
+<p>$wget -m -k (-H) <a href="http://www.example.com/" target="_blank" rel="noopener">http://www.example.com/</a> 该命令可用来镜像一个网站，wget 将对链接进行转换。Linux CentOS如果网站中的图像是放在另外的站点，那么可以使用 -H选项。 </p>
+<p>VI 编辑命令命令模式 </p>
+<p>移动光标 </p>
+<p>[Ctrl] + [f] → 屏幕『向下』移动一页，相当于 [Page Down]按键 </p>
+<p>[Ctrl] + [b] → 屏幕『向上』移动一页，相当于 [Page Up] 按键 </p>
+<p>n<space> → n 表示『数字』。按下数字后再按空白鍵，光标会向右移动这一行的 n 个字元 </space></p>
+<p>0 → 数字『 0 』：移动到这一行的最前面字元处 </p>
+<p>$ → 移动到这一行的最后面字元处 </p>
+<p>G → 移动到这个文件的最后一行 </p>
+<p>nG → n 为数字。移动到这个文件的第 n 行(可配合 :set nu) </p>
+<p>gg → 移动到这个文件的第一行，相当于1G </p>
+<p>n<enter> → n 为数字。光标向下移动 n 行 </enter></p>
+<p>Linux CentOS查找与替换 </p>
+<p>n → 『重复前一个查找的动作』 </p>
+<p>N → 与 n 刚好相反，为『反向』进行前一个查找动作 </p>
+<p>:n1,n2s/word1/word2/g → n1 与 n2 均为数字。在第 n1 与 n2 行之间查找 word1 字符串，并将该字符串替换为 word2。 </p>
+<p>如：在1 到 9 行之间查找 eric4ever 并替换为 ERIC4EVER 则：『:1,9s/eric4ever/ERIC4EVER/g』 </p>
+<p>:1,$s/word1/word2/g → 从第一行到最后一行查找 word1 字符串，并将该字符串替换为 word2 </p>
+<p>:1,$s/word1/word2/gc → 从第一行到最后一行查找 word1 字符串，并将该字符窗替换为 word2，替换前显示提示对话框是否确认替换 </p>
+<p>Linux CentOS删除、复制与粘贴 </p>
+<p>x, X → 在一行字当中，x 为向后刪除一个字元 (相当于 [del] 按键)， </p>
+<p>X为向前刪除一个字元(相当于 [backspace] 按键) </p>
+<p>dd → 刪除光标所在的那一整行 </p>
+<p>ndd → n 为数字。刪除光标所在的向下 n 列 </p>
+<p>yy → 复制光标所在的那一行 </p>
+<p>nyy → n 为数字。复制光标所在的向下 n 列 </p>
+<p>p, P → p 为将已复制的内容粘贴在光标下一行上，P 则为粘贴在光标的上一行 </p>
+<p>u → 还原前一个动作 </p>
+<p>[Ctrl]+r → 重做上一个动作 </p>
+<p>. → 小数点，意思是重复前一个动作 </p>
+<p>Linux CentOS编辑模式i, I → 插入：在目前的光标所在处插入输入的文字，已存在的文字会向后退； 其中， i 为『从目前光标所在处插入』， I 为『在目前所在行的第一個非空白字元处开始插入』a, A →a 为『从目前光标所在的下一个字元处开始插入』， A 为『从光标所在行的最后一个字元处开始插入』 </p>
+<p>o, O → o 为『在目前光标所在的下一行处插入新的一行』， O 为『在目前光标所在处的上一行插入新的一行』 </p>
+<p>r, R → r 为『取代光标所在的那一个字元』，R 为『一直取代光标所在的文字，直到按下 ESC 为止』 </p>
+<p>Esc → 退出编辑模式，回到一般模式中 </p>
+<p>LinuxCentOS末行指令模式 </p>
+<p>:w → 将编辑的文件写入到硬盘上 </p>
+<p>:q → 退出 vi </p>
+<p>:set nu → 显示行号 </p>
+<p>:set nonu → 取消显示行号 </p>
+<p>LinuxCentOSvim 块操作 </p>
+<p>Ctrl+v进入视图模式 </p>
+<p><esc>退出视图模式 </esc></p>
+<p>在Ctrl+v后: </p>
+<p><dollar>+A在块的每行末尾添加 </dollar></p>
+<p>I 插入 </p>
+<p>y块抽取 </p>
+<p>p块粘贴 </p>
+<p>c 修改 </p>
+<p>Linuxcentos已被广泛应用但是也在不断的更新，这里介绍Linux centos安装设置使用，帮助大家安装更新Linux centos系统手动配置Linuxcentos的IP地址 </p>
+<p>今天在vmwareserver上装了个centos-4.7（免费的redhat,是小红帽的的克隆版本，跟小红帽的版本是对应的）,其中ip安装时没设好，一般Linuxcentos的网卡IP地址是存放在文件中的，这个配置文件在/etc/sysconfig/network-scripts下， </p>
+<p>名称分别为ifcfg-eth0,ifcfg-eth1….如果你有一块网卡，就只有ifcfg-eth0一个文件，如果你有两块或者两块以上的网卡，就会有ifcfg-eth1、ifcfg-eth2等文件的出现。 </p>
+<p>文件结构： </p>
+<p>DEVICE=eth0//指出设备名称 </p>
+<p>ONBOOT=yes//是否启动应用 </p>
+<p>BOOTPROTO=static//启动类型 静态 （默认dhcp） </p>
+<p>IPADDR=192.168.0.77//IP地址 </p>
+<p>NETMASK=255.255.255.0//子网掩码 </p>
+<p>GATEWAY=192.168.0.1//网关 </p>
+<p>步骤： </p>
+<p>1、vi/etc/sysconfig/network-scripts/ifcfg-teh0 （也可通过管理工具setup或netconfig命令设置） </p>
+<p>2、重新启动网络服务servicenetwork restart </p>
+<p>要想和主机连接：还需配置xp主机，在vmware上设置为host-only模式，xp里修改vmnet1的IP地址为192.168.0.1, 修改Linux centos IP为192.168.0.77 </p>
+<p>共享上网设置：xp里修改第一块虚拟网卡的网络属性为共享internet(属性-&gt;高级-&gt;钩选“允许其他网络用户通过此计算机的Internet连接来连接”)会自动把vmnet1改为192.168.0.1,Linux centos就能上网了 </p>
+<p>CentOSVsftpd配置经过长时间的发展，这里我发表一下个人理解，下面就这就来讲术CentOS Vsftpd配置。调整CentOS Vsftpd配置文件： </p>
+<p>1.编辑CentOSVsftpd配置文件前先备份 </p>
+<p>[root@KcentOS5~]cp /etc/vsftpd/vsftpd.conf /etc/vsftpd/vsftpd.conf.backup </p>
+<p>2.编辑主CentOSVsftpd配置文件Vsftpd.conf </p>
+<p>[root@KcentOS5~]vi /etc/vsftpd/vsftpd.conf </p>
+<p>这里我将原CentOSVsftpd配置文件的修改完全记录，凡是修改的地方我都会保留注释原来的配置。其中加入我对每条配置项的认识，对于一些比较关键的配置项这里我做了我的观点，并且原本英语的说明我也不删除，供参考对比用。 </p>
+<p>Exampleconfig file /etc/vsftpd/vsftpd.conf </p>
+<p>Thedefault compiled in settings are fairly paranoid. This sample file </p>
+<p>loosensthings up a bit, to make the ftp daemon more usable. </p>
+<p>Pleasesee vsftpd.conf.5 for all compiled in defaults. </p>
+<p>READTHIS: This example file is NOT an exhaustive list of vsftpd options. </p>
+<p>Pleaseread the vsftpd.conf.5 manual page to get a full idea of vsftpd’s </p>
+<p>capabilities. </p>
+<p>Allowanonymous FTP? (Beware - allowed by default if you comment this out). </p>
+<p>anonymous_enable=YES </p>
+<p>anonymous_enable=NO </p>
+<p>设定不允许匿名访问 </p>
+<p>Uncommentthis to allow local users to log in. </p>
+<p>local_enable=YES设定本地用户可以访问。注意：主要是为虚拟宿主用户，如果该项目设定为NO那么所有虚拟用户将无法访问。 </p>
+<p>Uncommentthis to enable any form of FTP write command. </p>
+<p>write_enable=YES </p>
+<p>设定可以进行写操作。 </p>
+<p>Defaultumask for local users is 077. You may wish to change this to 022, </p>
+<p>ifyour users expect that (022 is used by most other ftpd’s) </p>
+<p>local_umask=022 </p>
+<p>设定上传后文件的权限掩码。 </p>
+<p>Uncommentthis to allow the anonymous FTP user to upload files. This only </p>
+<p>hasan effect if the above global write enable is activated. Also, you will </p>
+<p>obviouslyneed to create a directory writable by the FTP user. </p>
+<p>anon_upload_enable=YES </p>
+<p>anon_upload_enable=NO </p>
+<p>禁止匿名用户上传。 </p>
+<p>Uncommentthis if you want the anonymous FTP user to be able to create </p>
+<p>newdirectories. </p>
+<p>anon_mkdir_write_enable=YES </p>
+<p>anon_mkdir_write_enable=NO </p>
+<p>禁止匿名用户建立目录。 </p>
+<p>Activatedirectory messages - messages given to remote users when they </p>
+<p>gointo a certain directory. </p>
+<p>dirmessage_enable=YES </p>
+<p>设定开启目录标语功能。 </p>
+<p>Activatelogging of uploads/downloads. </p>
+<p>xferlog_enable=YES </p>
+<p>设定开启日志记录功能。 </p>
+<p>Makesure PORT transfer connections originate from port 20 (ftp-data). </p>
+<p>connect_from_port_20=YES </p>
+<p>设定端口20进行数据连接。 </p>
+<p>Ifyou want, you can arrange for uploaded anonymous files to be owned by </p>
+<p>adifferent user. Note! Using “root” for uploaded files is not </p>
+<p>recommended! </p>
+<p>chown_uploads=YES </p>
+<p>chown_uploads=NO </p>
+<p>设定禁止上传文件更改宿主。 </p>
+<p>chown_username=whoever </p>
+<p>Youmay override where the log file goes if you like. The default is shown </p>
+<p>below. </p>
+<p>xferlog_file=/var/log/vsftpd.log </p>
+<p>设定CentOSVsftpd配置的服务日志保存路径。注意，该文件默认不存在。必须要手动touch出来，并且由于这里更改了CentOSVsftpd配置的服务宿主用户为手动建立的Vsftpd。必须注意给与该用户对日志的写入权限，否则服务将启动失败。 </p>
+<p>Ifyou want, you can have your log file in standard ftpd xferlog format </p>
+<p>xferlog_std_format=YES </p>
+<p>设定日志使用标准的记录格式。 </p>
+<p>Youmay change the default value for timing out an idle session. </p>
+<p>idle_session_timeout=600 </p>
+<p>设定空闲连接超时时间，这里使用默认。将具体数值留给每个具体用户具体指定，当然如果不指定的话，还是使用这里的默认值600，单位秒。 </p>
+<p>Youmay change the default value for timing out a data connection. </p>
+<p>data_connection_timeout=120 </p>
+<p>设定单次最大连续传输时间，这里使用默认。将具体数值留给每个具体用户具体指定，当然如果不指定的话，还是使用这里的默认值120，单位秒。 </p>
+<p>Itis recommended that you define on your system a unique user which the </p>
+<p>ftpserver can use as a totally isolated and unprivileged user. </p>
+<p>nopriv_user=ftpsecure </p>
+<p>nopriv_user=vsftpd </p>
+<p>设定支撑CentOSVsftpd服务的宿主用户为手动建立的Vsftpd用户。注意，一旦做出更改宿主用户后，必须注意一起与该服务相关的读写文件的读写赋权问题。比如日志文件就必须给与该用户写入权限等。 </p>
+<p>Enablethis and the server will recognise asynchronous ABOR requests. Not </p>
+<p>recommendedfor security (the code is non-trivial). Not enabling it, </p>
+<p>however,may confuse older FTP clients. </p>
+<p>async_abor_enable=YES </p>
+<p>设定支持异步传输功能。 </p>
+<p>Bydefault the server will pretend to allow ASCII mode but in fact ignore </p>
+<p>therequest. Turn on the below options to have the server actually do ASCII </p>
+<p>manglingon files when in ASCII mode. </p>
+<p>Bewarethat on some FTP servers, ASCII support allows a denial of service </p>
+<p>attack(DoS) via the command “SIZE /big/file” in ASCII mode. vsftpd </p>
+<p>predictedthis attack and has always been safe, reporting the size of the </p>
+<p>rawfile. </p>
+<p>ASCIImangling is a horrible feature of the protocol. </p>
+<p>ascii_upload_enable=YES </p>
+<p>ascii_download_enable=YES </p>
+<p>设定支持ASCII模式的上传和下载功能。 </p>
+<p>Youmay fully customise the login banner string: </p>
+<p>ftpd_banner=ThisVsftp server supports virtual users ^_^ </p>
+<p>设定CentOSVsftpd配置的登陆标语。 </p>
+<p>Youmay specify a file of disallowed anonymous e-mail addresses. Apparently </p>
+<p>usefulfor combatting certain DoS attacks. </p>
+<p>deny_email_enable=YES </p>
+<p>(defaultfollows) </p>
+<p>banned_email_file=/etc/vsftpd/banned_emails </p>
+<p>Youmay specify an explicit list of local users to chroot() to their home </p>
+<p>directory.If chroot_local_user is YES, then this list becomes a list of </p>
+<p>usersto NOT chroot(). </p>
+<p>chroot_list_enable=YES </p>
+<p>chroot_list_enable=NO </p>
+<p>禁止用户登出自己的FTP主目录。 </p>
+<p>(defaultfollows) </p>
+<p>chroot_list_file=/etc/vsftpd/chroot_list </p>
+<p>Youmay activate the “-R” option to the builtin ls. This is disabled by </p>
+<p>defaultto avoid remote users being able to cause excessive I/O on large </p>
+<p>sites.However, some broken FTP clients such as “ncftp” and”mirror” assume </p>
+<p>thepresence of the “-R” option, so there is a strong case for enablingit. </p>
+<p>ls_recurse_enable=YES </p>
+<p>ls_recurse_enable=NO </p>
+<p>禁止用户登陆FTP后使用”ls-R”的命令。该命令会对服务器性能造成巨大开销。如果该项被允许，那么挡多用户同时使用该命令时将会对该服 </p>
+<p>务器造成威胁。 </p>
+<p>When”listen” directive is enabled, vsftpd runs in standalone mode and </p>
+<p>listenson IPv4 sockets. This directive cannot be used in conjunction </p>
+<p>withthe listen_ipv6 directive. </p>
+<p>listen=YES </p>
+<p>设定该CentOSVsftpd服务工作在StandAlone模式下。顺便展开说明一下，所谓StandAlone模式就是该服务拥有自己的守护进程支持，在ps-A命令下我们将可用看到vsftpd的守护进程名。如果不想工作在StandAlone模式下，则可以选择SuperDaemon模式，在该模式下vsftpd将没有自己的守护进程，而是由超级守护进程Xinetd全权代理，与此同时，Vsftp服务的许多功能将得不到实现。 </p>
+<p>Thisdirective enables listening on IPv6 sockets. To listen on IPv4 and IPv6 </p>
+<p>sockets,you must run two copies of vsftpd whith two configuration files. </p>
+<p>Makesure, that one of the listen options is commented !! </p>
+<p>listen_ipv6=YES </p>
+<p>pam_service_name=vsftpd </p>
+<p>设定PAM服务下CentOSVsftpd配置验证文件名。因此，PAM验证将参考/etc/pam.d/下的vsftpd文件配置。 </p>
+<p>userlist_enable=YES </p>
+<p>设定userlist_file中的用户将不得使用FTP。 </p>
+<p>tcp_wrappers=YES </p>
+<p>设定支持TCPWrappers。 </p>
+<p>KC:The following entries are added for supporting virtual ftp users. </p>
+<p>以下这些是关于Vsftpd虚拟用户支持的重要CentOSVsftpd配置项目。默认Vsftpd.conf中不包含这些设定项目，需要自己手动添加配置。 </p>
+<p>guest_enable=YES </p>
+<p>设定启用虚拟用户功能。 </p>
+<p>guest_username=overlord </p>
+<p>指定虚拟用户的宿主用户。 </p>
+<p>virtual_use_local_privs=YES </p>
+<p>设定虚拟用户的权限符合他们的宿主用户。 </p>
+<p>user_config_dir=/etc/vsftpd/vconf </p>
+<p>设定虚拟用户个人Vsftp的配置文件存放路径。也就是说，这个被指定的目录里，将存放每个Vsftp虚拟用户个性的配置文件，一个需要注意的 </p>
+<p>地方就是这些配置文件名必须和虚拟用户名相同。保存退出。 </p>
+<p>3.建立CentOSVsftpd配置的日志文件，并更该属主为Vsftpd的服务宿主用户： </p>
+<p>[root@KcentOS5~]touch /var/log/vsftpd.log </p>
+<p>[root@KcentOS5~]chown vsftpd.vsftpd /var/log/vsftpd.log </p>
+<p>4.建立虚拟用户CentOSVsftpd配置文件存放路径： </p>
+<p>[root@KcentOS5~]mkdir /etc/vsftpd/vconf/ </p>
+<p>CentOSvsftp已被广泛应用但是也在不断的更新，这里介绍CentOS vsftp安装设置使用，帮助大家安装更新CentOS vsftp系统。 </p>
+<p>CentOSvsftp安装： </p>
+<p>1.安装CentOSVsftpd服务相关部件： </p>
+<p>[root@KcentOS5~]# yum install vsftpd* </p>
+<p>2.确认安装PAM服务相关部件： </p>
+<p>[root@KcentOS5~]# yum install pam* </p>
+<p>开发包，其实不装也没有关系，主要的目的是确认PAM。 </p>
+<p>3.安装DB4部件包： </p>
+<p>这里要特别安装一个db4的包，用来支持文件数据库。 </p>
+<p>[root@KcentOS5~]# yum install db4* </p>
+<p>CentOSvsftp系统帐户 </p>
+<p>1.建立CentOSvsftp服务的宿主用户： </p>
+<p>[root@CentOS5/]#chmod 700 /home/vftpsite </p>
+<p>[root@KcentOS5~]# useradd vsftpd -s /sbin/nologin </p>
+<p>默认的Vsftpd的服务宿主用户是root，但是这不符合安全性的需要。这里建立名字为vsftpd的用户，用他来作为支持Vsftpd的服务宿主用户。由于该用户仅用来支持Vsftpd服务用，因此没有许可他登陆系统的必要，并设定他为不能登陆系统的用户。[root@CentOS5/]#useradd –d /home/vftpsite –s /sbin/nologin vftpuser </p>
+<p>2.建立CentOSvsftp虚拟宿主用户： </p>
+<p>[root@KcentOS5nowhere]# useradd overlord -s /sbin/nologin </p>
+<p>本篇主要是介绍Vsftp的虚拟用户，虚拟用户并不是系统用户，也就是说这些FTP的用户在系统中是不存在的。他们的总体权限其实是集中寄托在一个在系统中的某一个用户身上的，所谓Vsftpd的虚拟宿主用户，就是这样一个支持着所有虚拟用户的宿主用户。由于他支撑了FTP的所有虚拟的用户，那么他本身的权限将会影响着这些虚拟的用户，因此，处于安全性的考虑，也要非分注意对该用户的权限的控制，该用户也绝对没有登陆系统的必要，这里也设定他为不能登陆系统的用户。 </p>
+<p>（这里插一句：原本在建立上面两个用户的时候，想连用户主路径也不打算给的。本来想加上-d /home/nowhere 的，据man useradd手册上讲 </p>
+<p>述：“-d, –home HOME_DIR </p>
+<p>Thenew user will be created using HOME_DIR as the value for the </p>
+<p>user鈙login directory. The default is to append the LOGIN name to </p>
+<p>BASE_DIRand use that as the login directory name. The directory </p>
+<p>HOME_DIRdoes not have to exist but will not be created if it is </p>
+<p>missing. </p>
+<p>使用-d参数指定用户的主目录，用户主目录并不是必须存在的。如果没有存在指定的目录的话，那么它将不会被建立”。结果我尝试-d /home/nowhere 指定到一个并不存在的目录的时候，我KAO！竟然给我自己新建了一个= =＃） </p>
+<p>【原创】FTP服务时互联网上比较古老的一种应用，至今Interner应用面非常广泛，但令管理员头痛不已的是其用户管理，既多且杂，如何解决这一问题呢？使用MySQL与ProFTP或VsFTP软件结合可以搭建一个高效、稳定且集中管理的FTP服务器。本来就来介绍一下如何搭建一个方便管理的基于MySQL数据库的FTP服务器。 </p>
+<p>一、软件版本的选择： </p>
+<p>搭建基于数据库的FTP服务器首先要选择合适的软件。下面就是所选择软件的详细信息： </p>
+<p>◆Linux版本RHEL5； </p>
+<p>◆MySQL版本MySQL-standard-5.1.30-1.rhel5.src.rpm; </p>
+<p>◆FTP服务器proftpd-1.3.2.tar.gz和vsftpd-2.2.1.tar.gz; </p>
+<p>◆MySQL的PAM验证程序pam_mysql-0.8RC1.tar.gz; </p>
+<p>需要说明的是，RHEL5安装时自定义安装，“developmenttools”项必须选择，否则编译调试软件时需要的软件包需另行安装；其次，要确保所安装Linux系统时没有安装MySQL与FTP服务器等软件，如果有则先卸载；再次，ProFTPD与VsFTPD两者不要在同台计算机同时使用，这样会造成意想不到的问题，读者根据自己的需求和软件的具体功能选择其中之一。 </p>
+<p>建立程序安装目录 </p>
+<p>整个安装过程以root用户执行如下命令： </p>
+<p>#cd/soft/programe </p>
+<p>#mkdirmysq </p>
+<p>需要注意目录名称的大小写。 </p>
+<p>#mkdirproftpd </p>
+<p>#mkdirpam_mods </p>
+<p>MySQL的安装目录为/soft/program/mysql,ProFTPD的安装目录为/soft/program/proftpd，pam_mysq1.so的安装目录为/soft/program/pam_mods，/storage是一个已经存在的目录，所有的FTP用户上传和下载文件都存放在这里。 </p>
+<p>安装MySQL </p>
+<p>◆增加一个管理MySQL的用户和组： </p>
+<p>#groupaddmysqlgrp </p>
+<p>#useradd-g mysqlgrp mysqladm </p>
+<p>#passwdmysqladm </p>
+<p>◆切换到MySQL-stan-dard-5.1.30-1.rhel5.src.rpm文件所在的目录，执行以下步骤安装： </p>
+<p>#rpm-ivhMySQL-stan-dard-5.1.30-1.rhel5.src.rpm </p>
+<p>此条命令解压出mysql-5.1.30.tar.gz文件存放在以下的目录中。 </p>
+<p>#cd/usr/src/redhat/SOURCE </p>
+<p>#tarzxvf mysqt-5.1.30.tar.gz </p>
+<p>#cdmysql-5.1.30 </p>
+<p>#./configurePrefix=/soft/program/mysql –with-extra-charsets=all </p>
+<p>其中,“–prefix=/soft/program/mysql”参数是用来指定Mysql的安装目录，“–with-extra-charsets=all”是用来支持所有的字符集。 </p>
+<p>#make </p>
+<p>#makeinstall </p>
+<p>◆初始化数据库 </p>
+<p>#cd/soft/program/mysql/bin </p>
+<p>#./mysql_install_db </p>
+<p>◆为了安全要修改数据库存放目录的属主信息和访问模式/soft/program/mysqll/var为数据库存放的缺省目录 </p>
+<p>#cd/soft/program/mysql </p>
+<p>#chown–R mysqladm:mysqlgrp var </p>
+<p>#chmod-R go-wrx var </p>
+<p>◆修改配置文件 </p>
+<p>#cd/soft/program/mysql/share/mysql </p>
+<p>#cpmy-small.cnf /etc/my.cnf </p>
+<p>#cd/etc </p>
+<p>在my.cnf文件中，增加如下内容： </p>
+<p>[mysql] </p>
+<p>user=mysqladm#表示用mysqladm 用户启动MySQL# </p>
+<p>default-character-set=utf8#表示使用UTF-8字符集，此种字符集通用性较好，也很好的支持中文，当然也可以直接使用GBK。 </p>
+<p>[clent] </p>
+<p>Default-character-set=utf8 </p>
+<p>◆ 启动 </p>
+<p>启动方式有两种，一种是手工启动，一种是自动启动，其中手工启动的操作如下： </p>
+<p>#cd/soft/program/mysql/bin </p>
+<p>#./mysqld_safe&amp; </p>
+<p>自动启动则需要在/etc/rc.d/rc/local中加入以下的内容，开机自动启动MySQL数据库： </p>
+<p>If[-x /soft/program/mysql/bin/mysqld_safe]; then </p>
+<p>install_path_name/bin/mysqld_safe&amp; </p>
+<p>fi </p>
+<p>◆修改管理员密码 </p>
+<p>使用如下命令修改数据库密码： </p>
+<p>#cd/soft/program/mysql/bin </p>
+<p>#./mysqladmin-h localhost -u root password ‘123456’ </p>
+<p>上述命令的意思是本机上（-hhost）使用的管理数据库的缺省管理账号root。需要注意的事，此root并非Linux系统中的root用户，密码设置为123456. </p>
+<p>安装ProFTPD </p>
+<p>◆切换到proftpd-1.3.2.tar.gz文件所在的目录，执行以下步骤安装： </p>
+<p>#tarzxvf proftpd-1.3.2.tar.gz </p>
+<p>#cdproftpd-1.3.2 </p>
+<p>#./configure–prefix=/soft/program/proftpd–with-modules=mod_sql:mod_sql_mysql:mod_quotatab:mod_quotatab_sql </p>
+<p>此参数将支持MySQL和Quota模块添加进来。 </p>
+<p>–with-includes=/soft/program/mysql/include/mysql </p>
+<p>上述参数指定MySQL中include的目录路径。 </p>
+<p>–with-libraries=/soft/program/mysql/lib/mysql </p>
+<p>此参数指定MySQL中lib的目录路径。 </p>
+<p>#make </p>
+<p>#makeinstall </p>
+<p>使用如下命令建立一个用于管理ProFTPD的Linux系统账号和组。 </p>
+<p>#groupadd-g 2009 ftpgroup </p>
+<p>#useradd-u 2009 –s /bin/false -d /storage -g ftpgroup ftpuser </p>
+<p>#chown-R ftpuser.ftpgroup /storage </p>
+<p>#chmod–R go-wrx- /storage </p>
+<p>#chmod–R u+wrx /storage </p>
+<p>简单修改ProFTPD配置文件，使之正常运行： </p>
+<p>#cd/soft/program/proftpd/etc </p>
+<p>用编辑器打开proftpd.conf,修改一下的内容： </p>
+<p>#Setthe user and group under which the server will run. </p>
+<p>Userftpuser </p>
+<p>Groupftpgroup </p>
+<p>◆启动ProFTPD </p>
+<p>启动Proftpd同样有两种方法，即手工启动和自动启动，其中手工启动操作如下： </p>
+<p>#cd/soft/program/proftpd/sbin/ </p>
+<p>#./proftpd </p>
+<p>此时一个基本的FTP服务器已经搭建成，可以进行测试了。需要注意的是，启动时如果出现具有以下信息的错误： </p>
+<p>errorwhile loading shared libraries:libmysqlclient.so.15:cannot open shared object <a href="file:///\\No" target="_blank" rel="noopener">file:No</a> suchfile or directory </p>
+<p>通常的解决办法如下： </p>
+<p>#cd/etc </p>
+<p>用文本工具打开ld.so.conf,添加以下的内容/soft/program/mysql/lib/mysql </p>
+<p>#ldconflg </p>
+<p>更新ld.socache file。 </p>
+<p>要让ProFTPD自动启动在/etc/rc.d/rc.local中加入以下的内容，开机即可自启动ProFTPD: </p>
+<p>/soft/program/proftpd/sbin/proftpd </p>
+<p>二、MySQL与ProFTPD组合 </p>
+<p>在MySQL中建立一个名为ftp的数据库，在该数据库中建立以下的四个表： </p>
+<p>◆登录FTP服务器的用户表ftpusers，字段信息如下所示，这些字段是必需的，其他字段根据自己的需要添加，参考字段如下： </p>
+<p>‘userid’text NOT NULL #用户登录账号# </p>
+<p>‘passwd’text NOT NULL #用户登录密码# </p>
+<p>‘uid’int(11)NOT NULL default ‘2009’, #与Linux系统账号ftpuser的UID号一致# </p>
+<p>‘gid’int(11)NOT NULL default ‘2009’, #与Linux系统组# </p>
+<p>ftpgroup的GID号一致’homedir’ text,用户文件上传下载目录，如账号名为abc,此处就填写/storage/abc，’shell’ textdefault ,’/sbin/nologin’这个是用来指定用户是否能登录Linux系统，这里默认的是不能登录。 </p>
+<p>◆FTP用户归属表ftpgroups，字段信息如下所示，关于建立该组的目的将在quotalimits表中说明 </p>
+<p>‘groupname’text NOT NULL #组名# </p>
+<p>‘gid’smallint(6) NOT NULL default’0’,#组的id号# </p>
+<p>‘memembers’text NOT NULL #成员# </p>
+<p>◆用于设置磁盘限额相关信息的表quotalimits和quotatallies,这两个表的字段请不要改动，它是与ProFTPD的配置文件紧密联系，quotalimits表的字段信息如下： </p>
+<p>‘name’varchar(30)default NULL, </p>
+<p>‘quota_type’enum(‘user’,’group’,’class’,’all’)NOT NULL default ‘user’, </p>
+<p>‘per_session’enum(‘false’,’true’)NOT NULL default’false’, </p>
+<p>‘limit_type’enum(‘soft’,’hard’)NOT NULL default’soft’, </p>
+<p>‘bytes_in_avail’floatNOT NULL default’0’, </p>
+<p>‘bytes_out_avail’floatNOT NULL default’0’, </p>
+<p>‘bytes_xfer_avail’floatNOT NULL default’0’, </p>
+<p>‘files_in_avail’int(10)unsigned NOT NULL default’0’, </p>
+<p>‘files_out_avail’int(10)unsignedNOT NULL default’0’, </p>
+<p>‘files_xfer_avail’int(10)unsignedNOT NULL default’0’ </p>
+<p>需要注意的是，name应该这样理解，既能表示单个用户，也能表示用户组名。如果在quota_type(限额类型)中使用group来认证的话，那就得在这里设置组名，这样整组都具有统一的磁盘限额的特性，当然要在ftpgroups表中插入组记录，并且在member字段中得把用户一个一个的列进去。默认值可以为空NULL。如果为空，则针对所在有quota_type中设置的类型，比如在quota_type中设置为user，就是针对所有ftpusers中的用户起作用，如果是group名，也是对ftpgroups所有组作用。quota_type磁盘限额类型，可以设置为用户，也可以设置为用户组group。如果name写的是用户组，这里就得设置为group来认定。默认为user认证。per_session默认为false.limit_type默认为soft。Bytes_in_avail用户占用空间大小，也就是FTP用户空间容量，单位是byte,默认为0，0是不受限制，以下同理。bytes_out_avail所有下载文件的总和，默认为0。 </p>
+<p>bytes_xfer_avail一个用户上传下载流量总和，默认为0。files_in_avail限制上传文件总和，默认为0。files_out_avail限制下载文件个数总计，默认为0。files_xfer_avail允许下载和上传的文件总和，默认为0。Quotatallies表的字段信息，各字段信息参照quotalimits。配置参考参数如下： </p>
+<p>nameVARCHAR(30)NOT NULL, </p>
+<p>quota_typeENUM(“user”,”group”,”class”,”all”)NOTNULL, </p>
+<p>bytes_in_usedFLOAT NOT NULL, </p>
+<p>bytes_out_usedFLOAT NOT NULL, </p>
+<p>bytes_xfer_usedFLOAT NOT NULL, </p>
+<p>files_in_usedINT UNSIGNED NOT NULL, </p>
+<p>files_out_usedINT UNSIGNED NOT NULL, </p>
+<p>files_xfer_usedINT UNSIGNED NOT NULL </p>
+<p>此外，在proftpd.conf文件中增加以下的内容： </p>
+<p>◆数据库连接的信息，ftp是数据库名，localhost是主机名，root是连接数据库的用户名，123456是密码。 </p>
+<p>root123456 </p>
+<p>◆数据库认证的类型，Plaintext表示明文认证方式 </p>
+<p>SQLAuthTYpesBackend Plaintext </p>
+<p>◆指定用来做用户认证的表的有关信息 </p>
+<p>SALUserlnfoftpusers userid passwd uid gid homedir shell </p>
+<p>SQLGrouplnfoftpgroups groupname gid members </p>
+<p>◆校验数据表 </p>
+<p>SQLAuthenticateusers groups usersetfast groupsetfast </p>
+<p>◆如果home目录不存在，则系统会根据ftpusers表中的home字段。 </p>
+<p>新建一个目录： </p>
+<p>SQLHomedirOnDemandon </p>
+<p>◆打开磁盘限额引擎 </p>
+<p>QuotaEngineon </p>
+<p>◆设置磁盘限额 </p>
+<p>QuotaDirectoryTallyon </p>
+<p>◆设置磁盘容量显示时的单位 </p>
+<p>QuotaDisplayUnitsMb </p>
+<p>◆设置磁盘限额日志文件 </p>
+<p>QuotaLog”/usr/local/proftpd/var/quota” </p>
+<p>◆显示磁盘限额信息 </p>
+<p>ftp登录后可执行quotesite quota命令查看当前磁盘使用情况： </p>
+<p>QuotaShowQuotason </p>
+<p>◆设置磁盘限额日志文件 </p>
+<p>QuotaLog”/var/log/quota” </p>
+<p>◆指定磁盘限额模块使用的数据库信息 </p>
+<p>SQLNamedQuerget-quota-limit SELECT”name,quota_type,bytes_in_avail,bytes_out_avail,bytes_xfer_avail,files_in_avail,files_out_avail,files_xfer_availFROM quotalimits WHERE name=’%{0}’AND quota_type=’%{1}’” </p>
+<p>SQLNamedQueryget-quota-tallySELECT”name,quota_type,bytes_in_used,bytes_out_used,bytes_xfer_used,files_in_used,files_out_used,filed_xfer_used,FROMquotatallies WHERE name=’%{0}’AND quota_type =’%{1}” </p>
+<p>SQLNamedQueryupdate-quota-tally UPDATE”bytes_in_used=bytes_in_used+%{0},bytes_out_used=bytes_out_used+%{1},bytes_xfer_used=bytes_xfer_used+%{2},files_in_used=files_in_used+%{3},files_out_used=files_out_used+%{4},files_xfer_used=files_xfer_used+%{5} WHERE name=’%{6}’AND quota_type = ‘%{7}’”quotatallies </p>
+<p>SQLNamedQueryinsert-quota-tallyINSERT”%{0},%{1},%{2},%{3},%{4},%{5},%{6},%{7}”quotatallies </p>
+<p>QuotaLimitTablesql:/get-quota-limit </p>
+<p>QuotaTallyTablesql:/get-quota-tally/update-quota-tally/insert-quota-tally </p>
+<p>另外，读者还可以在proftpd.conf中添加一些有关超时、限制连接次数、加快连接速度、支持断点传输及安全传输等内容。 </p>
+<p>anon_other_write_enable=YES </p>
+<p>ascll_upload_enable=YES </p>
+<p>ascll_download_enable=YES </p>
+<p>VsFTPD配置文件中还可以进行更多的设置，如磁盘配额、虚拟用户个人目录的建立、性能与负载控制、FTP被动模式断口设置、安全设置等，读者根据自己的需要进一步的完善。 </p>
+<p>◆编辑文件 </p>
+<p>修改/etc/pam.d/ftp中去掉其他的内容，添加以下的内容： </p>
+<p>#auth </p>
+<p>authrequired/soft/program/pam_mods/pam_mysql.so </p>
+<p>user=ftpuserpasswd=6789host=localhost db=ftp </p>
+<p>table=ftpusersusercolumn=userid passwdcolumn=passwd crypt=0 </p>
+<p>#account </p>
+<p>Accountrequired/soft/program/pam_mods/pam_mysql.so </p>
+<p>User=ftpuserpasswd=6789 host=localhost db=ftp table=ftpusers usercolumn=useridpasswdcolumn=passwd crypt=0 </p>
+<p>涉及到的参数，只要对应前面数据库的设置就可以明白它们的含义。其中：crypt=0,口令以明文方式(不加密)保存在数据库中，crypt=1,口令使用Unix系统的DES加密方式加密后保存在数据库中；crypt=2,口令经过MySQL的password()函数加密后保存。FTP数据库中ftpusers表的授权用户ftpusers和密码必须正确设置。 </p>
+<p>◆开机自启动VsFTPD </p>
+<p>请将vsftpd-2.2.1/xinetd.d/vsftpd文件制到/etc/xinetd.d/中(如果该目录中没有该文件)。此外，还需设置vsftpd.conf中listen和Tcp_Wrappers参数，将其都设置为NO，最后，用ntsysv命令，选中Vsftpd守护进程即可。 </p>
+<p>通过上面的知识，结合Apache、PHP等软件可以开发许多功能，如自动申请主页空间等，而且使用phpMyAdmin可以以Web方式管理MySQL,很容易的添加和删除用户，这样FTP用户管理就轻松多了。</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a  href="/2018/06/24/Centos7常用命令大全/">Centos7常用命令大全</a></p>
+        <p><span>文章作者:</span><a  href="/" title="访问 JingWei Zhou 的个人博客">JingWei Zhou</a></p>
+        <p><span>发布时间:</span>2018年06月24日 - 14时05分</p>
+        <p><span>最后更新:</span>2018年06月24日 - 14时06分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2018/06/24/Centos7常用命令大全/" title="Centos7常用命令大全">https://jingweiz300.github.io/2018/06/24/Centos7常用命令大全/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://jingweiz300.github.io/2018/06/24/Centos7常用命令大全/　　作者: JingWei Zhou" title=""></span>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+<nav id="article-nav">
+  
+    <a  href="/2018/06/24/查看shell/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          查看shell
+        
+      </div>
+    </a>
+  
+  
+    <a  href="/2018/06/24/mysql新安装之后密码处理/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">mysql新安装之后密码处理</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+</div>
+<style>
+    .left-col .switch-btn {
+        display: none;
+    }
+    .left-col .switch-area {
+        display: none;
+    }
+</style>
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+            $(".switch-btn, .switch-area").fadeOut(300);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+            $(".switch-btn, .switch-area").fadeIn(500);
+        }
+    })
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+        $(".switch-btn, .switch-area").show();
+    }
+</script>
+
+
+
+
+<div class="bdsharebuttonbox">
+	<a href="#" class="fx fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="fx fa-weixin bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+	<a href="#" class="fx fa-qq bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+	<a href="#" class="fx fa-facebook-official bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+	<a href="#" class="fx fa-twitter bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+	<a href="#" class="fx fa-linkedin bds_linkedin" data-cmd="linkedin" title="分享到linkedin"></a>
+	<a href="#" class="fx fa-files-o bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+</div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+
+
+
+     
+      <!-- ������City�氲װ���� -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC8zNDgyOS8xMTM2Ng==">
+	<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+	</script>
+<noscript> Ϊ����ʹ�����������۹����뼤��JavaScript</noscript>
+</div>
+<!-- City�氲װ��������� -->
+
+
+      
+    
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a  href="/2018/06/24/查看shell/" title="上一篇: 查看shell">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        
+            <a  href="/2018/06/24/mysql新安装之后密码处理/" title="下一篇: mysql新安装之后密码处理">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/06/24/Centos7关闭防火墙/">Centos7关闭防火墙</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/24/查看shell/">查看shell</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/24/Centos7常用命令大全/">Centos7常用命令大全</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/24/mysql新安装之后密码处理/">mysql新安装之后密码处理</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/24/各种bin目录的区别/">各种bin目录的区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/24/linux常用系统运维命令/">linux常用系统运维命令</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/24/centos中service命令与-etc-init-d的关系以及centos7的变化/">centos中service命令与/etc/init.d的关系以及centos7的变化</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/24/修改linux主机名/">修改linux主机名</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/24/linux的五个查找命令/">linux的五个查找命令</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/24/时间同步/">时间同步</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/24/vim操作/">vim操作</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/24/三种方法解决FailedtostartLSB-Bringup-downnetworking问题/">三种方法解决FailedtostartLSB:Bringup/downnetworking问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/24/解决CentOS添加新网卡后找不到网卡配置文件/">解决CentOS添加新网卡后找不到网卡配置文件</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/21/fabric使用2-1-3版本/">fabric使用2.1.3版本</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/20/fabric应用/">fabric应用（1.14）</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/19/zabbix监控ibm-x3550-m3服务器/">zabbix监控ibm-x3550-m3服务器</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/13/zabbix用户密码修改/">zabbix用户密码修改</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/13/zabbix监控MSSQL/">zabbix监控MSSQL</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/13/计算机编码/">计算机编码</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/10/多线程的一点思考/">多线程的一点思考</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/25/pandas操作excel/">pandas操作excel</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/02/连接linux远程登录无需密码/">连接linux远程登录无需密码</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/16/Pandas模块的学习/">Pandas模块的学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/15/Numpy模块的学习(3-5)/">Numpy模块的学习(3-5)</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/14/Numpy模块的学习(1-2)/">Numpy模块的学习(1-2)</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/13/生成zabbix图片并通过微信发送/">生成zabbix图表，通过微信发送群聊</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/12/Matplotlib模块的学习/">Matplotlib模块的学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/02/10/zabbix自动发现无法获取主机/">zabbix自动发现无法获取主机</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/13/zabbix-proxy安装/">zabbix-proxy安装</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/10/dbfpy/">dbfpy模块的使用案例-python2.7</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/23/Centos操作系统常用log日志/">Centos操作系统常用log日志</a></li></ul>
+    <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        // $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#toc, .switch-btn, .switch-area").toggle();
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+                $(".switch-btn, .switch-area").fadeToggle(300);
+            }
+        })
+    </script>
+
+
+
+
+    <script>
+        
+    </script>
+
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2018 JingWei Zhou
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank">Hexo &nbsp;&nbsp;</a><a href="https://github.com/maochunguang" target="_blank">Blog</a> by tommy
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" >极客到访数: 
+                            <span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>, </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit">本页阅读量: 
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+
+    </div>
+    <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var backgroundnum = 1;
+            var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+            $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+            $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+        })
+    </script>
+
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+  <script language="javascript">
+    $(function() {
+        $("a[title]").each(function() {
+            var a = $(this);
+            var title = a.attr('title');
+            if (title == undefined || title == "") return;
+            a.data('title', title).removeAttr('title').hover(
+            function() {
+                var offset = a.offset();
+                $("<div id=\"anchortitlecontainer\"></div>").appendTo($("body")).html(title).css({
+                    top: offset.top - a.outerHeight() - 15,
+                    left: offset.left + a.outerWidth()/2 + 1
+                }).fadeIn(function() {
+                    var pop = $(this);
+                    setTimeout(function() {
+                        pop.remove();
+                    }, pop.text().length * 800);
+                });
+            }, function() {
+                $("#anchortitlecontainer").remove();
+            });
+        });
+    });
+</script>
+
+
+  </div>
+</body>
+</html>

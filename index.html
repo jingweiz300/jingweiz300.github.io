@@ -189,7 +189,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <a href="/tags/Matplotlib/" style="font-size: 10px;">Matplotlib</a> <a href="/tags/fabric/" style="font-size: 13.33px;">fabric</a> <a href="/tags/numpy/" style="font-size: 13.33px;">numpy</a> <a href="/tags/pandas/" style="font-size: 13.33px;">pandas</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/threading/" style="font-size: 10px;">threading</a> <a href="/tags/zabbix/" style="font-size: 16.67px;">zabbix</a> <a href="/tags/微信/" style="font-size: 10px;">微信</a> <a href="/tags/模块使用/" style="font-size: 20px;">模块使用</a>
+                        <a href="/tags/Matplotlib/" style="font-size: 10px;">Matplotlib</a> <a href="/tags/anaconda/" style="font-size: 10px;">anaconda</a> <a href="/tags/bin目录/" style="font-size: 10px;">bin目录</a> <a href="/tags/centos7/" style="font-size: 10px;">centos7</a> <a href="/tags/fabric/" style="font-size: 12.5px;">fabric</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/numpy/" style="font-size: 12.5px;">numpy</a> <a href="/tags/pandas/" style="font-size: 12.5px;">pandas</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/shell/" style="font-size: 10px;">shell</a> <a href="/tags/threading/" style="font-size: 10px;">threading</a> <a href="/tags/vim/" style="font-size: 10px;">vim</a> <a href="/tags/xlwt/" style="font-size: 10px;">xlwt</a> <a href="/tags/zabbix/" style="font-size: 17.5px;">zabbix</a> <a href="/tags/修改主机名/" style="font-size: 10px;">修改主机名</a> <a href="/tags/免密登录/" style="font-size: 10px;">免密登录</a> <a href="/tags/常用命令/" style="font-size: 15px;">常用命令</a> <a href="/tags/微信/" style="font-size: 10px;">微信</a> <a href="/tags/时间同步/" style="font-size: 10px;">时间同步</a> <a href="/tags/查找命令/" style="font-size: 10px;">查找命令</a> <a href="/tags/模块使用/" style="font-size: 20px;">模块使用</a> <a href="/tags/系统日志/" style="font-size: 10px;">系统日志</a> <a href="/tags/网络/" style="font-size: 12.5px;">网络</a> <a href="/tags/虚拟机/" style="font-size: 12.5px;">虚拟机</a> <a href="/tags/转义字符/" style="font-size: 10px;">转义字符</a> <a href="/tags/运维/" style="font-size: 10px;">运维</a>
                     </div>
                 </section>
                 
@@ -259,6 +259,901 @@
     </div>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-利用xlwt导出excel文件的例子" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="/2018/06/24/利用xlwt导出excel文件的例子/" class="article-date">
+      <time datetime="2018-06-24T06:34:10.000Z" itemprop="datePublished">2018-06-24</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a  class="article-title" href="/2018/06/24/利用xlwt导出excel文件的例子/">利用xlwt导出excel文件的例子</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>ExamplesGenerating Excel Documents Using Python’s xlwt</p>
+<p>Here are some simple examples using Python’sxlwt library to dynamically generate Excel documents.</p>
+<p>Please note a useful alternativemay be ezodf, which allows you to generate ODS (Open Document Spreadsheet)files for LibreOffice / OpenOffice. You can check them out at:<a href="http://packages.python.org/ezodf/index.html" target="_blank" rel="noopener">http://packages.python.org/ezodf/index.html</a></p>
+<p>The SimplestExample</p>
+<p>import xlwt</p>
+<p>workbook = xlwt.Workbook(encoding = ‘ascii’)</p>
+<p>worksheet = workbook.add_sheet(‘My Worksheet’)</p>
+<p>worksheet.write(0, 0, label = ‘Row 0, Column 0Value’)</p>
+<p>workbook.save(‘Excel_Workbook.xls’)</p>
+<p>Formatting theContents of a Cell</p>
+<p>import xlwt</p>
+<p>workbook = xlwt.Workbook(encoding = ‘ascii’)</p>
+<p>worksheet = workbook.add_sheet(‘My Worksheet’)</p>
+<p>font = xlwt.Font() # Create the Font</p>
+<p>font.name = ‘Times New Roman’</p>
+<p>font.bold = True</p>
+<p>font.underline = True</p>
+<p>font.italic = True</p>
+<p>style = xlwt.XFStyle() # Create the Style</p>
+<p>style.font = font # Apply the Font to the Style</p>
+<p>worksheet.write(0, 0, label = ‘Unformattedvalue’)</p>
+<p>worksheet.write(1, 0, label = ‘Formattedvalue’, style) # Apply the Style to the Cell</p>
+<p>workbook.save(‘Excel_Workbook.xls’)</p>
+<p>Attributes ofthe Font Object</p>
+<p>font.bold = True # May be: True, False</p>
+<p>font.italic = True # May be: True, False</p>
+<p>font.struck_out = True # May be: True, False</p>
+<p>font.underline = xlwt.Font.UNDERLINE_SINGLE #May be: UNDERLINE_NONE, UNDERLINE_SINGLE, UNDERLINE_SINGLE_ACC,UNDERLINE_DOUBLE, UNDERLINE_DOUBLE_ACC</p>
+<p>font.escapement =xlwt.Font.ESCAPEMENT_SUPERSCRIPT # May be: ESCAPEMENT_NONE,ESCAPEMENT_SUPERSCRIPT, ESCAPEMENT_SUBSCRIPT</p>
+<p>font.family = xlwt.Font.FAMILY_ROMAN # May be:FAMILY_NONE, FAMILY_ROMAN, FAMILY_SWISS, FAMILY_MODERN, FAMILY_SCRIPT,FAMILY_DECORATIVE</p>
+<p>font.charset = xlwt.Font.CHARSET_ANSI_LATIN #May be: CHARSET_ANSI_LATIN, CHARSET_SYS_DEFAULT, CHARSET_SYMBOL,CHARSET_APPLE_ROMAN, CHARSET_ANSI_JAP_SHIFT_JIS, CHARSET_ANSI_KOR_HANGUL,CHARSET_ANSI_KOR_JOHAB, CHARSET_ANSI_CHINESE_GBK, CHARSET_ANSI_CHINESE_BIG5,CHARSET_ANSI_GREEK, CHARSET_ANSI_TURKISH, CHARSET_ANSI_VIETNAMESE,CHARSET_ANSI_HEBREW, CHARSET_ANSI_ARABIC, CHARSET_ANSI_BALTIC,CHARSET_ANSI_CYRILLIC, CHARSET_ANSI_THAI, CHARSET_ANSI_LATIN_II,CHARSET_OEM_LATIN_I</p>
+<p>font.colour_index = ?</p>
+<p>font.get_biff_record = ?</p>
+<p>font.height = 0x00C8 # C8 in Hex (in decimal) =10 points in height.</p>
+<p>font.name = ?</p>
+<p>font.outline = ?</p>
+<p>font.shadow = ?</p>
+<p>Setting theWidth of a Cell</p>
+<p>import xltw</p>
+<p>workbook = xlwt.Workbook()</p>
+<p>worksheet = workbook.add_sheet(‘My Sheet’)</p>
+<p>worksheet.write(0, 0, ‘My Cell Contents’)</p>
+<p>worksheet.col(0).width = 3333 # 3333 = 1”(one inch).</p>
+<p>workbook.save(‘Excel_Workbook.xls’)</p>
+<p>Entering a Dateinto a Cell</p>
+<p>import xlwt</p>
+<p>import datetime</p>
+<p>workbook = xlwt.Workbook()</p>
+<p>worksheet = workbook.add_sheet(‘My Sheet’)</p>
+<p>style = xlwt.XFStyle()</p>
+<p>style.num_format_str = ‘M/D/YY’ # Otheroptions: D-MMM-YY, D-MMM, MMM-YY, h:mm, h:mm:ss, h:mm, h:mm:ss, M/D/YY h:mm,mm:ss, [h]:mm:ss, mm:ss.0</p>
+<p>worksheet.write(0, 0, datetime.datetime.now(),style)</p>
+<p>workbook.save(‘Excel_Workbook.xls’)</p>
+<p>Adding a Formulato a Cell</p>
+<p>import xlwt</p>
+<p>workbook = xlwt.Workbook()</p>
+<p>worksheet = workbook.add_sheet(‘My Sheet’)</p>
+<p>worksheet.write(0, 0, 5) # Outputs 5</p>
+<p>worksheet.write(0, 1, 2) # Outputs 2</p>
+<p>worksheet.write(1, 0, xlwt.Formula(‘A1<em>B1’)) #Should output “10” (A1[5] </em> A2[2])</p>
+<p>worksheet.write(1, 1,xlwt.Formula(‘SUM(A1,B1)’)) # Should output “7” (A1[5] + A2[2])</p>
+<p>workbook.save(‘Excel_Workbook.xls’)</p>
+<p>Adding aHyperlink to a Cell</p>
+<p>import xlwt</p>
+<p>workbook = xlwt.Workbook()</p>
+<p>worksheet = workbook.add_sheet(‘My Sheet’)</p>
+<p>worksheet.write(0, 0,xlwt.Formula(‘HYPERLINK(“<a href="http://www.google.com&quot;;&quot;Google&quot;)&#39;))#" target="_blank" rel="noopener">http://www.google.com&quot;;&quot;Google&quot;)&#39;))#</a> Outputs the text “Google” linking to <a href="http://www.google.com" target="_blank" rel="noopener">http://www.google.com</a></p>
+<p>workbook.save(‘Excel_Workbook.xls’)</p>
+<p>Merging Columnsand Rows</p>
+<p>import xlwt</p>
+<p>workbook = xlwt.Workbook()</p>
+<p>worksheet = workbook.add_sheet(‘My Sheet’)</p>
+<p>worksheet.write_merge(0, 0, 0, 3, ‘FirstMerge’) # Merges row 0’s columns 0 through 3.</p>
+<p>font = xlwt.Font() # Create Font</p>
+<p>font.bold = True # Set font to Bold</p>
+<p>style = xlwt.XFStyle() # Create Style</p>
+<p>style.font = font # Add Bold Font to Style</p>
+<p>worksheet.write_merge(1, 2, 0, 3, ‘SecondMerge’, style) # Merges row 1 through 2’s columns 0 through 3.</p>
+<p>workbook.save(‘Excel_Workbook.xls’)</p>
+<p>Setting theAlignment for the Contents of a Cell</p>
+<p>import xlwt</p>
+<p>workbook = xlwt.Workbook()</p>
+<p>worksheet = workbook.add_sheet(‘My Sheet’)</p>
+<p>alignment = xlwt.Alignment() # Create Alignment</p>
+<p>alignment.horz = xlwt.Alignment.HORZ_CENTER #May be: HORZ_GENERAL, HORZ_LEFT, HORZ_CENTER, HORZ_RIGHT, HORZ_FILLED,HORZ_JUSTIFIED, HORZ_CENTER_ACROSS_SEL, HORZ_DISTRIBUTED</p>
+<p>alignment.vert = xlwt.Alignment.VERT_CENTER #May be: VERT_TOP, VERT_CENTER, VERT_BOTTOM, VERT_JUSTIFIED, VERT_DISTRIBUTED</p>
+<p>style = xlwt.XFStyle() # Create Style</p>
+<p>style.alignment = alignment # Add Alignment toStyle</p>
+<p>worksheet.write(0, 0, ‘Cell Contents’, style)</p>
+<p>workbook.save(‘Excel_Workbook.xls’)</p>
+<p>Adding Bordersto a Cell</p>
+<p># Please note: While I was able to find theseconstants within the source code, on my system (using LibreOffice,) I was onlypresented with a solid line, varying from thin to thick; no dotted or dashedlines.</p>
+<p>import xlwt</p>
+<p>workbook = xlwt.Workbook()</p>
+<p>worksheet = workbook.add_sheet(‘My Sheet’)</p>
+<p>borders = xlwt.Borders() # Create Borders</p>
+<p>borders.left = xlwt.Borders.DASHED # May be:NO_LINE, THIN, MEDIUM, DASHED, DOTTED, THICK, DOUBLE, HAIR, MEDIUM_DASHED,THIN_DASH_DOTTED, MEDIUM_DASH_DOTTED, THIN_DASH_DOT_DOTTED,MEDIUM_DASH_DOT_DOTTED, SLANTED_MEDIUM_DASH_DOTTED, or 0x00 through 0x0D.</p>
+<p>borders.right = xlwt.Borders.DASHED</p>
+<p>borders.top = xlwt.Borders.DASHED</p>
+<p>borders.bottom = xlwt.Borders.DASHED</p>
+<p>borders.left_colour = 0x40</p>
+<p>borders.right_colour = 0x40</p>
+<p>borders.top_colour = 0x40</p>
+<p>borders.bottom_colour = 0x40</p>
+<p>style = xlwt.XFStyle() # Create Style</p>
+<p>style.borders = borders # Add Borders to Style</p>
+<p>worksheet.write(0, 0, ‘Cell Contents’, style)</p>
+<p>workbook.save(‘Excel_Workbook.xls’)</p>
+<p>Setting theBackground Color of a Cell</p>
+<p>import xlwt</p>
+<p>workbook = xlwt.Workbook()</p>
+<p>worksheet = workbook.add_sheet(‘My Sheet’)</p>
+<p>pattern = xlwt.Pattern() # Create thePattern</p>
+<p>pattern.pattern =xlwt.Pattern.SOLID_PATTERN # May be: NO_PATTERN, SOLID_PATTERN, or 0x00through 0x12</p>
+<p>pattern.pattern_fore_colour = 5 # Maybe: 8 through 63. 0 = Black, 1 = White, 2 = Red, 3 = Green, 4 = Blue, 5 =Yellow, 6 = Magenta, 7 = Cyan, 16 = Maroon, 17 = Dark Green, 18 = Dark Blue, 19= Dark Yellow , almost brown), 20 = Dark Magenta, 21 = Teal, 22 = Light Gray,23 = Dark Gray, the list goes on…</p>
+<p>style = xlwt.XFStyle() # Create the Pattern</p>
+<p>style.pattern = pattern # Add Pattern toStyle</p>
+<p>worksheet.write(0, 0, ‘Cell Contents’, style)</p>
+<p>workbook.save(‘Excel_Workbook.xls’)</p>
+<p>TODO: ThingsLeft to Document</p>
+<p>- Panes – separate views which are always inview</p>
+<p>- Border Colors (documented above, but nottaking effect as it should)</p>
+<p>- Border Widths (document above, but notworking as expected)</p>
+<p>- Protection</p>
+<p>- Row Styles</p>
+<p>- Zoom / Manification</p>
+<p>- WS Props?</p>
+<p>Source Code for reference available at: <a href="https://secure.simplistix.co.uk/svn/xlwt/trunk/xlwt/" target="_blank" rel="noopener">https://secure.simplistix.co.uk/svn/xlwt/trunk/xlwt/</a></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/python/">python</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/xlwt/">xlwt</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/模块使用/">模块使用</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-python转义字符" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="/2018/06/24/python转义字符/" class="article-date">
+      <time datetime="2018-06-24T06:27:39.000Z" itemprop="datePublished">2018-06-24</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a  class="article-title" href="/2018/06/24/python转义字符/">python转义字符</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>在需要在字符中使用特殊字符时，python用反斜杠()转义字符。如下表：</p>
+<p>原始字符串</p>
+<p>有时我们并不想让转义字符生效，我们只想显示字符串原来的意思，这就要用r和R来定义原始字符串。如：</p>
+<p>print r’\t\r’</p>
+<p>实际输出为“\t\r”。</p>
+<table>
+<thead>
+<tr>
+<th>转义字符</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>(在行尾时)</td>
+<td>续行符</td>
+</tr>
+<tr>
+<td>\</td>
+<td>反斜杠符号</td>
+</tr>
+<tr>
+<td>\’</td>
+<td>单引号</td>
+</tr>
+<tr>
+<td>\”</td>
+<td>双引号</td>
+</tr>
+<tr>
+<td>\a</td>
+<td>响铃</td>
+</tr>
+<tr>
+<td>\b</td>
+<td>退格(Backspace)</td>
+</tr>
+<tr>
+<td>\e</td>
+<td>转义</td>
+</tr>
+<tr>
+<td>\000</td>
+<td>空</td>
+</tr>
+<tr>
+<td>\n</td>
+<td>换行</td>
+</tr>
+<tr>
+<td>\v</td>
+<td>纵向制表符</td>
+</tr>
+<tr>
+<td>\t</td>
+<td>横向制表符</td>
+</tr>
+<tr>
+<td>\r</td>
+<td>回车</td>
+</tr>
+<tr>
+<td>\f</td>
+<td>换页</td>
+</tr>
+<tr>
+<td>\oyy</td>
+<td>八进制数yy代表的字符，例如：\o12代表换行</td>
+</tr>
+<tr>
+<td>\xyy</td>
+<td>十进制数yy代表的字符，例如：\x0a代表换行</td>
+</tr>
+<tr>
+<td>\other</td>
+<td>其它的字符以普通格式输出</td>
+</tr>
+</tbody>
+</table>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/python/">python</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/转义字符/">转义字符</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-linux的五个查找命令" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="/2018/06/24/linux的五个查找命令/" class="article-date">
+      <time datetime="2018-06-24T05:49:35.000Z" itemprop="datePublished">2018-06-24</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a  class="article-title" href="/2018/06/24/linux的五个查找命令/">linux的五个查找命令</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>在Linux中，有很多方法可以做到这一点。国外网站<a href="http://www.linuxhaxor.net/?p=904" target="_blank" rel="noopener">LinuxHaxor</a>总结了五条命令，你可以看看自己知道几条。大多数程序员，可能经常使用其中的2到3条，对这5条命令都很熟悉的人应该是不多的。</p>
+<p>\1. find</p>
+<p>find是最常见和最强大的查找命令，你可以用它找到任何你想找的文件。</p>
+<p>find的使用格式如下：</p>
+<p>$ find &lt;指定目录&gt; &lt;指定条件&gt;&lt;指定动作&gt;</p>
+<p>- &lt;指定目录&gt;： 所要搜索的目录及其所有子目录。默认为当前目录。</p>
+<p>- &lt;指定条件&gt;： 所要搜索的文件的特征。</p>
+<p>- &lt;指定动作&gt;： 对搜索结果进行特定的处理。</p>
+<p>如果什么参数也不加，find默认搜索当前目录及其子目录，并且不过滤任何结果（也就是返回所有文件），将它们全都显示在屏幕上。</p>
+<p>find的使用实例：</p>
+<p>$ find . -name ‘my*’</p>
+<p>搜索当前目录（含子目录，以下同）中，所有文件名以my开头的文件。</p>
+<p>$ find . -name ‘my*’ -ls</p>
+<p>搜索当前目录中，所有文件名以my开头的文件，并显示它们的详细信息。</p>
+<p>$ find . -type f -mmin -10</p>
+<p>搜索当前目录中，所有过去10分钟中更新过的普通文件。如果不加-type f参数，则搜索普通文件+特殊文件+目录。</p>
+<p>\2. locate</p>
+<p>locate命令其实是”find -name”的另一种写法，但是要比后者快得多，原因在于它不搜索具体目录，而是搜索一个数据库（/var/lib/locatedb），这个数据库中含有本地所有文件信息。Linux系统自动创建这个数据库，并且每天自动更新一次，所以使用locate命令查不到最新变动过的文件。为了避免这种情况，可以在使用locate之前，先使用updatedb命令，手动更新数据库。</p>
+<p>locate命令的使用实例：</p>
+<p>$ locate /etc/sh</p>
+<p>搜索etc目录下所有以sh开头的文件。</p>
+<p>$ locate ~/m</p>
+<p>搜索用户主目录下，所有以m开头的文件。</p>
+<p>$ locate -i ~/m</p>
+<p>搜索用户主目录下，所有以m开头的文件，并且忽略大小写。</p>
+<p>\3. whereis</p>
+<p>whereis命令只能用于程序名的搜索，而且只搜索二进制文件（参数-b）、man说明文件（参数-m）和源代码文件（参数-s）。如果省略参数，则返回所有信息。</p>
+<p>whereis命令的使用实例：</p>
+<p>$ whereis grep</p>
+<p>\4. which</p>
+<p>which命令的作用是，在PATH变量指定的路径中，搜索某个系统命令的位置，并且返回第一个搜索结果。也就是说，使用which命令，就可以看到某个系统命令是否存在，以及执行的到底是哪一个位置的命令。</p>
+<p>which命令的使用实例：</p>
+<p>$ which grep</p>
+<p>\5. type</p>
+<p>type命令其实不能算查找命令，它是用来区分某个命令到底是由shell自带的，还是由shell外部的独立二进制文件提供的。如果一个命令是外部命令，那么使用-p参数，会显示该命令的路径，相当于which命令。</p>
+<p>type命令的使用实例：</p>
+<p>$ type cd</p>
+<p>系统会提示，cd是shell的自带命令（build-in）。</p>
+<p>$ type grep</p>
+<p>系统会提示，grep是一个外部命令，并显示该命令的路径。</p>
+<p>$ type -p grep</p>
+<p>加上-p参数后，就相当于which命令。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/linux/">linux</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/查找命令/">查找命令</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-时间同步" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="/2018/06/24/时间同步/" class="article-date">
+      <time datetime="2018-06-24T05:46:13.000Z" itemprop="datePublished">2018-06-24</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a  class="article-title" href="/2018/06/24/时间同步/">时间同步</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>Linux服务器运行久时，系统时间就会存在一定的误差，一般情况下可以使用date命令进行时间设置，但在做数据库集群分片等操作时对多台机器的时间差是有要求的，此时就需要使用ntpdate进行时间同步。</p>
+<p>一、修改时区：</p>
+<p># cp/usr/share/zoneinfo/Asia/Shanghai /etc/localtime</p>
+<p>修改为中国的东八区</p>
+<p># vi/etc/sysconfig/clock</p>
+<p>ZONE=”Asia/Shanghai”</p>
+<p>UTC=false</p>
+<p>ARC=false</p>
+<p>二、配置新的时间</p>
+<p>日期设定：</p>
+<p># date-s 2017/03/06</p>
+<p>时间设定：</p>
+<p># date-s 18:40:00</p>
+<p>查看硬件时间（BIOS的）：</p>
+<p>   hwclock [-rw]</p>
+<p>​    -r:查看现有BIOS时间，默认为－r参数</p>
+<p>​    -w:将现在的linux系统时间写入BIOS中</p>
+<p>​    注：当我们进行完 Linux 时间的校时后，还需要以 hwclock -w 来更新 BIOS 的时间，因为每次开机的时候，系统会重新由 BIOS 将时间读出来，所以， BIOS 才是重要的时间依据。</p>
+<p>[root@linuxidc~]# hwclock -r</p>
+<p>Wed 02Nov 2016 02:53:35 AM CST  -0.632895 seconds</p>
+<p>同步BIOS时钟，强制把系统时间写入CMOS：</p>
+<p># clock-w</p>
+<p>三、实现Internet时间同步（这里可以忽略上面两步）</p>
+<p>方法1. 开机的时候自动网络校时：</p>
+<p>   vi /etc/rc.d/rc.local</p>
+<p>   /usr/sbin/ntpdate -u 192.168.0.2 192.168.0.3 192.168.0.4; /sbin/hwclock -w</p>
+<p>#这里几个IP是公司内部的NTP服务器</p>
+<p>方法2. 设定计划任务</p>
+<p>crontab格式如下：</p>
+<p># Fordetails see man 4 crontabs</p>
+<p>#Example of job definition:</p>
+<p>#.—————- minute (0 - 59)</p>
+<p>#|  .————- hour (0 - 23)</p>
+<p>#|  |  .———- day of month (1 - 31)</p>
+<p>#|  |  |  .——- month (1 - 12) OR jan,feb,mar,apr …</p>
+<p>#|  |  |  |  .—- day of week (0 - 6) (Sunday=0 or 7) ORsun,mon,tue,wed,thu,fri,sat</p>
+<p>#|  |  |  |  |</p>
+<p>#<em>  </em>  <em>  </em>  *  command to be executed</p>
+<p>设定crontab计划任务自动校时：</p>
+<p>使用命令crontab -e</p>
+<p>crontab-e</p>
+<p>   10 5 <em> </em> * root /usr/sbin/ntpdate -u 210.72.145.44;hwclock -w</p>
+<p>这样每天5:10自动进行网络校时，并同时更新BIOS的时间</p>
+<p>-——————————————————————————</p>
+<p>同步网络时间：输入ntpdatetime.nist.gov同步网络时间</p>
+<p>[root@linuxidc~]# ntpdate -u time.nist.gov  #网络时间同步命令</p>
+<p>13 Mar13:39:57 ntpdate[3318]: adjust time server 216.229.0.179 offset 0.018134 sec</p>
+<p>#出现以上信息说明同步成功#</p>
+<p>注：如提示命令不存在，直接输入：yuminstall ntp -y  安装ntp软件包。 </p>
+<p>注：若不加上-u参数，会出现以下提示：no server suitable for synchronization found</p>
+<p>-u：从man ntpdate中可以看出-u参数可以越过防火墙与主机同步；</p>
+<p>210.72.145.44：中国国家授时中心的官方服务器。</p>
+<p>ntp常用服务器：</p>
+<p>中国国家授时中心：210.72.145.44</p>
+<p>NTP服务器(上海) ：ntp.api.bz</p>
+<p>美国：time.nist.gov </p>
+<p>复旦：ntp.fudan.edu.cn </p>
+<p>微软公司授时主机(美国)：time.windows.com </p>
+<p>台警大授时中心(台湾)：asia.pool.ntp.org</p>
+<p>注：经测试中国国家授时中心与NTP上海服务器可以正常同步时间，注意需要加上-u参数越过防火墙与主机同步！</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/linux/">linux</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/时间同步/">时间同步</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-vim操作" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="/2018/06/24/vim操作/" class="article-date">
+      <time datetime="2018-06-24T05:26:44.000Z" itemprop="datePublished">2018-06-24</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a  class="article-title" href="/2018/06/24/vim操作/">vim操作</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h3 id="一、vim光标移动操作"><a href="#一、vim光标移动操作" class="headerlink" title="一、vim光标移动操作"></a>一、vim光标移动操作</h3><p>向下翻滚一个屏幕  ctrl+f</p>
+<p>向上翻滚一个屏幕  ctrl+b</p>
+<p>向下滚动一行     ctrl+e</p>
+<p>向上滚动一行     ctrl+y</p>
+<p>查找百分之n      n%</p>
+<p>移动到光标所在行的行首  0或者^</p>
+<p>移动到光标所在行的行末  $</p>
+<p>移动光标到整个文档的第一个字符   (</p>
+<p>移动光标到整个文档的最后一个字符  )</p>
+<p>移动光标到当前屏幕的最上边  H</p>
+<p>移动光标到当前屏幕的最中间  M</p>
+<p>移动光标到当前屏幕的最下边  L</p>
+<p>移动光标到整个文档的最上边    gg</p>
+<p>移动光标到整个文档的最下边    G</p>
+<p>移动到文档的n行处           nG</p>
+<p>移动到当前行的下一个字符c处 tc</p>
+<p>移动到当前行的上一个字符c处 Tc</p>
+<h3 id="二、查找替换"><a href="#二、查找替换" class="headerlink" title="二、查找替换"></a>二、查找替换</h3><h4 id="1，查找"><a href="#1，查找" class="headerlink" title="1，查找"></a>1，查找</h4><p>在normal模式下按下/即可进入查找模式，输入要查找的字符串并按下回车。 Vim会跳转到第一个匹配。按下n查找下一个，按下N查找上一个。</p>
+<p>Vim查找支持正则表达式，例如/vim$匹配行尾的”vim”。 需要查找特殊字符需要转义，例如/vim\$匹配”vim$”。</p>
+<h4 id="2，大小写敏感查找"><a href="#2，大小写敏感查找" class="headerlink" title="2，大小写敏感查找"></a>2，大小写敏感查找</h4><p>在查找模式中加入\c表示大小写不敏感查找，\C表示大小写敏感查找。例如：</p>
+<p>/foo\c</p>
+<p>将会查找所有的”foo”,”FOO”,”Foo”等字符串。</p>
+<h4 id="3，大小写敏感配置"><a href="#3，大小写敏感配置" class="headerlink" title="3，大小写敏感配置"></a>3，大小写敏感配置</h4><p>Vim 默认采用大小写敏感的查找，为了方便我们常常将其配置为大小写不敏感：</p>
+<p>“ 设置默认进行大小写不敏感查找<br>set ignorecase<br>“ 如果有一个大写字母，则切换到大小写敏感查找<br>set smartcase </p>
+<p>将上述设置粘贴到你的~/.vimrc，重新打开Vim即可生效</p>
+<h4 id="4，查找当前单词"><a href="#4，查找当前单词" class="headerlink" title="4，查找当前单词"></a>4，查找当前单词</h4><p>在normal模式下按下*即可查找光标所在单词（word）， 要求每次出现的前后为空白字符或标点符号。例如当前为foo， 可以匹配foobar中的foo，但不可匹配foobar中的foo。 这在查找函数名、变量名时非常有用。</p>
+<p>按下g*即可查找光标所在单词的字符序列，每次出现前后字符无要求。 即foobar和foobar中的foo均可被匹配到。</p>
+<h4 id="5，查找与替换"><a href="#5，查找与替换" class="headerlink" title="5，查找与替换"></a>5，查找与替换</h4><p>:s（substitute）命令用来查找和替换字符串。语法如下：</p>
+<p>:{作用范围}s/{目标}/{替换}/{替换标志}</p>
+<p>例如:%s/foo/bar/g会在全局范围(%)查找foo并替换为bar，所有出现都会被替换（g）</p>
+<h4 id="6，作用范围"><a href="#6，作用范围" class="headerlink" title="6，作用范围"></a>6，作用范围</h4><p>作用范围分为当前行、全文、选区等等。</p>
+<p>当前行：</p>
+<p>:s/foo/bar/g</p>
+<p>全文：</p>
+<p>:%s/foo/bar/g</p>
+<p>选区，在Visual模式下选择区域后输入:，Vim即可自动补全为 :’&lt;,’&gt;。</p>
+<p>:’&lt;,’&gt;s/foo/bar/g</p>
+<p>2-11行：</p>
+<p>:5,12s/foo/bar/g</p>
+<p>当前行.与接下来两行+2：</p>
+<p>:.,+2s/foo/bar/g</p>
+<h4 id="7、替换标志"><a href="#7、替换标志" class="headerlink" title="7、替换标志"></a>7、替换标志</h4><p>上文中命令结尾的g即是替换标志之一，表示全局global替换（即替换目标的所有出现）。 还有很多其他有用的替换标志：</p>
+<p>空替换标志表示只替换从光标位置开始，目标的第一次出现：</p>
+<p>:%s/foo/bar</p>
+<p>i表示大小写不敏感查找，I表示大小写敏感：</p>
+<p>:%s/foo/bar/i<br># 等效于模式中的\c（不敏感）或\C（敏感）<br>:%s/foo\c/bar</p>
+<p>c表示需要确认，例如全局查找”foo”替换为”bar”并且需要确认：</p>
+<p>:%s/foo/bar/gc</p>
+<p>回车后Vim会将光标移动到每一次”foo”出现的位置，并提示</p>
+<p>replacewith bar (y/n/a/q/l/^E/^Y)?</p>
+<p>按下y表示替换，n表示不替换，a表示替换所有，q表示退出查找模式， l表示替换当前位置并退出。^E与^Y是光标移动快捷键，参考： <a href="http://harttle.com/2015/11/07/vim-cursor.html" target="_blank" rel="noopener">Vim中如何快速进行光标移</a></p>
+<h4 id="8、大小写敏感查找"><a href="#8、大小写敏感查找" class="headerlink" title="8、大小写敏感查找"></a>8、大小写敏感查找</h4><p>在查找模式中加入\c表示大小写不敏感查找，\C表示大小写敏感查找。例如：</p>
+<p>/foo\c</p>
+<p>将会查找所有的”foo”,”FOO”,”Foo”等字符串。</p>
+<h3 id="三、复制粘贴剪切"><a href="#三、复制粘贴剪切" class="headerlink" title="三、复制粘贴剪切"></a>三、复制粘贴剪切</h3><h4 id="复制"><a href="#复制" class="headerlink" title="复制"></a>复制</h4><h5 id="1-常用复制命令："><a href="#1-常用复制命令：" class="headerlink" title="1.常用复制命令："></a>1.常用复制命令：</h5><p>​        yy   复制游标所在行整行 </p>
+<p>​        2yy或y2y    复制 2 行</p>
+<p>​        y^    复制至行首，或y0</p>
+<p>​        y$   复制至行尾</p>
+<p>​        yw   复制一个word</p>
+<p>​        y2w    复制两个word </p>
+<p>​        yG   复制至文件尾</p>
+<p>​        y1G   复制至文件首</p>
+<h5 id="2-选中文本进行复制："><a href="#2-选中文本进行复制：" class="headerlink" title="2. 选中文本进行复制："></a>2. 选中文本进行复制：</h5><p>​       要选中内容进行复制，先在命令模式下按 v 进入 Visual Mode，然后用 方向键 或 hjkl 选择文本，再按 y进行复制。</p>
+<h4 id="剪切"><a href="#剪切" class="headerlink" title="剪切"></a>剪切</h4><ol>
+<li><h5 id="常用剪切命令："><a href="#常用剪切命令：" class="headerlink" title="常用剪切命令："></a>常用剪切命令：</h5></li>
+</ol>
+<p>​        dd   剪切游标所在行整行 </p>
+<p>​        d^    剪切至行首，或d0</p>
+<p>​        d$    剪切至行尾 </p>
+<p>​        dw    剪切一个word </p>
+<p>​        dG    剪切至文件尾  </p>
+<h5 id="2-选中文本进行剪切："><a href="#2-选中文本进行剪切：" class="headerlink" title="2. 选中文本进行剪切："></a>2. 选中文本进行剪切：</h5><p>​       要选中内容进行复制，先在命令模式下按 v 进入 Visual Mode，然后用 方向键 或 hjkl 选择文本，再按 d进行剪切。</p>
+<h4 id="粘贴"><a href="#粘贴" class="headerlink" title="粘贴"></a>粘贴</h4><h5 id="1-常用粘贴命令："><a href="#1-常用粘贴命令：" class="headerlink" title="1.常用粘贴命令："></a>1.常用粘贴命令：</h5><p>​        p    粘贴至游标后（下） </p>
+<p>​        P    粘贴至游标前（上）</p>
+<ol>
+<li><h5 id="要使用-系统粘贴板-的内容，也可以直接在命令模式按Shift-Inset-进行粘贴。"><a href="#要使用-系统粘贴板-的内容，也可以直接在命令模式按Shift-Inset-进行粘贴。" class="headerlink" title="要使用 系统粘贴板 的内容，也可以直接在命令模式按Shift + Inset 进行粘贴。"></a>要使用 系统粘贴板 的内容，也可以直接在命令模式按Shift + Inset 进行粘贴。</h5></li>
+</ol>
+<h4 id="撤销"><a href="#撤销" class="headerlink" title="撤销"></a>撤销</h4><p>在命令行模式下用 :undo 或 :u 命令可以撤销最近一次操作。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/linux/">linux</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vim/">vim</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-三种方法解决FailedtostartLSB-Bringup-downnetworking问题" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="/2018/06/24/三种方法解决FailedtostartLSB-Bringup-downnetworking问题/" class="article-date">
+      <time datetime="2018-06-24T05:22:09.000Z" itemprop="datePublished">2018-06-24</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a  class="article-title" href="/2018/06/24/三种方法解决FailedtostartLSB-Bringup-downnetworking问题/">三种方法解决FailedtostartLSB:Bringup/downnetworking问题</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>1、执行 service networkrestart 出现以下错误</p>
+<p>Restarting network (via systemctl):  Job fornetwork.service failed. See ‘systemctl status network.service’ and ‘journalctl-xn’ for details.</p>
+<p>2、根据上面的提示，执行“systemctl statusnetwork.service”输出以下的类似信息：</p>
+<p>[root@localhost ~]# systemctl statusnetwork.service</p>
+<p>network.service - LSB: Bring up/downnetworking</p>
+<p>   Loaded: loaded(/etc/rc.d/init.d/network)</p>
+<p>   Active: failed(Result: exit-code) since三 2014-11-05 15:30:10 CST;1min 5s ago</p>
+<p>11月 05 15:30:10 localhost.localdomain network[2920]: RTNETLINKanswers: File exists</p>
+<p>11月 05 15:30:10 localhost.localdomain network[2920]: RTNETLINKanswers: File exists</p>
+<p>11月 05 15:30:10 localhost.localdomain network[2920]: RTNETLINKanswers: File exists</p>
+<p>11月 05 15:30:10 localhost.localdomain network[2920]: RTNETLINKanswers: File exists</p>
+<p>11月 05 15:30:10 localhost.localdomain network[2920]: RTNETLINKanswers: File exists</p>
+<p>11月 05 15:30:10 localhost.localdomain network[2920]: RTNETLINKanswers: File exists</p>
+<p>11月 05 15:30:10 localhost.localdomain network[2920]: RTNETLINKanswers: File exists</p>
+<p>11月 05 15:30:10 localhost.localdomain systemd[1]: network.service:control process exited, code=exited status=1</p>
+<p>11月 05 15:30:10 localhost.localdomain systemd[1]: Failed to start LSB: Bring up/downnetworking.</p>
+<p>11月 05 15:30:10 localhost.localdomain systemd[1]: Unitnetwork.service entered failed state.</p>
+<p>3、解决的办法（由于centos7中没有70-persistent-net.rules这个文件，复制出来的虚拟机(vmware）需要修改mac地址），就是修改mac地址。</p>
+<p>4、如何查看centos7复制出来的虚拟机的mac地址，需要执行 “ip addr”，输出如下的类似信息：</p>
+<p>[root@localhost ~]# ip addr</p>
+<p>1: lo:</p>
+<p>​    link/loopback00:00:00:00:00:00 brd 00:00:00:00:00:00</p>
+<p>​    inet 127.0.0.1/8scope host lo</p>
+<p>​      valid_lft forever preferred_lft forever</p>
+<p>​    inet6 ::1/128scope host</p>
+<p>​      valid_lft forever preferred_lft forever</p>
+<p>2: eno16777736:</p>
+<p>​    link/ether00:0f:19:10:12:f1 brd ff:ff:ff:ff:ff:ff</p>
+<p>​    inet192.168.38.135/24 brd 192.168.38.255 scope global dynamic eno16777736</p>
+<p>​      valid_lft 1681sec preferred_lft 1681sec</p>
+<p>​    inet6fe80::20c:11aa:ae11:4fe4/64 scope link</p>
+<p>​      valid_lft forever preferred_lft forever</p>
+<p>注意上面加粗加红的字，这就是新的mac地址。</p>
+<p>接下来就剩下修改ifcfg-XXX文件了，只修改HWADDR就可以了。接下来执行service network restart就正常了。</p>
+<p>《二》</p>
+<p>如果还是启动失败    查看是否有如下错误信息</p>
+<p>Nov 23 22:09:07 hdcoe02 network[597]: Bringing up loopback interface:  Could not load file ‘/etc/sysconfig/network-scripts/ifcfg-lo’  </p>
+<p>Nov 23 22:09:07 hdcoe02 network[597]: Could not load file ‘/etc/sysconfig/network-scripts/ifcfg-lo’ </p>
+<p>Nov 23 22:09:08 hdcoe02 network[597]: Could not load file ‘/etc/sysconfig/network-scripts/ifcfg-lo’ </p>
+<p>Nov 23 22:09:08 hdcoe02 network[597]: Could not load file ‘/etc/sysconfig/network-scripts/ifcfg-lo’ Nov 23 22:09:08 hdcoe02 network[597]: [  OK  ] </p>
+<p>Nov 23 22:09:08 hdcoe02 network[597]: Bringing up interface enp0s25:  Error: Connection activation failed: Connection ‘enp0s25’ is not available on the device enp0s25 at this time. </p>
+<p>设定开机启动一个名为NetworkManager-wait-online服务，命令为：</p>
+<p>systemctl enableNetworkManager-wait-online.service</p>
+<p>《三》</p>
+<p>因为在VMware 虚拟机里面的系统 右上角显示的连接都没有连接上，虽然报错都一样，最后我在虚拟机设置里面将原来的网络适配器删掉，重新建了一个新的网络适配器，这次进去，显示连接成功，再用上面的方法，问题解决。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/linux/">linux</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/网络/">网络</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/虚拟机/">虚拟机</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-解决CentOS添加新网卡后找不到网卡配置文件" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="/2018/06/24/解决CentOS添加新网卡后找不到网卡配置文件/" class="article-date">
+      <time datetime="2018-06-24T05:13:09.000Z" itemprop="datePublished">2018-06-24</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a  class="article-title" href="/2018/06/24/解决CentOS添加新网卡后找不到网卡配置文件/">解决CentOS添加新网卡后找不到网卡配置文件</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h3 id="环境："><a href="#环境：" class="headerlink" title="环境："></a>环境：</h3><p>centos7，vm虚拟机</p>
+<h3 id="问题："><a href="#问题：" class="headerlink" title="问题："></a>问题：</h3><p>使用VMware Workstation虚拟机安装好<a href="https://www.linuxprobe.com/" target="_blank" rel="noopener">CentOS</a>7虚拟机后，添加网卡后CentOS 7无网卡配置文件的问题，添加第二块网卡以后，进入CentOS<br>7系统后，看不到网卡配置文件。</p>
+<p>进入CentOS7系统后，使用ipaddr 查看状态如下：</p>
+<p>发现ens33和ens77均有IP地址，且可正常使用，ens33使用的是手动配置IP，ens37使用的是dhcp自动获取的IP地址，但是/etc/sysconfig/network-scripts/目录下找不到ifcfg-ens37配置文件</p>
+<h3 id="解决方案："><a href="#解决方案：" class="headerlink" title="解决方案："></a>解决方案：</h3><p>1.使用nmcli conshow命令，查看网卡的UUID信息，记下UUID值</p>
+<p>2.使用ip addr命令查看网卡信息，记下ens37网卡的MAC地址</p>
+<p>3.将 /etc/sysconfig/network-scripts/目录中ifcfg-ens33文件复制一份，并命名为ifcfg-ens37，重新修改配置文件，注意修改必要的硬件信息。</p>
+<p>4.最后重新启动网卡即可。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/linux/">linux</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/网络/">网络</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/虚拟机/">虚拟机</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
   
     <article id="post-fabric使用2-1-3版本" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -348,7 +1243,7 @@
         
   
     <h1 itemprop="name">
-      <a  class="article-title" href="/2018/06/20/fabric应用/">fabric应用</a>
+      <a  class="article-title" href="/2018/06/20/fabric应用/">fabric应用（1.14）</a>
     </h1>
   
 
@@ -359,7 +1254,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-              <p><strong> fabric应用：</strong> <excerpt in="" index="" |="" 首页摘要=""><br>收到一份python需求，兴高采烈的写完了，现在分享一下<br></excerpt></p>
+              <p><strong> fabric应用（1.14）：</strong> <excerpt in="" index="" |="" 首页摘要=""><br>收到一份python需求，兴高采烈的写完了，现在分享一下<br></excerpt></p>
           
       
     </div>
@@ -470,500 +1365,9 @@
 
 
   
-    <article id="post-zabbix用户密码修改" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a  href="/2018/06/13/zabbix用户密码修改/" class="article-date">
-      <time datetime="2018-06-13T14:47:28.000Z" itemprop="datePublished">2018-06-13</time>
-</a>
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a  class="article-title" href="/2018/06/13/zabbix用户密码修改/">zabbix用户密码修改</a>
-    </h1>
-  
-
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p><strong> zabbix用户密码修改：</strong> <excerpt in="" index="" |="" 首页摘要=""></excerpt></p>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/operation/">operation</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/zabbix/">zabbix</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a   href="/2018/06/13/zabbix用户密码修改/#more">查看更多 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-zabbix监控MSSQL" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a  href="/2018/06/13/zabbix监控MSSQL/" class="article-date">
-      <time datetime="2018-06-13T14:09:45.000Z" itemprop="datePublished">2018-06-13</time>
-</a>
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a  class="article-title" href="/2018/06/13/zabbix监控MSSQL/">zabbix监控MSSQL</a>
-    </h1>
-  
-
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p><strong> zabbix监控MSSQL：</strong> <excerpt in="" index="" |="" 首页摘要=""></excerpt></p>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/operation/">operation</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/zabbix/">zabbix</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a   href="/2018/06/13/zabbix监控MSSQL/#more">查看更多 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-计算机编码" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a  href="/2018/05/13/计算机编码/" class="article-date">
-      <time datetime="2018-05-13T12:48:28.000Z" itemprop="datePublished">2018-05-13</time>
-</a>
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a  class="article-title" href="/2018/05/13/计算机编码/">计算机编码</a>
-    </h1>
-  
-
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p><strong> 计算机编码：</strong> <excerpt in="" index="" |="" 首页摘要=""></excerpt></p>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/feeling/">feeling</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a   href="/2018/05/13/计算机编码/#more">查看更多 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-多线程的一点思考" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a  href="/2018/05/10/多线程的一点思考/" class="article-date">
-      <time datetime="2018-05-10T12:58:28.000Z" itemprop="datePublished">2018-05-10</time>
-</a>
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a  class="article-title" href="/2018/05/10/多线程的一点思考/">多线程的一点思考</a>
-    </h1>
-  
-
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p><strong> 多线程的一点思考：</strong> <excerpt in="" index="" |="" 首页摘要=""><br></excerpt></p>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/python/">python</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/threading/">threading</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/模块使用/">模块使用</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a   href="/2018/05/10/多线程的一点思考/#more">查看更多 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-pandas操作excel" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a  href="/2018/04/25/pandas操作excel/" class="article-date">
-      <time datetime="2018-04-25T14:24:37.000Z" itemprop="datePublished">2018-04-25</time>
-</a>
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a  class="article-title" href="/2018/04/25/pandas操作excel/">pandas操作excel</a>
-    </h1>
-  
-
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p><strong> pandas操作excel：</strong> <excerpt in="" index="" |="" 首页摘要=""></excerpt></p>
-<p>无聊帮同事解决一个小需求</p>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/mlearn/">mlearn</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/pandas/">pandas</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/模块使用/">模块使用</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a   href="/2018/04/25/pandas操作excel/#more">查看更多 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-Pandas模块的学习" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a  href="/2018/03/16/Pandas模块的学习/" class="article-date">
-      <time datetime="2018-03-16T01:35:37.000Z" itemprop="datePublished">2018-03-16</time>
-</a>
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a  class="article-title" href="/2018/03/16/Pandas模块的学习/">Pandas模块的学习</a>
-    </h1>
-  
-
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p><strong> Pandas模块的学习：</strong> <excerpt in="" index="" |="" 首页摘要=""><br></excerpt></p>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/mlearn/">mlearn</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/pandas/">pandas</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/模块使用/">模块使用</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a   href="/2018/03/16/Pandas模块的学习/#more">查看更多 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-Numpy模块的学习(3-5)" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a  href="/2018/03/15/Numpy模块的学习(3-5)/" class="article-date">
-      <time datetime="2018-03-15T04:35:37.000Z" itemprop="datePublished">2018-03-15</time>
-</a>
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a  class="article-title" href="/2018/03/15/Numpy模块的学习(3-5)/">Numpy模块的学习(3-5)</a>
-    </h1>
-  
-
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p><strong> Numpy模块的学习(3-5)：</strong> <excerpt in="" index="" |="" 首页摘要=""><br></excerpt></p>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/mlearn/">mlearn</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/numpy/">numpy</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/模块使用/">模块使用</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a   href="/2018/03/15/Numpy模块的学习(3-5)/#more">查看更多 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
     </nav>
   
 

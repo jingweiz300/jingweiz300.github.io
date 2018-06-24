@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="baidu-site-verification" content="L6Lm9d5Crl"/>
+  
+  
+  
+  
+  <title>vim操作 | My Story</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="一、vim光标移动操作向下翻滚一个屏幕  ctrl+f 向上翻滚一个屏幕  ctrl+b 向下滚动一行     ctrl+e 向上滚动一行     ctrl+y 查找百分之n      n% 移动到光标所在行的行首  0或者^ 移动到光标所在行的行末  $ 移动光标到整个文档的第一个字符   ( 移动光标到整个文档的最后一个字符  ) 移动光标到当前屏幕的最上边  H 移动光标到当前屏幕的最中间">
+<meta name="keywords" content="vim">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vim操作">
+<meta property="og:url" content="https://jingweiz300.github.io/2018/06/24/vim操作/index.html">
+<meta property="og:site_name" content="My Story">
+<meta property="og:description" content="一、vim光标移动操作向下翻滚一个屏幕  ctrl+f 向上翻滚一个屏幕  ctrl+b 向下滚动一行     ctrl+e 向上滚动一行     ctrl+y 查找百分之n      n% 移动到光标所在行的行首  0或者^ 移动到光标所在行的行末  $ 移动光标到整个文档的第一个字符   ( 移动光标到整个文档的最后一个字符  ) 移动光标到当前屏幕的最上边  H 移动光标到当前屏幕的最中间">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-06-24T05:35:54.953Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="vim操作">
+<meta name="twitter:description" content="一、vim光标移动操作向下翻滚一个屏幕  ctrl+f 向上翻滚一个屏幕  ctrl+b 向下滚动一行     ctrl+e 向上滚动一行     ctrl+y 查找百分之n      n% 移动到光标所在行的行首  0或者^ 移动到光标所在行的行末  $ 移动光标到整个文档的第一个字符   ( 移动光标到整个文档的最后一个字符  ) 移动光标到当前屏幕的最上边  H 移动光标到当前屏幕的最中间">
+  
+    <link rel="alternative" href="/atom.xml" title="My Story" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.png">
+  
+  
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <!-- 加载特效 -->
+    <script src="/js/pace.js"></script>
+    <link href="/css/pace/pace-theme-flash.css" rel="stylesheet" />
+  <script>
+      var yiliaConfig = {
+          fancybox: true,
+          animate: true,
+          isHome: false,
+          isPost: true,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false
+      }
+  </script>
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="/img/avatar.png" class="js-avatar">
+            
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">JingWei Zhou</a></h1>
+        </hgroup>
+        
+        <p class="header-subtitle">虽不能至，然心向往之~~</p>
+        
+        
+            <form>
+                <input type="text" class="st-default-search-input search" id="local-search-input" placeholder="搜索一下" autocomplete="off">
+            </form>
+            <div id="local-search-result"></div>
+        
+        
+            <script type="text/javascript">
+                (function() {
+                    'use strict';
+                    function getMatchData(keyword, data) {
+                        var matchData = [];
+                        for(var i =0;i<data.length;i++){
+                            if(data[i].title.toLowerCase().indexOf(keyword)>=0) 
+                                matchData.push(data[i])
+                        }
+                        return matchData;
+                    }
+                    var $input = $('#local-search-input');
+                    var $resultContent = $('#local-search-result');
+                    $input.keyup(function(){
+                        $.ajax({
+                            url: '/search.json',
+                            dataType: "json",
+                            success: function( json ) {
+                                var str='<ul class=\"search-result-list\">';                
+                                var keyword = $input.val().trim().toLowerCase();
+                                $resultContent.innerHTML = "";
+                                if ($input.val().trim().length <= 0) {
+                                    $resultContent.empty();
+                                    $('#switch-area').show();
+                                    return;
+                                }
+                                var results = getMatchData(keyword, json);
+                                if(results.length === 0){
+                                    $resultContent.empty();
+                                    $('#switch-area').show();
+                                    return;
+                                } 
+                                for(var i =0; i<results.length; i++){
+                                    str += "<li><a href='"+ results[i].url +"' class='search-result-title'>"+ results[i].title +"</a></li>";
+                                }
+                                str += "</ul>";
+                                $resultContent.empty();
+                                $resultContent.append(str);
+                                $('#switch-area').hide();
+                            }
+                        });
+                    });
+                })();
+            </script>
+        
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a  href="/archives/">ALL</a></li>
+                        
+                            <li><a  href="/categories/operation/">Operation</a></li>
+                        
+                            <li><a  href="/categories/python/">Python</a></li>
+                        
+                            <li><a  href="/categories/linux/">Linux</a></li>
+                        
+                            <li><a  href="/categories/mlearn/">MLearn</a></li>
+                        
+                            <li><a  href="/categories/feeling/">Feeling</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fl github"  target="_blank" href="/xxxxx" title="github">github</a>
+                            
+                                <a class="fl weibo"  target="_blank" href="https://weibo.com/u/2369842910/home?wvr=5" title="weibo">weibo</a>
+                            
+                                <a class="fl rss"  target="_blank" href="/atom.xml" title="rss">rss</a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="/tags/Matplotlib/" style="font-size: 10px;">Matplotlib</a> <a href="/tags/anaconda/" style="font-size: 10px;">anaconda</a> <a href="/tags/bin目录/" style="font-size: 10px;">bin目录</a> <a href="/tags/centos7/" style="font-size: 10px;">centos7</a> <a href="/tags/fabric/" style="font-size: 12.5px;">fabric</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/numpy/" style="font-size: 12.5px;">numpy</a> <a href="/tags/pandas/" style="font-size: 12.5px;">pandas</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/shell/" style="font-size: 10px;">shell</a> <a href="/tags/threading/" style="font-size: 10px;">threading</a> <a href="/tags/vim/" style="font-size: 10px;">vim</a> <a href="/tags/xlwt/" style="font-size: 10px;">xlwt</a> <a href="/tags/zabbix/" style="font-size: 17.5px;">zabbix</a> <a href="/tags/修改主机名/" style="font-size: 10px;">修改主机名</a> <a href="/tags/免密登录/" style="font-size: 10px;">免密登录</a> <a href="/tags/常用命令/" style="font-size: 15px;">常用命令</a> <a href="/tags/微信/" style="font-size: 10px;">微信</a> <a href="/tags/时间同步/" style="font-size: 10px;">时间同步</a> <a href="/tags/查找命令/" style="font-size: 10px;">查找命令</a> <a href="/tags/模块使用/" style="font-size: 20px;">模块使用</a> <a href="/tags/系统日志/" style="font-size: 10px;">系统日志</a> <a href="/tags/网络/" style="font-size: 12.5px;">网络</a> <a href="/tags/虚拟机/" style="font-size: 12.5px;">虚拟机</a> <a href="/tags/转义字符/" style="font-size: 10px;">转义字符</a> <a href="/tags/运维/" style="font-size: 10px;">运维</a>
+                    </div>
+                </section>
+                
+                
+                
+                
+                <section class="switch-part switch-part3">
+                
+                    <div id="js-aboutme">爱篮球、爱电脑、爱编程</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">JingWei Zhou</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                
+                    <img lazy-src="/img/avatar.png" class="js-avatar">
+                
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">JingWei Zhou</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">虽不能至，然心向往之~~</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/archives/">ALL</a></li>
+                
+                    <li><a href="/categories/operation/">Operation</a></li>
+                
+                    <li><a href="/categories/python/">Python</a></li>
+                
+                    <li><a href="/categories/linux/">Linux</a></li>
+                
+                    <li><a href="/categories/mlearn/">MLearn</a></li>
+                
+                    <li><a href="/categories/feeling/">Feeling</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a class="github" target="_blank" href="/xxxxx" title="github">github</a>
+                    
+                        <a class="weibo" target="_blank" href="https://weibo.com/u/2369842910/home?wvr=5" title="weibo">weibo</a>
+                    
+                        <a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+                    
+                </div>
+            </nav>
+        </header>                
+    </div>
+</nav>
+      <div class="body-wrap"><article id="post-vim操作" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="/2018/06/24/vim操作/" class="article-date">
+      <time datetime="2018-06-24T05:26:44.000Z" itemprop="datePublished">2018-06-24</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      vim操作
+    </h1>
+  
+
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/linux/">linux</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vim/">vim</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h3 id="一、vim光标移动操作"><a href="#一、vim光标移动操作" class="headerlink" title="一、vim光标移动操作"></a>一、vim光标移动操作</h3><p>向下翻滚一个屏幕  ctrl+f</p>
+<p>向上翻滚一个屏幕  ctrl+b</p>
+<p>向下滚动一行     ctrl+e</p>
+<p>向上滚动一行     ctrl+y</p>
+<p>查找百分之n      n%</p>
+<p>移动到光标所在行的行首  0或者^</p>
+<p>移动到光标所在行的行末  $</p>
+<p>移动光标到整个文档的第一个字符   (</p>
+<p>移动光标到整个文档的最后一个字符  )</p>
+<p>移动光标到当前屏幕的最上边  H</p>
+<p>移动光标到当前屏幕的最中间  M</p>
+<p>移动光标到当前屏幕的最下边  L</p>
+<p>移动光标到整个文档的最上边    gg</p>
+<p>移动光标到整个文档的最下边    G</p>
+<p>移动到文档的n行处           nG</p>
+<p>移动到当前行的下一个字符c处 tc</p>
+<p>移动到当前行的上一个字符c处 Tc</p>
+<h3 id="二、查找替换"><a href="#二、查找替换" class="headerlink" title="二、查找替换"></a>二、查找替换</h3><h4 id="1，查找"><a href="#1，查找" class="headerlink" title="1，查找"></a>1，查找</h4><p>在normal模式下按下/即可进入查找模式，输入要查找的字符串并按下回车。 Vim会跳转到第一个匹配。按下n查找下一个，按下N查找上一个。</p>
+<p>Vim查找支持正则表达式，例如/vim$匹配行尾的”vim”。 需要查找特殊字符需要转义，例如/vim\$匹配”vim$”。</p>
+<h4 id="2，大小写敏感查找"><a href="#2，大小写敏感查找" class="headerlink" title="2，大小写敏感查找"></a>2，大小写敏感查找</h4><p>在查找模式中加入\c表示大小写不敏感查找，\C表示大小写敏感查找。例如：</p>
+<p>/foo\c</p>
+<p>将会查找所有的”foo”,”FOO”,”Foo”等字符串。</p>
+<h4 id="3，大小写敏感配置"><a href="#3，大小写敏感配置" class="headerlink" title="3，大小写敏感配置"></a>3，大小写敏感配置</h4><p>Vim 默认采用大小写敏感的查找，为了方便我们常常将其配置为大小写不敏感：</p>
+<p>“ 设置默认进行大小写不敏感查找<br>set ignorecase<br>“ 如果有一个大写字母，则切换到大小写敏感查找<br>set smartcase </p>
+<p>将上述设置粘贴到你的~/.vimrc，重新打开Vim即可生效</p>
+<h4 id="4，查找当前单词"><a href="#4，查找当前单词" class="headerlink" title="4，查找当前单词"></a>4，查找当前单词</h4><p>在normal模式下按下*即可查找光标所在单词（word）， 要求每次出现的前后为空白字符或标点符号。例如当前为foo， 可以匹配foobar中的foo，但不可匹配foobar中的foo。 这在查找函数名、变量名时非常有用。</p>
+<p>按下g*即可查找光标所在单词的字符序列，每次出现前后字符无要求。 即foobar和foobar中的foo均可被匹配到。</p>
+<h4 id="5，查找与替换"><a href="#5，查找与替换" class="headerlink" title="5，查找与替换"></a>5，查找与替换</h4><p>:s（substitute）命令用来查找和替换字符串。语法如下：</p>
+<p>:{作用范围}s/{目标}/{替换}/{替换标志}</p>
+<p>例如:%s/foo/bar/g会在全局范围(%)查找foo并替换为bar，所有出现都会被替换（g）</p>
+<h4 id="6，作用范围"><a href="#6，作用范围" class="headerlink" title="6，作用范围"></a>6，作用范围</h4><p>作用范围分为当前行、全文、选区等等。</p>
+<p>当前行：</p>
+<p>:s/foo/bar/g</p>
+<p>全文：</p>
+<p>:%s/foo/bar/g</p>
+<p>选区，在Visual模式下选择区域后输入:，Vim即可自动补全为 :’&lt;,’&gt;。</p>
+<p>:’&lt;,’&gt;s/foo/bar/g</p>
+<p>2-11行：</p>
+<p>:5,12s/foo/bar/g</p>
+<p>当前行.与接下来两行+2：</p>
+<p>:.,+2s/foo/bar/g</p>
+<h4 id="7、替换标志"><a href="#7、替换标志" class="headerlink" title="7、替换标志"></a>7、替换标志</h4><p>上文中命令结尾的g即是替换标志之一，表示全局global替换（即替换目标的所有出现）。 还有很多其他有用的替换标志：</p>
+<p>空替换标志表示只替换从光标位置开始，目标的第一次出现：</p>
+<p>:%s/foo/bar</p>
+<p>i表示大小写不敏感查找，I表示大小写敏感：</p>
+<p>:%s/foo/bar/i<br># 等效于模式中的\c（不敏感）或\C（敏感）<br>:%s/foo\c/bar</p>
+<p>c表示需要确认，例如全局查找”foo”替换为”bar”并且需要确认：</p>
+<p>:%s/foo/bar/gc</p>
+<p>回车后Vim会将光标移动到每一次”foo”出现的位置，并提示</p>
+<p>replacewith bar (y/n/a/q/l/^E/^Y)?</p>
+<p>按下y表示替换，n表示不替换，a表示替换所有，q表示退出查找模式， l表示替换当前位置并退出。^E与^Y是光标移动快捷键，参考： <a href="http://harttle.com/2015/11/07/vim-cursor.html" target="_blank" rel="noopener">Vim中如何快速进行光标移</a></p>
+<h4 id="8、大小写敏感查找"><a href="#8、大小写敏感查找" class="headerlink" title="8、大小写敏感查找"></a>8、大小写敏感查找</h4><p>在查找模式中加入\c表示大小写不敏感查找，\C表示大小写敏感查找。例如：</p>
+<p>/foo\c</p>
+<p>将会查找所有的”foo”,”FOO”,”Foo”等字符串。</p>
+<h3 id="三、复制粘贴剪切"><a href="#三、复制粘贴剪切" class="headerlink" title="三、复制粘贴剪切"></a>三、复制粘贴剪切</h3><h4 id="复制"><a href="#复制" class="headerlink" title="复制"></a>复制</h4><h5 id="1-常用复制命令："><a href="#1-常用复制命令：" class="headerlink" title="1.常用复制命令："></a>1.常用复制命令：</h5><p>​        yy   复制游标所在行整行 </p>
+<p>​        2yy或y2y    复制 2 行</p>
+<p>​        y^    复制至行首，或y0</p>
+<p>​        y$   复制至行尾</p>
+<p>​        yw   复制一个word</p>
+<p>​        y2w    复制两个word </p>
+<p>​        yG   复制至文件尾</p>
+<p>​        y1G   复制至文件首</p>
+<h5 id="2-选中文本进行复制："><a href="#2-选中文本进行复制：" class="headerlink" title="2. 选中文本进行复制："></a>2. 选中文本进行复制：</h5><p>​       要选中内容进行复制，先在命令模式下按 v 进入 Visual Mode，然后用 方向键 或 hjkl 选择文本，再按 y进行复制。</p>
+<h4 id="剪切"><a href="#剪切" class="headerlink" title="剪切"></a>剪切</h4><ol>
+<li><h5 id="常用剪切命令："><a href="#常用剪切命令：" class="headerlink" title="常用剪切命令："></a>常用剪切命令：</h5></li>
+</ol>
+<p>​        dd   剪切游标所在行整行 </p>
+<p>​        d^    剪切至行首，或d0</p>
+<p>​        d$    剪切至行尾 </p>
+<p>​        dw    剪切一个word </p>
+<p>​        dG    剪切至文件尾  </p>
+<h5 id="2-选中文本进行剪切："><a href="#2-选中文本进行剪切：" class="headerlink" title="2. 选中文本进行剪切："></a>2. 选中文本进行剪切：</h5><p>​       要选中内容进行复制，先在命令模式下按 v 进入 Visual Mode，然后用 方向键 或 hjkl 选择文本，再按 d进行剪切。</p>
+<h4 id="粘贴"><a href="#粘贴" class="headerlink" title="粘贴"></a>粘贴</h4><h5 id="1-常用粘贴命令："><a href="#1-常用粘贴命令：" class="headerlink" title="1.常用粘贴命令："></a>1.常用粘贴命令：</h5><p>​        p    粘贴至游标后（下） </p>
+<p>​        P    粘贴至游标前（上）</p>
+<ol>
+<li><h5 id="要使用-系统粘贴板-的内容，也可以直接在命令模式按Shift-Inset-进行粘贴。"><a href="#要使用-系统粘贴板-的内容，也可以直接在命令模式按Shift-Inset-进行粘贴。" class="headerlink" title="要使用 系统粘贴板 的内容，也可以直接在命令模式按Shift + Inset 进行粘贴。"></a>要使用 系统粘贴板 的内容，也可以直接在命令模式按Shift + Inset 进行粘贴。</h5></li>
+</ol>
+<h4 id="撤销"><a href="#撤销" class="headerlink" title="撤销"></a>撤销</h4><p>在命令行模式下用 :undo 或 :u 命令可以撤销最近一次操作。</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a  href="/2018/06/24/vim操作/">vim操作</a></p>
+        <p><span>文章作者:</span><a  href="/" title="访问 JingWei Zhou 的个人博客">JingWei Zhou</a></p>
+        <p><span>发布时间:</span>2018年06月24日 - 13时26分</p>
+        <p><span>最后更新:</span>2018年06月24日 - 13时35分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2018/06/24/vim操作/" title="vim操作">https://jingweiz300.github.io/2018/06/24/vim操作/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://jingweiz300.github.io/2018/06/24/vim操作/　　作者: JingWei Zhou" title=""></span>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+<nav id="article-nav">
+  
+    <a  href="/2018/06/24/时间同步/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          时间同步
+        
+      </div>
+    </a>
+  
+  
+    <a  href="/2018/06/24/三种方法解决FailedtostartLSB-Bringup-downnetworking问题/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">三种方法解决FailedtostartLSB:Bringup/downnetworking问题</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#一、vim光标移动操作"><span class="toc-number">1.</span> <span class="toc-text">一、vim光标移动操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二、查找替换"><span class="toc-number">2.</span> <span class="toc-text">二、查找替换</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1，查找"><span class="toc-number">2.1.</span> <span class="toc-text">1，查找</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2，大小写敏感查找"><span class="toc-number">2.2.</span> <span class="toc-text">2，大小写敏感查找</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3，大小写敏感配置"><span class="toc-number">2.3.</span> <span class="toc-text">3，大小写敏感配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4，查找当前单词"><span class="toc-number">2.4.</span> <span class="toc-text">4，查找当前单词</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5，查找与替换"><span class="toc-number">2.5.</span> <span class="toc-text">5，查找与替换</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6，作用范围"><span class="toc-number">2.6.</span> <span class="toc-text">6，作用范围</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7、替换标志"><span class="toc-number">2.7.</span> <span class="toc-text">7、替换标志</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8、大小写敏感查找"><span class="toc-number">2.8.</span> <span class="toc-text">8、大小写敏感查找</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三、复制粘贴剪切"><span class="toc-number">3.</span> <span class="toc-text">三、复制粘贴剪切</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#复制"><span class="toc-number">3.1.</span> <span class="toc-text">复制</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-常用复制命令："><span class="toc-number">3.1.1.</span> <span class="toc-text">1.常用复制命令：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-选中文本进行复制："><span class="toc-number">3.1.2.</span> <span class="toc-text">2. 选中文本进行复制：</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#剪切"><span class="toc-number">3.2.</span> <span class="toc-text">剪切</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#常用剪切命令："><span class="toc-number">3.2.1.</span> <span class="toc-text">常用剪切命令：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-选中文本进行剪切："><span class="toc-number">3.2.2.</span> <span class="toc-text">2. 选中文本进行剪切：</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#粘贴"><span class="toc-number">3.3.</span> <span class="toc-text">粘贴</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-常用粘贴命令："><span class="toc-number">3.3.1.</span> <span class="toc-text">1.常用粘贴命令：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#要使用-系统粘贴板-的内容，也可以直接在命令模式按Shift-Inset-进行粘贴。"><span class="toc-number">3.3.2.</span> <span class="toc-text">要使用 系统粘贴板 的内容，也可以直接在命令模式按Shift + Inset 进行粘贴。</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#撤销"><span class="toc-number">3.4.</span> <span class="toc-text">撤销</span></a></li></ol></li></ol>
+</div>
+<style>
+    .left-col .switch-btn {
+        display: none;
+    }
+    .left-col .switch-area {
+        display: none;
+    }
+</style>
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+            $(".switch-btn, .switch-area").fadeOut(300);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+            $(".switch-btn, .switch-area").fadeIn(500);
+        }
+    })
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+        $(".switch-btn, .switch-area").show();
+    }
+</script>
+
+
+
+
+<div class="bdsharebuttonbox">
+	<a href="#" class="fx fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="fx fa-weixin bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+	<a href="#" class="fx fa-qq bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+	<a href="#" class="fx fa-facebook-official bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+	<a href="#" class="fx fa-twitter bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+	<a href="#" class="fx fa-linkedin bds_linkedin" data-cmd="linkedin" title="分享到linkedin"></a>
+	<a href="#" class="fx fa-files-o bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+</div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+
+
+
+     
+      <!-- ������City�氲װ���� -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC8zNDgyOS8xMTM2Ng==">
+	<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+	</script>
+<noscript> Ϊ����ʹ�����������۹����뼤��JavaScript</noscript>
+</div>
+<!-- City�氲װ��������� -->
+
+
+      
+    
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a  href="/2018/06/24/时间同步/" title="上一篇: 时间同步">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        
+            <a  href="/2018/06/24/三种方法解决FailedtostartLSB-Bringup-downnetworking问题/" title="下一篇: 三种方法解决FailedtostartLSB:Bringup/downnetworking问题">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/06/24/利用xlwt导出excel文件的例子/">利用xlwt导出excel文件的例子</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/24/python转义字符/">python转义字符</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/24/linux的五个查找命令/">linux的五个查找命令</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/24/时间同步/">时间同步</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/24/vim操作/">vim操作</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/24/三种方法解决FailedtostartLSB-Bringup-downnetworking问题/">三种方法解决FailedtostartLSB:Bringup/downnetworking问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/24/解决CentOS添加新网卡后找不到网卡配置文件/">解决CentOS添加新网卡后找不到网卡配置文件</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/21/fabric使用2-1-3版本/">fabric使用2.1.3版本</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/20/fabric应用/">fabric应用（1.14）</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/19/zabbix监控ibm-x3550-m3服务器/">zabbix监控ibm-x3550-m3服务器</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/13/zabbix用户密码修改/">zabbix用户密码修改</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/13/zabbix监控MSSQL/">zabbix监控MSSQL</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/13/计算机编码/">计算机编码</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/10/多线程的一点思考/">多线程的一点思考</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/25/pandas操作excel/">pandas操作excel</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/02/连接linux远程登录无需密码/">连接linux远程登录无需密码</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/16/Pandas模块的学习/">Pandas模块的学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/15/Numpy模块的学习(3-5)/">Numpy模块的学习(3-5)</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/14/Numpy模块的学习(1-2)/">Numpy模块的学习(1-2)</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/13/生成zabbix图片并通过微信发送/">生成zabbix图表，通过微信发送群聊</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/12/Matplotlib模块的学习/">Matplotlib模块的学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/02/10/zabbix自动发现无法获取主机/">zabbix自动发现无法获取主机</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/13/zabbix-proxy安装/">zabbix-proxy安装</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/10/dbfpy/">dbfpy模块的使用案例-python2.7</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/10/python环境迁移/">python环境迁移</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/06/常用anaconda命令大全/">常用anaconda命令大全</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/04/Centos操作系统常用log日志/">Centos操作系统常用log日志</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/04/查看shell/">查看shell</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/02/各种bin目录的区别/">各种bin目录的区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/30/修改linux主机名/">修改linux主机名</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/28/mysql新安装之后密码处理/">mysql新安装之后密码处理</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/25/linux常用系统运维命令/">linux常用系统运维命令</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/24/Centos7常用命令大全/">Centos7常用命令大全</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/22/Centos7关闭防火墙/">Centos7关闭防火墙</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/20/centos中service命令与-etc-init-d的关系以及centos7的变化/">centos中service命令与/etc/init.d的关系以及centos7的变化</a></li></ul>
+    <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        // $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#toc, .switch-btn, .switch-area").toggle();
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+                $(".switch-btn, .switch-area").fadeToggle(300);
+            }
+        })
+    </script>
+
+
+
+
+    <script>
+        
+    </script>
+
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2018 JingWei Zhou
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank">Hexo &nbsp;&nbsp;</a><a href="https://github.com/maochunguang" target="_blank">Blog</a> by tommy
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" >极客到访数: 
+                            <span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>, </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit">本页阅读量: 
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+
+    </div>
+    <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var backgroundnum = 1;
+            var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+            $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+            $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+        })
+    </script>
+
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+  <script language="javascript">
+    $(function() {
+        $("a[title]").each(function() {
+            var a = $(this);
+            var title = a.attr('title');
+            if (title == undefined || title == "") return;
+            a.data('title', title).removeAttr('title').hover(
+            function() {
+                var offset = a.offset();
+                $("<div id=\"anchortitlecontainer\"></div>").appendTo($("body")).html(title).css({
+                    top: offset.top - a.outerHeight() - 15,
+                    left: offset.left + a.outerWidth()/2 + 1
+                }).fadeIn(function() {
+                    var pop = $(this);
+                    setTimeout(function() {
+                        pop.remove();
+                    }, pop.text().length * 800);
+                });
+            }, function() {
+                $("#anchortitlecontainer").remove();
+            });
+        });
+    });
+</script>
+
+
+  </div>
+</body>
+</html>
