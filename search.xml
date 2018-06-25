@@ -3,6 +3,26 @@
   
     
     <entry>
+      <title>mysql编码</title>
+      <link href="/2018/06/25/mysql%E7%BC%96%E7%A0%81/"/>
+      <content type="html"><![CDATA[<p><strong> mysql编码：</strong> <excerpt in="" index="" |="" 首页摘要=""><br><a id="more"></a></excerpt></p><the rest="" of="" contents="" |="" 余下全文=""><h1 id="编码查询"><a href="#编码查询" class="headerlink" title="编码查询"></a>编码查询</h1><h2 id="1、数据库的编码查询"><a href="#1、数据库的编码查询" class="headerlink" title="1、数据库的编码查询"></a>1、数据库的编码查询</h2><p>Show variables like “%character%”;</p><h2 id="2、表、字段的编码查询"><a href="#2、表、字段的编码查询" class="headerlink" title="2、表、字段的编码查询"></a>2、表、字段的编码查询</h2><p>Show create table “table_name”;</p><h1 id="编码修改"><a href="#编码修改" class="headerlink" title="编码修改"></a>编码修改</h1><h2 id="1、数据库层的编码修改"><a href="#1、数据库层的编码修改" class="headerlink" title="1、数据库层的编码修改"></a>1、数据库层的编码修改</h2><p>临时修改办法：</p><p>set  character_set_server = utf8;</p><h2 id="2、具体某一个数据库的编码："><a href="#2、具体某一个数据库的编码：" class="headerlink" title="2、具体某一个数据库的编码："></a>2、具体某一个数据库的编码：</h2><p>新建：create database“table_name”character set utf8</p><p>修改：alterdatabase  “table_name” character set utf8</p><h3 id="3、具体某一个数据库表的编码："><a href="#3、具体某一个数据库表的编码：" class="headerlink" title="3、具体某一个数据库表的编码："></a>3、具体某一个数据库表的编码：</h3><p>alter table “table_name” character set utf8</p><h2 id="4、修改某一个数据库表里字段的编码："><a href="#4、修改某一个数据库表里字段的编码：" class="headerlink" title="4、修改某一个数据库表里字段的编码："></a>4、修改某一个数据库表里字段的编码：</h2><p>alter table table_name change column_name column_name &lt;类型&gt; character set utf8</p><h1 id="直接修改mysql的配置文件"><a href="#直接修改mysql的配置文件" class="headerlink" title="直接修改mysql的配置文件"></a>直接修改mysql的配置文件</h1><p>MySql的配置文件Windows下一般在系统目录下或者在MySql的安装目录下名字叫my.ini，可以搜索，Linux下一般是/etc/my.cnf</p><p>–在 [mysqld] 标签下加上以下内容：</p><p>default-character-set = utf8</p><p>character_set_server = utf8</p><p>注意：如果此标签下已经存在“default-character-set=GBK”类似的内容，只需修改即可。</p><p>–在 [mysql]  标签下加上一行</p><p>default-character-set = utf8</p><p>–在 [mysql.server]标签下加上一行</p><p>default-character-set = utf8</p><p>–在 [mysqld_safe]标签下加上一行</p><p>default-character-set = utf8</p><p>–在 [client]标签下加上一行</p><p>default-character-set = utf8</p></the>]]></content>
+      
+      <categories>
+          
+          <category> linux </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> mysql </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>利用xlwt导出excel文件的例子</title>
       <link href="/2018/06/24/%E5%88%A9%E7%94%A8xlwt%E5%AF%BC%E5%87%BAexcel%E6%96%87%E4%BB%B6%E7%9A%84%E4%BE%8B%E5%AD%90/"/>
       <content type="html"><![CDATA[<p><strong> 利用xlwt导出excel文件的例子：</strong> <excerpt in="" index="" |="" 首页摘要=""><br><a id="more"></a></excerpt></p><the rest="" of="" contents="" |="" 余下全文=""><p>ExamplesGenerating Excel Documents Using Python’s xlwt</p><p>Here are some simple examples using Python’sxlwt library to dynamically generate Excel documents.</p><p>Please note a useful alternativemay be ezodf, which allows you to generate ODS (Open Document Spreadsheet)files for LibreOffice / OpenOffice. You can check them out at:<a href="http://packages.python.org/ezodf/index.html" target="_blank" rel="noopener">http://packages.python.org/ezodf/index.html</a></p><p>The SimplestExample</p><p>import xlwt</p><p>workbook = xlwt.Workbook(encoding = ‘ascii’)</p><p>worksheet = workbook.add_sheet(‘My Worksheet’)</p><p>worksheet.write(0, 0, label = ‘Row 0, Column 0Value’)</p><p>workbook.save(‘Excel_Workbook.xls’)</p><p>Formatting theContents of a Cell</p><p>import xlwt</p><p>workbook = xlwt.Workbook(encoding = ‘ascii’)</p><p>worksheet = workbook.add_sheet(‘My Worksheet’)</p><p>font = xlwt.Font() # Create the Font</p><p>font.name = ‘Times New Roman’</p><p>font.bold = True</p><p>font.underline = True</p><p>font.italic = True</p><p>style = xlwt.XFStyle() # Create the Style</p><p>style.font = font # Apply the Font to the Style</p><p>worksheet.write(0, 0, label = ‘Unformattedvalue’)</p><p>worksheet.write(1, 0, label = ‘Formattedvalue’, style) # Apply the Style to the Cell</p><p>workbook.save(‘Excel_Workbook.xls’)</p><p>Attributes ofthe Font Object</p><p>font.bold = True # May be: True, False</p><p>font.italic = True # May be: True, False</p><p>font.struck_out = True # May be: True, False</p><p>font.underline = xlwt.Font.UNDERLINE_SINGLE #May be: UNDERLINE_NONE, UNDERLINE_SINGLE, UNDERLINE_SINGLE_ACC,UNDERLINE_DOUBLE, UNDERLINE_DOUBLE_ACC</p><p>font.escapement =xlwt.Font.ESCAPEMENT_SUPERSCRIPT # May be: ESCAPEMENT_NONE,ESCAPEMENT_SUPERSCRIPT, ESCAPEMENT_SUBSCRIPT</p><p>font.family = xlwt.Font.FAMILY_ROMAN # May be:FAMILY_NONE, FAMILY_ROMAN, FAMILY_SWISS, FAMILY_MODERN, FAMILY_SCRIPT,FAMILY_DECORATIVE</p><p>font.charset = xlwt.Font.CHARSET_ANSI_LATIN #May be: CHARSET_ANSI_LATIN, CHARSET_SYS_DEFAULT, CHARSET_SYMBOL,CHARSET_APPLE_ROMAN, CHARSET_ANSI_JAP_SHIFT_JIS, CHARSET_ANSI_KOR_HANGUL,CHARSET_ANSI_KOR_JOHAB, CHARSET_ANSI_CHINESE_GBK, CHARSET_ANSI_CHINESE_BIG5,CHARSET_ANSI_GREEK, CHARSET_ANSI_TURKISH, CHARSET_ANSI_VIETNAMESE,CHARSET_ANSI_HEBREW, CHARSET_ANSI_ARABIC, CHARSET_ANSI_BALTIC,CHARSET_ANSI_CYRILLIC, CHARSET_ANSI_THAI, CHARSET_ANSI_LATIN_II,CHARSET_OEM_LATIN_I</p><p>font.colour_index = ?</p><p>font.get_biff_record = ?</p><p>font.height = 0x00C8 # C8 in Hex (in decimal) =10 points in height.</p><p>font.name = ?</p><p>font.outline = ?</p><p>font.shadow = ?</p><p>Setting theWidth of a Cell</p><p>import xltw</p><p>workbook = xlwt.Workbook()</p><p>worksheet = workbook.add_sheet(‘My Sheet’)</p><p>worksheet.write(0, 0, ‘My Cell Contents’)</p><p>worksheet.col(0).width = 3333 # 3333 = 1”(one inch).</p><p>workbook.save(‘Excel_Workbook.xls’)</p><p>Entering a Dateinto a Cell</p><p>import xlwt</p><p>import datetime</p><p>workbook = xlwt.Workbook()</p><p>worksheet = workbook.add_sheet(‘My Sheet’)</p><p>style = xlwt.XFStyle()</p><p>style.num_format_str = ‘M/D/YY’ # Otheroptions: D-MMM-YY, D-MMM, MMM-YY, h:mm, h:mm:ss, h:mm, h:mm:ss, M/D/YY h:mm,mm:ss, [h]:mm:ss, mm:ss.0</p><p>worksheet.write(0, 0, datetime.datetime.now(),style)</p><p>workbook.save(‘Excel_Workbook.xls’)</p><p>Adding a Formulato a Cell</p><p>import xlwt</p><p>workbook = xlwt.Workbook()</p><p>worksheet = workbook.add_sheet(‘My Sheet’)</p><p>worksheet.write(0, 0, 5) # Outputs 5</p><p>worksheet.write(0, 1, 2) # Outputs 2</p><p>worksheet.write(1, 0, xlwt.Formula(‘A1<em>B1’)) #Should output “10” (A1[5] </em> A2[2])</p><p>worksheet.write(1, 1,xlwt.Formula(‘SUM(A1,B1)’)) # Should output “7” (A1[5] + A2[2])</p><p>workbook.save(‘Excel_Workbook.xls’)</p><p>Adding aHyperlink to a Cell</p><p>import xlwt</p><p>workbook = xlwt.Workbook()</p><p>worksheet = workbook.add_sheet(‘My Sheet’)</p><p>worksheet.write(0, 0,xlwt.Formula(‘HYPERLINK(“<a href="http://www.google.com&quot;;&quot;Google&quot;)&#39;))#" target="_blank" rel="noopener">http://www.google.com&quot;;&quot;Google&quot;)&#39;))#</a> Outputs the text “Google” linking to <a href="http://www.google.com" target="_blank" rel="noopener">http://www.google.com</a></p><p>workbook.save(‘Excel_Workbook.xls’)</p><p>Merging Columnsand Rows</p><p>import xlwt</p><p>workbook = xlwt.Workbook()</p><p>worksheet = workbook.add_sheet(‘My Sheet’)</p><p>worksheet.write_merge(0, 0, 0, 3, ‘FirstMerge’) # Merges row 0’s columns 0 through 3.</p><p>font = xlwt.Font() # Create Font</p><p>font.bold = True # Set font to Bold</p><p>style = xlwt.XFStyle() # Create Style</p><p>style.font = font # Add Bold Font to Style</p><p>worksheet.write_merge(1, 2, 0, 3, ‘SecondMerge’, style) # Merges row 1 through 2’s columns 0 through 3.</p><p>workbook.save(‘Excel_Workbook.xls’)</p><p>Setting theAlignment for the Contents of a Cell</p><p>import xlwt</p><p>workbook = xlwt.Workbook()</p><p>worksheet = workbook.add_sheet(‘My Sheet’)</p><p>alignment = xlwt.Alignment() # Create Alignment</p><p>alignment.horz = xlwt.Alignment.HORZ_CENTER #May be: HORZ_GENERAL, HORZ_LEFT, HORZ_CENTER, HORZ_RIGHT, HORZ_FILLED,HORZ_JUSTIFIED, HORZ_CENTER_ACROSS_SEL, HORZ_DISTRIBUTED</p><p>alignment.vert = xlwt.Alignment.VERT_CENTER #May be: VERT_TOP, VERT_CENTER, VERT_BOTTOM, VERT_JUSTIFIED, VERT_DISTRIBUTED</p><p>style = xlwt.XFStyle() # Create Style</p><p>style.alignment = alignment # Add Alignment toStyle</p><p>worksheet.write(0, 0, ‘Cell Contents’, style)</p><p>workbook.save(‘Excel_Workbook.xls’)</p><p>Adding Bordersto a Cell</p><p># Please note: While I was able to find theseconstants within the source code, on my system (using LibreOffice,) I was onlypresented with a solid line, varying from thin to thick; no dotted or dashedlines.</p><p>import xlwt</p><p>workbook = xlwt.Workbook()</p><p>worksheet = workbook.add_sheet(‘My Sheet’)</p><p>borders = xlwt.Borders() # Create Borders</p><p>borders.left = xlwt.Borders.DASHED # May be:NO_LINE, THIN, MEDIUM, DASHED, DOTTED, THICK, DOUBLE, HAIR, MEDIUM_DASHED,THIN_DASH_DOTTED, MEDIUM_DASH_DOTTED, THIN_DASH_DOT_DOTTED,MEDIUM_DASH_DOT_DOTTED, SLANTED_MEDIUM_DASH_DOTTED, or 0x00 through 0x0D.</p><p>borders.right = xlwt.Borders.DASHED</p><p>borders.top = xlwt.Borders.DASHED</p><p>borders.bottom = xlwt.Borders.DASHED</p><p>borders.left_colour = 0x40</p><p>borders.right_colour = 0x40</p><p>borders.top_colour = 0x40</p><p>borders.bottom_colour = 0x40</p><p>style = xlwt.XFStyle() # Create Style</p><p>style.borders = borders # Add Borders to Style</p><p>worksheet.write(0, 0, ‘Cell Contents’, style)</p><p>workbook.save(‘Excel_Workbook.xls’)</p><p>Setting theBackground Color of a Cell</p><p>import xlwt</p><p>workbook = xlwt.Workbook()</p><p>worksheet = workbook.add_sheet(‘My Sheet’)</p><p>pattern = xlwt.Pattern() # Create thePattern</p><p>pattern.pattern =xlwt.Pattern.SOLID_PATTERN # May be: NO_PATTERN, SOLID_PATTERN, or 0x00through 0x12</p><p>pattern.pattern_fore_colour = 5 # Maybe: 8 through 63. 0 = Black, 1 = White, 2 = Red, 3 = Green, 4 = Blue, 5 =Yellow, 6 = Magenta, 7 = Cyan, 16 = Maroon, 17 = Dark Green, 18 = Dark Blue, 19= Dark Yellow , almost brown), 20 = Dark Magenta, 21 = Teal, 22 = Light Gray,23 = Dark Gray, the list goes on…</p><p>style = xlwt.XFStyle() # Create the Pattern</p><p>style.pattern = pattern # Add Pattern toStyle</p><p>worksheet.write(0, 0, ‘Cell Contents’, style)</p><p>workbook.save(‘Excel_Workbook.xls’)</p><p>TODO: ThingsLeft to Document</p><p>- Panes – separate views which are always inview</p><p>- Border Colors (documented above, but nottaking effect as it should)</p><p>- Border Widths (document above, but notworking as expected)</p><p>- Protection</p><p>- Row Styles</p><p>- Zoom / Manification</p><p>- WS Props?</p><p>Source Code for reference available at: <a href="https://secure.simplistix.co.uk/svn/xlwt/trunk/xlwt/" target="_blank" rel="noopener">https://secure.simplistix.co.uk/svn/xlwt/trunk/xlwt/</a></p></the>]]></content>
@@ -368,9 +388,9 @@
       
         <tags>
             
-            <tag> 模块使用 </tag>
-            
             <tag> numpy </tag>
+            
+            <tag> 模块使用 </tag>
             
         </tags>
       
@@ -390,9 +410,9 @@
       
         <tags>
             
-            <tag> 模块使用 </tag>
-            
             <tag> numpy </tag>
+            
+            <tag> 模块使用 </tag>
             
         </tags>
       
@@ -434,9 +454,9 @@
       
         <tags>
             
-            <tag> Matplotlib </tag>
-            
             <tag> 模块使用 </tag>
+            
+            <tag> Matplotlib </tag>
             
         </tags>
       
