@@ -5,7 +5,7 @@
     <entry>
       <title>mysql编码</title>
       <link href="/2018/06/25/mysql%E7%BC%96%E7%A0%81/"/>
-      <content type="html"><![CDATA[<p><strong> mysql编码：</strong> <excerpt in="" index="" |="" 首页摘要=""><br><a id="more"></a></excerpt></p><the rest="" of="" contents="" |="" 余下全文=""><h1 id="编码查询"><a href="#编码查询" class="headerlink" title="编码查询"></a>编码查询</h1><h2 id="1、数据库的编码查询"><a href="#1、数据库的编码查询" class="headerlink" title="1、数据库的编码查询"></a>1、数据库的编码查询</h2><p>Show variables like “%character%”;</p><h2 id="2、表、字段的编码查询"><a href="#2、表、字段的编码查询" class="headerlink" title="2、表、字段的编码查询"></a>2、表、字段的编码查询</h2><p>Show create table “table_name”;</p><h1 id="编码修改"><a href="#编码修改" class="headerlink" title="编码修改"></a>编码修改</h1><h2 id="1、数据库层的编码修改"><a href="#1、数据库层的编码修改" class="headerlink" title="1、数据库层的编码修改"></a>1、数据库层的编码修改</h2><p>临时修改办法：</p><p>set  character_set_server = utf8;</p><h2 id="2、具体某一个数据库的编码："><a href="#2、具体某一个数据库的编码：" class="headerlink" title="2、具体某一个数据库的编码："></a>2、具体某一个数据库的编码：</h2><p>新建：create database“table_name”character set utf8</p><p>修改：alterdatabase  “table_name” character set utf8</p><h3 id="3、具体某一个数据库表的编码："><a href="#3、具体某一个数据库表的编码：" class="headerlink" title="3、具体某一个数据库表的编码："></a>3、具体某一个数据库表的编码：</h3><p>alter table “table_name” character set utf8</p><h2 id="4、修改某一个数据库表里字段的编码："><a href="#4、修改某一个数据库表里字段的编码：" class="headerlink" title="4、修改某一个数据库表里字段的编码："></a>4、修改某一个数据库表里字段的编码：</h2><p>alter table table_name change column_name column_name &lt;类型&gt; character set utf8</p><h1 id="直接修改mysql的配置文件"><a href="#直接修改mysql的配置文件" class="headerlink" title="直接修改mysql的配置文件"></a>直接修改mysql的配置文件</h1><p>MySql的配置文件Windows下一般在系统目录下或者在MySql的安装目录下名字叫my.ini，可以搜索，Linux下一般是/etc/my.cnf</p><p>–在 [mysqld] 标签下加上以下内容：</p><p>default-character-set = utf8</p><p>character_set_server = utf8</p><p>注意：如果此标签下已经存在“default-character-set=GBK”类似的内容，只需修改即可。</p><p>–在 [mysql]  标签下加上一行</p><p>default-character-set = utf8</p><p>–在 [mysql.server]标签下加上一行</p><p>default-character-set = utf8</p><p>–在 [mysqld_safe]标签下加上一行</p><p>default-character-set = utf8</p><p>–在 [client]标签下加上一行</p><p>default-character-set = utf8</p></the>]]></content>
+      <content type="html"><![CDATA[<p><strong> mysql编码：</strong> <excerpt in="" index="" |="" 首页摘要=""><br><a id="more"></a></excerpt></p><the rest="" of="" contents="" |="" 余下全文=""><h3 id="编码查询"><a href="#编码查询" class="headerlink" title="编码查询"></a>编码查询</h3><h4 id="1、数据库的编码查询"><a href="#1、数据库的编码查询" class="headerlink" title="1、数据库的编码查询"></a>1、数据库的编码查询</h4><p>Show variables like “%character%”;</p><h4 id="2、表、字段的编码查询"><a href="#2、表、字段的编码查询" class="headerlink" title="2、表、字段的编码查询"></a>2、表、字段的编码查询</h4><p>Show create table “table_name”;</p><h3 id="编码修改"><a href="#编码修改" class="headerlink" title="编码修改"></a>编码修改</h3><h4 id="1、数据库层的编码修改"><a href="#1、数据库层的编码修改" class="headerlink" title="1、数据库层的编码修改"></a>1、数据库层的编码修改</h4><p>临时修改办法：</p><p>set  character_set_server = utf8;</p><h4 id="2、具体某一个数据库的编码："><a href="#2、具体某一个数据库的编码：" class="headerlink" title="2、具体某一个数据库的编码："></a>2、具体某一个数据库的编码：</h4><p>新建：create database“table_name”character set utf8</p><p>修改：alterdatabase  “table_name” character set utf8</p><h4 id="3、具体某一个数据库表的编码："><a href="#3、具体某一个数据库表的编码：" class="headerlink" title="3、具体某一个数据库表的编码："></a>3、具体某一个数据库表的编码：</h4><p>alter table “table_name” character set utf8</p><h4 id="4、修改某一个数据库表里字段的编码："><a href="#4、修改某一个数据库表里字段的编码：" class="headerlink" title="4、修改某一个数据库表里字段的编码："></a>4、修改某一个数据库表里字段的编码：</h4><p>alter table table_name change column_name column_name &lt;类型&gt; character set utf8</p><h3 id="直接修改mysql的配置文件"><a href="#直接修改mysql的配置文件" class="headerlink" title="直接修改mysql的配置文件"></a>直接修改mysql的配置文件</h3><p>MySql的配置文件Windows下一般在系统目录下或者在MySql的安装目录下名字叫my.ini，可以搜索，Linux下一般是/etc/my.cnf</p><p>–在 [mysqld] 标签下加上以下内容：</p><p>default-character-set = utf8</p><p>character_set_server = utf8</p><p>注意：如果此标签下已经存在“default-character-set=GBK”类似的内容，只需修改即可。</p><p>–在 [mysql]  标签下加上一行</p><p>default-character-set = utf8</p><p>–在 [mysql.server]标签下加上一行</p><p>default-character-set = utf8</p><p>–在 [mysqld_safe]标签下加上一行</p><p>default-character-set = utf8</p><p>–在 [client]标签下加上一行</p><p>default-character-set = utf8</p></the>]]></content>
       
       <categories>
           
@@ -388,9 +388,9 @@
       
         <tags>
             
-            <tag> numpy </tag>
-            
             <tag> 模块使用 </tag>
+            
+            <tag> numpy </tag>
             
         </tags>
       
@@ -410,9 +410,9 @@
       
         <tags>
             
-            <tag> numpy </tag>
-            
             <tag> 模块使用 </tag>
+            
+            <tag> numpy </tag>
             
         </tags>
       
@@ -454,9 +454,9 @@
       
         <tags>
             
-            <tag> 模块使用 </tag>
-            
             <tag> Matplotlib </tag>
+            
+            <tag> 模块使用 </tag>
             
         </tags>
       

@@ -17,7 +17,7 @@
 <meta property="og:site_name" content="My Story">
 <meta property="og:description" content="mysql编码：">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-25T11:55:27.671Z">
+<meta property="og:updated_time" content="2018-06-25T11:58:10.546Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="mysql编码">
 <meta name="twitter:description" content="mysql编码：">
@@ -309,15 +309,15 @@
 
 
 
-<h1 id="编码查询"><a href="#编码查询" class="headerlink" title="编码查询"></a>编码查询</h1><h2 id="1、数据库的编码查询"><a href="#1、数据库的编码查询" class="headerlink" title="1、数据库的编码查询"></a>1、数据库的编码查询</h2><p>Show variables like “%character%”;</p>
-<h2 id="2、表、字段的编码查询"><a href="#2、表、字段的编码查询" class="headerlink" title="2、表、字段的编码查询"></a>2、表、字段的编码查询</h2><p>Show create table “table_name”;</p>
-<h1 id="编码修改"><a href="#编码修改" class="headerlink" title="编码修改"></a>编码修改</h1><h2 id="1、数据库层的编码修改"><a href="#1、数据库层的编码修改" class="headerlink" title="1、数据库层的编码修改"></a>1、数据库层的编码修改</h2><p>临时修改办法：</p>
+<h3 id="编码查询"><a href="#编码查询" class="headerlink" title="编码查询"></a>编码查询</h3><h4 id="1、数据库的编码查询"><a href="#1、数据库的编码查询" class="headerlink" title="1、数据库的编码查询"></a>1、数据库的编码查询</h4><p>Show variables like “%character%”;</p>
+<h4 id="2、表、字段的编码查询"><a href="#2、表、字段的编码查询" class="headerlink" title="2、表、字段的编码查询"></a>2、表、字段的编码查询</h4><p>Show create table “table_name”;</p>
+<h3 id="编码修改"><a href="#编码修改" class="headerlink" title="编码修改"></a>编码修改</h3><h4 id="1、数据库层的编码修改"><a href="#1、数据库层的编码修改" class="headerlink" title="1、数据库层的编码修改"></a>1、数据库层的编码修改</h4><p>临时修改办法：</p>
 <p>set  character_set_server = utf8;</p>
-<h2 id="2、具体某一个数据库的编码："><a href="#2、具体某一个数据库的编码：" class="headerlink" title="2、具体某一个数据库的编码："></a>2、具体某一个数据库的编码：</h2><p>新建：create database“table_name”character set utf8</p>
+<h4 id="2、具体某一个数据库的编码："><a href="#2、具体某一个数据库的编码：" class="headerlink" title="2、具体某一个数据库的编码："></a>2、具体某一个数据库的编码：</h4><p>新建：create database“table_name”character set utf8</p>
 <p>修改：alterdatabase  “table_name” character set utf8</p>
-<h3 id="3、具体某一个数据库表的编码："><a href="#3、具体某一个数据库表的编码：" class="headerlink" title="3、具体某一个数据库表的编码："></a>3、具体某一个数据库表的编码：</h3><p>alter table “table_name” character set utf8</p>
-<h2 id="4、修改某一个数据库表里字段的编码："><a href="#4、修改某一个数据库表里字段的编码：" class="headerlink" title="4、修改某一个数据库表里字段的编码："></a>4、修改某一个数据库表里字段的编码：</h2><p>alter table table_name change column_name column_name &lt;类型&gt; character set utf8</p>
-<h1 id="直接修改mysql的配置文件"><a href="#直接修改mysql的配置文件" class="headerlink" title="直接修改mysql的配置文件"></a>直接修改mysql的配置文件</h1><p>MySql的配置文件Windows下一般在系统目录下或者在MySql的安装目录下名字叫my.ini，可以搜索，Linux下一般是/etc/my.cnf</p>
+<h4 id="3、具体某一个数据库表的编码："><a href="#3、具体某一个数据库表的编码：" class="headerlink" title="3、具体某一个数据库表的编码："></a>3、具体某一个数据库表的编码：</h4><p>alter table “table_name” character set utf8</p>
+<h4 id="4、修改某一个数据库表里字段的编码："><a href="#4、修改某一个数据库表里字段的编码：" class="headerlink" title="4、修改某一个数据库表里字段的编码："></a>4、修改某一个数据库表里字段的编码：</h4><p>alter table table_name change column_name column_name &lt;类型&gt; character set utf8</p>
+<h3 id="直接修改mysql的配置文件"><a href="#直接修改mysql的配置文件" class="headerlink" title="直接修改mysql的配置文件"></a>直接修改mysql的配置文件</h3><p>MySql的配置文件Windows下一般在系统目录下或者在MySql的安装目录下名字叫my.ini，可以搜索，Linux下一般是/etc/my.cnf</p>
 <p>–在 [mysqld] 标签下加上以下内容：</p>
 <p>default-character-set = utf8</p>
 <p>character_set_server = utf8</p>
@@ -341,7 +341,7 @@
         <p><span>本文标题:</span><a  href="/2018/06/25/mysql编码/">mysql编码</a></p>
         <p><span>文章作者:</span><a  href="/" title="访问 JingWei Zhou 的个人博客">JingWei Zhou</a></p>
         <p><span>发布时间:</span>2018年06月25日 - 19时52分</p>
-        <p><span>最后更新:</span>2018年06月25日 - 19时55分</p>
+        <p><span>最后更新:</span>2018年06月25日 - 19时58分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2018/06/25/mysql编码/" title="mysql编码">https://jingweiz300.github.io/2018/06/25/mysql编码/</a>
             <span class="copy-path" data-clipboard-text="原文: https://jingweiz300.github.io/2018/06/25/mysql编码/　　作者: JingWei Zhou" title=""></span>
@@ -369,7 +369,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#编码查询"><span class="toc-number">1.</span> <span class="toc-text">编码查询</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1、数据库的编码查询"><span class="toc-number">1.1.</span> <span class="toc-text">1、数据库的编码查询</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2、表、字段的编码查询"><span class="toc-number">1.2.</span> <span class="toc-text">2、表、字段的编码查询</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#编码修改"><span class="toc-number">2.</span> <span class="toc-text">编码修改</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1、数据库层的编码修改"><span class="toc-number">2.1.</span> <span class="toc-text">1、数据库层的编码修改</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2、具体某一个数据库的编码："><span class="toc-number">2.2.</span> <span class="toc-text">2、具体某一个数据库的编码：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3、具体某一个数据库表的编码："><span class="toc-number">2.2.1.</span> <span class="toc-text">3、具体某一个数据库表的编码：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4、修改某一个数据库表里字段的编码："><span class="toc-number">2.3.</span> <span class="toc-text">4、修改某一个数据库表里字段的编码：</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#直接修改mysql的配置文件"><span class="toc-number">3.</span> <span class="toc-text">直接修改mysql的配置文件</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#编码查询"><span class="toc-number">1.</span> <span class="toc-text">编码查询</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1、数据库的编码查询"><span class="toc-number">1.1.</span> <span class="toc-text">1、数据库的编码查询</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2、表、字段的编码查询"><span class="toc-number">1.2.</span> <span class="toc-text">2、表、字段的编码查询</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#编码修改"><span class="toc-number">2.</span> <span class="toc-text">编码修改</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1、数据库层的编码修改"><span class="toc-number">2.1.</span> <span class="toc-text">1、数据库层的编码修改</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2、具体某一个数据库的编码："><span class="toc-number">2.2.</span> <span class="toc-text">2、具体某一个数据库的编码：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3、具体某一个数据库表的编码："><span class="toc-number">2.3.</span> <span class="toc-text">3、具体某一个数据库表的编码：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4、修改某一个数据库表里字段的编码："><span class="toc-number">2.4.</span> <span class="toc-text">4、修改某一个数据库表里字段的编码：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#直接修改mysql的配置文件"><span class="toc-number">3.</span> <span class="toc-text">直接修改mysql的配置文件</span></a></li></ol>
 </div>
 <style>
     .left-col .switch-btn {
