@@ -7,20 +7,20 @@
   
   
   
-  <title>Centos操作系统常用log日志 | My Story</title>
+  <title>zabbix手动配置邮件告警 | My Story</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Centos操作系统常用log日志：">
-<meta name="keywords" content="系统日志">
+  <meta name="description" content="zabbix手动配置邮件告警：">
+<meta name="keywords" content="zabbix">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Centos操作系统常用log日志">
-<meta property="og:url" content="https://jingweiz300.github.io/2017/02/04/Centos操作系统常用log日志/index.html">
+<meta property="og:title" content="zabbix手动配置邮件告警">
+<meta property="og:url" content="https://jingweiz300.github.io/2018/06/26/zabbix手动配置邮件告警/index.html">
 <meta property="og:site_name" content="My Story">
-<meta property="og:description" content="Centos操作系统常用log日志：">
+<meta property="og:description" content="zabbix手动配置邮件告警：">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-24T08:42:03.316Z">
+<meta property="og:updated_time" content="2018-06-26T11:29:33.710Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Centos操作系统常用log日志">
-<meta name="twitter:description" content="Centos操作系统常用log日志：">
+<meta name="twitter:title" content="zabbix手动配置邮件告警">
+<meta name="twitter:description" content="zabbix手动配置邮件告警：">
   
     <link rel="alternative" href="/atom.xml" title="My Story" type="application/atom+xml">
   
@@ -260,11 +260,11 @@
         </header>                
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-Centos操作系统常用log日志" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-zabbix手动配置邮件告警" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a  href="/2017/02/04/Centos操作系统常用log日志/" class="article-date">
-      <time datetime="2017-02-04T11:24:02.000Z" itemprop="datePublished">2017-02-04</time>
+      <a  href="/2018/06/26/zabbix手动配置邮件告警/" class="article-date">
+      <time datetime="2018-06-26T11:26:45.000Z" itemprop="datePublished">2018-06-26</time>
 </a>
 
     </div>
@@ -278,7 +278,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Centos操作系统常用log日志
+      zabbix手动配置邮件告警
     </h1>
   
 
@@ -288,13 +288,13 @@
       <div class="article-info article-info-post">
         
     <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/linux/">linux</a>
+    <a class="article-category-link" href="/categories/operation/">operation</a>
     </div>
 
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/系统日志/">系统日志</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/zabbix/">zabbix</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -304,36 +304,67 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p><strong> Centos操作系统常用log日志：</strong> <excerpt in="" index="" |="" 首页摘要=""><br><a id="more"></a></excerpt></p>
+        <p><strong> zabbix手动配置邮件告警：</strong> <excerpt in="" index="" |="" 首页摘要=""><br><a id="more"></a></excerpt></p>
 <the rest="" of="" contents="" |="" 余下全文="">
 
-<p>因为经常会分析日志,每次都百度很麻烦总结出来大家.</p>
-<p>分析日志常用工具大家可以百度找一下.</p>
-<p>常见的Linux操作系统登录文件有如下几个：</p>
-<p>1）/var/log/secure：记录登录系统存取数据的文件;</p>
-<p>例如pop3，ssh，telnet，ftp等都会记录在此.</p>
-<p>2）/ar/log/wtmp：记录登录这的信息记录，被编码过，所以必须以last解析;</p>
-<p>3）/var/log/message:jihu所有的开机系统发生的错误都会在此记录;</p>
-<p>4）/var/log.boot.log：记录一些开机或者关机启动的一些服务显示的启动或者关闭的信息;</p>
-<p>5）/var/log/maillog：记录邮件的存取和往来;</p>
-<p>6）/var/log/cron：用来记录crontab这个服务的内容;</p>
-<p>7）/var/log/httpd，/var/log/mysqld.log等等文件，记录几个不同的网络服务的记录文件;</p>
-<p>8)/var/log/acpid ,   ACPI - Advanced Configuration andPower Interface，表示高级配置和电源管理接口。 </p>
-<p>后面的 d 表示 deamon 。 acpid 也就是 the ACPI event daemon 。 也就是 acpi的消息进程。用来控制、获取、管理 acpi 的状态的服务程序。</p>
-<p>9)/var/run/utmp 记录着现在登录的用户;</p>
-<p>10)/var/log/lastlog 记录每个用户最后的登录信息;</p>
-<p>11)/var/log/btmp 记录错误的登录尝试;</p>
-<p>12)/var/log/dmesg内核日志;</p>
-<p>13)/var/log/cpus CPU的处理信息；</p>
-<p>14）/var/log/syslog 事件记录监控程序日志；</p>
-<p>15）/var/log/auth.log 用户认证日志；</p>
-<p>16）/var/log/daemon.log 系统进程日志；</p>
-<p>17）/var/log/mail.err 邮件错误信息；</p>
-<p>18）/var/log/mail.info 邮件信息；</p>
-<p>19）/var/log/mail.warn 邮件警告信息；</p>
-<p>20)/var/log/daemon.log 系统监控程序产生的信息;</p>
-<p>21)/var/log/kern 内核产生的信息;</p>
-<p>22)/var/log/lpr   行打印机假脱机系统产生的信息;</p>
+<p>sendEmail是一个轻量级，命令行的SMTP邮件客户端。如果你需要使用命令行发送邮件，那么sendEmail是非常完美的选择:使用简单并且功能强大.这个被设计用在php、bash </p>
+<p>perl和web站点使用。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">wget http://caspian.dotconf.net/menu/Software/SendEmail/sendEmail-v1.56.tar.gz</span><br><span class="line"></span><br><span class="line">mkdir /usr/local/bin</span><br><span class="line"></span><br><span class="line">tar zxfsendEmail-v1.56.tar.gz -C /usr/src</span><br><span class="line"></span><br><span class="line">cd/usr/src/sendEmail-v1.56</span><br><span class="line"></span><br><span class="line">cp -asendEmail /usr/local/bin</span><br><span class="line"></span><br><span class="line">chmod +x/usr/local/bin/sendEmail</span><br><span class="line"></span><br><span class="line">yum install perl-Net-SSLeay perl-IO-Socket-SSL -y</span><br><span class="line"></span><br><span class="line">/usr/local/bin/sendEmail-f from@163.com -t to@qq.com -s smtp.163.com -u "我是邮件主题" -omessage-content-type=html -o message-charset=utf8 -xu from@163.com -xp 123456-m "我是邮件内容" -l /var/log/sendMyEmail.log</span><br></pre></td></tr></table></figure>
+<p>命令说明</p>
+<p>/usr/local/bin/sendEmail        命令主程序<br>-f <a href="mailto:from@163.com" target="_blank" rel="noopener">from@163.com</a><br>发件人邮箱<br>-t <a href="mailto:to@163.com" target="_blank" rel="noopener">to@163.com</a><br>收件人邮箱<br>-s smtp.163.com<br>发件人邮箱的smtp服务器<br>-u “我是邮件主题”<br>邮件的标题<br>-o message-content-type=html<br>邮件内容的格式,html表示它是html格式<br>-o message-charset=utf8<br>邮件内容编码<br>-xu <a href="mailto:from@163.com" target="_blank" rel="noopener">from@163.com</a><br>发件人邮箱的用户名<br>-xp 123456                      发件人邮箱密码<br>-m “我是邮件内容”<br>邮件的具体内容</p>
+<p>-l  /var/log/sendMyEmail.log     非必输项，邮件发送日志记录到日志文件</p>
+<p>进入zabbix自定义的指定目录，我这里是/usr/local/zabbix </p>
+<p>可以查看zabbix_server.conf配置文件AlertScriptsPath变量是如何定义的。</p>
+<p>vim/usr/local/zabbix/etc/zabbix_server.conf</p>
+<p>找到AlertScriptsPath选项，可以自定义位置</p>
+<p>AlertScriptsPath=/usr/local/zabbix/alertscripts</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">cd/usr/local/zabbix/alertscripts/ </span><br><span class="line"></span><br><span class="line">vim sendEmail.sh</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span>!/bin/bash</span><br><span class="line"></span><br><span class="line">to=$1</span><br><span class="line"></span><br><span class="line">subject=$2</span><br><span class="line"></span><br><span class="line">body=$3</span><br><span class="line"></span><br><span class="line">/usr/local/bin/sendEmail  -f from@163.com</span><br><span class="line"></span><br><span class="line">-t "to" -s smtp.163.com -u "subject" -o</span><br><span class="line"></span><br><span class="line">message-content-type=html -o message-charset=utf8 -xu from@163.com -xp password</span><br><span class="line"></span><br><span class="line">-m "$body"</span><br></pre></td></tr></table></figure>
+<p>说明: </p>
+<p><a href="mailto:from@163.com" target="_blank" rel="noopener">from@163.com</a>替换成自己的发件邮箱 </p>
+<p>smtp.163.com表示邮箱的smtp服务器，这里展示使用的是163邮箱，替换自己的邮箱SMTP地址 </p>
+<p>password替换成发件邮箱密码</p>
+<p>chmod +x<br>sendEmail.sh<br>chown zabbix.zabbix sendEmail.sh</p>
+<p>进入zabbix管理页面 </p>
+<p>点击管理-&gt;报警媒介类型点击最右边的创建媒体类型</p>
+<p>输入脚本名称，类型选择脚本并添加以下3个参数，分别对应sendEmail.sh脚本需要的3个参数：收件人地址、主题、详细内容</p>
+<p>{ALERT.SENDTO}<br>{ALERT.SUBJECT}<br>{ALERT.MESSAGE}</p>
+<p>消息模版设置：</p>
+<p>故障{TRIGGER.STATUS},服务器:{HOSTNAME1}发生:{TRIGGER.NAME}故障!</p>
+<p>告警主机:{HOSTNAME1}<br></p>
+<p>告警时间:{EVENT.DATE}{EVENT.TIME}<br></p>
+<p>告警等级:{TRIGGER.SEVERITY}<br></p>
+<p>告警信息:{TRIGGER.NAME}<br></p>
+<p>告警项目:{TRIGGER.KEY1}<br></p>
+<p>问题详情:{ITEM.NAME}<br></p>
+<p>当前值:{ITEM.VALUE}<br></p>
+<p>当前状态:{TRIGGER.STATUS}<br></p>
+<p>事件ID:{EVENT.ID}<br></p>
+<p>恢复{TRIGGER.STATUS},服务器:{HOSTNAME1}: {TRIGGER.NAME}已恢复!</p>
+<p>告警主机:{HOSTNAME1}<br></p>
+<p>告警时间:{EVENT.DATE}{EVENT.TIME}<br></p>
+<p>告警等级:{TRIGGER.SEVERITY}<br></p>
+<p>告警信息:{TRIGGER.NAME}<br></p>
+<p>告警项目:{TRIGGER.KEY1}<br></p>
+<p>问题详情:{ITEM.NAME}<br></p>
+<p>当前值:{ITEM.VALUE}<br></p>
+<p>当前状态:{TRIGGER.STATUS}<br></p>
+<p>事件ID:{EVENT.ID}<br></p>
+<p>问题记录：</p>
+<p>sendEmail报错：at/usr/share/perl5/vendor_perl/IO/Socket/SSL.pm</p>
+<p>解决办法：</p>
+<p>centos7.2默认是perl的版本是5.16，centos6.5的是5.10，后来把7的版本换成5.10，就可以正常发邮件了。</p>
+<p>#### perl安装</p>
+<p>​     wget <a href="http://www.cpan.org/src/5.0/perl-5.10.0.tar.gz" target="_blank" rel="noopener">http://www.cpan.org/src/5.0/perl-5.10.0.tar.gz</a></p>
+<p>​     tar -zxf perl-5.10.0.tar.gz</p>
+<p>​     cd perl-5.22.0</p>
+<p>​     ./configure.gnu -des -Dprefix=/usr/local/perl</p>
+<p>​     echo $?</p>
+<p>​     make</p>
+<p>​     make test</p>
+<p>​     make install</p>
+<p>​     mv /usr/bin/perl /usr/bin/perl.bak</p>
+<p>​     ln -s /usr/local/perl/bin/perl /usr/bin/perl</p>
+<p>​     perl -v</p>
 </the>
       
     </div>
@@ -342,13 +373,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a  href="/2017/02/04/Centos操作系统常用log日志/">Centos操作系统常用log日志</a></p>
+        <p><span>本文标题:</span><a  href="/2018/06/26/zabbix手动配置邮件告警/">zabbix手动配置邮件告警</a></p>
         <p><span>文章作者:</span><a  href="/" title="访问 JingWei Zhou 的个人博客">JingWei Zhou</a></p>
-        <p><span>发布时间:</span>2017年02月04日 - 19时24分</p>
-        <p><span>最后更新:</span>2018年06月24日 - 16时42分</p>
+        <p><span>发布时间:</span>2018年06月26日 - 19时26分</p>
+        <p><span>最后更新:</span>2018年06月26日 - 19时29分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2017/02/04/Centos操作系统常用log日志/" title="Centos操作系统常用log日志">https://jingweiz300.github.io/2017/02/04/Centos操作系统常用log日志/</a>
-            <span class="copy-path" data-clipboard-text="原文: https://jingweiz300.github.io/2017/02/04/Centos操作系统常用log日志/　　作者: JingWei Zhou" title=""></span>
+            <span>原始链接:</span><a class="post-url" href="/2018/06/26/zabbix手动配置邮件告警/" title="zabbix手动配置邮件告警">https://jingweiz300.github.io/2018/06/26/zabbix手动配置邮件告警/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://jingweiz300.github.io/2018/06/26/zabbix手动配置邮件告警/　　作者: JingWei Zhou" title=""></span>
         </p>
         <p>
             <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
@@ -359,18 +390,9 @@
 
 <nav id="article-nav">
   
-    <a  href="/2017/02/06/常用anaconda命令大全/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          常用anaconda命令大全
-        
-      </div>
-    </a>
   
-  
-    <a  href="/2017/02/04/查看shell/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">查看shell</div>
+    <a  href="/2018/06/25/mysql编码/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">mysql编码</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -463,13 +485,11 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a  href="/2017/02/06/常用anaconda命令大全/" title="上一篇: 常用anaconda命令大全">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a  href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a  href="/2017/02/04/查看shell/" title="下一篇: 查看shell">
+            <a  href="/2018/06/25/mysql编码/" title="下一篇: mysql编码">
                 <i class="fa fa-angle-right"></i>
             </a>
         

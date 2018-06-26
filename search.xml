@@ -3,6 +3,26 @@
   
     
     <entry>
+      <title>zabbix手动配置邮件告警</title>
+      <link href="/2018/06/26/zabbix%E6%89%8B%E5%8A%A8%E9%85%8D%E7%BD%AE%E9%82%AE%E4%BB%B6%E5%91%8A%E8%AD%A6/"/>
+      <content type="html"><![CDATA[<p><strong> zabbix手动配置邮件告警：</strong> <excerpt in="" index="" |="" 首页摘要=""><br><a id="more"></a></excerpt></p><the rest="" of="" contents="" |="" 余下全文=""><p>sendEmail是一个轻量级，命令行的SMTP邮件客户端。如果你需要使用命令行发送邮件，那么sendEmail是非常完美的选择:使用简单并且功能强大.这个被设计用在php、bash </p><p>perl和web站点使用。</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">wget http://caspian.dotconf.net/menu/Software/SendEmail/sendEmail-v1.56.tar.gz</span><br><span class="line"></span><br><span class="line">mkdir /usr/local/bin</span><br><span class="line"></span><br><span class="line">tar zxfsendEmail-v1.56.tar.gz -C /usr/src</span><br><span class="line"></span><br><span class="line">cd/usr/src/sendEmail-v1.56</span><br><span class="line"></span><br><span class="line">cp -asendEmail /usr/local/bin</span><br><span class="line"></span><br><span class="line">chmod +x/usr/local/bin/sendEmail</span><br><span class="line"></span><br><span class="line">yum install perl-Net-SSLeay perl-IO-Socket-SSL -y</span><br><span class="line"></span><br><span class="line">/usr/local/bin/sendEmail-f from@163.com -t to@qq.com -s smtp.163.com -u "我是邮件主题" -omessage-content-type=html -o message-charset=utf8 -xu from@163.com -xp 123456-m "我是邮件内容" -l /var/log/sendMyEmail.log</span><br></pre></td></tr></table></figure><p>命令说明</p><p>/usr/local/bin/sendEmail        命令主程序<br>-f <a href="mailto:from@163.com" target="_blank" rel="noopener">from@163.com</a><br>发件人邮箱<br>-t <a href="mailto:to@163.com" target="_blank" rel="noopener">to@163.com</a><br>收件人邮箱<br>-s smtp.163.com<br>发件人邮箱的smtp服务器<br>-u “我是邮件主题”<br>邮件的标题<br>-o message-content-type=html<br>邮件内容的格式,html表示它是html格式<br>-o message-charset=utf8<br>邮件内容编码<br>-xu <a href="mailto:from@163.com" target="_blank" rel="noopener">from@163.com</a><br>发件人邮箱的用户名<br>-xp 123456                      发件人邮箱密码<br>-m “我是邮件内容”<br>邮件的具体内容</p><p>-l  /var/log/sendMyEmail.log     非必输项，邮件发送日志记录到日志文件</p><p>进入zabbix自定义的指定目录，我这里是/usr/local/zabbix </p><p>可以查看zabbix_server.conf配置文件AlertScriptsPath变量是如何定义的。</p><p>vim/usr/local/zabbix/etc/zabbix_server.conf</p><p>找到AlertScriptsPath选项，可以自定义位置</p><p>AlertScriptsPath=/usr/local/zabbix/alertscripts</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">cd/usr/local/zabbix/alertscripts/ </span><br><span class="line"></span><br><span class="line">vim sendEmail.sh</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span>!/bin/bash</span><br><span class="line"></span><br><span class="line">to=$1</span><br><span class="line"></span><br><span class="line">subject=$2</span><br><span class="line"></span><br><span class="line">body=$3</span><br><span class="line"></span><br><span class="line">/usr/local/bin/sendEmail  -f from@163.com</span><br><span class="line"></span><br><span class="line">-t "to" -s smtp.163.com -u "subject" -o</span><br><span class="line"></span><br><span class="line">message-content-type=html -o message-charset=utf8 -xu from@163.com -xp password</span><br><span class="line"></span><br><span class="line">-m "$body"</span><br></pre></td></tr></table></figure><p>说明: </p><p><a href="mailto:from@163.com" target="_blank" rel="noopener">from@163.com</a>替换成自己的发件邮箱 </p><p>smtp.163.com表示邮箱的smtp服务器，这里展示使用的是163邮箱，替换自己的邮箱SMTP地址 </p><p>password替换成发件邮箱密码</p><p>chmod +x<br>sendEmail.sh<br>chown zabbix.zabbix sendEmail.sh</p><p>进入zabbix管理页面 </p><p>点击管理-&gt;报警媒介类型点击最右边的创建媒体类型</p><p>输入脚本名称，类型选择脚本并添加以下3个参数，分别对应sendEmail.sh脚本需要的3个参数：收件人地址、主题、详细内容</p><p>{ALERT.SENDTO}<br>{ALERT.SUBJECT}<br>{ALERT.MESSAGE}</p><p>消息模版设置：</p><p>故障{TRIGGER.STATUS},服务器:{HOSTNAME1}发生:{TRIGGER.NAME}故障!</p><p>告警主机:{HOSTNAME1}<br></p><p>告警时间:{EVENT.DATE}{EVENT.TIME}<br></p><p>告警等级:{TRIGGER.SEVERITY}<br></p><p>告警信息:{TRIGGER.NAME}<br></p><p>告警项目:{TRIGGER.KEY1}<br></p><p>问题详情:{ITEM.NAME}<br></p><p>当前值:{ITEM.VALUE}<br></p><p>当前状态:{TRIGGER.STATUS}<br></p><p>事件ID:{EVENT.ID}<br></p><p>恢复{TRIGGER.STATUS},服务器:{HOSTNAME1}: {TRIGGER.NAME}已恢复!</p><p>告警主机:{HOSTNAME1}<br></p><p>告警时间:{EVENT.DATE}{EVENT.TIME}<br></p><p>告警等级:{TRIGGER.SEVERITY}<br></p><p>告警信息:{TRIGGER.NAME}<br></p><p>告警项目:{TRIGGER.KEY1}<br></p><p>问题详情:{ITEM.NAME}<br></p><p>当前值:{ITEM.VALUE}<br></p><p>当前状态:{TRIGGER.STATUS}<br></p><p>事件ID:{EVENT.ID}<br></p><p>问题记录：</p><p>sendEmail报错：at/usr/share/perl5/vendor_perl/IO/Socket/SSL.pm</p><p>解决办法：</p><p>centos7.2默认是perl的版本是5.16，centos6.5的是5.10，后来把7的版本换成5.10，就可以正常发邮件了。</p><p>#### perl安装</p><p>​     wget <a href="http://www.cpan.org/src/5.0/perl-5.10.0.tar.gz" target="_blank" rel="noopener">http://www.cpan.org/src/5.0/perl-5.10.0.tar.gz</a></p><p>​     tar -zxf perl-5.10.0.tar.gz</p><p>​     cd perl-5.22.0</p><p>​     ./configure.gnu -des -Dprefix=/usr/local/perl</p><p>​     echo $?</p><p>​     make</p><p>​     make test</p><p>​     make install</p><p>​     mv /usr/bin/perl /usr/bin/perl.bak</p><p>​     ln -s /usr/local/perl/bin/perl /usr/bin/perl</p><p>​     perl -v</p></the>]]></content>
+      
+      <categories>
+          
+          <category> operation </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> zabbix </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>mysql编码</title>
       <link href="/2018/06/25/mysql%E7%BC%96%E7%A0%81/"/>
       <content type="html"><![CDATA[<p><strong> mysql编码：</strong> <excerpt in="" index="" |="" 首页摘要=""><br><a id="more"></a></excerpt></p><the rest="" of="" contents="" |="" 余下全文=""><h3 id="编码查询"><a href="#编码查询" class="headerlink" title="编码查询"></a>编码查询</h3><h4 id="1、数据库的编码查询"><a href="#1、数据库的编码查询" class="headerlink" title="1、数据库的编码查询"></a>1、数据库的编码查询</h4><p>Show variables like “%character%”;</p><h4 id="2、表、字段的编码查询"><a href="#2、表、字段的编码查询" class="headerlink" title="2、表、字段的编码查询"></a>2、表、字段的编码查询</h4><p>Show create table “table_name”;</p><h3 id="编码修改"><a href="#编码修改" class="headerlink" title="编码修改"></a>编码修改</h3><h4 id="1、数据库层的编码修改"><a href="#1、数据库层的编码修改" class="headerlink" title="1、数据库层的编码修改"></a>1、数据库层的编码修改</h4><p>临时修改办法：</p><p>set  character_set_server = utf8;</p><h4 id="2、具体某一个数据库的编码："><a href="#2、具体某一个数据库的编码：" class="headerlink" title="2、具体某一个数据库的编码："></a>2、具体某一个数据库的编码：</h4><p>新建：create database“table_name”character set utf8</p><p>修改：alterdatabase  “table_name” character set utf8</p><h4 id="3、具体某一个数据库表的编码："><a href="#3、具体某一个数据库表的编码：" class="headerlink" title="3、具体某一个数据库表的编码："></a>3、具体某一个数据库表的编码：</h4><p>alter table “table_name” character set utf8</p><h4 id="4、修改某一个数据库表里字段的编码："><a href="#4、修改某一个数据库表里字段的编码：" class="headerlink" title="4、修改某一个数据库表里字段的编码："></a>4、修改某一个数据库表里字段的编码：</h4><p>alter table table_name change column_name column_name &lt;类型&gt; character set utf8</p><h3 id="直接修改mysql的配置文件"><a href="#直接修改mysql的配置文件" class="headerlink" title="直接修改mysql的配置文件"></a>直接修改mysql的配置文件</h3><p>MySql的配置文件Windows下一般在系统目录下或者在MySql的安装目录下名字叫my.ini，可以搜索，Linux下一般是/etc/my.cnf</p><p>–在 [mysqld] 标签下加上以下内容：</p><p>default-character-set = utf8</p><p>character_set_server = utf8</p><p>注意：如果此标签下已经存在“default-character-set=GBK”类似的内容，只需修改即可。</p><p>–在 [mysql]  标签下加上一行</p><p>default-character-set = utf8</p><p>–在 [mysql.server]标签下加上一行</p><p>default-character-set = utf8</p><p>–在 [mysqld_safe]标签下加上一行</p><p>default-character-set = utf8</p><p>–在 [client]标签下加上一行</p><p>default-character-set = utf8</p></the>]]></content>
@@ -388,9 +408,9 @@
       
         <tags>
             
-            <tag> 模块使用 </tag>
-            
             <tag> numpy </tag>
+            
+            <tag> 模块使用 </tag>
             
         </tags>
       
@@ -410,9 +430,9 @@
       
         <tags>
             
-            <tag> 模块使用 </tag>
-            
             <tag> numpy </tag>
+            
+            <tag> 模块使用 </tag>
             
         </tags>
       
@@ -454,9 +474,9 @@
       
         <tags>
             
-            <tag> Matplotlib </tag>
-            
             <tag> 模块使用 </tag>
+            
+            <tag> Matplotlib </tag>
             
         </tags>
       
